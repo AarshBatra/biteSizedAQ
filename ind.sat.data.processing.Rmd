@@ -1,0 +1,315 @@
+---
+title: "ind.sat.data.processing"
+author: "Aarsh Batra"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load libraries
+
+```{r}
+
+#> libraries
+library(tidyverse)
+library(jsonlite)
+library(here)
+library(sf)
+library(ggplot2)
+library(geojson)
+library(devtools)
+library(geojsonio)
+library(geojsonsf)
+library(roxygen2)
+library(magrittr)
+library(stringr)
+library(data.table)
+library(viridis)
+library(ggthemes)
+library(hrbrthemes)
+library(RColorBrewer)
+library(haven)
+library(janitor)
+library(lwgeom)
+library(rvest)
+library(dplyr)
+library(ggrepel)
+library(ggsflabel)
+library(fuzzyjoin)
+library(tidytext)
+library(tm)
+library(wordcloud2)
+library(recipes)
+library(forcats)
+library(sjlabelled) 
+library(geoarrow) # for exporting shapefiles to a geoparquet format
+library(paletteer)
+library(jpeg)
+library(patchwork)
+library(ggtext)
+library(readxl)
+library(tictoc)
+library(googlesheets4)
+library(reticulate)
+library(raster)
+library(fasterize)
+library(microbenchmark)
+library(future)
+library(raster)
+library(rasterVis)
+library(ncdf4)
+library(lattice)
+library(foster)
+library(rgdal)
+
+# load and document all functions
+load_all()
+document()
+
+
+#> Negation of the "%in%" operator function
+`%notin%` <- Negate(`%in%`)
+
+#> shrug district level shapefile with uid for rasterization
+shrug_master_district_shp <- st_read("./data/raw/shrug/shrug_master_district_shp_with_uid_for_rast_wa.gpkg")
+
+#> shrug subdistrict level shapefile with uid for rasterization
+shrug_master_subdist_shp <- st_read("./data/raw/shrug/shrug_master_subdistrict_shp_with_uid_for_rast_wa.gpkg")
+
+shrug_master_subdist_shp <- shrug_master_subdist_shp %>%
+  dplyr::mutate(uid_for_rasterization = row_number()) %>%
+  dplyr::select(-geom, geom) %>%
+  st_as_sf()
+
+```
+
+## Housekeeping items: set reference datasets that will be used throughout in the pipeline ahead
+```{r}
+
+
+#> [To be set by user]set the ref admin layer to be used for cropping and masking global rasters: using less detailed layers make cropping and masking more efficient later on
+ref_admin_level_shp_file <- shrug_master_district_shp
+
+#> [To be set by user] set the ref admin layer
+ref_shp_file_to_be_rasterized <- shrug_master_subdist_shp
+
+
+```
+
+## Process satellite derived PM2.5 data and produced population weighted PM2.5 at India block level
+```{r}
+
+
+#> load in a single pollution raster, and crop it to India
+
+pol_raster_path_vec <- list.files("./data/raw/annual_pm2.5_v6.gl.02_raw_rasters_0.01_0.01/annual", full.names = TRUE) 
+
+yearly_data_processed_list <- list()
+
+for(i in 1 : length(pol_raster_path_vec)){
+
+tic()
+  
+  cur_rast_year <- as.numeric(str_remove(str_extract(pol_raster_path_vec[i], "\\d+\\.nc"), "12.nc"))
+
+  print(str_c(cur_rast_year, " pm2.5 pol data processing r1 starts!"))
+    
+  unit_pol_raster <- map(pol_raster_path_vec[i], ~nc_to_raster_layer(., "PM25", "latitude", "longitude"), .progress = TRUE)
+
+#> crop the unit_raster using ref shp
+unit_pol_raster_cropped_admin_lev_shp_file <- raster::crop(unit_pol_raster[[1]], ref_admin_level_shp_file)
+
+#> mask the unit raster using ref shp
+unit_pol_raster_cropped_admin_lev_shp_file_mask <- mask(unit_pol_raster_cropped_admin_lev_shp_file, ref_admin_level_shp_file)
+
+#> load in the population raster
+unit_pop_raster <- raster("./data/raw/landscan-global-2022-assets/landscan-global-2022.tif")
+
+#> crop the population raster
+unit_pop_raster_cropped_admin_lev_shp_file <- raster::crop(unit_pop_raster, ref_admin_level_shp_file)
+
+#> mask the population raster
+unit_pop_raster_cropped_admin_lev_shp_file_mask <- mask(unit_pop_raster_cropped_admin_lev_shp_file, ref_admin_level_shp_file)
+
+#> match pol raster to pop raster
+unit_pol_raster_cropped_admin_lev_shp_file_mask_match_pop <- matchResolution(unit_pol_raster_cropped_admin_lev_shp_file_mask, unit_pop_raster_cropped_admin_lev_shp_file_mask)
+
+#> fasterize the village level shapefile (with a uid for rasterization) to the same resolution as the pop, pol rasters
+sh_admin_int_shp_rasterized <- fasterize(ref_shp_file_to_be_rasterized, unit_pol_raster_cropped_admin_lev_shp_file_mask_match_pop, field = "uid_for_rasterization", fun = "last")
+
+#> set names for rasters
+
+names(unit_pol_raster_cropped_admin_lev_shp_file_mask_match_pop) <- "pol_rast"
+names(unit_pop_raster_cropped_admin_lev_shp_file_mask) <- "pop_rast"
+names(sh_admin_int_shp_rasterized) <- "sh_rast"
+
+#> create a raster brick out of pol rast, pop rast, sh vil rast
+region_raster_brick <- sh_admin_int_shp_rasterized %>%
+  addLayer(unit_pol_raster_cropped_admin_lev_shp_file_mask_match_pop) %>%
+  addLayer(unit_pop_raster_cropped_admin_lev_shp_file_mask)
+
+#> create a df out of the brick
+region_raster_brick_df <- raster::as.data.frame(region_raster_brick)
+region_raster_brick_df <- region_raster_brick_df %>%
+  dplyr::filter(!is.na(pol_rast), !is.na(pop_rast))
+
+#> create an arrow table from the df before collapsing
+region_raster_brick_df_arrow <- region_raster_brick_df %>%
+  arrow::as_arrow_table()
+
+#> collapse arrow table
+region_raster_brick_df_arrow_collapse <- region_raster_brick_df_arrow %>%
+  # dplyr::filter((!is.na(sh_rast)) & ((as.character(sh_rast) != "NA"))) %>%
+  dplyr::group_by(sh_rast) %>%
+  dplyr::collect() %>%
+  dplyr::mutate(pop_weights = pop_rast/sum(pop_rast, na.rm = TRUE), 
+         pollution_pop_weighted = pop_weights*pol_rast) %>%
+  dplyr::summarise(total_population = sum(pop_rast, na.rm = TRUE), 
+            avg_pm2.5_pollution = sum(pollution_pop_weighted, na.rm = TRUE)) %>%
+  dplyr::ungroup() 
+
+#> shrug ids not captured in the first round of processing
+uids_not_captured_r1 <- ref_shp_file_to_be_rasterized$uid_for_rasterization[ref_shp_file_to_be_rasterized$uid_for_rasterization %notin% region_raster_brick_df_arrow_collapse$sh_rast]
+
+#> uids with NA pop
+uids_with_na_pop <- region_raster_brick_df_arrow_collapse %>% dplyr::filter(is.na(total_population)) %>% 
+  dplyr::select(sh_rast) %>%
+  unlist() %>%
+  as.vector()
+
+#> uids with NA pol
+uids_with_na_pol <- region_raster_brick_df_arrow_collapse %>% dplyr::filter(is.na(avg_pm2.5_pollution)) %>% 
+  dplyr::select(sh_rast) %>%
+  unlist() %>%
+  as.vector()
+
+#> uids with 0 population
+uids_with_zero_pop <- region_raster_brick_df_arrow_collapse %>%
+  dplyr::filter(total_population == 0) %>%
+  dplyr::select(sh_rast) %>%
+  unlist() %>%
+  as.vector()
+
+#> concat all unprocessed shrud ids into a single vector
+uids_not_captured_master_r1 <- c(uids_not_captured_r1, uids_with_na_pop, uids_with_na_pol, uids_with_zero_pop)
+uids_not_captured_master_r1 <- uids_not_captured_master_r1 %>%
+  unique()
+
+
+### Process unprocess shrug ids by resampling======================================================
+
+#> resampling details
+
+print(str_c(cur_rast_year, "capturing residual tiny blocks..."))
+
+resample_to_res <- 0.001 
+res_resample_from <- 0.00833333
+resample_obj_capture_list <- list()
+
+#> restricting the shp file to the unprocessed shr ids that will be processed one at a time
+sh_admin_int_shp_unprocessed  <- ref_shp_file_to_be_rasterized  %>%
+  filter(uid_for_rasterization %in% uids_not_captured_master_r1)
+
+
+
+#> reprocessing unprocessed shr ids one at a time
+for (j in 1 : length(uids_not_captured_master_r1)){
+  
+  # rasterize shpfile to the current unprocessed shr id
+  sh_admin_int_shp_unprocessed_rasterized <- fasterize(sh_admin_int_shp_unprocessed %>% filter(uid_for_rasterization == uids_not_captured_master_r1[j]), raster::raster(ext = raster::extent(sh_admin_int_shp_unprocessed %>% filter(uid_for_rasterization == uids_not_captured_master_r1[j])), resolution = resample_to_res, crs = crs(sh_admin_int_shp_unprocessed)), field = "uid_for_rasterization", fun = "last")
+  
+  # set name of the rasterized shapefile
+  names(sh_admin_int_shp_unprocessed_rasterized) <- "sh_rast"
+  
+  # crop pol raster to the cur unprocessed shr id
+  unit_pol_raster_crop_unproc <- crop(unit_pol_raster[[1]], sh_admin_int_shp_unprocessed_rasterized)
+  
+  # resample to the new resolution
+  unit_pol_raster_crop_unproc_resample <- raster::resample(unit_pol_raster_crop_unproc, sh_admin_int_shp_unprocessed_rasterized, method = "ngb")
+  
+  # mask resampled pol raster to the cur unprocessed shr id
+   unit_pol_raster_crop_unproc_resample_mask <- raster::mask(unit_pol_raster_crop_unproc_resample, sh_admin_int_shp_unprocessed_rasterized)
+   
+   
+    # crop pop raster to the cur unprocessed shr id
+  unit_pop_raster_crop_unproc <- crop(unit_pop_raster, sh_admin_int_shp_unprocessed_rasterized)
+  
+  # replace population values with population densities before resampling
+  raster::values(unit_pop_raster_crop_unproc) <- as.vector(unit_pop_raster_crop_unproc * (((resample_to_res)^2)/((res_resample_from)^2)))
+  
+  # resample to the new resolution
+  unit_pop_raster_crop_unproc_resample <- raster::resample(unit_pop_raster_crop_unproc, sh_admin_int_shp_unprocessed_rasterized, method = "ngb")
+  
+  # mask resampled pol raster to the cur unprocessed shr id
+   unit_pop_raster_crop_unproc_resample_mask <- raster::mask(unit_pop_raster_crop_unproc_resample, sh_admin_int_shp_unprocessed_rasterized)
+   
+   
+   #> set names for rasters
+
+names(unit_pol_raster_crop_unproc_resample_mask) <- "pol_rast"
+names(unit_pop_raster_crop_unproc_resample_mask) <- "pop_rast"
+names(sh_admin_int_shp_unprocessed_rasterized) <- "sh_rast"
+   
+  
+  #> create a raster brick out of pol rast, pop rast, sh vil rast
+region_raster_brick_resample <- sh_admin_int_shp_unprocessed_rasterized %>%
+  addLayer(unit_pol_raster_crop_unproc_resample_mask) %>%
+  addLayer(unit_pop_raster_crop_unproc_resample_mask)
+
+#> create a df out of the brick
+region_raster_brick_df_resample <- raster::as.data.frame(region_raster_brick_resample)
+region_raster_brick_df_resample <- region_raster_brick_df_resample %>%
+  dplyr::filter(!is.na(pol_rast), !is.na(pop_rast))
+
+#> create an arrow table from the df before collapsing
+region_raster_brick_df_arrow_resample <- region_raster_brick_df_resample %>%
+  arrow::as_arrow_table()
+
+#> collapse arrow table
+region_raster_brick_df_arrow_collapse_resample <- region_raster_brick_df_arrow_resample %>%
+  # dplyr::filter((!is.na(sh_rast)) & ((as.character(sh_rast) != "NA"))) %>%
+  dplyr::group_by(sh_rast) %>%
+  dplyr::collect() %>%
+  dplyr::mutate(pop_weights = pop_rast/sum(pop_rast, na.rm = TRUE), 
+         pollution_pop_weighted = pop_weights*pol_rast) %>%
+  dplyr::summarise(total_population = sum(pop_rast, na.rm = TRUE), 
+            avg_pm2.5_pollution = sum(pollution_pop_weighted, na.rm = TRUE)) %>%
+  dplyr::ungroup() 
+
+resample_obj_capture_list[[j]] <- region_raster_brick_df_arrow_collapse_resample
+
+print(str_c(j, " out of ", length(uids_not_captured_master_r1), " tiny blocks reprocessed!"))
+
+
+}
+
+#> rbind all residual blocks captured in r2 of processing
+resample_obj_capture_df <- resample_obj_capture_list %>%
+  rbindlist() %>%
+  as_tibble()
+
+#> rbind the residual blocks processed in r2 with the blocks from r1
+region_raster_brick_df_arrow_collapse_final <- region_raster_brick_df_arrow_collapse %>%
+  rbind(resample_obj_capture_df) %>%
+  arrange(sh_rast)
+  
+#> rename pollution column
+colnames(region_raster_brick_df_arrow_collapse_final)[colnames(region_raster_brick_df_arrow_collapse_final) == "avg_pm2.5_pollution"] <- str_c("avg_pm2.5_", cur_rast_year)
+
+yearly_data_processed_list[[i]] <- region_raster_brick_df_arrow_collapse_final
+
+print(str_c(cur_rast_year, " pm2.5 pol data processing r1 completed!"))
+
+
+
+
+toc()  
+}
+
+
+
+```
+

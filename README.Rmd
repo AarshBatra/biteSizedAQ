@@ -1,0 +1,134 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# biteSizedAQ
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+# AQ Satellite Data Processing Pipeline
+
+This repository contains a pipeline for processing satellite data to analyze air pollution levels in India. The pipeline reads pollution and population raster data, processes it, and outputs summarized pollution data weighted by population.
+
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Prerequisites](#prerequisites)
+3. [Pipeline Overview](#pipeline-overview)
+    - [Load and Crop Pollution Data](#load-and-crop-pollution-data)
+    - [Load and Process Population Data](#load-and-process-population-data)
+    - [Match Resolutions](#match-resolutions)
+    - [Rasterize Shapefile and Create Raster Brick](#rasterize-shapefile-and-create-raster-brick)
+    - [Create Data Frame and Collapse](#create-data-frame-and-collapse)
+    - [Handling Unprocessed IDs](#handling-unprocessed-ids)
+    - [Output](#output)
+    - [Data Sources and citations](#data-sources) 
+4. [License and Reuse](#license-and-reuse)
+5. [Citation](#citation)    
+
+## Introduction
+
+
+This pipeline is designed to process air pollution data from satellite imagery and population data, generating a summary of pollution levels weighted by population for different regions in India.
+
+## Prerequisites
+
+To run this pipeline, you need the following R libraries:
+
+- `raster`
+- `dplyr`
+- `purrr`
+- `fasterize`
+- `arrow`
+- `data.table`
+- `tictoc`
+- `foster`
+- `rgdal`
+
+## Pipeline Overview
+
+### Load and Crop Pollution Data
+
+The pipeline starts by loading pollution data files and cropping them to the boundaries of India using a reference shapefile. Each pollution raster file is processed for a specific year and the pipeline loops through all years from 1998 to 2022.
+
+1. **Load Pollution Data**: The pollution raster files are loaded from a specified directory.
+2. **Extract Year**: The year is extracted from the file names.
+3. **Crop Raster**: Each pollution raster is cropped to the boundary of India using a reference shapefile.
+4. **Mask Raster**: The cropped pollution raster is then masked using the same shapefile to ensure it aligns with the region of interest.
+
+### Load and Process Population Data
+
+The population data is processed in a similar manner:
+
+1. **Load Population Raster**: The population raster file is loaded.
+2. **Crop and Mask Raster**: The population raster is cropped and masked using the reference shapefile.
+
+
+### Match Resolutions
+
+The resolutions of the pollution and population rasters are matched to ensure they can be processed together seamlessly.
+
+
+### Rasterize Shapefile and Create Raster Brick
+
+1. **Rasterize Shapefile**: A reference shapefile is rasterized to the same resolution as the pollution and population rasters.
+2. **Create Raster Brick**: A raster brick is created by combining the pollution, population, and rasterized shapefile layers.
+
+
+### Create Data Frame and Collapse
+
+1. **Convert to Data Frame**: The raster brick is converted into a data frame.
+2. **Filter Data**: The data frame is filtered to remove any rows with missing values in the pollution or population columns.
+3. **Arrow Table**: The data frame is converted into an Arrow table for efficient processing.
+4. **Collapse Data**: The Arrow table is grouped by the shapefile IDs, and population-weighted pollution levels are calculated.
+
+### Handling Unprocessed IDs
+
+Some IDs may not be processed in the initial round due to various reasons such as zero population or missing data. The pipeline handles these unprocessed IDs by:
+
+1. **Identifying Unprocessed IDs**: IDs not captured in the first round are identified.
+2. **Resampling and Reprocessing**: The unprocessed IDs are resampled at a finer resolution and processed again to capture the data accurately.
+
+
+### Output
+
+The final output is a summarized data frame containing population-weighted pollution levels for each region. The data includes:
+
+- Total population for each region
+- Average PM2.5 pollution level weighted by population for each region and year
+
+### License and Reuse
+
+The block level pollution dataset processed by me is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. This means you are welcome to reuse the data in your reports or news stories as long as you abide the terms of the license, which means you have to give credit and link back to the original work.
+
+For more details, see the LICENSE file.
+
+If you use this dataset in your work, please cite this repository as follows:
+
+[Aarsh Batra, 2024, biteSizedAQ, https://github.com/AarshBatra/]
+
+### Citation
+
+When using this data/pipeline, please also cite the following data sources, without which the producing the above block level pollution data would not be possible:
+
+1. [SHRUG platform](https://www.devdatalab.org/shrug_download/) developed by Data Development Lab. The block (subdist) level shapefile comes from SHRUG.
+   - Asher, Sam, Tobias Lunt, Ryu Matsuura, and Paul Novosad. "Development research at high geographic resolution: an analysis of night-lights, firms, and poverty in India using the SHRUG open data platform." The World Bank Economic Review 35, no. 4 (2021). Oxford University Press.
+
+2. Atmospheric Composition Analysis Group (V6.GL.02 version) 0.01 x 0.01 [data](https://sites.wustl.edu/acag/datasets/surface-pm2-5/#V6.GL.02):
+   - Shen, S., Li, C., van Donkelaar, A., Jacobs, N., Wang, C., Martin, R. V. "Enhancing Global Estimation of Fine Particulate Matter Concentrations by Including Geophysical a Priori Information in Deep Learning." (2024) ACS ES&T Air. DOI: 10.1021/acsestair.3c00054
+
+3. [LandScan population data](https://landscan.ornl.gov/):
+   - Sims, K., Reith, A., Bright, E., Kaufman, J., Pyle, J., Epting, J., Gonzales, J., Adams, D., Powell, E., Urban, M., & Rose, A. (2023). LandScan Global 2022 [Data set]. Oak Ridge National Laboratory. https://doi.org/10.48690/1529167
+
