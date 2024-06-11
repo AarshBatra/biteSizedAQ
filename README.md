@@ -49,15 +49,6 @@ repo to keep track of updates.
 
 - The latest project will show up top.
 
-- Apart from the processed data, which can be found under
-  `data/processed`, the SHRUG shapefiles used in the process and code,
-  can be downloaded either directly from the [SHRUG
-  website](https://www.devdatalab.org/shrug_download/). To use the exact
-  version, used in code and files in this repo, download shapefiles from
-  [here](https://drive.google.com/drive/folders/1g3mrYWvVtIZ4Vdd5Vo51WFNb1AqiaPrb?usp=sharing).
-  The latter contains a modified versions with additional columns that
-  are needed if the processing pipeline is used.
-
 - E.g. Project 1 has the id 1. It corresponds to a Rmd file named
   `1.ind.sat.data.processing.Rmd`, a helper R script named
   `1.ind.sat.derived.pm2.5.data.helper.R` and a project folder named
