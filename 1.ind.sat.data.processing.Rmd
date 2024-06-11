@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Load libraries
 
-```{r}
+```{r load_libraries}
 
 #> libraries
 library(tidyverse)
@@ -65,7 +65,7 @@ library(lattice)
 library(foster)
 library(rgdal)
 
-# load and document all functions
+# load and automatically document all functions
 load_all()
 document()
 
@@ -74,20 +74,27 @@ document()
 `%notin%` <- Negate(`%in%`)
 
 #> shrug district level shapefile with uid for rasterization
-shrug_master_district_shp <- st_read("./data/raw/shrug/shrug_master_district_shp_with_uid_for_rast_wa.gpkg")
+shrug_master_district_shp <- st_read(str_c(here(), "/data/raw/shrug/shrug_master_district_shp_with_uid_for_rast_wa.gpkg"))
 
 #> shrug subdistrict level shapefile with uid for rasterization
-shrug_master_subdist_shp <- st_read("./data/raw/shrug/shrug_master_subdistrict_shp_with_uid_for_rast_wa.gpkg")
+shrug_master_subdist_shp <- st_read(str_c(here(), "/data/raw/shrug/shrug_master_subdistrict_shp_with_uid_for_rast_wa.gpkg"))
 
 shrug_master_subdist_shp <- shrug_master_subdist_shp %>%
   dplyr::mutate(uid_for_rasterization = row_number()) %>%
   dplyr::select(-geom, geom) %>%
   st_as_sf()
 
+#> state level shapefile
+ind_st_level_shp <- st_read(str_c(here(), "/data/raw/other.datasets/shpfiles/global_state.shp"))
+
+ind_st_level_shp <- ind_st_level_shp %>%
+  dplyr::filter(name0 == "India")
+  
+
 ```
 
 ## Housekeeping items: set reference datasets that will be used throughout in the pipeline ahead
-```{r}
+```{r housekeeping}
 
 
 #> [To be set by user]set the ref admin layer to be used for cropping and masking global rasters: using less detailed layers make cropping and masking more efficient later on
@@ -100,7 +107,7 @@ ref_shp_file_to_be_rasterized <- shrug_master_subdist_shp
 ```
 
 ## Process satellite derived PM2.5 data and produced population weighted PM2.5 at India block level
-```{r}
+```{r process_satellite_data_in_loop}
 
 
 #> load in a single pollution raster, and crop it to India
@@ -115,7 +122,7 @@ tic()
   
   cur_rast_year <- as.numeric(str_remove(str_extract(pol_raster_path_vec[i], "\\d+\\.nc"), "12.nc"))
 
-  print(str_c(cur_rast_year, " pm2.5 pol data processing r1 starts!"))
+  print(str_c(cur_rast_year, " (", i, "/", length(pol_raster_path_vec), ") pm2.5 pol data processing r1 starts!"))
     
   unit_pol_raster <- map(pol_raster_path_vec[i], ~nc_to_raster_layer(., "PM25", "latitude", "longitude"), .progress = TRUE)
 
@@ -312,4 +319,73 @@ toc()
 
 
 ```
+
+## create a master final SHRUG mapped dataset
+
+```{r master_sh_map_data_create}
+
+# creating a master dataset for all years from 1990 to 2020
+final_all_years_cbind_df <- reduce(yearly_data_processed_list, function(x, y) left_join(x, y, by = c("sh_rast", "total_population")))
+
+# adding SHRUG admin area names from the block level shapefile
+final_all_years_cbind_df_sh_mapped <- final_all_years_cbind_df %>%
+  left_join(shrug_master_subdist_shp %>% st_drop_geometry(), by = c("sh_rast" = "uid_for_rasterization")) %>%
+  dplyr::select(pc11_state_id, pc11_district_id, pc11_subdistrict_id, state_name, district_name, subdistrict_name, total_population, everything()) %>%
+  dplyr::select(-c(composite_uid, sh_rast)) %>%
+  rename(subdistrict_population = total_population)
+
+```
+
+## [EXTRA CODE FOR PLOTTING, not part of main pipeline] Plotting a sample map: annual avg pm2.5 in 2022 in India at block level in micrograms per cubic meter
+
+```{r eval=FALSE, include=FALSE}
+
+# plt_pol_1998 <- final_all_years_cbind_df_sh_mapped  %>% 
+#   left_join(shrug_master_subdist_shp %>% 
+#               dplyr::select(state_name, district_name, subdistrict_name, geom), by = c("state_name", "district_name", "subdistrict_name"))  %>% 
+#   st_as_sf() %>% ggplot() + geom_sf(mapping = aes(fill = avg_pm2.5_1998), color = "transparent") + scale_fill_viridis(option = "magma", direction = -1) +
+#   geom_sf(data = ind_st_level_shp, color = "black", lwd = 0.01, fill = "transparent") +
+#   theme_map() +
+#   labs(fill = expression("Annual average PM"[2.5] ~ "(µg/" * m^3 * ")")) +
+#  theme(legend.position = "bottom",           
+#         legend.direction = "horizontal", 
+#        legend.key.width = unit(3, "cm"), 
+#        plot.background = element_rect(fill = "white", color = "white")) +
+#      guides(fill = guide_colorbar(title.position = "top"))
+# 
+# plt_pol_2010 <- final_all_years_cbind_df_sh_mapped  %>% 
+#   left_join(shrug_master_subdist_shp %>% 
+#               dplyr::select(state_name, district_name, subdistrict_name, geom), by = c("state_name", "district_name", "subdistrict_name"))  %>% 
+#   st_as_sf() %>% ggplot() + geom_sf(mapping = aes(fill = avg_pm2.5_2010), color = "transparent") + scale_fill_viridis(option = "magma", direction = -1) +
+#   geom_sf(data = ind_st_level_shp, color = "black", lwd = 0.01, fill = "transparent") +
+#   theme_map() +
+#   labs(fill = expression("Annual average PM"[2.5] ~ "(µg/" * m^3 * ")")) +
+#  theme(legend.position = "bottom",           # Place legend at the bottom
+#         legend.direction = "horizontal", 
+#        legend.key.width = unit(3, "cm"), 
+#        plot.background = element_rect(fill = "white", color = "white")) +
+#     guides(fill = guide_colorbar(title.position = "top"))     
+#      
+#      
+# plt_pol_2022 <- final_all_years_cbind_df_sh_mapped  %>% 
+#   left_join(shrug_master_subdist_shp %>% 
+#               dplyr::select(state_name, district_name, subdistrict_name, geom), by = c("state_name", "district_name", "subdistrict_name"))  %>% 
+#   st_as_sf() %>% ggplot() + geom_sf(mapping = aes(fill = avg_pm2.5_2022), color = "transparent") + scale_fill_viridis(option = "magma", direction = -1, breaks = c(0, 5, 10, 20, 40, 60, 80, 120), limits = c(0, 120)) +
+#   geom_sf(data = ind_st_level_shp, color = "black", lwd = 0.12, fill = "transparent") +
+#   theme_map() +
+#   labs(fill = expression("Annual Average"~PM[2.5]~"(micrograms per cubic metre)"), 
+#        title = expression("Block level"~PM[2.5]~"pollution in India, 2022")) +
+#  theme(legend.position = "bottom",           # Place legend at the bottom
+#         legend.direction = "horizontal", 
+#        legend.key.width = unit(3, "cm"), 
+#        plot.background = element_rect(fill = "white", color = "white"), 
+#        legend.title = element_text(size = 14, family = "Mono"), 
+#        legend.text = element_text(size = 11, family = "Mono"), 
+#        plot.title = element_text(size = 18, family = "Mono", hjust = 0)) +
+#     guides(fill = guide_colorbar(title.position = "top"))
+# 
+# plt_final <- ggarrange(plt_pol_1998, plt_pol_2022, common.legend = TRUE, labels = c("1998", "2022"), legend = "top")
+
+```
+
 
