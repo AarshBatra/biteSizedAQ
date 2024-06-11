@@ -273,7 +273,8 @@ For more details, see the LICENSE file.
 If you use this dataset in your work, please cite this repository as
 follows:
 
-\[Aarsh Batra, 2024, biteSizedAQ, <https://github.com/AarshBatra/>\]
+\[Aarsh Batra, 2024, biteSizedAQ,
+<https://github.com/AarshBatra/biteSizedAQ>\]
 
 ### Citations
 
