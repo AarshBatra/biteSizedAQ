@@ -45,14 +45,17 @@ repo to keep track of updates.
   project id under this repo.
 
 - The corresponding helper R script(s) for different projects can be
-  found under `R/` folder.
+  found under `R/` subfolder. These scripts will be grouped in broad
+  themes. E.g. all satellited derived data processing functions will be
+  in the sat data helper script and the names are descriptive enough for
+  it to be easily identifiable.
 
 - The latest project will show up top.
 
 - E.g. Project 1 has the id 1. It corresponds to a Rmd file named
-  `1.ind.sat.data.processing.Rmd`, a helper R script named
-  `1.ind.sat.derived.pm2.5.data.helper.R` and a project folder named
-  `1.ind.sat.data.processing`.
+  `1.ind.block.pm2.5.sat.data.processing.Rmd`, a project folder named
+  `1.ind.block.pm2.5.sat.data.processing` and corresponding helper
+  functions can be found in the helper scripts in the `R/` subfolder.
 
 ## Project 1: Block level satellite derived population weighted air pollution dataset for India from 1998-2022
 
@@ -62,4 +65,4 @@ repo to keep track of updates.
 
 - Data Processing pipeline Rmd file for this project: Also, present at
   the root of the repo. Here is a [quick link to access the
-  pipeline](https://github.com/AarshBatra/biteSizedAQ/blob/main/1.ind.sat.data.processing.Rmd).
+  pipeline](https://github.com/AarshBatra/biteSizedAQ/blob/main/1.ind.block.pm2.5.sat.data.processing.Rmd).
