@@ -35,118 +35,171 @@ nc_to_raster_layer <- function(nc_file_path, pm2.5_var_name, lat_var_name, long_
 }
 
 
-#' Processes a yearly pollution raster
+#' Processes those polygons for which pollution and/or population data was not captured
 #'
-#' @param unit_raster The raster representing the weather variable for a specific unit.
-#' @param admin_level_shp_file Shapefile representing the administrative boundaries.
-#' @param admin_level_shp_raster Rasterized version of the administrative boundaries.
-#' @param var_type Type of weather variable ("tmp.2m" for temperature, "tot.precip" for total precipitation).
 #'
-#' @return A tibble containing processed weather data collapsed to the administrative level.
 #'
-#' @export
+#'
 #'
 
-process_weather_raster <- function(unit_raster_pol, unit_raster_pop, admin_level_shp_file, admin_level_shp_raster, var_type = "tmp.2m"){ # other option for var_type: tot.precip
+process_uncaptured_uids <- function(uids_not_captured, unit_pol_raster, unit_pop_raster, ref_shp_file_to_be_rasterized, resample_to_res = 0.001, res_resample_from = 0.00833333) {
 
-  #### creating a pipeline for a single years-----------------------
+  map_dfr(uids_not_captured, function(uid) {
+    cat(sprintf("Processing UID: %d\n", uid))
+    sh_admin_int_shp_unprocessed <- ref_shp_file_to_be_rasterized %>%
+      filter(uid_for_rasterization == uid)
 
-  #> unit raster crs
-  unit_raster_crs <- st_crs(unit_raster)
+    sh_admin_int_shp_unprocessed_rasterized <- fasterize(sh_admin_int_shp_unprocessed, raster(ext = extent(sh_admin_int_shp_unprocessed), resolution = resample_to_res, crs = crs(sh_admin_int_shp_unprocessed)), field = "uid_for_rasterization", fun = "last")
 
-  #> raster name
-  unit_raster_name_raw <- names(unit_raster)
+    unit_pol_raster_crp_resamp_msk <- crop(unit_pol_raster, sh_admin_int_shp_unprocessed_rasterized) %>%
+      resample(sh_admin_int_shp_unprocessed_rasterized, method = "ngb") %>%
+      mask(sh_admin_int_shp_unprocessed_rasterized)
 
-  #> raster day, month, year, hr extract
-  unit_raster_date_hr <- lubridate::as_datetime(str_remove(unit_raster_name_raw, "^[A-Za-z]"))
+    unit_pop_raster_crp <- crop(unit_pop_raster, sh_admin_int_shp_unprocessed_rasterized)
 
-  # day
-  cur_day <- day(unit_raster_date_hr)
+    # replace population values with population densities before resampling
+    raster::values(unit_pop_raster_crp) <- as.vector(unit_pop_raster_crp * (((resample_to_res)^2)/((res_resample_from)^2)))
 
-  # month
-  cur_month <- month(unit_raster_date_hr)
+    # resample to the new resolution
+    unit_pop_raster_crp_resamp <- raster::resample(unit_pop_raster_crp, sh_admin_int_shp_unprocessed_rasterized, method = "ngb")
 
-  # year
-  cur_year <- year(unit_raster_date_hr)
+    # mask resampled pol raster to the cur unprocessed shr id
+    unit_pop_raster_crp_resamp_msk <- raster::mask(unit_pop_raster_crp_resamp, sh_admin_int_shp_unprocessed_rasterized)
 
-  # hour
-  cur_hour <- hour(unit_raster_date_hr)
+    region_raster_brick_resample <- stack(sh_admin_int_shp_unprocessed_rasterized, unit_pol_raster_crp_resamp_msk, unit_pop_raster_crp_resamp_msk)
+    names(region_raster_brick_resample) <- c("sh_rast", "pol_rast", "pop_rast")
 
+    region_raster_brick_df_resample <- raster::as.data.frame(region_raster_brick_resample, na.rm = TRUE) %>%
+      filter(!is.na(pol_rast) & !is.na(pop_rast))
 
-  # crop the unit_raster using admin level shapefile
-  unit_raster_cropped_admin_lev_shp_file <- raster::crop(unit_raster, admin_level_shp_file)
+    region_raster_brick_df_arrow_resample <- as_arrow_table(region_raster_brick_df_resample)
+    region_raster_brick_df_arrow_collapse_resample <- region_raster_brick_df_arrow_resample %>%
+      group_by(sh_rast) %>%
+      collect() %>%
+      mutate(pop_weights = pop_rast / sum(pop_rast, na.rm = TRUE),
+             pollution_pop_weighted = pop_weights * pol_rast) %>%
+      summarise(total_population = sum(pop_rast, na.rm = TRUE),
+                avg_pm2.5_pollution = sum(pollution_pop_weighted, na.rm = TRUE)) %>%
+      ungroup()
 
-
-  # mask the unit_raster_cropped using admin level shapefile
-  unit_raster_cropped_admin_lev_shp_file <- raster::mask(unit_raster_cropped_admin_lev_shp_file,
-                                                         admin_level_shp_raster)
-
-
-
-  # print("cur crop raster cropped and masked to admin level shp file")
-
-
-  # create a raster brick containing the admin level shp and unit rasters (both now have the same res)
-  unit_rast_admin_lev_shp_raster_brick <-  admin_level_shp_raster %>%
-    raster::addLayer(unit_raster_cropped_admin_lev_shp_file)
-
-
-  # convert raster brick to dataframe and filter out NAs in rasters
-  unit_rast_admin_lev_shp_raster_brick_df <- raster::rasterToPoints(unit_rast_admin_lev_shp_raster_brick) %>%
-    as_tibble() %>%
-    dplyr::filter(!is.na(!!as.symbol(unit_raster_name_raw)), !is.na(!!as.symbol("uid_for_rasterization")))
-
-  # print("raster brick created")
-
-  # # convert to a light raster brick using the arrow package
-  # unit_rast_admin_lev_shp_raster_brick_df_light <- arrow::as_arrow_table(unit_rast_admin_lev_shp_raster_brick_df)
+    return(region_raster_brick_df_arrow_collapse_resample)
+  })
+}
 
 
-  if(var_type == "tmp.2m"){
 
-    # collapse to admin level polygon
-    unit_rast_admin_lev_shp_raster_brick_df_light_collapse <- unit_rast_admin_lev_shp_raster_brick_df %>%
-      dplyr::group_by(!!as.symbol("uid_for_rasterization")) %>%
-      dplyr::summarise(avg_tmp2m_kelvin = mean(!!as.symbol(unit_raster_name_raw), na.rm = TRUE),
-                       min_tmp2m_kelvin = min(!!as.symbol(unit_raster_name_raw), na.rm = TRUE),
-                       max_tmp2m_kelvin = max(!!as.symbol(unit_raster_name_raw), na.rm = TRUE)) %>%
-      dplyr::ungroup() %>%
-      dplyr::mutate(cur_day = cur_day,
-                    cur_month = cur_month,
-                    cur_year = cur_year,
-                    cur_hour = cur_hour) %>%
-      dplyr::select(uid_for_rasterization, cur_day, cur_month, cur_year, cur_hour, avg_tmp2m_kelvin,
-                    min_tmp2m_kelvin, max_tmp2m_kelvin)
+#' process yearly pop weighted pol from raw rasters
+#'
+#'
+#'
+#'
+#'
+#'
 
-    # print("collapsed dataset generated")
-    return(unit_rast_admin_lev_shp_raster_brick_df_light_collapse)
-    print("done!")
+process_yearly_raw_pop_weighted_pol <- function(pol_raster_path, ref_admin_level_shp_file, ref_shp_file_to_be_rasterized, unit_pop_raster, unit_pop_raster_crp_msk) {
+  cur_rast_year <- as.numeric(str_remove(str_extract(pol_raster_path, "\\d+\\.nc"), "12.nc"))
+  cat(sprintf("%d pm2.5 pol data processing starts!\n", cur_rast_year))
 
+  print("start processing")
+  # Load and preprocess the pollution raster
+  unit_pol_raster <- nc_to_raster_layer(pol_raster_path, "PM25", "latitude", "longitude")
+  unit_pol_raster_crp_msk <- unit_pol_raster %>%
+    crop(ref_admin_level_shp_file) %>%
+    mask(ref_admin_level_shp_file)
 
-  } else if (var_type == "tot.precip"){
+  print("pol raster cropped masked")
 
-    # collapse to admin level polygon
-    unit_rast_admin_lev_shp_raster_brick_df_light_collapse <- unit_rast_admin_lev_shp_raster_brick_df %>%
-      dplyr::group_by(!!as.symbol("uid_for_rasterization")) %>%
-      dplyr::collect() %>%
-      dplyr::summarise(avg_precip_metre = mean(!!as.symbol(unit_raster_name_raw), na.rm = TRUE),
-                       min_precip_metre = min(!!as.symbol(unit_raster_name_raw), na.rm = TRUE),
-                       max_precip_metre = max(!!as.symbol(unit_raster_name_raw), na.rm = TRUE),
-                       tot_precip_metre = sum(!!as.symbol(unit_raster_name_raw), na.rm = TRUE)) %>%
-      dplyr::ungroup() %>%
-      dplyr::mutate(cur_day = cur_day,
-                    cur_month = cur_month,
-                    cur_year = cur_year,
-                    cur_hour = cur_hour) %>%
-      dplyr::select(uid_for_rasterization, cur_day, cur_month, cur_year, cur_hour, avg_precip_metre,
-                    min_precip_metre, max_precip_metre, tot_precip_metre)
-    # print("collapsed dataset generated")
-    return(unit_rast_admin_lev_shp_raster_brick_df_light_collapse)
-    print("done!")
+  # Preprocess the population raster
+  # unit_pop_raster_crp_msk <- unit_pop_raster %>%
+  #   crop(ref_admin_level_shp_file) %>%
+  #   mask(ref_admin_level_shp_file)
 
+  print("pop raster cropped masked")
+
+  # Match the resolution of the pollution raster to the population raster
+  unit_pol_raster_crp_msk <- matchResolution(unit_pol_raster_crp_msk, unit_pop_raster_crp_msk)
+
+  print("matched pop pol res")
+  # Rasterize the reference shapefile
+  sh_admin_int_shp_rasterized <- fasterize(ref_shp_file_to_be_rasterized, unit_pol_raster_crp_msk, field = "uid_for_rasterization", fun = "last")
+
+  print("rasterized shp file")
+
+  # Create a raster brick
+  region_raster_brick <- stack(sh_admin_int_shp_rasterized, unit_pol_raster_crp_msk, unit_pop_raster_crp_msk)
+  names(region_raster_brick) <- c("sh_rast", "pol_rast", "pop_rast")
+
+  # Convert the raster brick to a dataframe
+  region_raster_brick_df <- raster::as.data.frame(region_raster_brick, na.rm = TRUE) %>%
+    filter(!is.na(pol_rast) & !is.na(pop_rast))
+
+  print("raster brick created")
+
+  # Convert to arrow table and collapse
+  region_raster_brick_df_arrow <- as_arrow_table(region_raster_brick_df)
+  region_raster_brick_df_arrow_collapse <- region_raster_brick_df_arrow %>%
+    dplyr::group_by(sh_rast) %>%
+    dplyr::collect() %>%
+    dplyr::mutate(pop_weights = pop_rast / sum(pop_rast, na.rm = TRUE),
+                  pollution_pop_weighted = pop_weights * pol_rast) %>%
+    dplyr::summarise(total_population = sum(pop_rast, na.rm = TRUE),
+                     avg_pm2.5_pollution = sum(pollution_pop_weighted, na.rm = TRUE)) %>%
+    dplyr::ungroup()
+
+  print("data collapsed at admin region level")
+  # Identify uncaptured UIDs
+  uids_not_captured <- setdiff(ref_shp_file_to_be_rasterized$uid_for_rasterization, region_raster_brick_df_arrow_collapse$sh_rast)
+
+  # Identify UIDs with NA population, NA pollution, and zero population
+  uids_with_na_pop <- region_raster_brick_df_arrow_collapse %>%
+    dplyr::filter(is.na(total_population)) %>%
+    dplyr::pull(sh_rast)
+
+  uids_with_na_pol <- region_raster_brick_df_arrow_collapse %>%
+    dplyr::filter(is.na(avg_pm2.5_pollution)) %>%
+    dplyr::pull(sh_rast)
+
+  uids_with_zero_pop <- region_raster_brick_df_arrow_collapse %>%
+    dplyr::filter(total_population == 0) %>%
+    dplyr::pull(sh_rast)
+
+  # Combine all uncaptured UIDs
+  uids_not_captured_master_r1 <- unique(c(uids_not_captured, uids_with_na_pop, uids_with_na_pol, uids_with_zero_pop))
+
+  print("all uncaptured uids stored in a vector")
+
+  print("start capturing unprocessed ids")
+  # Process uncaptured UIDs
+  if (length(uids_not_captured_master_r1) > 0) {
+    resample_obj_capture_list <- process_uncaptured_uids(uids_not_captured_master_r1, unit_pol_raster, unit_pop_raster, ref_shp_file_to_be_rasterized)
+
+    # the zero pop uids are were attempted to be recaptured in the step above, so removing from the original df to avoid double counting before binding rows
+    region_raster_brick_df_arrow_collapse <- region_raster_brick_df_arrow_collapse %>%
+      filter(total_population != 0)
+    # bind originally captured and unprocessed recaptured
+    region_raster_brick_df_arrow_collapse <- bind_rows(region_raster_brick_df_arrow_collapse, resample_obj_capture_list)
   }
 
+  print("captured unprocessed ids")
+
+  # Rename the pollution column
+  colnames(region_raster_brick_df_arrow_collapse)[colnames(region_raster_brick_df_arrow_collapse) == "avg_pm2.5_pollution"] <- sprintf("avg_pm2.5_%d", cur_rast_year)
+
+  cat(sprintf("%d pm2.5 pol data processing completed!\n", cur_rast_year))
+  return(region_raster_brick_df_arrow_collapse)
+
+  print("done!")
 }
+
+
+
+
+
+
+
+
+
+
 
 #' Function to chunk the list into groups of n, with the last sublist containing the remaining elements
 #'

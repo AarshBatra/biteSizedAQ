@@ -60,7 +60,7 @@ repo to keep track of updates.
 ## Project 1: Block level satellite derived population weighted air pollution dataset for India from 1998-2022
 
 - Read more about this project and download proccessed data from
-  [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/1.ind.sat.data.processing).
+  [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/1.ind.block.pm2.5.sat.data.processing).
   This folder is present at the root of the repo.
 
 - Data Processing pipeline Rmd file for this project: Also, present at
