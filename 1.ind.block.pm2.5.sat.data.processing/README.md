@@ -61,9 +61,10 @@ at a finer spatial resolution.
 The processed dataset resulting from this pipeline can be downloaded
 from [this
 link](https://drive.google.com/file/d/1DOoz2ULDX1paIZsFu3vLJKgpG-FejYoJ/view?usp=sharing).
-It can also be found under `data/processed/1.ind.sat.data.processing`.
-The SHRUG shapefiles used in the process and code, can be downloaded
-either directly from the [SHRUG
+It can also be found under
+`data/processed/1.ind.block.pm2.5.sat.data.processing`. The SHRUG
+shapefiles used in the process and code, can be downloaded either
+directly from the [SHRUG
 website](https://www.devdatalab.org/shrug_download/). To use the exact
 version, used in code and files in this repo, download shapefiles from
 [here](https://drive.google.com/drive/folders/1g3mrYWvVtIZ4Vdd5Vo51WFNb1AqiaPrb?usp=sharing).
