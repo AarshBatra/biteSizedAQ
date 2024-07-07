@@ -87,6 +87,66 @@ process_uncaptured_uids <- function(uids_not_captured, unit_pol_raster, unit_pop
 }
 
 
+#' Processes those polygons for which pollution and/or population data was not captured
+#'
+#'
+#'
+#'
+#'
+
+process_uncaptured_uids_v2 <- function(uids_not_captured, unit_pol_raster, unit_pop_raster, ref_shp_file_to_be_rasterized, resample_to_res = 0.0005, res_resample_from = 0.00833333) {
+
+  map_dfr(uids_not_captured, function(uid) {
+    cat(sprintf("Processing UID: %d\n", uid))
+    tic()
+    sh_admin_int_shp_unprocessed <- ref_shp_file_to_be_rasterized %>%
+      filter(uid_for_rasterization %in% uids_not_captured_master_r1)
+
+    sh_admin_int_shp_unprocessed_rasterized <- fasterize(sh_admin_int_shp_unprocessed, raster(ext = extent(sh_admin_int_shp_unprocessed), resolution = resample_to_res, crs = crs(sh_admin_int_shp_unprocessed)), field = "uid_for_rasterization", fun = "last")
+
+    tic()
+    unit_pol_raster_crp_resamp_msk <- crop(unit_pol_raster, sh_admin_int_shp_unprocessed_rasterized) %>%
+      resample(sh_admin_int_shp_unprocessed_rasterized, method = "ngb") %>%
+      mask(sh_admin_int_shp_unprocessed_rasterized)
+    toc()
+
+
+    unit_pop_raster_crp <- crop(unit_pop_raster, sh_admin_int_shp_unprocessed_rasterized)
+
+    # replace population values with population densities before resampling
+    raster::values(unit_pop_raster_crp) <- as.vector(unit_pop_raster_crp * (((resample_to_res)^2)/((res_resample_from)^2)))
+
+    # resample to the new resolution
+    unit_pop_raster_crp_resamp <- raster::resample(unit_pop_raster_crp, sh_admin_int_shp_unprocessed_rasterized, method = "ngb")
+
+    # mask resampled pol raster to the cur unprocessed shr id
+    unit_pop_raster_crp_resamp_msk <- raster::mask(unit_pop_raster_crp_resamp, sh_admin_int_shp_unprocessed_rasterized)
+
+    region_raster_brick_resample <- stack(sh_admin_int_shp_unprocessed_rasterized, unit_pol_raster_crp_resamp_msk, unit_pop_raster_crp_resamp_msk)
+    names(region_raster_brick_resample) <- c("sh_rast", "pol_rast", "pop_rast")
+
+    region_raster_brick_df_resample <- raster::as.data.frame(region_raster_brick_resample, na.rm = TRUE) %>%
+      filter(!is.na(pol_rast) & !is.na(pop_rast))
+
+    region_raster_brick_df_arrow_resample <- as_arrow_table(region_raster_brick_df_resample)
+    region_raster_brick_df_arrow_collapse_resample <- region_raster_brick_df_arrow_resample %>%
+      group_by(sh_rast) %>%
+      collect() %>%
+      mutate(pop_weights = pop_rast / sum(pop_rast, na.rm = TRUE),
+             pollution_pop_weighted = pop_weights * pol_rast) %>%
+      summarise(total_population = sum(pop_rast, na.rm = TRUE),
+                avg_pm2.5_pollution = sum(pollution_pop_weighted, na.rm = TRUE)) %>%
+      ungroup()
+
+    toc()
+
+    return(region_raster_brick_df_arrow_collapse_resample)
+  })
+}
+
+
+
+
 
 #' process yearly pop weighted pol from raw rasters
 #'
