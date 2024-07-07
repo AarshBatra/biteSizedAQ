@@ -41,10 +41,12 @@
   - [Chlorine (Cl2)](#chlorine-cl2)
 - [Conclusion (an urgent need for
   action!)](#conclusion-an-urgent-need-for-action)
-- [Get in touch](#get-in-touch)
-- [License and Reuse](#license-and-reuse)
+- [Image citations](#image-citations)
+- [Rmd for this blog](#rmd-for-this-blog)
 - [Support This Repository: Give It a
   Star](#support-this-repository-give-it-a-star)
+- [Get in touch](#get-in-touch)
+- [License and Reuse](#license-and-reuse)
 
 ## Introduction
 
@@ -64,7 +66,7 @@ quality targets.
 There are various types of pollutants out there and each pollutant is
 measured and reported in specific units that best captures its nature
 and concentration in the air. Similar to how you measure length in
-meters or centemeters, air pollution can be measured in different types
+meters or centimeters, air pollution can be measured in different types
 of units, e.g. micrograms per cubic meter, ppm (parts per million), ppb
 (parts per billion), etc. Understanding these units of measurement for
 air pollution is important because it helps us know how much of a
@@ -106,22 +108,24 @@ risks. Below is another reference image (source:
 
 [![https://seetheair.org/](images/clipboard-3119967759.png)](https://seetheair.org/)
 
-Ultrafine particles, also known as nanoparticles, represent another
-category of particulcate matter characterized by their exceptionally
-small size, typically less than 0.1 micrometers in diameter. These
-particles are significantly smaller than both PM2.5 (particulate matter
-with diameters less than 2.5 micrometers) and PM10 (particulate matter
-with diameters less than 10 micrometers), allowing them to penetrate
-even deeper into the body. Generally speaking, the smaller the size of
-the particle the more harmful it is to our health.
+Ultrafine particles also exist, also known as nanoparticles. They
+represent another category of particulcate matter characterized by their
+exceptionally small size, typically less than 0.1 micrometers in
+diameter. These particles are significantly smaller than both PM2.5
+(particulate matter with diameters less than 2.5 micrometers) and PM10
+(particulate matter with diameters less than 10 micrometers), allowing
+them to penetrate even deeper into the body.
+
+Generally speaking, the smaller the size of the particle the more
+harmful it is to our health.
 
 Imagine the air around us has these tiny particles of dust and dirt that
-are so small you can’t see them without a microscope. PM2.5 refers to
-these tiny particles. When we say there are 10 micrograms per cubic
-meter of PM2.5, it means in every cubic meter of air (which is about the
-size of a very small car), there are 10 micrograms (which is a very,
-very tiny amount) of these particles floating around. It’s like having a
-few grains of sand spread out in a very small car.
+are so small you can’t see them without a microscope. So, for example,
+when we say there are 10 micrograms per cubic meter of PM2.5, it means
+in every cubic meter of air (which is about the size of a very small
+car), there are 10 micrograms (which is a very, very tiny amount) of
+these particles floating around. It’s like having a few grains of sand
+spread out in a very small car.
 
 The word “concentration” in 10 micrograms per cubic meter of
 concentration of PM2.5, means that there is a certain number of PM2.5
@@ -132,39 +136,38 @@ grains of sands.
 
 ### Understanding Variations in Health Impacts Due to Particle Size
 
-ndefinedThe same concentration of particulate matter (PM10 and PM2.5),
-such as 10 micrograms per cubic meter, can lead to vastly different
-health impacts due to their size and composition.
+The same concentration of particulate matter (PM10 and PM2.5), such as
+10 micrograms per cubic meter, can lead to vastly different health
+impacts due to their size and composition.
 
-As an example, if one car has 10 micrograms per cubic meter of PM2.5 and
-another has 10 micrograms per cubic meter of PM10, the implications are
-significantly different. Despite both vehicles having the same total
-weight of particles (10 micrograms), the 10 micrograms of PM2.5 is much
-more harmful than the 10 micrograms of PM10. This is because PM2.5
-corresponds to a much larger number of tiny, harmful particles compared
-to PM10. PM2.5, due to their tiny size can penetrate deep into the lungs
-and bloodstream, leading to heart disease, lung cancer, and other
-serious health issues.
+As an example, if one room has 10 micrograms per cubic meter of PM2.5
+and another has 10 micrograms per cubic meter of PM10, the implications
+are different. Despite both rooms having the same total weight of
+particles (10 micrograms), the 10 micrograms of PM2.5 is much more
+harmful than the 10 micrograms of PM10. This is because for the same
+concentration, PM2.5 corresponds to a much larger number of tiny,
+harmful particles compared to PM10.
 
 For instance, roughly speaking, 1 microgram per cubic meter of PM2.5 can
 contain tens of millions of particles, 10 micrograms has hundreds of
 millions, and 100 micrograms means billions of these tiny particles.
 
-In contrast, PM10 particles are larger than PM2.5, but still very
-harmful; 1 microgram per cubic meter can contain hundreds of thousands
-of particles, 10 micrograms means millions, and 100 micrograms has tens
-of millions of particles, causing irritation and respiratory problems.
+In contrast, PM10 particles are relatively larger than PM2.5, but still
+very harmful; 1 microgram per cubic meter can contain hundreds of
+thousands of particles, 10 micrograms means millions, and 100 micrograms
+has tens of millions of particles, causing irritation and respiratory
+problems.
 
 This is why even in small quantities, these particles can be extremely
 harmful. For instance, WHO’s definition of safe level of PM2.5 is an
 annual average of 5 micrograms per cubic meter. This means that in any
-given region if you average out every day’s pollution numbers over the
-year, it should be less than or equal to 5 micrograms per cubic meter.
-But, almost every region in the world is out of compliance with this
+given region if you average out pollution numbers over the year, it
+should be less than or equal to 5 micrograms per cubic meter. But,
+almost every region in the world is out of compliance with this
 guideline.
 
-PM2.5 particles can deeply penetrate the lungs and enter the
-bloodstream, causing severe respiratory issues such as aggravated
+PM2.5 and ultrafine particles can deeply penetrate the lungs and enter
+the bloodstream, causing severe respiratory issues such as aggravated
 asthma, bronchitis, and reduced lung function. These fine particles are
 also associated with increased risk of heart attacks, strokes, and
 premature death due to their ability to carry toxic compounds deep into
@@ -180,17 +183,17 @@ cardiovascular problems, particularly in vulnerable populations such as
 children, the elderly, and individuals with pre-existing health
 conditions.
 
-Technically no level of PM2.5 is good for us, which is why WHO overtime
+Technically no level of PM is good for us, which is why WHO overtime
 reevaluates it’s official guidelines and updates these guidelines, as
-new research in areas with low PM2.5 concentrations surfaces.
+new research in areas with low PM2.5/PM10 concentrations surfaces.
 
 ## Pollutants Measured in Parts Per Billion (ppb)
 
 Ozone (O3), Nitrogen Dioxide (NO2), Sulfur Dioxide (SO2), and Carbon
-Monoxide (CO) are all measured in parts per billion (ppb), indicating
-the number of pollutant molecules per billion air molecules. For
-instance, a measurement of 50 ppb means there are 50 molecules of the
-pollutant for every billion air molecules.
+Monoxide (CO) are some of the pollutants that are all usually measured
+in parts per billion (ppb), indicating the number of pollutant molecules
+per billion air molecules. For instance, a measurement of 50 ppb means
+there are 50 molecules of the pollutant for every billion air molecules.
 
 Don’t be fooled by the seemingly insignificant 50 molecules of these
 pollutants per billion air molecules! Even at this low concentration,
@@ -204,7 +207,7 @@ harmful.
 The health impacts of pollutants at the same parts per billion (ppb)
 concentration can vary significantly due to several key factors:
 
-- Chemical Properties:
+- **Chemical Properties:**
 
   - Ozone (O3): Ozone is a highly reactive gas that can directly damage
     lung tissue when inhaled. Even at low concentrations like 50 ppb,
@@ -230,7 +233,7 @@ concentration can vary significantly due to several key factors:
     complications, especially in individuals with pre-existing heart
     conditions.
 
-- Toxicity and Mechanisms of Action:
+- **Toxicity and Mechanisms of Action:**
 
   - Direct vs. Indirect Effects: Pollutants like ozone and nitrogen
     dioxide directly affect the respiratory system by causing oxidative
@@ -248,7 +251,7 @@ concentration can vary significantly due to several key factors:
     the blood, which can reduce oxygen levels in tissues and potentially
     affect neurological function.
 
-- Health Effects and Vulnerable Populations:
+- **Health Effects and Vulnerable Populations:**
 
   - Immediate and Long-term Health Impacts: Some pollutants, like
     nitrogen dioxide and sulfur dioxide, cause immediate respiratory
@@ -274,10 +277,10 @@ billion (ppb).
 
 ### Understanding ppm and Health Impacts
 
-The health effects of pollutants measured in ppm vary significantly
-based on their chemical properties and mechanisms of action. Each
-pollutant’s unique characteristics determine its potential to cause
-harm, even at the same concentration.
+Similar to ppb, the health effects of pollutants measured in ppm vary
+significantly based on their chemical properties and mechanisms of
+action. Each pollutant’s unique characteristics determine its potential
+to cause harm, even at the same concentration.
 
 #### **Carbon Dioxide (CO2):**
 
@@ -346,19 +349,19 @@ atmosphere and the sensitivity required for accurate measurement.
   represent and manage their levels, as they are usually found in much
   higher quantities compared to pollutants measured in ppb.
 
-In summary, the choice between ppb and ppm depends on the typical
-concentration range of the pollutant and the level of sensitivity needed
-to assess its impact on air quality and health. Measuring pollutants in
-appropriate units ensures accurate monitoring and effective regulation,
-ultimately aiding in the protection of public health and the
-environment.
+The choice between ppb and ppm depends on the typical concentration
+range of the pollutant and the level of sensitivity needed to assess its
+impact on air quality and health. Measuring pollutants in appropriate
+units ensures accurate monitoring and effective regulation, ultimately
+aiding in the protection of public health and the environment.
 
 ## Additional Pollutants and Their Units and health impacts
 
-While PM2.5, PM10, and gases measured in ppb and ppm are some of the
-most common pollutants, there are several other pollutants with unique
-measurement units that are important to consider. Here’s a brief
-overview of these additional pollutants and their units of measurement:
+While PM2.5, PM10, ultrafine particles and gases measured in micrograms
+per cubic meter, ppb and ppm are some of the most common pollutants,
+there are several other pollutants with unique measurement units that
+are important to consider. Here’s a brief overview of these additional
+pollutants and their units of measurement:
 
 #### Lead (Pb)
 
@@ -470,6 +473,19 @@ regulations need updating. Air pollution is dynamic and constantly
 evolving, requiring policies and regulations that are flexible enough to
 adapt and evolve accordingly. Together, we can forge a path towards
 cleaner air and a healthier future for all.
+
+## Image Citations
+
+- Image 1, introduction section: generated via
+  [openart.ai](https://openart.ai/home)
+
+- Image 2, PM section: <https://seetheair.org/>
+
+## Rmd for this blog
+
+Underlying Rmd file can be found at the root of the biteSizedAQ repo
+home page and here is a [quick link to access
+it](https://github.com/AarshBatra/biteSizedAQ/blob/main/2.air.pol.units.explainer/README.Rmd).
 
 ## Support This Repository: Give It a Star
 

@@ -57,6 +57,15 @@ repo to keep track of updates.
   `1.ind.block.pm2.5.sat.data.processing` and corresponding helper
   functions can be found in the helper scripts in the `R/` subfolder.
 
+## Project 2: Deciphering Air Pollution Units: Essential Insights for Informed Action
+
+- Read the blog
+  [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/2.air.pol.units.explainer)
+
+- Underlying Rmd file can be found at the root of the repo and here is a
+  [quick link to access
+  it](https://github.com/AarshBatra/biteSizedAQ/blob/main/2.air.pol.units.explainer/README.Rmd)
+
 ## Project 1: Block level satellite derived population weighted air pollution dataset for India from 1998-2022
 
 - Read more about this project and download proccessed data from
