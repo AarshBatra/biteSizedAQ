@@ -30,17 +30,20 @@ Upcoming potential projects include producing satellite-derived PM2.5 data at th
 
 ## General structure and how to navigate projects in this repo
 
-- Each individual project correspond to it's own Rmd file, which can be found at the root of the repo.
-
-- The project's unique folder of the same name as the Rmd also exists at the root of the repo.
-
 - The number prefix at the start of every project folder/Rmd name is the project id under this repo.
-
-- The corresponding helper R script(s) for different projects can be found under `R/` subfolder. These scripts will be grouped in broad themes. E.g. all satellited derived data processing functions will be in the sat data helper script and the names are descriptive enough for it to be easily identifiable.
 
 - The latest project will show up top.
 
-- E.g. Project 1 has the id 1. It corresponds to a Rmd file named `1.ind.block.pm2.5.sat.data.processing.Rmd`, a project folder named `1.ind.block.pm2.5.sat.data.processing` and corresponding helper functions can be found in the helper scripts in the `R/` subfolder.
+- E.g. Project 1 has the id 1. It corresponds to a project folder named `1.ind.block.pm2.5.sat.data.processing` which contains the project's README file. In case of a project involving code and data an additional Rmd containing code can be found at the root of the biteSizedAQ repo. 
+
+- The corresponding helper R script(s) for different projects can be found under `R/` subfolder. These scripts will be grouped in broad themes. E.g. all satellited derived data processing functions will be in the sat data helper script and the names are descriptive enough for it to be easily identifiable.
+
+
+## Project 3: Air Quality Data Management Systems Landscape: Navigating Challenges and Opportunities 
+
+- Read the blog [here]()
+
+- Underlying Rmd file can be found at the root of the repo and here is a [quick link to access it]()
 
 
 ## Project 2: Deciphering Air Pollution Units: Essential Insights for Informed Action

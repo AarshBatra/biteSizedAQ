@@ -87,7 +87,7 @@ process_uncaptured_uids <- function(uids_not_captured, unit_pol_raster, unit_pop
 }
 
 
-#' Processes those polygons for which pollution and/or population data was not captured
+#' Processes those polygons for which pollution and/or population data was not captured v2
 #'
 #'
 #'
