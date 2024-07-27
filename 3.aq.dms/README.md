@@ -966,8 +966,9 @@ engaged community and happy stakeholders, willing to use such systems.
 
 ## Rmd for this blog
 
-Underlying Rmd file can be found at the root of the biteSizedAQ repo
-home page and here is a quick link to access it.
+Underlying Rmd file can be found in the project’s respective folder and
+here is [a quick link to access
+it](https://github.com/AarshBatra/biteSizedAQ/blob/main/3.aq.dms/README.Rmd).
 
 ## Support This Work: Give It a Star
 
