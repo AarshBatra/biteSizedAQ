@@ -22,7 +22,7 @@
 - [Current State of Air Quality Data Management
   Systems](#current-state-of-air-quality-data-management-systems)
 
-  - \[Diverse Data Sources\]
+  - [Diverse Data Sources](#diverse-data-sources)
 
   - [Data Formats and Standards](#data-formats-standards)
 
@@ -76,6 +76,8 @@
 - [License and Reuse](#license-and-reuse)
 
 ## Introduction
+
+<br>
 
 ![](images/Untitled%20design%20(1).png)
 
@@ -285,7 +287,11 @@ tracking and improving air quality worldwide.
 
 Current State of Air Quality Data Management Systems
 
-### Diverse Data Sources ![](images/clipboard-604953510.png)
+### Diverse Data Sources
+
+<br>
+
+![](images/clipboard-604953510.png) {#diverse-data-sources}
 
 AQ DMS collect data from a variety of sources, each with its own
 strengths and challenges:
@@ -619,6 +625,8 @@ quality management.
 
 ### How to establish a Community of Practice and why is it so important?
 
+<br>
+
 ![](images/clipboard-3281846804.png)
 
 Establishing a community of practice (CoP) involving diverse consumers
@@ -897,8 +905,13 @@ simplicity and broad utility.
 
 > ### *“An AQ DMS as an investment in a future with cleaner air, rather than a cost in the present”*
 
-<img src="images/clipboard-154108477.png" width="658" />*  
-Th*e need for a robust, standardized, and open-source Air Quality Data
+<br>
+
+<img src="images/clipboard-154108477.png" width="658" />\*  
+
+<br>
+
+Th\*e need for a robust, standardized, and open-source Air Quality Data
 Management System (AQ DMS) is evident in today’s world, where air
 quality monitoring is increasingly crucial for public health and
 environmental sustainability. The scoping study led by the Clean Air

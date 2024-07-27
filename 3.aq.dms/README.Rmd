@@ -77,6 +77,8 @@ knitr::opts_chunk$set(
 
 ## Introduction  {#introduction}
 
+<br>
+
 ![](images/Untitled design (1).png)
 
 \
@@ -141,7 +143,11 @@ These trends reflect a growing emphasis on collaborative, transparent, and techn
 
 Current State of Air Quality Data Management Systems
 
-### Diverse Data Sources  ![](images/clipboard-604953510.png) {#diverse-data-sources}
+### Diverse Data Sources  
+
+<br>
+
+![](images/clipboard-604953510.png) {#diverse-data-sources}
 
 AQ DMS collect data from a variety of sources, each with its own strengths and challenges:
 
@@ -303,6 +309,8 @@ This section explores the key factors involved in developing an open-source AQ D
 
 ### How to establish a Community of Practice and why is it so important? {#how-to-establish-a-cop}
 
+<br>
+
 ![](images/clipboard-3281846804.png)
 
 Establishing a community of practice (CoP) involving diverse consumers from different regions and setups can ensure that the AQ DMS is broadly applicable and requires minimal changes once built. This community can provide valuable feedback, share best practices, and contribute to the ongoing development and refinement of the system.
@@ -435,7 +443,12 @@ Embracing the latest technological advancements is essential for building an eff
 
 > ### *"An AQ DMS as an investment in a future with cleaner air, rather than a cost in the present"*
 
+<br>
+
 ![](images/clipboard-154108477.png){width="658"}*\
+
+<br>
+
 Th*e need for a robust, standardized, and open-source Air Quality Data Management System (AQ DMS) is evident in today's world, where air quality monitoring is increasingly crucial for public health and environmental sustainability. The scoping study led by the Clean Air Fund, in collaboration with TD Enviro, Valiant Solutions, and the University of Massachusetts, underscores the importance of developing an AQ DMS that is both customizable and interoperable.
 
 The duplication of efforts and resources as organizations typically build their AQ DMS from scratch, tailored to their specific leads to driving away the already scarce AQ funding from where it's needed the most.
