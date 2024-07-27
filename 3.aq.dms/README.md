@@ -79,6 +79,8 @@
 
 <br>
 
+<br>
+
 ![](images/Untitled%20design%20(1).png)
 
   
@@ -291,7 +293,7 @@ Current State of Air Quality Data Management Systems
 
 <br>
 
-![](images/clipboard-604953510.png) {#diverse-data-sources}
+![](images/clipboard-604953510.png)
 
 AQ DMS collect data from a variety of sources, each with its own
 strengths and challenges:
@@ -623,9 +625,9 @@ quality management.
 >
 > ### ***- Clean Air Fund scoping study***
 
-### How to establish a Community of Practice and why is it so important?
-
 <br>
+
+### How to establish a Community of Practice and why is it so important?
 
 ![](images/clipboard-3281846804.png)
 
@@ -907,7 +909,7 @@ simplicity and broad utility.
 
 <br>
 
-<img src="images/clipboard-154108477.png" width="658" />\*  
+![](images/clipboard-154108477.png)
 
 <br>
 

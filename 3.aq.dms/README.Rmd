@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Air Quality Data Management Systems Landscape: Navigating Challenges and Opportunities 
+## Air Quality Data Management Systems Landscape: Navigating Challenges and Opportunities
 
 #### Table of Contents
 
@@ -27,45 +27,45 @@ knitr::opts_chunk$set(
 
     -   [Integration of IoT, Big Data, and Cloud Computing](#iot-intergration)
 
-    -   [Recent Trends]
+    -   [Recent Trends](#recent-trends)
 
 -   [Current State of Air Quality Data Management Systems](#current-state-of-air-quality-data-management-systems)
 
     -   [Diverse Data Sources]
 
-    -   [Data Formats and Standards]
+    -   [Data Formats and Standards](#data-formats-standards)
 
-    -   [Regulatory Frameworks]
+    -   [Regulatory Frameworks](#regulatory-frameworks)
 
 -   [Considerations for Developing an Open-Source AQ DMS](#considerations-for-developing-an-open-source-aq-dms)
 
-    -   [Case Study 1: Collaborative Scoping Study for an Air Quality Data Management System (AQ DMS), Clean Air Fund and partners]
+    -   [Case Study 1: Collaborative Scoping Study for an Air Quality Data Management System (AQ DMS), Clean Air Fund and partners](#case-study-1-caf)
 
-    -   [How to establish a Community of Practice and why is it so important?]
+    -   [How to establish a Community of Practice and why is it so important?](#how-to-establish-a-cop)
 
-        -   [Importance of a Community of Practice]
+        -   [Importance of a Community of Practice](#imp-of-builiding-cop)
 
-        -   [Building the Community]
+        -   [Building the Community](#building-the-community)
 
-        -   [Challenges and Solutions]
+        -   [Challenges and Solutions](#challenges-solutions)
 
-    -   [Case Study 2: The awesome OpenAQ Community!]
+    -   [Case Study 2: The awesome OpenAQ Community!](#case-study-2-openaq)
 
-    -   [Case Study 3: Community Multiscale Air Quality (CMAQ) System]
+    -   [Case Study 3: Community Multiscale Air Quality (CMAQ) System](#case-study-3-cmaq)
 
--   [Other Critical Steps]
+-   [Other Critical Steps](#other-critical-steps)
 
-    -   [Ensuring adequate sustained funding]
+    -   [Ensuring adequate sustained funding](#ensuring-adequate-sustained-funding)
 
-    -   [Addressing Bureaucratic and Regulatory Challenges]
+    -   [Addressing Bureaucratic and Regulatory Challenges](#addressing-beuracratic-reg-challenges)
 
-    -   [Customization and Flexibility]
+    -   [Customization and Flexibility](#customization-flexibility)
 
     -   [Harnessing Tech Innovations](#harnessing-tech-innovations){data-heading="Customization and Flexibility"}
 
 -   [Conclusion](#conclusion)
 
--   [References]
+-   [References](#references)
 
 -   [Image Citations]
 
@@ -73,13 +73,15 @@ knitr::opts_chunk$set(
 
 -   [Get in Touch]
 
--   [License and Reuse]
+-   [License and Reuse](#license-and-reuse)
 
-## Introduction  {#introduction}
+## Introduction {#introduction}
 
 <br>
 
-![](images/Untitled design (1).png)
+<br>
+
+![](images/Untitled%20design%20(1).png)
 
 \
 Air quality (AQ) has become a critical concern for public health, environmental sustainability, and policy-making worldwide. The need for robust Air Quality Data Management Systems (AQ DMS) is more pressing than ever, as these systems are essential for monitoring air pollution, understanding its impacts, and devising effective mitigation strategies.
@@ -127,7 +129,7 @@ Over the past decade, several key trends have significantly shaped the developme
 
 -   **Citizen Science and Crowdsourcing**: The democratization of air quality monitoring has been driven by the rise of low-cost sensors and mobile applications. Platforms like **PurpleAir** enable individuals to contribute real-time air quality data, creating a global network enriched with local insights. This grassroots approach helps fill data gaps and enhances public engagement in environmental monitoring. Another example is the **Air Quality Egg**, a community-driven project that uses low-cost sensors to monitor air quality and share data with the public.
 
--   **Smart Cities Initiatives**: Integration of air quality data into broader urban management systems is becoming more common. Projects like **SmartSantander** in Spain and **NYC's OpenData** initiative combine AQ data with other urban data streams to inform city planning and improve environmental quality. These smart city initiatives use AQ data to optimize traffic management, reduce pollution hotspots, and enhance overall urban livability. \
+-   **Smart Cities Initiatives**: Integration of air quality data into broader urban management systems is becoming more common. Projects like **SmartSantander** in Spain and **NYC's OpenData** initiative combine AQ data with other urban data streams to inform city planning and improve environmental quality. These smart city initiatives use AQ data to optimize traffic management, reduce pollution hotspots, and enhance overall urban livability.\
     \
     Another example is ***The South Coast Air Quality Management District (SCAQMD)***. A key regional agency dedicated to improving air quality in Southern California's South Coast Air Basin. Responsible for regulating emissions from a range of sources, SCAQMD enforces air quality standards and operates a comprehensive monitoring network to track pollution levels. Through various programs and initiatives, including clean air programs and public outreach, SCAQMD works to reduce pollution, protect public health, and promote environmental sustainability. The district's efforts have significantly contributed to the reduction of air pollution in the region.
 
@@ -143,11 +145,11 @@ These trends reflect a growing emphasis on collaborative, transparent, and techn
 
 Current State of Air Quality Data Management Systems
 
-### Diverse Data Sources  
+### Diverse Data Sources
 
 <br>
 
-![](images/clipboard-604953510.png) {#diverse-data-sources}
+![](images/clipboard-604953510.png)
 
 AQ DMS collect data from a variety of sources, each with its own strengths and challenges:
 
@@ -303,13 +305,13 @@ This section explores the key factors involved in developing an open-source AQ D
 >
 > Clean Air Fund launched a request for proposals developing an open source AQ DMS. More about that can be [read here](https://www.cleanairfund.org/wp-content/uploads/Clean-Air-Fund-Open-DMS-EOI-Final_19.06.24.pdf).
 
-> ### ***"If you're trying to stop the reinvent the wheel scenario, then you have to start with building a community rather than building a DMS without the community buy in"*** 
+> ### ***"If you're trying to stop the reinvent the wheel scenario, then you have to start with building a community rather than building a DMS without the community buy in"***
 >
 > ### ***- Clean Air Fund scoping study***
 
-### How to establish a Community of Practice and why is it so important? {#how-to-establish-a-cop}
-
 <br>
+
+### How to establish a Community of Practice and why is it so important? {#how-to-establish-a-cop}
 
 ![](images/clipboard-3281846804.png)
 
@@ -445,11 +447,11 @@ Embracing the latest technological advancements is essential for building an eff
 
 <br>
 
-![](images/clipboard-154108477.png){width="658"}*\
+![](images/clipboard-154108477.png)
 
 <br>
 
-Th*e need for a robust, standardized, and open-source Air Quality Data Management System (AQ DMS) is evident in today's world, where air quality monitoring is increasingly crucial for public health and environmental sustainability. The scoping study led by the Clean Air Fund, in collaboration with TD Enviro, Valiant Solutions, and the University of Massachusetts, underscores the importance of developing an AQ DMS that is both customizable and interoperable.
+Th\*e need for a robust, standardized, and open-source Air Quality Data Management System (AQ DMS) is evident in today's world, where air quality monitoring is increasingly crucial for public health and environmental sustainability. The scoping study led by the Clean Air Fund, in collaboration with TD Enviro, Valiant Solutions, and the University of Massachusetts, underscores the importance of developing an AQ DMS that is both customizable and interoperable.
 
 The duplication of efforts and resources as organizations typically build their AQ DMS from scratch, tailored to their specific leads to driving away the already scarce AQ funding from where it's needed the most.
 
@@ -491,9 +493,9 @@ The path to an ideal AQ DMS involves not only technological solutions but also a
 
 -   *Air Quality Life Index map tool: [[Link](https://aqli.epic.uchicago.edu/the-index/)]*
 
--   *The Case for Closing Global Air Quality Data Gaps with Local Actors: A Golden Opportunity for the Philanthropic Community, EPIC [[Link](The Case for Closing Global Air Quality Data Gaps with Local Actors: A Golden Opportunity for the Philanthropic Community)]*
+-   *The Case for Closing Global Air Quality Data Gaps with Local Actors: A Golden Opportunity for the Philanthropic Community, EPIC [[Link](The%20Case%20for%20Closing%20Global%20Air%20Quality%20Data%20Gaps%20with%20Local%20Actors:%20A%20Golden%20Opportunity%20for%20the%20Philanthropic%20Community)]*
 
--   *EPIC Air Quality Fund: [[Link](this fund is a $1.5 million initiative aimed at expanding access to air quality data to 1 billion people by 2030. The Fund supports long-term commitments to local actors, requiring awardees to share their data openly and on freely accessible platforms.)]*
+-   *EPIC Air Quality Fund: [[Link](this%20fund%20is%20a%20$1.5%20million%20initiative%20aimed%20at%20expanding%20access%20to%20air%20quality%20data%20to%201%20billion%20people%20by%202030.%20The%20Fund%20supports%20long-term%20commitments%20to%20local%20actors,%20requiring%20awardees%20to%20share%20their%20data%20openly%20and%20on%20freely%20accessible%20platforms.)]*
 
 -   *Breezometer: [[Link](https://www.breezometer.com/air-quality-map/air-quality)]*
 
