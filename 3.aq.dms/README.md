@@ -287,7 +287,7 @@ and technology-driven approaches to air quality monitoring and
 management, aiming to create more robust and inclusive systems for
 tracking and improving air quality worldwide.
 
-Current State of Air Quality Data Management Systems
+## Current State of Air Quality Data Management Systems
 
 ### Diverse Data Sources
 
@@ -786,6 +786,8 @@ successful Community of Practice principles:
 > together scientists, researchers, and policymakers to collaborate on
 > air quality modeling and data analysis.
 >
+> ![](images/clipboard-2078272954.png)
+>
 > #### **Collaborative Framework**
 >
 > CMAQ operates within a collaborative framework, with the EPA leading
@@ -1010,12 +1012,18 @@ engaged community and happy stakeholders, willing to use such systems.
 
 ## Image Citations
 
-- *Image , TD Enviro: AQ DMS as a system of systems
+- *Image 1 & 2: openart.ai \[[Link](https://openart.ai/)\]*
+
+- *Image 3: TD Enviro, AQ DMS as a system of systems
   \[[Link](https://www.tdenviro.com/news/datamanagement-cleanairfund)\]*
 
-- Image, openart.ai \[[Link](https://openart.ai/)\]
+- *Image 4,* *openart.ai \[[Link](https://openart.ai/)\]*
 
-- Image, Open AQ \[[Link](https://openaq.org/why-open-data/)\]
+- *Image 5, Open AQ \[[Link](https://openaq.org/why-open-data/)\]*
+
+- *Image 6: CMAQ \[[Link](https://www.epa.gov/cmaq)\]*
+
+- *Image 7,* *openart.ai \[[Link](https://openart.ai/)\]*
 
 ## Rmd for this blog
 

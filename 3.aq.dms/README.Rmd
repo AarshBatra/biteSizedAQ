@@ -143,7 +143,7 @@ Over the past decade, several key trends have significantly shaped the developme
 
 These trends reflect a growing emphasis on collaborative, transparent, and technology-driven approaches to air quality monitoring and management, aiming to create more robust and inclusive systems for tracking and improving air quality worldwide.
 
-Current State of Air Quality Data Management Systems
+## Current State of Air Quality Data Management Systems {#current-state-of-air-quality-data-management-systems}
 
 ### Diverse Data Sources
 
@@ -391,6 +391,8 @@ Next, let's look at two great real life examples demonstrating successful Commun
 >
 > The Community Multiscale Air Quality (CMAQ) System, developed by the U.S. Environmental Protection Agency (EPA), is a robust modeling tool designed to simulate air quality across various scales. CMAQ exemplifies a successful Community of Practice (CoP), bringing together scientists, researchers, and policymakers to collaborate on air quality modeling and data analysis.
 >
+> ![](images/clipboard-2078272954.png)
+>
 > #### **Collaborative Framework**
 >
 > CMAQ operates within a collaborative framework, with the EPA leading its development and maintenance. The system benefits from the collective expertise of a diverse user community, which contributes to its continuous improvement. Regular workshops, conferences, and training sessions facilitate knowledge exchange and foster a sense of community among users.
@@ -505,11 +507,17 @@ The path to an ideal AQ DMS involves not only technological solutions but also a
 
 ## Image Citations {data-link="Image citations"}
 
--   *Image , TD Enviro: AQ DMS as a system of systems [[Link](https://www.tdenviro.com/news/datamanagement-cleanairfund)]*
+-   *Image 1 & 2: openart.ai [[Link](https://openart.ai/)]*
 
--   Image, openart.ai [[Link](https://openart.ai/)]
+-   *Image 3: TD Enviro, AQ DMS as a system of systems [[Link](https://www.tdenviro.com/news/datamanagement-cleanairfund)]*
 
--   Image, Open AQ [[Link](https://openaq.org/why-open-data/)]
+-   *Image 4,* *openart.ai [[Link](https://openart.ai/)]*
+
+-   *Image 5, Open AQ [[Link](https://openaq.org/why-open-data/)]*
+
+-   *Image 6: CMAQ [[Link](https://www.epa.gov/cmaq)]*
+
+-   *Image 7,* *openart.ai [[Link](https://openart.ai/)]*
 
 ## Rmd for this blog {data-link="Rmd for this blog"}
 
