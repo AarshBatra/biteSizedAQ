@@ -22,7 +22,7 @@
 - [Current State of Air Quality Data Management
   Systems](#current-state-of-air-quality-data-management-systems)
 
-  - [Diverse Data Sources](#diverse-data-sources)
+  - \[Diverse Data Sources\]
 
   - [Data Formats and Standards](#data-formats-standards)
 
@@ -77,6 +77,9 @@
 
 ## Introduction
 
+![](images/Untitled%20design%20(1).png)
+
+  
 Air quality (AQ) has become a critical concern for public health,
 environmental sustainability, and policy-making worldwide. The need for
 robust Air Quality Data Management Systems (AQ DMS) is more pressing
@@ -210,7 +213,18 @@ development of Air Quality Data Management Systems (AQ DMS):
   combine AQ data with other urban data streams to inform city planning
   and improve environmental quality. These smart city initiatives use AQ
   data to optimize traffic management, reduce pollution hotspots, and
-  enhance overall urban livability.
+  enhance overall urban livability.  
+    
+  Another example is ***The South Coast Air Quality Management District
+  (SCAQMD)***. A key regional agency dedicated to improving air quality
+  in Southern California’s South Coast Air Basin. Responsible for
+  regulating emissions from a range of sources, SCAQMD enforces air
+  quality standards and operates a comprehensive monitoring network to
+  track pollution levels. Through various programs and initiatives,
+  including clean air programs and public outreach, SCAQMD works to
+  reduce pollution, protect public health, and promote environmental
+  sustainability. The district’s efforts have significantly contributed
+  to the reduction of air pollution in the region.
 
 - **Open Data and Transparency**: A growing movement towards open data
   policies is making air quality information more accessible. Platforms
@@ -271,7 +285,7 @@ tracking and improving air quality worldwide.
 
 Current State of Air Quality Data Management Systems
 
-### Diverse Data Sources
+### Diverse Data Sources ![](images/clipboard-604953510.png)
 
 AQ DMS collect data from a variety of sources, each with its own
 strengths and challenges:
@@ -542,6 +556,12 @@ quality management.
 >   Combining these approaches allows a DMS to be flexible and robust,
 >   catering to both localized and broader data management needs.
 >
+>   Here is a infographic by [TD
+>   Enviro](https://www.tdenviro.com/news/datamanagement-cleanairfund)
+>   that visualizes it well:  
+>     
+>   ![](images/clipboard-1659364680.png)  
+>
 > - **Easy to use and Open Source**: The system should be easy to use
 >   and open-source allowing for efficient community contributions and
 >   enhancements.
@@ -593,7 +613,13 @@ quality management.
 > source AQ DMS. More about that can be [read
 > here](https://www.cleanairfund.org/wp-content/uploads/Clean-Air-Fund-Open-DMS-EOI-Final_19.06.24.pdf).
 
+> ### ***“If you’re trying to stop the reinvent the wheel scenario, then you have to start with building a community rather than building a DMS without the community buy in”***
+>
+> ### ***- Clean Air Fund scoping study***
+
 ### How to establish a Community of Practice and why is it so important?
+
+![](images/clipboard-3281846804.png)
 
 Establishing a community of practice (CoP) involving diverse consumers
 from different regions and setups can ensure that the AQ DMS is broadly
@@ -694,7 +720,9 @@ successful Community of Practice principles:
 > Community of Practice (CoP) in the air quality domain. It brings
 > together individuals and organizations from around the world to share
 > open air quality data and collaborate on improving air quality
-> monitoring, analysis, and dialogue.
+> monitoring, analysis, and dialogue.  
+>
+> ![](images/clipboard-1063269082.png)
 >
 > #### Collaborative Framework
 >
@@ -867,10 +895,10 @@ simplicity and broad utility.
 
 ## Conclusion
 
-> ### *“An AQ DMS as an investment in future, rather than a cost in the present”*
+> ### *“An AQ DMS as an investment in a future with cleaner air, rather than a cost in the present”*
 
-  
-The need for a robust, standardized, and open-source Air Quality Data
+<img src="images/clipboard-154108477.png" width="658" />*  
+Th*e need for a robust, standardized, and open-source Air Quality Data
 Management System (AQ DMS) is evident in today’s world, where air
 quality monitoring is increasingly crucial for public health and
 environmental sustainability. The scoping study led by the Clean Air
@@ -933,6 +961,9 @@ engaged community and happy stakeholders, willing to use such systems.
 
 - *NYC Open Data: \[[Link](https://opendata.cityofnewyork.us/)\]*
 
+- *The South Coast Air Quality Management District (SCAQMD):
+  \[[Link](https://www.aqmd.gov/aq-spec/aboutscaqmd)\]*
+
 - *Smart Santander: \[[Link](https://smartsantander.eu/)\]*
 
 - *IQ Air: \[[Link](https://www.iqair.com/world-air-quality)\]*
@@ -963,6 +994,13 @@ engaged community and happy stakeholders, willing to use such systems.
   \[[Link](https://www.cleanairfund.org/wp-content/uploads/Clean-Air-Fund-Open-DMS-EOI-Final_19.06.24.pdf)\]*
 
 ## Image Citations
+
+- *Image , TD Enviro: AQ DMS as a system of systems
+  \[[Link](https://www.tdenviro.com/news/datamanagement-cleanairfund)\]*
+
+- Image, openart.ai \[[Link](https://openart.ai/)\]
+
+- Image, Open AQ \[[Link](https://openaq.org/why-open-data/)\]
 
 ## Rmd for this blog
 
