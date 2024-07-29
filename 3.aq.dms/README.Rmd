@@ -453,7 +453,7 @@ Embracing the latest technological advancements is essential for building an eff
 
 <br>
 
-Th\*e need for a robust, standardized, and open-source Air Quality Data Management System (AQ DMS) is evident in today's world, where air quality monitoring is increasingly crucial for public health and environmental sustainability. The scoping study led by the Clean Air Fund, in collaboration with TD Enviro, Valiant Solutions, and the University of Massachusetts, underscores the importance of developing an AQ DMS that is both customizable and interoperable.
+The need for a robust, standardized, and open-source Air Quality Data Management System (AQ DMS) is evident in today's world, where air quality monitoring is increasingly crucial for public health and environmental sustainability. The scoping study led by the Clean Air Fund, in collaboration with TD Enviro, Valiant Solutions, and the University of Massachusetts, underscores the importance of developing an AQ DMS that is both customizable and interoperable.
 
 The duplication of efforts and resources as organizations typically build their AQ DMS from scratch, tailored to their specific leads to driving away the already scarce AQ funding from where it's needed the most.
 

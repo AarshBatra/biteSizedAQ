@@ -919,7 +919,7 @@ simplicity and broad utility.
 
 <br>
 
-Th\*e need for a robust, standardized, and open-source Air Quality Data
+The need for a robust, standardized, and open-source Air Quality Data
 Management System (AQ DMS) is evident in today’s world, where air
 quality monitoring is increasingly crucial for public health and
 environmental sustainability. The scoping study led by the Clean Air
