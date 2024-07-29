@@ -907,7 +907,7 @@ simplicity and broad utility.
 
 ## Conclusion
 
-> ### *“An AQ DMS as an investment in a future with cleaner air, rather than a cost in the present”*
+> ### *“An Open Source AQ DMS is an investment in a future with cleaner air, rather than a cost in the present”*
 
 <br>
 
