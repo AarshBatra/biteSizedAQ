@@ -756,9 +756,13 @@ successful Community of Practice principles:
 > enhanced the comparability of air quality data across different
 > regions and monitoring networks. This comparability is crucial for
 > global air quality assessments and for understanding the impacts of
-> pollution on health and the environment. OpenAQ has integrated data
-> from over 170 sources worldwide, a testament to the platform and the
-> community’s commitment to expanding the platform’s reach and impact.
+> pollution on health and the environment. As of 2024, OpenAQ has
+> integrated data from over 17,000 locations, across 113 countries
+> amounting to more than 1.2 billion data points coming from numerous
+> varied file formats. This demonstrates the platform and the
+> community’s dedication to expanding their reach and impact, leading
+> the way in enhancing the interoperability of air quality data
+> globally.
 >
 > #### Open data for empowered Citizens
 >
