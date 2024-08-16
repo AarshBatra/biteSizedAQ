@@ -14,7 +14,7 @@ plot from the dataset, below I have plotted annual average PM2.5 in 2022
 at block level (block boundaries are very light so as to make it easier
 to see the colors).
 
-![](./../plots/1.ind.sat.data.processing/pm2.5_2022_india_block.png)
+![](images/pm2.5_2022_india_block.png)
 
 ## Table of Contents
 

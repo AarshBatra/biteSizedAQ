@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 This repository contains a pipeline for processing satellite data to analyze air pollution levels in India. The pipeline reads pollution and population raster data, processes it, and outputs summarized India block level (for all 5969 blocks) pollution data weighted by population. The annual average pollution data extends from 1998 to 2022. As an example plot from the dataset, below I have plotted annual average PM2.5 in 2022 at block level (block boundaries are very light so as to make it easier to see the colors).
 
-![](./../plots/1.ind.sat.data.processing/pm2.5_2022_india_block.png)
+![](images/pm2.5_2022_india_block.png)
 
 ## Table of Contents
 
