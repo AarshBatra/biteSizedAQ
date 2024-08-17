@@ -57,7 +57,7 @@
   1998-2022](#explore-bitesizedaq-project-1-deriving-indias-population-weighted-pollution-data-from-1998-2022)
 
 - [Conclusion: The Comprehensive Apporach to AQ
-  management](#conclusion-the-comprehensive-apporach-to-aq-management)
+  monitoring](#conclusion-the-comprehensive-apporach-to-aq-monitoring)
 
 - [References](#references)
 
@@ -403,7 +403,7 @@ Forest and Rangeland Ecosystem Science Center*
   atmosphere, showing layers of pollutants.
 
 - **Source Monitoring:** Helps track how pollutants disperse from
-  specific sources, aiding in air quality management.
+  specific sources, aiding in air quality monitoring.
 
 LIDAR’s ability to generate detailed point clouds for both surface
 features and atmospheric pollutants makes it a powerful tool for
@@ -1237,11 +1237,10 @@ applications. This skepticism is not entirely their fault, as satellite
 remote sensing involves complex technologies and data analysis
 techniques.
 
-This blog aims to bridge that gap by making the field of satellite-based
-air quality monitoring more accessible and understandable to the general
-audience. By simplifying the technical details and showcasing practical
-examples, I hope to foster greater trust and integration of satellite
-data into air quality management practices.
+This content seeks to make satellite-based air quality monitoring
+concepts easier for everyone to grasp. By breaking down the technical
+aspects and jargon, I aim to build trust and encourage the use of
+satellite data in air quality monitoring and management.
 
 ## India’s Progress in Satellite Remote Sensing for Air Quality Monitoring
 
@@ -1340,7 +1339,7 @@ Visit the [biteSizedAQ Project 1
 page](https://github.com/AarshBatra/biteSizedAQ/tree/main/1.ind.block.pm2.5.sat.data.processing#introduction)
 to get started.
 
-## Conclusion: The Comprehensive Apporach to AQ management
+## Conclusion: The Comprehensive Apporach to AQ monitoring
 
 Measuring air quality goes far beyond simply assessing pollution levels.
 It encompasses understanding a complex interplay of factors including
@@ -1368,7 +1367,7 @@ environmental factors, they offer comprehensive analyses that reflect
 the real-world complexities of air pollution. This holistic approach
 helps in crafting more effective policies and interventions, making the
 case for the indispensable nature of remote sensing in modern air
-quality management.
+quality monitoring.
 
 When comparing remote sensing with other air quality measurement
 techniques, each method comes with its own set of advantages and
@@ -1475,7 +1474,9 @@ technologies play in safeguarding our air and our health.
 ## Rmd for this blog
 
 Underlying Rmd file can be found in the project’s respective folder and
-here is a quick link to access it.
+here is a [quick
+link](https://github.com/AarshBatra/biteSizedAQ/blob/main/4.aq.remote.sensing/README.Rmd)
+to access it.
 
 ## Support This Work: Give It a Star
 

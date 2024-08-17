@@ -57,7 +57,7 @@ knitr::opts_chunk$set(
 
 -   [Explore biteSizedAQ Project 1: Deriving India's population weighted pollution data from 1998-2022]
 
--   [Conclusion: The Comprehensive Apporach to AQ management]
+-   [Conclusion: The Comprehensive Apporach to AQ monitoring]
 
 -   [References](#references)
 
@@ -235,7 +235,7 @@ Here's a map showing the electromagnetic spectrum and it's use in satellite remo
 
 -   **Vertical Profiles:** Provides detailed vertical profiles of the atmosphere, showing layers of pollutants.
 
--   **Source Monitoring:** Helps track how pollutants disperse from specific sources, aiding in air quality management.
+-   **Source Monitoring:** Helps track how pollutants disperse from specific sources, aiding in air quality monitoring.
 
 LIDAR's ability to generate detailed point clouds for both surface features and atmospheric pollutants makes it a powerful tool for comprehensive air quality monitoring.
 
@@ -639,7 +639,7 @@ Real-life examples illustrate the growing influence of satellite data in air qua
 
 Despite these advancements, one significant obstacle to broader adoption of satellite data in air quality regulation is the technical complexity of the field. Government officials and stakeholders may be skeptical of satellite data due to a lack of understanding of its methodologies and applications. This skepticism is not entirely their fault, as satellite remote sensing involves complex technologies and data analysis techniques.
 
-This blog aims to bridge that gap by making the field of satellite-based air quality monitoring more accessible and understandable to the general audience. By simplifying the technical details and showcasing practical examples, I hope to foster greater trust and integration of satellite data into air quality management practices.
+This content seeks to make satellite-based air quality monitoring concepts easier for everyone to grasp. By breaking down the technical aspects and jargon, I aim to build trust and encourage the use of satellite data in air quality monitoring and management.
 
 ## India’s Progress in Satellite Remote Sensing for Air Quality Monitoring {#indias-progress-in-satellite-remote-sensing-for-air-quality-monitoring}
 
@@ -685,13 +685,13 @@ If you end up transitioning this pipeline to a different language, feel free to 
 
 You can explore the project, access the code, and follow along with the methodology to gain practical experience in air quality data processing. Visit the [biteSizedAQ Project 1 page](https://github.com/AarshBatra/biteSizedAQ/tree/main/1.ind.block.pm2.5.sat.data.processing#introduction) to get started.
 
-## Conclusion: The Comprehensive Apporach to AQ management
+## Conclusion: The Comprehensive Apporach to AQ monitoring
 
 Measuring air quality goes far beyond simply assessing pollution levels. It encompasses understanding a complex interplay of factors including temperature, wind patterns, and broader climate conditions. Each of these elements interacts with air pollutants, affecting their dispersion, concentration, and impact on human health and the environment. To capture this intricate picture, we need more than just ground-based data; we require a diverse toolkit that integrates various methods, including remote sensing technologies.
 
 Remote sensing plays a crucial role in this comprehensive approach. Satellites like Sentinel-5P and MethaneSAT offer high-resolution data on air pollutants and their sources, providing a global perspective that complements localized measurements. For instance, Sentinel-5P's detailed observations of gases such as nitrogen dioxide and ozone, and MethaneSAT's precision in tracking methane emissions, contribute significantly to our understanding of air quality from space. These satellites enable us to monitor and model air pollution over vast areas, offering insights that ground-based sensors alone cannot provide.
 
-Companies like First Street are leveraging remote sensing data alongside other methodologies to deliver a well-rounded view of air quality. By integrating satellite data with property-level models and local environmental factors, they offer comprehensive analyses that reflect the real-world complexities of air pollution. This holistic approach helps in crafting more effective policies and interventions, making the case for the indispensable nature of remote sensing in modern air quality management.
+Companies like First Street are leveraging remote sensing data alongside other methodologies to deliver a well-rounded view of air quality. By integrating satellite data with property-level models and local environmental factors, they offer comprehensive analyses that reflect the real-world complexities of air pollution. This holistic approach helps in crafting more effective policies and interventions, making the case for the indispensable nature of remote sensing in modern air quality monitoring.
 
 When comparing remote sensing with other air quality measurement techniques, each method comes with its own set of advantages and limitations. Ground-based reference-grade monitors, for example, offer high accuracy and direct measurements of air pollutants but are limited in spatial coverage. Remote sensing, on the other hand, provides extensive coverage and the ability to capture large-scale trends but may lack the precision of localized measurements. The choice between these methods often hinges on the specific needs of a project or policy, such as the scale of monitoring or the type of pollutants of interest.
 
@@ -755,7 +755,7 @@ This blog aims to bridge the gap between technical satellite data and its practi
 
 ## Rmd for this blog {data-link="Rmd for this blog"}
 
-Underlying Rmd file can be found in the project's respective folder and here is a quick link to access it.
+Underlying Rmd file can be found in the project's respective folder and here is a [quick link](https://github.com/AarshBatra/biteSizedAQ/blob/main/4.aq.remote.sensing/README.Rmd) to access it.
 
 ## Support This Work: Give It a Star {data-link="Support This Repository: Give It a Star"}
 
