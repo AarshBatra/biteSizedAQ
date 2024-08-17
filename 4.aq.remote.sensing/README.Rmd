@@ -375,8 +375,6 @@ Next we'll go through a couple of real life case studies of deployed satellites,
 
 > ## Satellite in Focus - Sentinel 5P
 >
-> ------------------------------------------------------------------------
->
 > ![](images/clipboard-2453499852.png)
 >
 > | *Image 12: Sentinel 5P Satellite. Credit: ESA*
@@ -435,9 +433,9 @@ Next up is a recently launched satellite that aims to revolutionize how we track
 
 <br>
 
+------------------------------------------------------------------------
+
 > ## Satellite in Focus - Methane SAT
->
-> ------------------------------------------------------------------------
 >
 > ![](images/clipboard-1332812740.png)
 >
@@ -541,8 +539,6 @@ Earlier in this blog, we talked about GEOS-Chem model in the data processing sec
 
 > ## Model in Focus: GEOS-Chem {#sec-model-in-focus-geos-chem}
 >
-> ------------------------------------------------------------------------
->
 > ![](images/clipboard-391204422.png)
 >
 > | *Image 17: GEOS-Chem logo. Credit: Geos-Chem*
@@ -591,8 +587,6 @@ In this final focus section, we look at First Street, an organization that uses 
 
 > ## Company in Focus: First Street's Air Quality Model
 >
-> ------------------------------------------------------------------------
->
 > ![](images/clipboard-3061850331.png)
 >
 > | *Image 18: First Street Logo. Credit: First Street*
@@ -622,6 +616,8 @@ In this final focus section, we look at First Street, an organization that uses 
 > **6. Transparent:** The methodology behind First Street’s model is transparent, meaning that the processes used to generate predictions are available for review. This openness ensures that the model’s predictions are trustworthy and can be scrutinized or built upon by researchers and policymakers.
 >
 > For more detailed information on First Street’s Air Quality Model and its methodology, visit the [First Street Research Library](https://firststreet.org/research-library/air-quality-model-methodology).
+
+<br>
 
 ## From Complexity to Clarity: How Satellite Data Can Inform Air Quality Regulation
 

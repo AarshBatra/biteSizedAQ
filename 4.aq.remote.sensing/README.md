@@ -719,8 +719,6 @@ at the forefront of utilizing these technologies.
 
 > ## Satellite in Focus - Sentinel 5P
 >
-> ------------------------------------------------------------------------
->
 > ![](images/clipboard-2453499852.png)
 >
 > *Image 12: Sentinel 5P Satellite. Credit: ESA*
@@ -806,9 +804,9 @@ we track Methane Emissions.
 
 <br>
 
+------------------------------------------------------------------------
+
 > ## Satellite in Focus - Methane SAT
->
-> ------------------------------------------------------------------------
 >
 > ![](images/clipboard-1332812740.png)
 >
@@ -1022,8 +1020,6 @@ next section:
 
 > ## Model in Focus: GEOS-Chem
 >
-> ------------------------------------------------------------------------
->
 > ![](images/clipboard-391204422.png)
 >
 > *Image 17: GEOS-Chem logo. Credit: Geos-Chem*
@@ -1115,8 +1111,6 @@ climate variables, including air quality:
 
 > ## Company in Focus: First Street’s Air Quality Model
 >
-> ------------------------------------------------------------------------
->
 > ![](images/clipboard-3061850331.png)
 >
 > *Image 18: First Street Logo. Credit: First Street*
@@ -1186,6 +1180,8 @@ climate variables, including air quality:
 > For more detailed information on First Street’s Air Quality Model and
 > its methodology, visit the [First Street Research
 > Library](https://firststreet.org/research-library/air-quality-model-methodology).
+
+<br>
 
 ## From Complexity to Clarity: How Satellite Data Can Inform Air Quality Regulation
 
