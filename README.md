@@ -54,10 +54,12 @@ repo to keep track of updates.
 
 ## Project 4: Monitoring Air Quality: The Power of Satellite Based Remote Sensing
 
-- Read the blog [here]()
+- Read the blog
+  [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/4.aq.remote.sensing)
 
 - Underlying README Rmd file can be found in the project’s respective
-  folder and here is a [quick link to access it]()
+  folder and here is a [quick link to access
+  it](https://github.com/AarshBatra/biteSizedAQ/blob/main/4.aq.remote.sensing/README.Rmd)
 
 ## Project 3: Air Quality Data Management Systems Landscape: Navigating Challenges and Opportunities
 

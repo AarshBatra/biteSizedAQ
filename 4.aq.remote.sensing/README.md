@@ -38,7 +38,8 @@
 
 - [Satellite in Focus - Methane SAT](#satellite-in-focus---methane-sat)
 
-- [Satellite in Focus - TEMPO Satellite](#temposat)
+- [Satellite in Focus - TEMPO
+  Satellite](#satellite-in-focus---tempo-satellite)
 
 - [Model in Focus: GEOS-Chem](#sec-model-in-focus-geos-chem)
 
@@ -49,7 +50,7 @@
   Regulation](#from-complexity-to-clarity-how-satellite-data-can-inform-air-quality-regulation)
 
 - [India’s Progress in Satellite Remote Sensing for Air Quality
-  Monitoring](#indprogsrs)
+  Monitoring](#indias-progress-in-satellite-remote-sensing-for-air-quality-monitoring)
 
 - [Explore biteSizedAQ Project 1: Deriving India’s population weighted
   pollution data from
@@ -923,8 +924,6 @@ air quality data across North America, with unprecedented precision!
 
 > ## Satellite in Focus - TEMPO Satellite
 >
-> ------------------------------------------------------------------------
->
 > NASA’s TEMPO (Tropospheric Emissions: Monitoring of Pollution)
 > satellite is a groundbreaking mission designed to monitor air quality
 > across North America with unprecedented precision. Imagine having a
@@ -1244,7 +1243,7 @@ audience. By simplifying the technical details and showcasing practical
 examples, I hope to foster greater trust and integration of satellite
 data into air quality management practices.
 
-## **India’s Progress in Satellite Remote Sensing for Air Quality Monitoring**
+## India’s Progress in Satellite Remote Sensing for Air Quality Monitoring
 
 India has made significant strides in understanding and improving air
 quality through advanced satellite technology. A notable development is

@@ -45,7 +45,7 @@ knitr::opts_chunk$set(
 
 -   [Satellite in Focus - Methane SAT]
 
--   [Satellite in Focus - TEMPO Satellite](#temposat)
+-   [Satellite in Focus - TEMPO Satellite](#satellite-in-focus---tempo-satellite)
 
 -   [Model in Focus: GEOS-Chem](#sec-model-in-focus-geos-chem)
 
@@ -53,7 +53,7 @@ knitr::opts_chunk$set(
 
 -   [From Complexity to Clarity: How Satellite Data Can Inform Air Quality Regulation]
 
--   [India’s Progress in Satellite Remote Sensing for Air Quality Monitoring](#indprogsrs)
+-   [India’s Progress in Satellite Remote Sensing for Air Quality Monitoring](#indias-progress-in-satellite-remote-sensing-for-air-quality-monitoring)
 
 -   [Explore biteSizedAQ Project 1: Deriving India's population weighted pollution data from 1998-2022]
 
@@ -493,9 +493,7 @@ Next we look at NASA's TEMPO satellite, which provides near real time air qualit
 
 ------------------------------------------------------------------------
 
-> ## Satellite in Focus - TEMPO Satellite {#temposat}
->
-> ------------------------------------------------------------------------
+> ## Satellite in Focus - TEMPO Satellite {#satellite-in-focus---tempo-satellite}
 >
 > NASA's TEMPO (Tropospheric Emissions: Monitoring of Pollution) satellite is a groundbreaking mission designed to monitor air quality across North America with unprecedented precision. Imagine having a camera that takes ultra-detailed pictures of pollution across the entire continent, not just once a day, but hourly. That’s the kind of revolutionary capability TEMPO brings to the table, capturing the intricate dance of pollutants as they move and interact throughout the day.
 >
@@ -643,7 +641,7 @@ Despite these advancements, one significant obstacle to broader adoption of sate
 
 This blog aims to bridge that gap by making the field of satellite-based air quality monitoring more accessible and understandable to the general audience. By simplifying the technical details and showcasing practical examples, I hope to foster greater trust and integration of satellite data into air quality management practices.
 
-## **India’s Progress in Satellite Remote Sensing for Air Quality Monitoring** {#indprogsrs}
+## India’s Progress in Satellite Remote Sensing for Air Quality Monitoring {#indias-progress-in-satellite-remote-sensing-for-air-quality-monitoring}
 
 India has made significant strides in understanding and improving air quality through advanced satellite technology. A notable development is the Ocean Colour Monitor (OCM-3) Aerosol Optical Depth (AOD) product, created by ISRO and onboard the EOS-6 satellite, launched in November 2022. This technology represents a leap forward in air quality monitoring.
 
