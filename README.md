@@ -52,6 +52,13 @@ repo to keep track of updates.
   in the sat data helper script and the names are descriptive enough for
   it to be easily identifiable.
 
+## Project 4: Monitoring Air Quality: The Power of Satellite Based Remote Sensing
+
+- Read the blog [here]()
+
+- Underlying README Rmd file can be found in the project’s respective
+  folder and here is a [quick link to access it]()
+
 ## Project 3: Air Quality Data Management Systems Landscape: Navigating Challenges and Opportunities
 
 - Read the blog
