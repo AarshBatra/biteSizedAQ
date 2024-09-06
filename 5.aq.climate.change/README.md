@@ -1,13 +1,9 @@
 
 ## Facing Two Fronts: The Intersection of Air Pollution and Climate Change
 
-## Introduction
-
 <br>
 
 ![](images/clipboard-2763228998.png)
-
-***Image:** Generated using fluximageai.com*
 
 <br>
 
@@ -27,7 +23,7 @@ will affect the climate for decades to come. This immediate impact of
 air pollution and the long-term consequences of climate change are two
 faces of the same crisis, demanding our urgent attention.
 
-## **Understanding the Differences: Immediate vs. Long-Term Threats**
+## **Understanding the Differences: Immediate vs. Long Term Threats**
 
 <br>
 
@@ -265,6 +261,24 @@ health effects associated with air pollution and the broader,
 longer-term challenges of climate change. This dual approach not only
 tackles significant environmental issues but also helps create a more
 sustainable and healthier future for all.
+
+### Climate Change, Indoor Air Quality and Public Health
+
+Climate change not only affects outdoor environments but also has
+significant implications for indoor air quality. Rising levels of
+outdoor pollutants, like ozone and particulate matter, can seep into
+buildings through ventilation systems, open doors, and windows,
+resulting in higher indoor exposures. These pollutants may worsen indoor
+air quality, creating additional health risks for occupants.
+
+Additionally, climate change-related factors such as increased
+precipitation and storms can contribute to indoor air pollutants like
+mold, dust mites, and bacteria. For instance, flood damage can lead to
+damp indoor environments, fostering mold growth. Exposure to these
+indoor pollutants has been associated with a range of health issues,
+including heart disease, respiratory conditions like asthma, and even
+cancer. As climate patterns shift, ensuring good indoor air quality
+becomes a growing concern for public health.
 
 ## Unintended Consequences: When Solving One Problem Affects Another
 
@@ -864,7 +878,9 @@ amidst the pressing need for effective action.
 ## Rmd for this blog
 
 Underlying Rmd file can be found in the project’s respective folder and
-here is a quick link to access it.
+here is a [quick
+link](https://github.com/AarshBatra/biteSizedAQ/blob/main/5.aq.climate.change/README.Rmd)
+to access it.
 
 ## Support This Work: Give It a Star
 

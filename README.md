@@ -54,10 +54,12 @@ repo to keep track of updates.
 
 ## Project 5: Facing Two Fronts: The Intersection of Air Pollution and Climate Change
 
-- Read the blog [here.]()
+- Read the blog
+  [here.](https://github.com/AarshBatra/biteSizedAQ/tree/main/5.aq.climate.change)
 
 - Underlying README Rmd file can be found in the project’s respective
-  folder and here is a [quick link to access it.]()
+  folder and here is a [quick link to access
+  it.](https://github.com/AarshBatra/biteSizedAQ/blob/main/5.aq.climate.change/README.Rmd)
 
 ## Project 4: Monitoring Air Quality: The Power of Satellite Based Remote Sensing
 
