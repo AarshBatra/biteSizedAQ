@@ -52,32 +52,39 @@ repo to keep track of updates.
   in the sat data helper script and the names are descriptive enough for
   it to be easily identifiable.
 
+## Project 5: Facing Two Fronts: The Intersection of Air Pollution and Climate Change
+
+- Read the blog [here.]()
+
+- Underlying README Rmd file can be found in the project’s respective
+  folder and here is a [quick link to access it.]()
+
 ## Project 4: Monitoring Air Quality: The Power of Satellite Based Remote Sensing
 
 - Read the blog
-  [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/4.aq.remote.sensing)
+  [here.](https://github.com/AarshBatra/biteSizedAQ/tree/main/4.aq.remote.sensing)
 
 - Underlying README Rmd file can be found in the project’s respective
   folder and here is a [quick link to access
-  it](https://github.com/AarshBatra/biteSizedAQ/blob/main/4.aq.remote.sensing/README.Rmd)
+  it.](https://github.com/AarshBatra/biteSizedAQ/blob/main/4.aq.remote.sensing/README.Rmd)
 
 ## Project 3: Air Quality Data Management Systems Landscape: Navigating Challenges and Opportunities
 
 - Read the blog
-  [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/3.aq.dms)
+  [here.](https://github.com/AarshBatra/biteSizedAQ/tree/main/3.aq.dms)
 
 - Underlying README Rmd file can be found in the project’s respective
   folder and here is a [quick link to access
-  it](https://github.com/AarshBatra/biteSizedAQ/blob/main/3.aq.dms/README.Rmd)
+  it.](https://github.com/AarshBatra/biteSizedAQ/blob/main/3.aq.dms/README.Rmd)
 
 ## Project 2: Deciphering Air Pollution Units: Essential Insights for Informed Action
 
 - Read the blog
-  [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/2.air.pol.units.explainer)
+  [here.](https://github.com/AarshBatra/biteSizedAQ/tree/main/2.air.pol.units.explainer)
 
 - Underlying README Rmd file can be found in the project’s respective
   folder and here is a [quick link to access
-  it](https://github.com/AarshBatra/biteSizedAQ/blob/main/2.air.pol.units.explainer/README.Rmd)
+  it.](https://github.com/AarshBatra/biteSizedAQ/blob/main/2.air.pol.units.explainer/README.Rmd)
 
 ## Project 1: Block level satellite derived population weighted air pollution dataset for India from 1998-2022
 
@@ -87,4 +94,4 @@ repo to keep track of updates.
 
 - Data Processing pipeline Rmd file for this project: Also, present at
   the root of the biteSizedAQ repo. Here is a [quick link to access the
-  pipeline](https://github.com/AarshBatra/biteSizedAQ/blob/main/1.ind.block.pm2.5.sat.data.processing.Rmd).
+  pipeline.](https://github.com/AarshBatra/biteSizedAQ/blob/main/1.ind.block.pm2.5.sat.data.processing.Rmd)
