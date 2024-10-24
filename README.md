@@ -23,15 +23,7 @@ share, and build upon the work, making air quality information more open
 and accessible for all.
 
 This repository will continue to grow with new projects as and when I
-find time. To kick things off, check out the first project: using
-satellite-derived air pollution and population data, combined with
-India’s block (subdistrict) level shapefile, we’ve created a detailed
-air pollution dataset at the block level. Explore the details below to
-learn more.
-
-Upcoming potential projects include producing satellite-derived PM2.5
-data at the village level for over 600,000 Indian villages. Star the
-repo to keep track of updates.
+find time. To kick things off, check out the first few projects below!
 
 ## General structure and how to navigate projects in this repo
 
@@ -51,6 +43,13 @@ repo to keep track of updates.
   themes. E.g. all satellited derived data processing functions will be
   in the sat data helper script and the names are descriptive enough for
   it to be easily identifiable.
+
+## Project 6 \[upcoming!\]: Coding with Conscience: Evolving from Carbon Aware to Grid Aware for Truly Sustainable Computing
+
+- Read the blog here.
+
+- Underlying README Rmd file can be found in the project’s respective
+  folder and here is a quick link to access it.
 
 ## Project 5: Facing Two Fronts: The Intersection of Air Pollution and Climate Change
 
