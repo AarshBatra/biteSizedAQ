@@ -224,6 +224,8 @@ post, I can see that most of the electricity generated in france at the
 time of writing this post was being generated from nuclear energy or
 renewables with a very low fossil fuel mix.
 
+<br>
+
 ![](images/clipboard-2036092963.png)
 
 <br>
@@ -249,6 +251,8 @@ calculating the emissions associated with your computing tasks. This
 metric is also reported in the Electricity Maps tool. For e.g. in the
 map below, the Carbon Intensity for Northern India reported can be seen
 once you hover over the North India region.
+
+<br>
 
 ![](images/clipboard-1611599400.png)
 
@@ -357,6 +361,8 @@ fleet with the objective of bringing the PUE as close to 1 as possible.
 Here is [a visual](https://www.google.com/about/datacenters/efficiency/)
 that tracks the Google Data Center PUE trend from 2008 to 2024.
 
+<br>
+
 ![](images/clipboard-3976738615.png)
 
 <br>
@@ -412,6 +418,8 @@ Aware**, ensuring that you’re not just shifting emissions but truly
 reducing them.
 
 ## **Measuring Carbon Intensity for Large Computation Tasks: The NVIDIA V100 GPU Year**
+
+<br>
 
 ![](images/clipboard-1797552011.png)
 
@@ -537,6 +545,8 @@ here](https://cloud.google.com/sustainability/region-carbon). Each
 region corresponds to a physical location and lists whether it is
 considered “low-carbon” based on this average.
 
+<br>
+
 ![](images/clipboard-629411708.png)
 
 <br>
@@ -606,6 +616,8 @@ Finally, you can use the [Google Cloud Region picker
 tool](https://googlecloudplatform.github.io/region-picker/) which let’s
 you optimize for carbon footprint, price, latency, traffic source, etc.
 You can then choose the recommended regions accordingly.
+
+<br>
 
 ![](images/clipboard-2696518362.png)
 
@@ -1072,6 +1084,8 @@ and benefit from this fully open and free repository. Click [here to
 star the
 repository](https://github.com/AarshBatra/biteSizedAQ/stargazers) and
 join other folks who follow biteSizedAQ.
+
+<br>
 
 ![](images/clipboard-3743884136.png)
 
