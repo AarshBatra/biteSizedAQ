@@ -796,13 +796,13 @@ of climate change, the tech sector, with its vast resources, has the
 opportunity and responsibility to implement sustainable, impactful
 solutions.
 
-### **Proposals for Responsible Carbon-Aware Computing**
+## **Proposals for Responsible Carbon-Aware Computing**
 
 Below I summarize the proposals advocated in the Hackernoon Article. I
 have also included hypothetical examples under each proposal for better
 understanding:
 
-#### **1. Prioritize Demand Intensity Over Carbon Intensity**
+### **1. Prioritize Demand Intensity Over Carbon Intensity**
 
 **Concept**: Shifting compute tasks to low-demand times, rather than
 just low carbon-intensity times, helps stabilize the grid and maximizes
@@ -823,7 +823,7 @@ the need for fossil fuel backup, making emission reductions more
 reliable. While this approach is safer, it still requires risk
 management to prevent issues if widely adopted.
 
-#### 2. Run Compute on Truly Additive Renewable Energy
+### 2. Run Compute on Truly Additive Renewable Energy
 
 **Concept**: To effectively reduce carbon emissions, computing
 operations should rely on truly additive renewable energy sources. This
@@ -855,7 +855,7 @@ reliance. By directly financing new renewable projects through PPAs,
 companies can play a pivotal role in promoting the growth of renewable
 energy infrastructure and achieving meaningful carbon reductions.
 
-#### **3. Promote Distributed Compute and Distributed Renewable Energy**
+### **3. Promote Distributed Compute and Distributed Renewable Energy**
 
 **Concept**: By linking distributed computing (such as small, local data
 centers) to local renewable sources, compute tasks can operate off the
@@ -878,7 +878,7 @@ plants, lower emissions, and improve grid resilience. With strategic
 safeguards, this approach can shift data centers away from traditional,
 centralized models and toward greener, locally powered operations.
 
-#### 4. Shape Demand to Stay Within Resource Boundaries
+### 4. Shape Demand to Stay Within Resource Boundaries
 
 **Concept**: While enhancing energy efficiency is vital, the tech
 industry must also proactively manage its electricity demand. If left
