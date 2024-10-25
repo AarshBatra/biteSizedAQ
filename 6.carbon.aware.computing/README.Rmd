@@ -16,7 +16,11 @@ knitr::opts_chunk$set(
 
 ## Computing with Conscience: Evolving from Carbon Aware to Grid Aware for Truly Sustainable Computing
 
+<br>
+
 ![](images/clipboard-1202263430.png)
+
+<br>
 
 In today’s world, technology is evolving faster than ever before, and
 while it brings numerous benefits, it also contributes significantly to
@@ -237,6 +241,8 @@ renewables with a very low fossil fuel mix.
 
 ![](images/clipboard-2036092963.png)
 
+<br>
+
 More platforms like Electricity Maps are available to help you make
 sustainable choices. For e.g. [WattTime](https://watttime.org/) provides
 real-time data on grid emissions and helps users time their energy
@@ -260,6 +266,8 @@ map below, the Carbon Intensity for Northern India reported can be seen
 once you hover over the North India region.
 
 ![](images/clipboard-1611599400.png)
+
+<br>
 
 Let’s break it down.
 
@@ -300,7 +308,7 @@ example, if you run a 1,000-watt (1-kilowatt) device for 1 hour, it
 consumes 1 kWh of energy. This is how we calculate the energy used by
 appliances, servers, or even a machine learning task.
 
-### **Working Through an Example: Carbon Emissions for Machine Learning**
+## **Working Through an Example: Carbon Emissions for Machine Learning**
 
 Let’s say you’re training a machine learning (ML) model, and you want to
 figure out how much carbon this task releases into the atmosphere. To
@@ -312,7 +320,7 @@ calculate this, you need two key pieces of information:
 
 Let’s break this down with an example.
 
-#### **Step 1: Carbon Intensity of the Grid**
+### **Carbon Intensity of the Grid**
 
 First, you check the carbon intensity of the electricity grid. Let’s say
 you’re running your ML training task on a grid in North Brazil, where
@@ -322,7 +330,7 @@ CO₂-equivalent gases are emitted. Keep in mind, this number fluctuates
 throughout the day based on factors like energy demand, weather
 conditions, and availability of renewables.
 
-#### **Step 2: Energy Consumption of Your Training Task**
+### **Energy Consumption of Your Training Task**
 
 Next, you need to calculate how much energy your ML training job
 consumes. You can measure the energy consumption in kilowatt-hours (kWh)
@@ -345,7 +353,7 @@ Here’s what this means:
     used by the processors but also the energy needed to cool the
     servers and run the data center’s infrastructure.
 
-#### **What Is PUE?**
+### **What Is PUE?**
 
 To put **PUE** into perspective, let’s use a simple analogy: Imagine
 you’re watering a garden with a hose. The water that reaches the plants
@@ -365,6 +373,8 @@ Here is [a visual](https://www.google.com/about/datacenters/efficiency/)
 that tracks the Google Data Center PUE trend from 2008 to 2024.
 
 ![](images/clipboard-3976738615.png)
+
+<br>
 
 You can read more about how Google manages and tracks its PUE
 [here](https://www.google.com/about/datacenters/efficiency/). Similar to
@@ -389,7 +399,7 @@ gCO₂eq/kWh):
 So, the total carbon emissions for running this training task would be
 **307.5 grams of CO₂-equivalent gases**.
 
-### **Why Does Carbon Intensity Change?**
+### **Why Does Carbon Intensity Change over the day?**
 
 It’s important to note that carbon intensity isn’t static — it changes
 throughout the day based on a variety of factors:
@@ -416,9 +426,11 @@ so that you can be both **Carbon Aware** and, even better, **Grid
 Aware**, ensuring that you’re not just shifting emissions but truly
 reducing them.
 
-### **Measuring Carbon Intensity for Large Computation Tasks: The NVIDIA V100 GPU Year**
+## **Measuring Carbon Intensity for Large Computation Tasks: The NVIDIA V100 GPU Year**
 
 ![](images/clipboard-1797552011.png)
+
+<br>
 
 When dealing with massive computational tasks like training large
 language models (LLMs), measuring energy consumption in kilowatt-hours
@@ -468,7 +480,7 @@ leaderboard](https://ml.energy/leaderboard/?__theme=light) which
 compares various models by average GPU energy consumed by each of these
 models.
 
-### Current Strategies for Carbon Aware Machine Learning/Computing
+## Current Strategies for Carbon Aware Machine Learning/Computing
 
 There is a lot you can do to when it comes to being Carbon Aware. For
 e.g.
@@ -506,7 +518,7 @@ e.g.
 
 Let’s look at some of these strategies in greater detail:
 
-#### Setting Up a Practice Training Ground
+### Setting Up a Practice Training Ground
 
 The [**Carbon Aware Computing for GenAI
 Developers**](https://learn.deeplearning.ai/courses/carbon-aware-computing-for-genai-developers/lesson/1/introduction)
@@ -530,7 +542,7 @@ course for a step-by-step guide to setting up your Google Cloud account.
 Even if you don’t plan on using Google Cloud, you can still follow the
 lessons and apply the concepts to your preferred cloud service provider.
 
-#### Average Carbon Intensity vs. Real-Time Carbon Intensity
+### Average Carbon Intensity vs. Real-Time Carbon Intensity
 
 When it comes to carbon-aware computing, there are varying levels of
 complexity you can engage with. Google Cloud regions provide an
@@ -541,6 +553,8 @@ region corresponds to a physical location and lists whether it is
 considered "low-carbon" based on this average.
 
 ![](images/clipboard-629411708.png)
+
+<br>
 
 While useful, this is just **average** data. To get **real-time carbon
 intensity**, you can use the **Electricity Maps API**. For instance, if
@@ -562,7 +576,7 @@ For long-running tasks, you can also retrieve **historical data** using
 another endpoint to analyze how the energy mix or carbon intensity
 changes over time while your task runs.
 
-#### Understanding APIs and Endpoints
+### Understanding APIs and Endpoints
 
 If you're unfamiliar with APIs, here’s a simple explanation: Think of an
 API as a way for your computer to request information from another
@@ -572,7 +586,7 @@ format, etc.), you receive the information you need. The term
 **"endpoints"** simply refers to the specific types of information you
 are requesting from the API.
 
-#### Calculating Your Google Cloud Footprint
+### Calculating Your Google Cloud Footprint
 
 While we've focused primarily on carbon emissions from compute, this is
 only one part of what's recommended to track under the [**Greenhouse Gas
@@ -610,6 +624,8 @@ You can then choose the recommended regions accordingly.
 
 ![](images/clipboard-2696518362.png)
 
+<br>
+
 ## The Hidden Problem: Carbon Aware Isn’t Enough
 
 Now, let’s get into the real twist. The idea of Carbon Aware Computing —
@@ -644,7 +660,7 @@ when it comes to managing one's carbon footprint.
 Being Grid Aware is crucial for bring Carbon Aware, as you'll see in the
 next few sections.
 
-### **How Does an Electricity Grid Function in the Context of Grid Aware/Carbon Aware Computing?**
+## **How Does an Electricity Grid Function in the Context of Grid Aware/Carbon Aware Computing?**
 
 To understand how **Grid Aware** or **Carbon Aware Computing** fits into
 the broader picture, it’s crucial to first grasp how an **electricity
@@ -654,9 +670,13 @@ consumers, such as homes, businesses, and data centers. But in the
 context of computing, not all electricity is created equally — and
 that’s where **Grid Aware Computing** comes into play.
 
-#### **How an Electricity Grid Works: A Balancing Act**
+### **How an Electricity Grid Works: A Balancing Act**
+
+<br>
 
 ![](images/clipboard-1937984171.png)
+
+<br>
 
 Think of the electricity grid as a tightrope walker, constantly
 balancing **supply** and **demand**. Supply comes from power plants that
@@ -672,9 +692,13 @@ so supply must decrease. If the grid is unbalanced — either too much
 supply or too much demand — it can lead to **brownouts** (reduced
 voltage) or even **blackouts** (complete power loss).
 
-#### **Supply Sources: Renewable vs. Fossil Fuel Energy**
+### **Supply Sources: Renewable vs. Fossil Fuel Energy**
+
+<br>
 
 ![](images/clipboard-313503700.png)
+
+<br>
 
 Electricity on the grid can come from:
 
@@ -691,7 +715,7 @@ adjustments by switching to fossil fuels when demand rises unexpectedly.
 This is where carbon intensity — the amount of CO₂ released per unit of
 electricity — comes into play.
 
-#### **How Carbon and Grid Aware Computing Interacts with the Grid**
+### **How Carbon and Grid Aware Computing Interacts with the Grid**
 
 Now, enter **Grid Aware** and **Carbon Aware Computing**. These
 approaches aim to time and locate computational tasks so that they’re
@@ -712,7 +736,7 @@ It’s like joining a crowded bus that’s almost full. While you’re happy
 to find a seat, your weight pushes the bus over capacity, requiring an
 extra bus to be added — one that may run on less efficient fuel.
 
-#### **Peaks and Troughs: Why Timing and Location Matter**
+### **Peaks and Troughs: Why Timing and Location Matter**
 
 The grid’s load fluctuates throughout the day:
 
@@ -728,7 +752,7 @@ The grid’s load fluctuates throughout the day:
 abundant. This reduces the likelihood of needing extra fossil fuel-based
 energy, ensuring a more environmentally friendly compute job.
 
-#### **What’s the Catch with Carbon Aware Computing?**
+### **What’s the Catch with Carbon Aware Computing?**
 
 While **Carbon Aware Computing** aims to reduce emissions by running
 tasks when clean energy is available, the HackerNoon article warns that
@@ -752,7 +776,7 @@ not only the carbon intensity but also the stability of the grid,
 ensuring that compute tasks are scheduled when the grid can handle them
 without requiring backup fossil fuel power.
 
-#### **Making Carbon Aware Computing Effective Through Grid Awareness**
+### **Making Carbon Aware Computing Effective Through Grid Awareness**
 
 Is Carbon Aware Computing flawed? Not inherently. The core idea is
 valuable, but current approaches lack necessary caution. Often, time and
@@ -887,7 +911,7 @@ reliance on fossil fuels. Collaborating with policymakers, energy
 providers, and other stakeholders will be crucial to implementing these
 demand reduction strategies effectively.
 
-### Practical Strategies for Developers Awaiting Grid-Aware Solutions
+## Practical Strategies for Developers Awaiting Grid-Aware Solutions
 
 Grid Awareness is a relatively new idea, so if you try to find tools or
 APIs that give you the Real time energy demand data for a grid, you'll
@@ -963,7 +987,11 @@ Here are a few approaches and emerging solutions that may help:
 
 ## Other Concerns: Making AI less thirsty, the water footprint of AI
 
+<br>
+
 ![](images/clipboard-450486869.png)
+
+<br>
 
 The carbon footprint of AI models, particularly large ones like GPT-3,
 has attracted significant attention, but their substantial water
@@ -1063,6 +1091,8 @@ repository](https://github.com/AarshBatra/biteSizedAQ/stargazers) and
 join other folks who follow biteSizedAQ.
 
 ![](images/clipboard-3743884136.png)
+
+<br>
 
 ## Get in touch
 
