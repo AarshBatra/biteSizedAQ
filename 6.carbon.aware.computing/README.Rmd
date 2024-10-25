@@ -752,25 +752,140 @@ not only the carbon intensity but also the stability of the grid,
 ensuring that compute tasks are scheduled when the grid can handle them
 without requiring backup fossil fuel power.
 
-#### **Real-World Applications of Grid Aware Computing**
+#### **Making Carbon Aware Computing Effective Through Grid Awareness**
 
-Several tech giants are already adopting **Grid Aware Computing**:
+Is Carbon Aware Computing flawed? Not inherently. The core idea is
+valuable, but current approaches lack necessary caution. Often, time and
+location-shifting patterns are assumed to be greener by default, when in
+reality, they’re beneficial in limited circumstances, ineffective in
+many, and potentially harmful in others. Without verification or risk
+analysis, such assumptions risk greenwashing, especially when companies
+promote time/location-shifting as a blanket “green” solution.
 
--   **Google**: They use AI to predict when the grid will have more
-    renewable energy and schedule their data center tasks accordingly.
+The real issue isn’t just optimizing energy sources but addressing the
+**rising demand for energy** in computing. While we’ve become more
+efficient per task, overall electricity use has skyrocketed due to the
+sheer volume of computational tasks. Carbon Aware Computing’s focus on
+reducing fossil fuel reliance is promising, yet these gains could easily
+be offset if demand continues to grow unchecked.
 
--   **Microsoft**: Their carbon-aware updates for Xbox and Windows
-    adjust to run during low carbon intensity periods.
+We need to evolve Carbon Aware Computing into an approach that addresses
+both energy optimization **and** demand management. Given the severity
+of climate change, the tech sector, with its vast resources, has the
+opportunity and responsibility to implement sustainable, impactful
+solutions.
 
--   **Apple**: In the U.S., iPhones have a carbon-aware charging feature
-    that delays charging until greener energy is available​.
+### **Proposals for Responsible Carbon-Aware Computing**
 
-These applications are a step in the right direction, but as the
-HackerNoon article highlights, the key is not just to time-shift or
-location-shift compute jobs blindly. Instead, these actions need to be
-mindful of grid stability and demand.
+Below I summarize the proposals advocated in the Hackernoon Article. I
+have also included hypothetical examples under each proposal for better
+understanding:
 
-### What tools can you use to become Grid Aware?
+#### **1. Prioritize Demand Intensity Over Carbon Intensity**
+
+**Concept**: Shifting compute tasks to low-demand times, rather than
+just low carbon-intensity times, helps stabilize the grid and maximizes
+the use of renewable energy that might otherwise go to waste.
+
+**Hypothetical Example**: Imagine a large tech company running a big
+data processing job. If they schedule this task at 3 AM, a time when
+energy demand is low, they’re more likely to use excess wind energy
+generated at night. By doing this, they avoid peak hours when fossil
+fuel plants may be needed to meet high demand. Conversely, if they
+schedule this task at noon, when everyone’s using electricity, they risk
+forcing the grid to rely on coal or gas to handle the extra load,
+potentially increasing emissions instead of reducing them.
+
+Unlike carbon intensity-based scheduling, which can sometimes increase
+emissions by overloading the grid, a **demand-first approach** minimizes
+the need for fossil fuel backup, making emission reductions more
+reliable. While this approach is safer, it still requires risk
+management to prevent issues if widely adopted.
+
+#### 2. Run Compute on Truly Additive Renewable Energy
+
+**Concept**: To effectively reduce carbon emissions, computing
+operations should rely on truly additive renewable energy sources. This
+means investing in new renewable energy projects specifically designed
+to power computing facilities rather than simply purchasing Renewable
+Energy Certificates (RECs) or claiming credits from existing renewable
+energy sources.
+
+**Hypothetical Example:** Power Purchase Agreements (PPAs) are
+contractual agreements between energy buyers and sellers. When a tech
+company enters into a PPA, it agrees to purchase a specified amount of
+energy from a renewable source, such as a solar or wind farm, at a
+predetermined price over a certain period. This financial commitment
+helps to secure funding for the construction of new renewable energy
+projects.
+
+The key here is **emissionality**—the principle that emphasizes the need
+for new renewable capacity to displace fossil fuels. For example, if a
+data center purchases power from a new solar farm specifically built to
+meet its energy needs, it adds new renewable energy to the grid. In
+contrast, if a company simply buys RECs from an existing wind farm, it
+does not increase renewable capacity; it only shifts existing green
+energy credits around without contributing to overall emissions
+reductions.
+
+This distinction is critical because it ensures that the energy used by
+data centers genuinely contributes to a reduction in fossil fuel
+reliance. By directly financing new renewable projects through PPAs,
+companies can play a pivotal role in promoting the growth of renewable
+energy infrastructure and achieving meaningful carbon reductions.
+
+#### **3. Promote Distributed Compute and Distributed Renewable Energy**
+
+**Concept**: By linking distributed computing (such as small, local data
+centers) to local renewable sources, compute tasks can operate off the
+main grid, reducing dependency on centralized, high-emission energy
+infrastructure. This approach makes efficient use of smaller, local
+renewable projects and contributes to grid stability.
+
+**Hypothetical Example**: Imagine a tech company’s small data center
+located next to a solar farm in a sunny town. During the day, the data
+center’s servers are powered directly by the solar farm, meaning they
+don’t need to draw electricity from the grid. In colder regions, waste
+heat from the servers could even be used to heat nearby buildings,
+reducing overall energy demand. This contrasts with a larger,
+centralized data center that draws power from a distant grid,
+potentially straining the system and depending more heavily on fossil
+fuel backups.
+
+Distributed compute models can reduce the need for centralized power
+plants, lower emissions, and improve grid resilience. With strategic
+safeguards, this approach can shift data centers away from traditional,
+centralized models and toward greener, locally powered operations.
+
+#### 4. Shape Demand to Stay Within Resource Boundaries
+
+**Concept**: While enhancing energy efficiency is vital, the tech
+industry must also proactively manage its electricity demand. If left
+unchecked, rising electricity needs driven by growing computing demands
+can quickly outpace the benefits gained from carbon-aware measures,
+resulting in unsustainable emission levels.
+
+**Hypothetical Example:** It's essential to clarify that shaping demand
+doesn't equate to halting growth; instead, it involves making thoughtful
+decisions about how and when to utilize computing resources. For
+instance, an AI company planning to launch a new, resource-intensive
+language model can adopt strategies to manage its energy consumption
+effectively.
+
+Imagine this company spreading its data processing tasks across off-peak
+hours when energy demand is lower, like during the night. By doing so,
+they can reduce the load on the grid during peak hours when fossil fuel
+plants are more likely to be activated. Additionally, the company can
+identify and limit non-essential tasks that can be deferred or scheduled
+for times when renewable energy is plentiful.
+
+This demand-shaping approach allows organizations to grow sustainably
+while minimizing their carbon footprint. By proactively managing when
+and how computing tasks are performed, the tech industry can prevent
+spikes in energy demand that could overwhelm the grid and increase
+reliance on fossil fuels. Collaborating with policymakers, energy
+providers, and other stakeholders will be crucial to implementing these
+demand reduction strategies effectively.
 
 ## Other Concerns: Making AI less thirsty, the water footprint of AI
 
@@ -805,22 +920,22 @@ expected to be a focus of a future blog post. In the meantime, I
 encourage you to go through the paper if you want to learn more about
 this crucial issue.
 
-## **Don't Get Greenwashed!**
+## 
 
-When it comes to sustainable computing, focusing on **carbon-aware**
-strategies alone without considering **grid awareness** can actually
-lead to increased emissions. Carbon-aware computing seeks to reduce
-emissions by running workloads when renewable energy is more available.
-However, if this approach ignores grid demand, it can inadvertently push
-more load to times when the grid is already strained, forcing
-fossil-fuel-based power plants to compensate, leading to higher overall
-emissions.
+Big Tech's accelerated adoption and marketing of carbon-aware computing
+without any mention of its limitations or its risks of unintended
+consequences is called Greenwashing.
 
-Even being both carbon-aware and grid-aware isn’t enough if you overlook
-other critical factors like **water usage**. Many data centers rely on
-significant amounts of water for cooling. If the focus is only on
-reducing carbon emissions and managing grid demand, but not on being
-**water-aware**, it can result in massive water losses. This is
+Responsible carbon-aware computing has the potential to contribute to
+greening tech emissions, but it is unconscionable to pursue it without
+factoring in the risks; evidencing mitigation steps and actual impact;
+and providing warning labels in its marketing and promotion.
+
+Furthermore, even being both carbon-aware and grid-aware isn’t enough if
+you overlook other critical factors like **water usage**. Many data
+centers rely on significant amounts of water for cooling. If the focus
+is only on reducing carbon emissions and managing grid demand, but not
+on being **water-aware**, it can result in massive water losses. This is
 especially problematic in regions already facing water scarcity, where
 the environmental footprint shifts from carbon to water consumption.
 
@@ -836,19 +951,57 @@ crucial to truly be sustainable in a holistic way. We don't want to fix
 one thing and make something else worse, so be critical of how you
 analyze green efforts.
 
-## **Conclusion: Holistic Awareness for a truly sustainable future**
+## Final Thoughts: Steer Clear of Greenwashing – A Comprehensive Vision for Carbon and Grid-Aware Computing
 
-The electricity grid is a complex system that must balance supply and
-demand at all times. **Grid Aware Computing** goes beyond simply using
-renewable energy; it requires thoughtful scheduling of compute tasks
-when the grid is not only clean but also stable and able to handle the
-load. By adopting a more holistic approach, developers and companies can
-genuinely reduce their carbon footprints without creating unintended
-consequences like fossil fuel back-up reliance or grid instability.
+As the tech industry continues to grow, embracing carbon-aware computing
+is essential for aligning technological advancement with global
+sustainability goals. However, the accelerated adoption and marketing of
+carbon-aware computing by Big Tech, often without acknowledging its
+limitations and potential unintended consequences, can lead to
+greenwashing.
 
-In short, the future of sustainable computing lies in not just being
-**Carbon Aware**, but truly **Grid Aware**, optimizing when and where we
-use energy for the greatest positive environmental impact.
+While responsible carbon-aware computing can help reduce tech emissions,
+it is essential to consider the associated risks, provide evidence of
+mitigation steps, and include warning labels in marketing efforts. This
+approach goes beyond short-term optimization of when and where to run
+computations; it requires integrating renewable energy, proactive demand
+management, and distributed computing models.
+
+By prioritizing demand intensity over carbon intensity, organizations
+can optimize energy usage while minimizing reliance on fossil fuel
+plants. Utilizing truly additive renewable energy through Power Purchase
+Agreements (PPAs) allows companies to actively support the development
+of new green energy projects, aligning their operations with
+sustainability goals.
+
+Shaping demand while maintaining growth is vital for long-term
+viability. Companies can make informed decisions about when to run
+compute tasks to ensure their energy needs coincide with renewable
+energy availability. This balance enables the tech industry to innovate
+and expand without compromising the environment.
+
+A collective commitment to grid-aware computing can transform how data
+centers, AI, blockchain, and other compute-intensive sectors operate. It
+is crucial to communicate the benefits of carbon-aware computing
+transparently, highlighting potential pitfalls to avoid undermining
+progress.
+
+Moreover, carbon is only part of the sustainability equation; water
+usage is another critical issue that requires our attention for holistic
+sustainability.
+
+While constraints and trade-offs will arise, an active discussion and
+analysis of these factors are vital for achieving true sustainability.
+We must critically assess our green efforts to avoid fixing one issue
+while exacerbating another.
+
+By adopting these strategies, the tech industry can significantly reduce
+emissions, enhance grid stability, and mindfully manage scarce water
+resources, paving the way for a genuinely sustainable future.
+
+The time to act is now. Together, we can forge a path that meets our
+computing needs while ensuring the planet remains healthy for future
+generations.
 
 ## Rmd for this blog
 
