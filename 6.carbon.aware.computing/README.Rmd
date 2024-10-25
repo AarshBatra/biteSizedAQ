@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Coding with Conscience: Evolving from Carbon Aware to Grid Aware for Truly Sustainable Computing
+## Computing with Conscience: Evolving from Carbon Aware to Grid Aware for Truly Sustainable Computing
 
 ![](images/clipboard-1202263430.png)
 
@@ -492,7 +492,7 @@ e.g.
 -   Another strategy is to use more efficient hardware. According to the
     authors of the paper: [*The Carbon Footprint of Machine Learning
     Training Will Plateau, Then
-    Shrink,*](https://ieeexplore.ieee.org/document/9810097)using
+    Shrink,*](https://ieeexplore.ieee.org/document/9810097) using
     processors optimized for ML training like TPUs or specialized GPUs
     like Nvidia V100s or A100 compared to general purpose processors can
     improve performance per watt by factors of 2 to 5. This benefit adds
@@ -540,6 +540,8 @@ here](https://cloud.google.com/sustainability/region-carbon). Each
 region corresponds to a physical location and lists whether it is
 considered "low-carbon" based on this average.
 
+![](images/clipboard-629411708.png)
+
 While useful, this is just **average** data. To get **real-time carbon
 intensity**, you can use the **Electricity Maps API**. For instance, if
 you choose the Google Cloud region `us-central1` (Iowa), you can look up
@@ -570,21 +572,43 @@ format, etc.), you receive the information you need. The term
 **"endpoints"** simply refers to the specific types of information you
 are requesting from the API.
 
-#### Calculating your Google Cloud Footprint
+#### Calculating Your Google Cloud Footprint
 
-So far, we have focused on carbon emissions from
+While we've focused primarily on carbon emissions from compute, this is
+only one part of what's recommended to track under the [**Greenhouse Gas
+Corporate Standard**](https://ghgprotocol.org/corporate-standard). The
+standard breaks emissions into three categories, or "scopes":
 
-Carbon footprint overview page, Greenhouse gas corporate standard: scope
-1 to 3, S2: indirect emissions from purchase of electricity, heating,
-cooling. Scope 1: direct emissions from sources controlled by an org,
-e.g. shuttles running, S3: all indirect emissions not controlled by your
-org, e.g. supplier based emissions, waster disposal, business traveletc,
-london to NY flight example, setup and export carbon footprint data to
-big query and then load into jup notebook, query using SQL, scope 1 to 3
-data.
+-   **Scope 1**: Direct emissions from sources controlled by your
+    organization, such as company vehicles or on-site fuel combustion.
 
-TPUs v/s GPUs, image generation v/s image classification, training v/s
-inferring
+-   **Scope 2**: Indirect emissions from the purchase of electricity,
+    heating, and cooling—this is what we've primarily discussed in this
+    blog post.
+
+-   **Scope 3**: All other indirect emissions not controlled by your
+    organization, such as those from suppliers, waste disposal, and
+    business travel (e.g., emissions from a flight from London to New
+    York).
+
+To track your **Google Cloud carbon footprint**, you can export the
+relevant data directly from the Google Cloud Console. Simply search for
+"Carbon Footprint" in the console, scroll down, and export the data to
+**BigQuery**. This export will include emissions data for all three
+scopes—Scope 1, Scope 2, and Scope 3.
+
+Once the data is in BigQuery, you can analyze it using a Jupyter
+notebook. By querying the data with SQL, you’ll be able to assess your
+carbon footprint on a project-by-project basis, gaining insights across
+all three scopes. This gives you a comprehensive view of your
+organization's total cloud emissions.
+
+Finally, you can use the [Google Cloud Region picker
+tool](https://googlecloudplatform.github.io/region-picker/) which let's
+you optimize for carbon footprint, price, latency, traffic source, etc.
+You can then choose the recommended regions accordingly.
+
+![](images/clipboard-2696518362.png)
 
 ## The Hidden Problem: Carbon Aware Isn’t Enough
 
@@ -603,22 +627,6 @@ uses fossil-fuel-based energy in another window. Worse, if too many
 people shift to the same time, it could overwhelm the grid, forcing it
 to rely on dirty energy to stabilize.
 
-This is what happens when too many users time their computing jobs to
-coincide with periods of renewable energy. The grid gets stressed, and
-to avoid blackouts, fossil fuel power plants may need to kick in. You’re
-not reducing emissions, you’re just moving them around.
-
-The same happens with location-shifting. Let’s say you send your tasks
-to Lisbon because 80% of their energy comes from renewables. But if too
-many companies do this, Lisbon’s grid gets overloaded and has to fall
-back on fossil fuels to meet demand. In the end, the emissions problem
-is just shifted — or worse, increased.
-
-$$\[\[\[\[\[\[\[\[\[It’s important to not get Greenwashed and be aware
-of not only how much Carbon you are emitting, but also what effect it
-might have on the Grid on which you plan to run your computation
-task.$$]]]]]]]]]]]]]
-
 ## Introducing Grid Aware Computing
 
 In the introduction I briefly introduced the idea of Grid Aware
@@ -629,13 +637,218 @@ Now we’ll put these two together and focus on how Grid Aware computing
 and practices it advocates for is a more holistic and truly sustainable
 way of thinking about the carbon emissions resulting from compute.
 
-### How does an Electricity Grid function?
+But, before we do that we need to understand how an Electricity Grid
+functions. Understanding this will help us become more holistic thinkers
+when it comes to managing one's carbon footprint.
+
+Being Grid Aware is crucial for bring Carbon Aware, as you'll see in the
+next few sections.
+
+### **How Does an Electricity Grid Function in the Context of Grid Aware/Carbon Aware Computing?**
+
+To understand how **Grid Aware** or **Carbon Aware Computing** fits into
+the broader picture, it’s crucial to first grasp how an **electricity
+grid** works. An electricity grid is a vast, interconnected system that
+delivers power from various generation sources, like power plants, to
+consumers, such as homes, businesses, and data centers. But in the
+context of computing, not all electricity is created equally — and
+that’s where **Grid Aware Computing** comes into play.
+
+#### **How an Electricity Grid Works: A Balancing Act**
 
 ![](images/clipboard-1937984171.png)
 
-## Other Concerns: Make AI less thirsty!
+Think of the electricity grid as a tightrope walker, constantly
+balancing **supply** and **demand**. Supply comes from power plants that
+generate electricity, while demand is the amount of electricity
+consumers are using. This balancing act happens in real-time because,
+unlike water, electricity can’t be easily stored.
 
-## Conclusion
+When more power is needed, like on a hot summer day when everyone turns
+on their air conditioning, the grid has to increase supply, often by
+using “quick-to-respond” power sources like **natural gas**. Conversely,
+during low demand periods, like late at night, less power is required,
+so supply must decrease. If the grid is unbalanced — either too much
+supply or too much demand — it can lead to **brownouts** (reduced
+voltage) or even **blackouts** (complete power loss).
+
+#### **Supply Sources: Renewable vs. Fossil Fuel Energy**
+
+![](images/clipboard-313503700.png)
+
+Electricity on the grid can come from:
+
+-   **Fossil fuels** like coal, oil, and gas, which release carbon
+    emissions.
+
+-   **Renewables** like wind, solar, or hydropower, which generate
+    cleaner, greener energy but are often intermittent (solar energy
+    depends on sunshine, wind power depends on wind).
+
+Because renewable energy is not always available (the sun doesn’t shine
+at night, and wind patterns vary), the grid has to make quick
+adjustments by switching to fossil fuels when demand rises unexpectedly.
+This is where carbon intensity — the amount of CO₂ released per unit of
+electricity — comes into play.
+
+#### **How Carbon and Grid Aware Computing Interacts with the Grid**
+
+Now, enter **Grid Aware** and **Carbon Aware Computing**. These
+approaches aim to time and locate computational tasks so that they’re
+powered by cleaner, renewable energy. For example, you might want to run
+a large machine learning task when the grid is using wind power at
+night. However, it’s not always as straightforward as it seems.
+
+A key issue is **timing**. Let’s say you time your computation to run
+when there’s a high amount of renewable energy on the grid, like during
+the day when solar power is abundant. While this sounds good in theory,
+there’s a catch. As the HackerNoon article explains, the grid may
+already have predicted this demand and supplied enough renewable energy.
+By adding extra, unplanned demand at that time, you could force the grid
+to tap into **fossil fuels** to keep up, unintentionally increasing
+emissions​.
+
+It’s like joining a crowded bus that’s almost full. While you’re happy
+to find a seat, your weight pushes the bus over capacity, requiring an
+extra bus to be added — one that may run on less efficient fuel.
+
+#### **Peaks and Troughs: Why Timing and Location Matter**
+
+The grid’s load fluctuates throughout the day:
+
+-   **Peak demand hours**: Usually during the day, when businesses,
+    offices, and homes use the most power. This is when the grid is
+    likely to use a mix of renewable and fossil fuels.
+
+-   **Off-peak hours**: Typically at night, when demand is lower, and
+    it’s easier for the grid to rely on renewables like wind.
+
+**Grid Aware Computing** encourages running computational tasks during
+**off-peak hours**, when demand is lower and renewable energy is more
+abundant. This reduces the likelihood of needing extra fossil fuel-based
+energy, ensuring a more environmentally friendly compute job.
+
+#### **What’s the Catch with Carbon Aware Computing?**
+
+While **Carbon Aware Computing** aims to reduce emissions by running
+tasks when clean energy is available, the HackerNoon article warns that
+it’s not always as effective as it sounds. In some cases, it can even
+backfire:
+
+-   **Time-shifting tasks**: Running compute tasks during a window of
+    renewable energy sounds great, but if too many users shift their
+    tasks to the same window, the grid may become overwhelmed, forcing
+    the use of fossil fuels​.
+
+-   **Location-shifting**: Sending tasks to regions with greener grids
+    (e.g., Lisbon with its 80% renewable energy) could stress that local
+    grid. If too much demand is added, the grid may need to tap into
+    fossil fuels to meet the extra load, leading to **displacement** of
+    emissions, where the clean energy benefit is lost because other
+    users elsewhere may get their power from dirtier sources​.
+
+This is why **Grid Aware Computing** is crucial — it takes into account
+not only the carbon intensity but also the stability of the grid,
+ensuring that compute tasks are scheduled when the grid can handle them
+without requiring backup fossil fuel power.
+
+#### **Real-World Applications of Grid Aware Computing**
+
+Several tech giants are already adopting **Grid Aware Computing**:
+
+-   **Google**: They use AI to predict when the grid will have more
+    renewable energy and schedule their data center tasks accordingly.
+
+-   **Microsoft**: Their carbon-aware updates for Xbox and Windows
+    adjust to run during low carbon intensity periods.
+
+-   **Apple**: In the U.S., iPhones have a carbon-aware charging feature
+    that delays charging until greener energy is available​.
+
+These applications are a step in the right direction, but as the
+HackerNoon article highlights, the key is not just to time-shift or
+location-shift compute jobs blindly. Instead, these actions need to be
+mindful of grid stability and demand.
+
+### What tools can you use to become Grid Aware?
+
+## Other Concerns: Making AI less thirsty, the water footprint of AI
+
+![](images/clipboard-450486869.png)
+
+The carbon footprint of AI models, particularly large ones like GPT-3,
+has attracted significant attention, but their substantial water
+footprint remains largely overlooked.
+
+For instance, based on the paper, "[***Making AI Less "Thirsty":
+Uncovering and Addressing the Secret Water Footprint of AI
+Models***](https://arxiv.org/abs/2304.03271)", training GPT-3 in
+advanced U.S. data centers can evaporate 700,000 liters of freshwater, a
+fact that has largely been out of the public eye.
+
+According to the paper, by 2027, global AI demand could lead to water
+withdrawals of 4.2 to 6.6 billion cubic meters, surpassing the annual
+withdrawals of several countries, including Denmark and half of the UK.
+
+This is alarming given the escalating freshwater scarcity due to
+population growth and deteriorating water infrastructure. To tackle
+these challenges, AI models must acknowledge their water usage and
+strive for social responsibility.
+
+This paper proposes a methodology for estimating AI models' water
+footprints and examines their runtime water efficiency across different
+contexts. It emphasizes the need to address both water and carbon
+footprints to achieve truly sustainable AI.
+
+Although, water footprint is not the focus for this blog post, it can be
+expected to be a focus of a future blog post. In the meantime, I
+encourage you to go through the paper if you want to learn more about
+this crucial issue.
+
+## **Don't Get Greenwashed!**
+
+When it comes to sustainable computing, focusing on **carbon-aware**
+strategies alone without considering **grid awareness** can actually
+lead to increased emissions. Carbon-aware computing seeks to reduce
+emissions by running workloads when renewable energy is more available.
+However, if this approach ignores grid demand, it can inadvertently push
+more load to times when the grid is already strained, forcing
+fossil-fuel-based power plants to compensate, leading to higher overall
+emissions.
+
+Even being both carbon-aware and grid-aware isn’t enough if you overlook
+other critical factors like **water usage**. Many data centers rely on
+significant amounts of water for cooling. If the focus is only on
+reducing carbon emissions and managing grid demand, but not on being
+**water-aware**, it can result in massive water losses. This is
+especially problematic in regions already facing water scarcity, where
+the environmental footprint shifts from carbon to water consumption.
+
+True sustainability requires being aware of **carbon, grid, water among
+other impacts**. Avoid falling for greenwashing claims that focus on one
+aspect while "intentionally" ignoring others. A comprehensive approach
+is essential to minimize all environmental impacts, not just carbon
+emissions.
+
+Of course there will be constraints and trade-offs that will have to be
+made, but an active discussion and analysis of these trade offs is
+crucial to truly be sustainable in a holistic way. We don't want to fix
+one thing and make something else worse, so be critical of how you
+analyze green efforts.
+
+## **Conclusion: Holistic Awareness for a truly sustainable future**
+
+The electricity grid is a complex system that must balance supply and
+demand at all times. **Grid Aware Computing** goes beyond simply using
+renewable energy; it requires thoughtful scheduling of compute tasks
+when the grid is not only clean but also stable and able to handle the
+load. By adopting a more holistic approach, developers and companies can
+genuinely reduce their carbon footprints without creating unintended
+consequences like fossil fuel back-up reliance or grid instability.
+
+In short, the future of sustainable computing lies in not just being
+**Carbon Aware**, but truly **Grid Aware**, optimizing when and where we
+use energy for the greatest positive environmental impact.
 
 ## Rmd for this blog
 

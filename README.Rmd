@@ -37,7 +37,7 @@ This repository will continue to grow with new projects as and when I find time.
 
 -   The corresponding helper R script(s) for different projects can be found under `R/` subfolder. These scripts will be grouped in broad themes. E.g. all satellited derived data processing functions will be in the sat data helper script and the names are descriptive enough for it to be easily identifiable.
 
-## Project 6 [upcoming!]: Coding with Conscience: Evolving from Carbon Aware to Grid Aware for Truly Sustainable Computing
+## Project 6 [upcoming!]: Computing with Conscience: Evolving from Carbon Aware to Grid Aware for Truly Sustainable Computing
 
 -   Read the blog here.
 

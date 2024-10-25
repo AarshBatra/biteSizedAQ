@@ -44,7 +44,7 @@ find time. To kick things off, check out the first few projects below!
   in the sat data helper script and the names are descriptive enough for
   it to be easily identifiable.
 
-## Project 6 \[upcoming!\]: Coding with Conscience: Evolving from Carbon Aware to Grid Aware for Truly Sustainable Computing
+## Project 6 \[upcoming!\]: Computing with Conscience: Evolving from Carbon Aware to Grid Aware for Truly Sustainable Computing
 
 - Read the blog here.
 
