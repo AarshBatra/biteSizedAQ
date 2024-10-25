@@ -384,7 +384,7 @@ formula, the total energy consumption for this task would be:
 Next, you multiply this by the carbon intensity of the grid (82
 gCO₂eq/kWh):
 
-3.75kWh×82gCO₂eq/kWh=307.5gCO₂eq
+3.75kWh × 82gCO₂eq/kWh = 307.5gCO₂eq
 
 So, the total carbon emissions for running this training task would be
 **307.5 grams of CO₂-equivalent gases**.
@@ -887,6 +887,80 @@ reliance on fossil fuels. Collaborating with policymakers, energy
 providers, and other stakeholders will be crucial to implementing these
 demand reduction strategies effectively.
 
+### Practical Strategies for Developers Awaiting Grid-Aware Solutions
+
+Grid Awareness is a relatively new idea, so if you try to find tools or
+APIs that give you the Real time energy demand data for a grid, you'll
+likely won't find much at this time. Tools specifically for predicting
+or assessing grid demand in real-time, especially targeted toward
+compute tasks, are still quite limited. Unlike carbon-intensity data,
+grid load prediction is more complex and often regulated by utility
+companies.
+
+But, having said that, as people and organizations are getting on board
+with this idea, more work is now being done in this direction.
+Furthermore, there are ways you can be creative in terms of tapping into
+that information by getting your hands dirty.
+
+So, it wouldn’t make sense for developers to stop using carbon intensity
+tools like Electricity Maps altogether, as these still offer valuable
+insights for reducing emissions. Instead, there are practical strategies
+developers can adopt to balance both carbon awareness and grid demand,
+even while dedicated grid-aware tools are still catching up.
+
+Here are a few approaches and emerging solutions that may help:
+
+-   **Combine Carbon Intensity Data with Local Peak Demand Times**: Many
+    grid operators, like California ISO and PJM in the US, publish data
+    on peak demand times. By scheduling compute tasks during low-demand
+    times in addition to low-carbon times, developers can help avoid
+    overloading greener grids when demand is high.
+
+-   **Distribute Workloads Across Multiple Grids**: Instead of sending a
+    large batch of compute tasks to a single green grid, developers can
+    spread workloads across multiple grids that are green at different
+    times. This reduces the risk of overloading one grid and helps
+    distribute demand more evenly, ensuring a balance between carbon
+    awareness and load management.
+
+-   **Use Cloud Provider Tools that Optimize for Sustainability**: Cloud
+    providers like Google and Microsoft are incorporating sustainability
+    features that account for carbon intensity and regional load. Using
+    these services can help developers be more mindful of grid impacts
+    while staying carbon-aware, as the providers often have data about
+    regional grid stress.
+
+-   **Experiment with Flexible Scheduling**: Instead of rigidly
+    scheduling tasks at a specific green time, developers can introduce
+    flexible time windows. For example, if a task can run anytime within
+    an eight-hour period, they could use APIs to identify both
+    low-carbon and low-demand periods within that window, reducing the
+    chance of hitting a peak load.
+
+-   **Stay Updated on Emerging Tools and Standards**: Since the
+    grid-aware field is developing, staying informed about new standards
+    or APIs can help developers adapt quickly. Some organizations, like
+    LF Energy, are working toward open-source tools that may integrate
+    grid demand data in the future. Companies like WattTime and
+    Electricity Maps, known for carbon-intensity APIs, are working on
+    integrating grid load data to offer a more holistic view. Their
+    efforts are still in development, but these tools could eventually
+    include both carbon and demand forecasting to guide more informed
+    compute decisions.
+
+-   **Academic and Open Source Projects**: Some academic projects and
+    open-source initiatives focus on forecasting grid demand through
+    machine learning models. These are often experimental but can
+    provide predictive insights, especially when calibrated with
+    historical grid data. You can tap into it and also contribute
+    towards it.
+
+> ***Developers - you don’t need to pause your carbon-aware efforts; you
+> just need to be a bit more strategic. By balancing carbon intensity
+> with local grid insights and flexible timing, you can still make
+> environmentally conscious choices without putting undue strain on
+> grids.***
+
 ## Other Concerns: Making AI less thirsty, the water footprint of AI
 
 ![](images/clipboard-450486869.png)
@@ -919,37 +993,6 @@ Although, water footprint is not the focus for this blog post, it can be
 expected to be a focus of a future blog post. In the meantime, I
 encourage you to go through the paper if you want to learn more about
 this crucial issue.
-
-## 
-
-Big Tech's accelerated adoption and marketing of carbon-aware computing
-without any mention of its limitations or its risks of unintended
-consequences is called Greenwashing.
-
-Responsible carbon-aware computing has the potential to contribute to
-greening tech emissions, but it is unconscionable to pursue it without
-factoring in the risks; evidencing mitigation steps and actual impact;
-and providing warning labels in its marketing and promotion.
-
-Furthermore, even being both carbon-aware and grid-aware isn’t enough if
-you overlook other critical factors like **water usage**. Many data
-centers rely on significant amounts of water for cooling. If the focus
-is only on reducing carbon emissions and managing grid demand, but not
-on being **water-aware**, it can result in massive water losses. This is
-especially problematic in regions already facing water scarcity, where
-the environmental footprint shifts from carbon to water consumption.
-
-True sustainability requires being aware of **carbon, grid, water among
-other impacts**. Avoid falling for greenwashing claims that focus on one
-aspect while "intentionally" ignoring others. A comprehensive approach
-is essential to minimize all environmental impacts, not just carbon
-emissions.
-
-Of course there will be constraints and trade-offs that will have to be
-made, but an active discussion and analysis of these trade offs is
-crucial to truly be sustainable in a holistic way. We don't want to fix
-one thing and make something else worse, so be critical of how you
-analyze green efforts.
 
 ## Final Thoughts: Steer Clear of Greenwashing – A Comprehensive Vision for Carbon and Grid-Aware Computing
 
@@ -1006,7 +1049,9 @@ generations.
 ## Rmd for this blog
 
 Underlying Rmd file can be found in the project’s respective folder and
-here is a quick link to access it.
+here is a [quick
+link](https://github.com/AarshBatra/biteSizedAQ/blob/main/6.carbon.aware.computing/README.Rmd)
+to access it.
 
 ## Support This Work: Give It a Star
 
@@ -1034,7 +1079,6 @@ respecting these terms!
 
 For more details, see the LICENSE file.
 
-If you use this in your work, please cite this repository as follows:
-
-$$Aarsh Batra, 2024, biteSizedAQ,
-<https://github.com/AarshBatra/biteSizedAQ>$$
+If you use this in your work, please cite this repository as follows: \
+*[Aarsh Batra, 2024,
+biteSizedAQ,<https://github.com/AarshBatra/biteSizedAQ>]*

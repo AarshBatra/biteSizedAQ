@@ -44,12 +44,15 @@ find time. To kick things off, check out the first few projects below!
   in the sat data helper script and the names are descriptive enough for
   it to be easily identifiable.
 
-## Project 6 \[upcoming!\]: Computing with Conscience: Evolving from Carbon Aware to Grid Aware for Truly Sustainable Computing
+## Project 6: Computing with Conscience: Evolving from Carbon Aware to Grid Aware for Truly Sustainable Computing
 
-- Read the blog here.
+- Read the blog
+  [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/6.carbon.aware.computing).
 
 - Underlying README Rmd file can be found in the project’s respective
-  folder and here is a quick link to access it.
+  folder and here is a [quick
+  link](https://github.com/AarshBatra/biteSizedAQ/blob/main/6.carbon.aware.computing/README.Rmd)
+  to access it.
 
 ## Project 5: Facing Two Fronts: The Intersection of Air Pollution and Climate Change
 
