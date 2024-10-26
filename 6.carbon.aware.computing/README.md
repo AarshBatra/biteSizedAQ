@@ -1074,6 +1074,10 @@ sustainable future.
 
 ## References
 
+- *Global data center electricity use to double by 2026 - IEA report,
+  Data Center Dynamics
+  \[[Link](https://www.datacenterdynamics.com/en/news/global-data-center-electricity-use-to-double-by-2026-report/#:~:text=%E2%80%9CUpdated%20regulations%20and%20technological%20improvements,of%20all%20global%20electricity%20usage.)\]*
+
 - *Electricity Maps Web App
   \[[Link](https://app.electricitymaps.com/map)\]*
 
