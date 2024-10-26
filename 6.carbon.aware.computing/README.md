@@ -56,10 +56,10 @@ Carbon Aware Computing aims to make the invisible, visible by showing us
 the benefits of running the computations to minimize are carbon
 footprint.
 
-However, the idea of **Carbon Aware Computing** — running tasks when and
+***However, the idea of Carbon Aware Computing — running tasks when and
 where renewable energy is available — is not always the solution it
 seems to be. We need to be mindful of common pitfalls in the process and
-avoid being greenwashed.
+avoid being greenwashed.***
 
 Simply shifting compute jobs to “green” windows doesn’t automatically
 reduce emissions; it may just relocate or even increase them. When too
@@ -83,10 +83,10 @@ also the stability and demand patterns of the electricity grids. It aims
 at addressing the pitfalls of the current approach towards Carbon Aware
 Computing.
 
-Imagine the millions of developers across the globe leveraging cloud
+***Imagine the millions of developers across the globe leveraging cloud
 resources—if each took just a few extra steps to carefully understand
 and choose where and when to run their algorithms, the combined benefits
-to the environment could be monumental. By optimizing their computing
+to the environment could be monumental.*** By optimizing their computing
 choices and focusing on both carbon intensity and grid demand,
 developers can contribute to a more sustainable future, avoiding the
 pitfalls of mere carbon awareness and embracing a more responsible,
@@ -108,7 +108,8 @@ While taking this course, I also came across a [detailed blog
 post](https://hackernoon.com/carbon-aware-computing-next-green-breakthrough-or-new-greenwashing)
 by Hackernoon that helped me truly appreciate the pitfalls of the
 current approach to Carbon Aware Computing and introduced me to the
-concept of Grid Aware Computing.
+concept of Grid Aware Computing. I am going to refer to this same post
+in different part of this blog post.
 
 These two sources motivated this blog post in which I aim to provide a
 holistic view of Carbon Aware Computing.
@@ -132,8 +133,12 @@ beliefs and practices around Carbon Aware computing. The important thing
 to note is that the beliefs presented in this section may or may not
 actually end up in curtailing emissions. This is because:
 
+<br>
+
 > ***Being “Carbon Aware” isn’t enough, we need to start becoming “Grid
 > Aware”***
+
+<br>
 
 **Having said that, we’ll first explore the “Carbon Aware” part first
 and then in the next section we’ll explore the “Grid Aware” part, which
@@ -974,11 +979,15 @@ Here are a few approaches and emerging solutions that may help:
   predictive insights, especially when calibrated with historical grid
   data. You can tap into it and also contribute towards it.
 
+<br>
+
 > ***Developers - you don’t need to pause your carbon-aware efforts; you
 > just need to be a bit more strategic. By balancing carbon intensity
 > with local grid insights and flexible timing, you can still make
 > environmentally conscious choices without putting undue strain on
 > grids.***
+
+<br>
 
 ## Other Concerns: Making AI less thirsty, the water footprint of AI
 
@@ -1050,24 +1059,62 @@ A collective commitment to grid-aware computing can transform how data
 centers, AI, blockchain, and other compute-intensive sectors operate. It
 is crucial to communicate the benefits of carbon-aware computing
 transparently, highlighting potential pitfalls to avoid undermining
-progress.
-
-Moreover, carbon is only part of the sustainability equation; water
-usage is another critical issue that requires our attention for holistic
-sustainability.
+progress. Moreover, carbon is only part of the sustainability equation;
+water usage is another critical issue that requires our attention for
+holistic sustainability.
 
 While constraints and trade-offs will arise, an active discussion and
 analysis of these factors are vital for achieving true sustainability.
 We must critically assess our green efforts to avoid fixing one issue
-while exacerbating another.
+while exacerbating another. By adopting these strategies, the tech
+industry can significantly reduce emissions, enhance grid stability, and
+mindfully manage scarce water resources, paving the way for a genuinely
+sustainable future.
 
-By adopting these strategies, the tech industry can significantly reduce
-emissions, enhance grid stability, and mindfully manage scarce water
-resources, paving the way for a genuinely sustainable future.
+<br>
 
-The time to act is now. Together, we can forge a path that meets our
-computing needs while ensuring the planet remains healthy for future
-generations.
+> The time to act is now. Together, we can forge a path that meets our
+> computing needs while ensuring the planet remains healthy for future
+> generations.
+
+<br>
+
+## References
+
+- *Electricity Maps Web App
+  \[[Link](https://app.electricitymaps.com/map)\]*
+
+- *Carbon Aware Computing for GenAI Developers, deeplearning.ai
+  \[[Link](https://learn.deeplearning.ai/courses/carbon-aware-computing-for-genai-developers/lesson/1/introduction)\]*
+
+- *Carbon Aware Computing: Next Green Breakthrough or New Greenwashing?,
+  Ismael Velasco, Hackernoon
+  \[[Link](https://hackernoon.com/carbon-aware-computing-next-green-breakthrough-or-new-greenwashing)\]*
+
+- *What software engineers need to know about how energy grids work,
+  Hannah Smith, Green Web Foundation
+  \[[Link](https://www.thegreenwebfoundation.org/news/how-energy-grids-work/)\]*
+
+- *GitHub Repository, climateaction.tech
+  \[[Link](https://github.com/climateaction-tech/grid-aware-software?ref=hackernoon.com)\]*
+
+- *Carbon Awareness, Green Software Practitioner
+  \[[Link](https://learn.greensoftware.foundation/carbon-awareness/)\]*
+
+- *Greenwashing – the deceptive tactics behind environmental claims,
+  United Nations
+  \[[Link](https://www.un.org/en/climatechange/science/climate-issues/greenwashing)\]*
+
+- *Measure, Report, Reduce your Carbon Emissions using Google Cloud
+  \[[Link](https://cloud.google.com/carbon-footprint)\]*
+
+- *Faster, cheaper, greener? Pick the Google Cloud region that’s right
+  for you, Google Cloud
+  \[[Link1](https://cloud.google.com/blog/topics/sustainability/google-cloud-region-picker-helps-you-make-the-green-choice),
+  [Link2](https://cloud.google.com/sustainability/region-carbon)\]*
+
+- *Google Cloud Region Picker Tool,
+  \[[Link](https://googlecloudplatform.github.io/region-picker/)\]*
 
 ## Rmd for this blog
 
