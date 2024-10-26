@@ -135,8 +135,7 @@ actually end up in curtailing emissions. This is because:
 
 <br>
 
-> ***Being “Carbon Aware” isn’t enough, we need to start becoming “Grid
-> Aware”***
+> #### ***Being “Carbon Aware” isn’t enough, we need to start becoming “Grid Aware”***
 
 <br>
 
@@ -981,11 +980,7 @@ Here are a few approaches and emerging solutions that may help:
 
 <br>
 
-> ***Developers - you don’t need to pause your carbon-aware efforts; you
-> just need to be a bit more strategic. By balancing carbon intensity
-> with local grid insights and flexible timing, you can still make
-> environmentally conscious choices without putting undue strain on
-> grids.***
+> #### ***Developers - you don’t need to pause your carbon-aware efforts; you just need to be a bit more strategic. By balancing carbon intensity with local grid insights and flexible timing, you can still make environmentally conscious choices without putting undue strain on grids.***
 
 <br>
 
@@ -1073,9 +1068,7 @@ sustainable future.
 
 <br>
 
-> The time to act is now. Together, we can forge a path that meets our
-> computing needs while ensuring the planet remains healthy for future
-> generations.
+> #### ***The time to act is now. Together, we can forge a path that meets our computing needs while ensuring the planet remains healthy for future generations.***
 
 <br>
 
