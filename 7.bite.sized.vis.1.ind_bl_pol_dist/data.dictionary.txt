@@ -1,0 +1,20 @@
+Data Dictionary
+---------------
+
+pc11_state_id: SHRUG 2011 shapefile state id	
+
+pc11_district_id: SHRUG 2011 shapefile district id	
+
+pc11_subdistrict_id: SHRUG 2011 shapefile block/subdistrict id	
+
+state_name: State Name	
+
+district_name: District Name	
+
+subdistrict_name: Block/Subdistrict Name	
+
+subdistrict_population: Block Population	
+
+ann_avg_pop_weight_pm2.5_2022: Annual Average Satellite Derived Population Weighted PM2.5 in 2022	
+
+pol_lev_category: Pollution Category

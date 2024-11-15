@@ -44,6 +44,15 @@ find time. To kick things off, check out the first few projects below!
   in the sat data helper script and the names are descriptive enough for
   it to be easily identifiable.
 
+## Project 7: Introducing biteSizedVisual Series: Tackling Air Pollution One Plot at a Time!
+
+### biteSizedVisual \#1: When the Air Chokes: Can India Break Free from Pollution’s Grip?
+
+- Read the blog here.
+
+- Underlying README Rmd file can be found in the project’s respective
+  folder and here is a quick link to access it.
+
 ## Project 6: Computing with Conscience: Evolving from Carbon Aware to Grid Aware for Truly Sustainable Computing
 
 - Read the blog

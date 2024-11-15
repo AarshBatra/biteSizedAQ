@@ -1,0 +1,1 @@
+Note: Annual Average PM2.5 data includes sea salt and dust.
