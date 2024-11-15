@@ -100,7 +100,8 @@ reality for all and not a select few.
 
 ## **Share This Visual!**
 
-here is a link to download the PNG file for the above plot: Link.
+Here is a link to download the PNG file for the above plot: [Link to
+PNG](https://github.com/AarshBatra/biteSizedAQ/blob/main/7.bite.sized.vis.1.ind_bl_pol_dist/final.plot.png).
 
 Help raise awareness about the severity of air pollution in India by
 sharing this visual. By spreading the message, we can collectively push
@@ -110,26 +111,35 @@ quality challenges faced by millions across the country.
 
 ## Resources and Notes
 
-- The underlying block level data (with all 5969 blocks) used to
-  generate the map can be found in biteSizedAQ project number 1 here on
-  this link. The data dictionary is present here.
+- The block level data (with all 5969 blocks) used to generate the map
+  can be found in biteSizedAQ here [on this
+  link](https://github.com/AarshBatra/biteSizedAQ/blob/main/7.bite.sized.vis.1.ind_bl_pol_dist/final_data.csv).
+  The data dictionary is [present
+  here.](https://github.com/AarshBatra/biteSizedAQ/blob/main/7.bite.sized.vis.1.ind_bl_pol_dist/data.dictionary.txt)
 
 - The data processing pipeline (with full documentation) that converts
   the raw satellite derived PM2.5 data into the processed data was
-  covered under project 1 of biteSizedAQ and can be found here.
+  covered under project 1 of biteSizedAQ and can be [found
+  here](https://github.com/AarshBatra/biteSizedAQ/tree/main/1.ind.block.pm2.5.sat.data.processing).
 
 - Raw Satellite Derived PM2.5 Data refers to Annual Average PM2.5
   measured in micrograms per cubic meter and includes sea salt and dust.
+  This gridded dataset can be [found
+  here](https://sites.wustl.edu/acag/datasets/surface-pm2-5/#V6.GL.02).
 
 - The underlying India block level 2011 population census shapefile was
   downloaded from the SHRUG platform, developed by the Development Data
-  Lab. Here is the link to access that. Look under “Open Polygons and
-  Spatial Statistics”.
+  Lab. Here is the[link to
+  access](https://www.devdatalab.org/shrug_download/) that. Look under
+  “Open Polygons and Spatial Statistics”.
 
 ## Rmd for this blog
 
 This visualization was produced using R programming language. Code can
-be found in the Rmd file. Here is a quick link to access it.
+be found in the corresponding Rmd file. Here is a [quick link to access
+it.](https://github.com/AarshBatra/biteSizedAQ/blob/main/7.bite.sized.vis.1.ind_bl_pol_dist.Rmd)
+The underlying Rmd for this blog post can be[found
+here](https://github.com/AarshBatra/biteSizedAQ/blob/main/7.bite.sized.vis.1.ind_bl_pol_dist/README.Rmd).
 
 ## Support This Work: Give It a Star
 

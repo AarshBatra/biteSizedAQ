@@ -48,10 +48,26 @@ find time. To kick things off, check out the first few projects below!
 
 ### biteSizedVisual \#1: When the Air Chokes: Can India Break Free from Pollution’s Grip?
 
-- Read the blog here.
+- See the Visual
+  [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/7.bite.sized.vis.1.ind_bl_pol_dist).
 
-- Underlying README Rmd file can be found in the project’s respective
-  folder and here is a quick link to access it.
+- Underlying README Rmd file with R code used to generate the visual can
+  be found
+  [here](https://github.com/AarshBatra/biteSizedAQ/blob/main/7.bite.sized.vis.1.ind_bl_pol_dist.Rmd).
+
+- Rmd for the blog can be found in the project’s respective folder
+  number. Here is a [quick
+  link](https://github.com/AarshBatra/biteSizedAQ/blob/main/7.bite.sized.vis.1.ind_bl_pol_dist/README.Rmd)
+  to access it.
+
+- Final processed data used to generate the visual:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/7.bite.sized.vis.1.ind_bl_pol_dist/final_data.csv)
+
+- Data Dictionary:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/7.bite.sized.vis.1.ind_bl_pol_dist/data.dictionary.txt)
+
+- PNG file for the Visual for quick sharing:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/7.bite.sized.vis.1.ind_bl_pol_dist/final.plot.png)
 
 ## Project 6: Computing with Conscience: Evolving from Carbon Aware to Grid Aware for Truly Sustainable Computing
 
@@ -59,7 +75,7 @@ find time. To kick things off, check out the first few projects below!
   [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/6.carbon.aware.computing).
 
 - Underlying README Rmd file can be found in the project’s respective
-  folder and here is a [quick
+  folder number and here is a [quick
   link](https://github.com/AarshBatra/biteSizedAQ/blob/main/6.carbon.aware.computing/README.Rmd)
   to access it.
 
@@ -69,7 +85,7 @@ find time. To kick things off, check out the first few projects below!
   [here.](https://github.com/AarshBatra/biteSizedAQ/tree/main/5.aq.climate.change)
 
 - Underlying README Rmd file can be found in the project’s respective
-  folder and here is a [quick link to access
+  folder number and here is a [quick link to access
   it.](https://github.com/AarshBatra/biteSizedAQ/blob/main/5.aq.climate.change/README.Rmd)
 
 ## Project 4: Monitoring Air Quality: The Power of Satellite Based Remote Sensing
@@ -78,7 +94,7 @@ find time. To kick things off, check out the first few projects below!
   [here.](https://github.com/AarshBatra/biteSizedAQ/tree/main/4.aq.remote.sensing)
 
 - Underlying README Rmd file can be found in the project’s respective
-  folder and here is a [quick link to access
+  folder number and here is a [quick link to access
   it.](https://github.com/AarshBatra/biteSizedAQ/blob/main/4.aq.remote.sensing/README.Rmd)
 
 ## Project 3: Air Quality Data Management Systems Landscape: Navigating Challenges and Opportunities
@@ -87,7 +103,7 @@ find time. To kick things off, check out the first few projects below!
   [here.](https://github.com/AarshBatra/biteSizedAQ/tree/main/3.aq.dms)
 
 - Underlying README Rmd file can be found in the project’s respective
-  folder and here is a [quick link to access
+  folder number and here is a [quick link to access
   it.](https://github.com/AarshBatra/biteSizedAQ/blob/main/3.aq.dms/README.Rmd)
 
 ## Project 2: Deciphering Air Pollution Units: Essential Insights for Informed Action
@@ -96,7 +112,7 @@ find time. To kick things off, check out the first few projects below!
   [here.](https://github.com/AarshBatra/biteSizedAQ/tree/main/2.air.pol.units.explainer)
 
 - Underlying README Rmd file can be found in the project’s respective
-  folder and here is a [quick link to access
+  folder number and here is a [quick link to access
   it.](https://github.com/AarshBatra/biteSizedAQ/blob/main/2.air.pol.units.explainer/README.Rmd)
 
 ## Project 1: Block level satellite derived population weighted air pollution dataset for India from 1998-2022
