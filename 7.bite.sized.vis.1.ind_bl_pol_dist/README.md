@@ -1,7 +1,7 @@
 
-# biteSizedVisual Series: Tackling Air Pollution One Plot at a Time!
+# biteSizedVisuals Series: Tackling Air Pollution One Plot at a Time!
 
-Welcome to the biteSizedVisual Series: Tackling Air Pollution One Plot
+Welcome to the biteSizedVisuals Series: Tackling Air Pollution One Plot
 at a Time!
 
 In this series, I’ll break down air quality and pollution data into
