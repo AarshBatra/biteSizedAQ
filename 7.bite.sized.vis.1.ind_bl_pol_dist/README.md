@@ -129,7 +129,7 @@ quality challenges faced by millions across the country.
 
 - The underlying India block level 2011 population census shapefile was
   downloaded from the SHRUG platform, developed by the Development Data
-  Lab. Here is the[link to
+  Lab. Here is the [link to
   access](https://www.devdatalab.org/shrug_download/) that. Look under
   “Open Polygons and Spatial Statistics”.
 
