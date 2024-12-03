@@ -4,9 +4,11 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-## Why present at AGU 2024?
+  
+  
+![](images/clipboard-1753585366.png)
 
-![](images/clipboard-507347030.png)
+## Why present at AGU 2024?
 
 I last presented at AGU in 2022, in person, in Chicago while working on
 the Air Quality Life Index project for EPIC UChicago. The experience was
@@ -141,8 +143,9 @@ task at a time!
 Thank you for reading! If you found the poster or other biteSizedAQ
 projects helpful or interesting, consider giving the repository a star
 on GitHub. Your support helps others discover and benefit from this
-fully open and free resource. Click here to star the repository and join
-the growing community of biteSizedAQ followers!  
+fully open and free resource. Click
+[here](https://github.com/AarshBatra/biteSizedAQ/tree/main) to star the
+repository and join the growing community of biteSizedAQ followers!  
   
 ![](images/clipboard-1645959672.png)
 

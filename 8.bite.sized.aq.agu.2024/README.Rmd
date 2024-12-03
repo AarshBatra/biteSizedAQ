@@ -15,11 +15,11 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 
-<!-- badges: end -->
+<!-- badges: end -->\
+\
+![](images/clipboard-1753585366.png)
 
 ## Why present at AGU 2024?
-
-![](images/clipboard-507347030.png)
 
 I last presented at AGU in 2022, in person, in Chicago while working on the Air Quality Life Index project for EPIC UChicago. The experience was transformative—meeting hundreds of people, exploring incredible projects, and diving into cutting-edge advancements in Earth and Open Sciences. Those jam-packed days inspired me deeply.
 
@@ -114,7 +114,7 @@ I’m excited to connect, even virtually. Let’s discuss how biteSizedAQ is dem
 
 ## Support biteSizedAQ: Give It a Star :)
 
-Thank you for reading! If you found the poster or other biteSizedAQ projects helpful or interesting, consider giving the repository a star on GitHub. Your support helps others discover and benefit from this fully open and free resource. Click here to star the repository and join the growing community of biteSizedAQ followers!\
+Thank you for reading! If you found the poster or other biteSizedAQ projects helpful or interesting, consider giving the repository a star on GitHub. Your support helps others discover and benefit from this fully open and free resource. Click [here](https://github.com/AarshBatra/biteSizedAQ/tree/main) to star the repository and join the growing community of biteSizedAQ followers!\
 \
 ![](images/clipboard-1645959672.png)
 
