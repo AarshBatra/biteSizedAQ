@@ -153,7 +153,7 @@ quality challenges faced by millions across the country.
 This visualization was produced using R programming language. Code can
 be found in the corresponding Rmd file. Here is a [quick link to access
 it.](https://github.com/AarshBatra/biteSizedAQ/blob/main/7.bite.sized.vis.1.ind_bl_pol_dist.Rmd)
-The underlying Rmd for this blog post can be[ found
+The underlying Rmd for this blog post can be[found
 here](https://github.com/AarshBatra/biteSizedAQ/blob/main/7.bite.sized.vis.1.ind_bl_pol_dist/README.Rmd).
 
 ## Support This Work: Give It a Star

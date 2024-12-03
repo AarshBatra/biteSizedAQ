@@ -44,6 +44,12 @@ find time. To kick things off, check out the first few projects below!
   in the sat data helper script and the names are descriptive enough for
   it to be easily identifiable.
 
+## Project 8: biteSizedAQ will be presenting a virtual poster in American Geophysical Unit 2024 meeting!
+
+- Read more details and background here.
+
+- View the Interactive Poster in AGU 2024 i poster gallery here.
+
 ## Project 7: Introducing biteSizedVisuals Series: Tackling Air Pollution One Plot at a Time!
 
 ### biteSizedVisual \#1: When the Air Chokes: Can India Break Free from Pollution’s Grip?
