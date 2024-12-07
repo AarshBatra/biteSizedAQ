@@ -20,8 +20,7 @@ Let’s dive into the data—one plot at a time!
 
 ## biteSizedVisual \#2: **India’s PM2.5 Pollution: A 25 Year Story of Crisis and Contrast**
 
-*(Plot might take 1-2 seconds to load)  
-*
+***(Plot might take 1-2 seconds to load below)***
 
 ![](images/final_plt.png)
 
