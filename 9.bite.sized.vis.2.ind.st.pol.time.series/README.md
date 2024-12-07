@@ -20,7 +20,8 @@ Let’s dive into the data—one plot at a time!
 
 ## biteSizedVisual \#2: **India’s PM2.5 Pollution: A 25 Year Story of Crisis and Contrast**
 
-<br>
+*(Plot might take 1-2 seconds to load)  
+*
 
 ![](images/final_plt.png)
 
@@ -172,7 +173,14 @@ quality challenges faced by millions across the country.
 ## Resources and Notes
 
 - The state level data used to generate this plot can be found in
-  biteSizedAQ here on this link. The data dictionary is present here.
+  biteSizedAQ repo under project 9 folder, here on [this
+  link.](https://github.com/AarshBatra/biteSizedAQ/blob/main/9.bite.sized.vis.2.ind.st.pol.time.series/ind_st_lev_pol_1998_2020_final.csv)
+  The data dictionary is [present
+  here](https://github.com/AarshBatra/biteSizedAQ/blob/main/9.bite.sized.vis.2.ind.st.pol.time.series/data.dictionary.txt).
+  The block level data used to produce state level results can be found
+  [here](https://github.com/AarshBatra/biteSizedAQ/blob/main/7.bite.sized.vis.1.ind_bl_pol_dist/final_data.csv)
+  (and it’s data dictionary
+  [here](https://github.com/AarshBatra/biteSizedAQ/blob/main/7.bite.sized.vis.1.ind_bl_pol_dist/data.dictionary.txt)).
 
 - The data processing pipeline (with full documentation) that converts
   the raw satellite derived PM2.5 data into the processed data was
@@ -187,8 +195,10 @@ quality challenges faced by millions across the country.
 ## Rmd for this blog
 
 This visualization was produced using R programming language. Code can
-be found in the corresponding Rmd file. Here is a quick link to access
-it. The underlying Rmd for this blog post can be found here.
+be found in the corresponding Rmd file. Here is a [quick
+link](https://github.com/AarshBatra/biteSizedAQ/blob/main/9.bite.sized.vis.2.ind.st.pol.time.series.Rmd)
+to access it. The underlying Rmd for this blog post can be [found
+here](https://github.com/AarshBatra/biteSizedAQ/blob/main/9.bite.sized.vis.2.ind.st.pol.time.series/README.Rmd).
 
 ## Support This Work: Give It a Star
 

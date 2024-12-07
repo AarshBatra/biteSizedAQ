@@ -35,8 +35,8 @@ find time. To kick things off, check out the first few projects below!
 - E.g. Project 1 has the id 1. It corresponds to a project folder named
   `1.ind.block.pm2.5.sat.data.processing` which contains the project’s
   README file. In case of a project involving code and data an
-  additional Rmd containing code can be found at the root of the
-  biteSizedAQ repo.
+  additional Rmd (with the same name as the project folder name)
+  containing code can be found at the root of the biteSizedAQ repo.
 
 - The corresponding helper R script(s) for different projects can be
   found under `R/` subfolder. These scripts will be grouped in broad
@@ -46,19 +46,26 @@ find time. To kick things off, check out the first few projects below!
 
 ## Project 9: biteSizedVisual \#2 - **India’s PM2.5 Pollution: A 25 year Story of Crisis and Contrast**
 
-- See the Visual and blog here.
+- See the Visual and blog
+  [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/9.bite.sized.vis.2.ind.st.pol.time.series).
 
 - Underlying README Rmd file with R code used to generate the visual can
-  be found here.
+  be found
+  [here](https://github.com/AarshBatra/biteSizedAQ/blob/main/9.bite.sized.vis.2.ind.st.pol.time.series.Rmd).
 
 - Rmd for the blog can be found in the project’s respective folder
-  number. Here is a quick link to access it.
+  number. Here is a [quick
+  link](https://github.com/AarshBatra/biteSizedAQ/blob/main/9.bite.sized.vis.2.ind.st.pol.time.series/README.Rmd)
+  to access it.
 
-- Final processed data used to generate the visual: Link
+- Final processed data used to generate the visual:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/9.bite.sized.vis.2.ind.st.pol.time.series/ind_st_lev_pol_1998_2020_final.csv)
 
-- Data Dictionary: Link
+- Data Dictionary:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/9.bite.sized.vis.2.ind.st.pol.time.series/data.dictionary.txt)
 
-- PNG file for the Visual for quick sharing: Link
+- High resolution PNG file for the Visual for quick sharing:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/9.bite.sized.vis.2.ind.st.pol.time.series/final.plt.png)
 
 ## Project 8: biteSizedAQ is excited to present a virtual poster at the American Geophysical Union (AGU) 2024 Meeting!
 
