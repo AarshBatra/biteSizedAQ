@@ -26,10 +26,8 @@ Let’s dive into the data—one plot at a time!
 
 ## biteSizedVisual #2: **Tracking 25 Years of PM2.5 pollution Across Indian States and UTs: A Story of Crisis and Contrast**
 
-***(Plot might take 1-2 seconds to load below)***
-
-![](images/final_plt.png)
-
+![](images/WhatsApp Image 2024-12-07 at 20.21.32.jpeg)\
+\
 Over the past two decades, India’s air pollution levels have been under
 intense scrutiny, with PM2.5 concentrations—the fine particulate matter
 that poses severe health risks—serving as a critical metric. From the
