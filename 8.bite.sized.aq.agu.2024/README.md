@@ -1,5 +1,5 @@
 
-# biteSizedAQ will be presenting a virtual poster at AGU 2024 (Dec 09-13, 2024)!
+# biteSizedAQ will be presenting a virtual poster at AGU 2024 (Dec 09-13)!
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -73,7 +73,7 @@ Press the **Esc** button to return to the main view.
 
 - ***December 10, 2024***: 11:30 am - 12 pm (US/Eastern Time, GMT - 5)
 
-- ***December 13, 2024***: 01:40 pm - 02:10 pm (US/Eastern Time, GMT -
+- ***December 12, 2024***: 01:40 pm - 02:10 pm (US/Eastern Time, GMT -
   5)
 
 **Video Sessions:**

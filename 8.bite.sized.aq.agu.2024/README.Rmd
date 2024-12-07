@@ -11,11 +11,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# biteSizedAQ will be presenting a virtual poster at AGU 2024 (Dec 09-13, 2024)!
+# biteSizedAQ will be presenting a virtual poster at AGU 2024 (Dec 09-13)!
 
 <!-- badges: start -->
 
-<!-- badges: end -->\
+<!-- badges: end -->
+
+\
 \
 ![](images/clipboard-1753585366.png)
 
@@ -53,13 +55,13 @@ Here is the link to the I-Poster presentation, check it out: <https://agu24.ipos
 
 Once you open the link, you’ll find six numbered text boxes and an automatic slider. Explore the boxes in order by clicking on each to expand the content. Visuals in the boxes can also be clicked to enlarge. Press the **Esc** button to return to the main view.
 
-## When is biteSizedAQ presenting? 
+## When is biteSizedAQ presenting?
 
 **Chat sessions:**
 
 -   ***December 10, 2024***: 11:30 am - 12 pm (US/Eastern Time, GMT - 5)
 
--   ***December 13, 2024***: 01:40 pm - 02:10 pm (US/Eastern Time, GMT - 5)
+-   ***December 12, 2024***: 01:40 pm - 02:10 pm (US/Eastern Time, GMT - 5)
 
 **Video Sessions:**
 
@@ -91,9 +93,8 @@ Feel free to get in touch with me at aarshbatra.in\@gmail.com, or get in touch w
 
 -   **Abstract**: Read the core abstract for the poster.
 
-```{=html}
 <!-- -->
-```
+
 -   **Narration**: A guided walkthrough as you explore.
 
 -   **Transcript**: Access the narration text.
