@@ -1,0 +1,12 @@
+Data Dictionary
+---------------
+
+state_ut: State or UT
+
+year: Year
+
+min_pm2.5: Minimum annual average PM2.5 (micrograms per cubic meter)
+
+max_pm2.5: Maximum annual average PM2.5 (micrograms per cubic meter)
+
+avg_pm2.5: Annual average PM2.5 (micrograms per cubic meter)

@@ -44,6 +44,22 @@ find time. To kick things off, check out the first few projects below!
   in the sat data helper script and the names are descriptive enough for
   it to be easily identifiable.
 
+## Project 9: biteSizedVisual \#2 - **India’s PM2.5 Pollution: A 25 year Story of Crisis and Contrast**
+
+- See the Visual and blog here.
+
+- Underlying README Rmd file with R code used to generate the visual can
+  be found here.
+
+- Rmd for the blog can be found in the project’s respective folder
+  number. Here is a quick link to access it.
+
+- Final processed data used to generate the visual: Link
+
+- Data Dictionary: Link
+
+- PNG file for the Visual for quick sharing: Link
+
 ## Project 8: biteSizedAQ is excited to present a virtual poster at the American Geophysical Union (AGU) 2024 Meeting!
 
 - Read all details about the presentation, how to attend and more
@@ -56,7 +72,7 @@ find time. To kick things off, check out the first few projects below!
 
 ### biteSizedVisual \#1: When the Air Chokes: Can India Break Free from Pollution’s Grip?
 
-- See the Visual
+- See the Visual and blog
   [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/7.bite.sized.vis.1.ind_bl_pol_dist).
 
 - Underlying README Rmd file with R code used to generate the visual can

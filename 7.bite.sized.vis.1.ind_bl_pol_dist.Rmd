@@ -86,7 +86,7 @@ ind_country_shp <- st_read(paste0(here(), "/4.ind.bl.lev.pol.dist/raw.data/india
 ```
 
 
-## Story 4: ridgeline plot of India block level air pollution
+## India choropleth 2022 satellite derived PM2.5 pollution
 
 ```{r}
 
