@@ -42,7 +42,30 @@ find time. To kick things off, check out the first few projects below!
   found under `R/` subfolder. These scripts will be grouped in broad
   themes. E.g. all satellited derived data processing functions will be
   in the sat data helper script and the names are descriptive enough for
-  it to be easily identifiable.
+  it to be easily identifiable.  
+
+------------------------------------------------------------------------
+
+## Project 10: biteSizedVisual \#3 - Air Quality Data Deficit: 45% of Nations Either Don’t Monitor or Monitor but Don’t Share Any Data
+
+- See the Visual and blog
+  [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary).
+
+- Underlying README Rmd file with R code used to generate the visual can
+  be found here.
+
+- Rmd for the blog can be found in the project’s respective folder
+  number. Here is a [quick
+  link](https://github.com/AarshBatra/biteSizedAQ/blob/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary/README.Rmd)
+  to access it.
+
+- Final processed data used to generate the visual:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary/final.plot.data.csv)
+
+- Data Dictionary:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary/data_dictionary.txt)
+
+- High resolution PNG file for the Visual for quick sharing: Link
 
 ## Project 9: biteSizedVisual \#2 - **India’s PM2.5 Pollution: A 25 year Story of Crisis and Contrast**
 

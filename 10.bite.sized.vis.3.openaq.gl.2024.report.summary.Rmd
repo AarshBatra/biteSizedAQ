@@ -1,0 +1,292 @@
+---
+title: "10.bite.sized.vis.3.openaq.gl.2024.report.summary"
+author: "Aarsh Batra"
+date: "`r Sys.Date()`"
+output: html_document
+---
+## load libraries and background helper functions
+```{r load_lib}
+
+#### load libraries
+library(tidyverse)
+library(jsonlite)
+library(here)
+library(sf)
+library(ggplot2)
+library(geojson)
+library(devtools)
+library(geojsonio)
+library(geojsonsf)
+library(roxygen2)
+library(magrittr)
+library(stringr)
+library(data.table)
+library(viridis)
+library(ggthemes)
+library(hrbrthemes)
+library(RColorBrewer)
+library(haven)
+library(janitor)
+library(lwgeom)
+library(rvest)
+library(dplyr)
+library(ggrepel)
+library(ggsflabel)
+library(fuzzyjoin)
+library(tidytext)
+library(tm)
+library(wordcloud2)
+library(recipes)
+library(forcats)
+library(forcats)
+library(geofacet)
+library(pak)
+library(camcorder)
+library(ggbeeswarm)
+library(ggtext)
+library(ggimage)
+library(tidyverse)
+library(ggbeeswarm)
+library(cowplot)
+library(ggtext)
+library(scales)
+library(grid)
+library(png)
+library(here)
+library(showtext)
+library(sysfonts)
+library(ggimage)
+library(Cairo)
+library(extrafont)
+library(MetBrewer)
+library(rnaturalearth)
+library(scico)
+
+#### Negation of the "%in%" operator function
+`%notin%` <- Negate(`%in%`)
+
+```
+
+## clean raw data
+
+```{r}
+
+#### read data
+open_aq_gl_2024_data <- readxl::read_xlsx(paste0(here(), "/10.bite.sized.vis.3.openaq.gl.2024.report.summary/raw.data.xlsx"))
+
+#### clean col names
+open_aq_gl_2024_data_clean <- open_aq_gl_2024_data %>%
+  clean_names() %>%
+  select(-link_to_public_portal_website_or_external_platform_where_aq_data_can_be_publicly_accessed) %>%
+  rename(country = country_or_dependency, 
+       cur_gov_aq_mon_2024 = is_there_any_evidence_of_current_government_operated_aq_monitoring_system_in_2024, 
+        cur_gov_aq_mon_2022 = is_there_any_evidence_of_government_operated_aq_monitoring_system_in_2022, 
+        pub_acc_data = publicly_accessible_only_in_country, 
+       ful_trans = fully_transparent, 
+       par_trans = partially_transparent, 
+       physical_data_av = a_physical_data, 
+       st_lev_and_coord_av = b_station_level_and_coordinates, 
+       timely_fine_scale_av = c_timely_fine_scale, 
+       prog_acess_av = d_programmatic_access) %>%
+  mutate_if(is.character, tolower) %>%
+   mutate_all(~ na_if(., "-")) %>%
+  filter(country %notin% c(198)) %>%
+  filter(country %notin% c("yes", "no")) %>%
+  filter(!is.na(country))
+
+#### add a status column
+open_aq_gl_2024_data_clean <- open_aq_gl_2024_data_clean %>%
+  mutate(data_sharing_status = ifelse(cur_gov_aq_mon_2024 == "no", "Do not monitor", NA),
+         data_sharing_status = ifelse(cur_gov_aq_mon_2024 == "yes" & ful_trans == "yes", "Monitor: share data fully", data_sharing_status), 
+         data_sharing_status = ifelse(cur_gov_aq_mon_2024 == "yes" & ful_trans == "no", "Monitor: share data partially", data_sharing_status), 
+           data_sharing_status = ifelse(cur_gov_aq_mon_2024 == "yes" & pub_acc_data == "no", "Monitor: do not share data", data_sharing_status)) %>%
+  mutate(country = ifelse(country == "bahamas, the", "the bahamas", country), 
+         country = ifelse(country == "brunei darussalam", "brunei", country), 
+         country = ifelse(country == "côte d'ivoire", "ivory coast", country), 
+         country = ifelse(country == "congo, dem. rep.", "democratic republic of the congo", country), 
+         country = ifelse(country == "congo, rep.", "republic of congo", country), 
+         country = ifelse(country == "cabo verde", "cape verde", country), 
+         country = ifelse(country == "czechia", "czech republic", country), 
+         country = ifelse(country == "egypt, arab rep.", "egypt", country), 
+         country = ifelse(country == "micronesia, fed. states of", "federated states of micronesia", country), 
+         country = ifelse(country == "gambia, rep. of the", "gambia", country), 
+         country = ifelse(country == "guinea-bissau", "guinea bissau", country), 
+         country = ifelse(country == "hong kong sar, china", "hong kong s.a.r.", country), 
+         country = ifelse(country == "iran, islamic rep. of", "iran", country), 
+         country = ifelse(country == "kyrgyz republic", "kyrgyzstan", country), 
+         country = ifelse(country == "st. kitts and nevis", "saint kitts and nevis", country), 
+         country = ifelse(country == "south korea (korea, rep.)", "south korea", country), 
+         country = ifelse(country == "lao people's democractic rep.", "laos", country),
+         country = ifelse(country == "st. lucia", "saint lucia", country),
+        country = ifelse(country == "moldova, rep. of", "moldova", country), 
+        country = ifelse(country == "north macedonia", "macedonia", country), 
+        country = ifelse(country == "north korea (korea, dem. people's rep.)", "north korea", country), 
+        country = ifelse(country == "palestinian territories", "palestine", country), 
+        country = ifelse(country == "russian federation", "russia", country),
+        country = ifelse(country == "serbia", "republic of serbia", country), 
+          country = ifelse(country == "slovak republic", "slovakia", country), 
+        country = ifelse(country == "eswatini", "swaziland", country), 
+         country = ifelse(country == "syrian arab republic", "syria", country), 
+        country = ifelse(country == "timor-leste", "east timor", country), 
+        country = ifelse(country == "türkiye", "turkey", country), 
+        country = ifelse(country == "tanzania, united rep. of", "united republic of tanzania", country), 
+         country = ifelse(country == "united states", "united states of america", country), 
+        country = ifelse(country == "st. vincent and the grenadines", "saint vincent and the grenadines", country), 
+        country = ifelse(country == "venezuela, bolivarian rep. of", "venezuela", country), 
+         country = ifelse(country == "viet nam", "vietnam", country), 
+        country = ifelse(country == "yemen, rep. of", "yemen", country), 
+         country = ifelse(country == "tuvalu", "tuvalu", country)) 
+
+#### get shapefile ready with open aq data
+
+### Load country level polygons and merge with net_migr_rate, sync up country names where needed
+
+### load shapefile data
+world <- ne_countries(scale = "medium", returnclass = "sf") 
+
+### basic cleaning
+world <- world %>%
+  select(admin, geometry) %>%
+  rename(country = admin) %>%
+  mutate_if(is.character, tolower) %>%
+  st_as_sf()
+
+### create a single cyprus and then remove northern cyprus
+cyprus_polygon <- world %>% 
+  filter(country %in% c("cyprus", "northern cyprus")) %>% 
+  summarise(geometry = st_union(geometry)) %>%
+  mutate(country = "cyprus") %>%
+  select(-geometry, geometry) %>%
+  st_as_sf()
+
+world <- world %>%
+  filter(country %notin% c("cyprus", "northern cyprus")) %>%
+  bind_rows(cyprus_polygon) %>%
+  st_as_sf()
+
+### merge with openaq data
+world_joined_open_aq <- world %>%
+  full_join(open_aq_gl_2024_data_clean, by = "country") %>%
+  mutate(data_sharing_status = ifelse(is.na(data_sharing_status), "NA", data_sharing_status)) %>%
+  select(-geometry, geometry) %>%
+  st_as_sf() 
+
+#### Define font and adjust palette to have 9 colors
+f1 <- "Calibri"
+
+
+#### Define color hex codes as variables
+color_na <- "lightgrey"
+color_do_not_monitor <- "#a8796b"
+color_monitor_share_fully <- "#a2d7db"
+color_monitor_share_partially <- "#85a292"
+color_monitor_do_not_share <- "#e7e9aa"
+
+#### Darker border colors
+color_na_v2 <- "#6e6f5f"
+color_do_not_monitor_v2 <- "#8b6653"
+color_monitor_share_fully_v2 <- "#84b2b5"
+color_monitor_share_partially_v2 <- "#a5d1b8"
+color_monitor_do_not_share_v2 <- "#9e9f80"
+
+#### lwd
+lwd_add <- 0.3
+lwd_add_2 <- 0.8
+
+
+#### Create plot
+plt <- world_joined_open_aq %>%
+  filter(country != "antarctica") %>%
+  ggplot() +
+  geom_sf(data = . %>% filter(data_sharing_status == "NA"), mapping = aes(fill = data_sharing_status), color = color_na, lwd = lwd_add) +
+  geom_sf(data = . %>% filter(data_sharing_status == "Do not monitor"), mapping = aes(fill = data_sharing_status), color = "#78564f", lwd = lwd_add) +
+  geom_sf(data = . %>% filter(data_sharing_status == "Monitor: share data fully"), mapping = aes(fill = data_sharing_status), color = "#7bccd1", lwd = lwd_add) +
+  geom_sf(data = . %>% filter(data_sharing_status == "Monitor: share data partially"), mapping = aes(fill = data_sharing_status), color = "#608a62", lwd = lwd_add) +
+  geom_sf(data = . %>% filter(data_sharing_status == "Monitor: do not share data"), mapping = aes(fill = data_sharing_status), color = "#e0e392", lwd = lwd_add) +
+  theme_map() +
+  scale_size_continuous(range = c(3.2, 5)) +
+  coord_sf(crs = "+proj=robin", expand = FALSE) +
+  scale_fill_manual(values = c("NA" = color_na,
+                               "Do not monitor" = color_do_not_monitor,
+                               "Monitor: share data fully" = color_monitor_share_fully,
+                               "Monitor: share data partially" = color_monitor_share_partially,
+                               "Monitor: do not share data" = color_monitor_do_not_share)) +
+  labs(title = "Air Quality Data Deficit: 45% of Nations Either Don’t Monitor or Monitor but Don't Share Any Data",
+       subtitle = paste("Of the 198 countries analyzed under OpenAQ's Open Air Quality Data Global Landscape 2024 report: <span style='color:", "#78564f", ";'><b>36% don't<br>monitor air quality data, </b></span><span style='color:", "#e8eaae", ";'><b> 9% monitor but don't share, </b></span><span style='color:", "#608a62", ";'><b>28% share data partially</b></span>", "and",
+                        "<span style='color:", "#acdfe2", ";'><b>only 27% share data fully<br>openly in a maximally useful way</b></span>"),
+       caption = "Graphic: github.com/AarshBatra/biteSizedAQ | Data Source: OpenAQ Open Air Quality Data, the Global Landscape 2024 report"
+  ) +
+  theme(
+    legend.position = "none",  
+    plot.background = element_rect(fill = "white", color = NA),
+    legend.text = element_text(size = 16),
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    plot.caption = element_text(hjust = 0.5, size = 13, family = f1, margin = margin(t = 2.2, b = 0.3, unit = "cm")),
+    plot.title = ggtext::element_markdown(size = 30, family = f1, hjust = 0, margin = margin(b = 0.4, unit = "cm"), face = "bold"), 
+    plot.subtitle = ggtext::element_markdown(size = 26, family = f1, hjust = 0, margin = margin(b = 2.3, unit = "cm"), face = "italic"),
+    plot.margin = margin(t = 15, r = 15, b = 15, l = 15)
+  )
+
+plt1 <- ggbackground(plt, "./10.bite.sized.vis.3.openaq.gl.2024.report.summary/images/b20.png")
+
+ ggsave("final.plt.biteSizedVis3.png", plt1, width = 20, height = 11, dpi = 620, units = "in")
+ 
+```
+
+
+## plot1: radial bubble chart
+
+```{r}
+# Install necessary libraries
+library(sunburstR)
+library(dplyr)
+library(readxl)
+
+# Load the dataset (update file path)
+data <- open_aq_gl_2024_data_clean
+
+bubble_data <- data %>%
+  pivot_longer(
+    cols = c(
+      cur_gov_aq_mon_2024, pub_acc_in_country_only, ful_trans,
+      par_trans, physical_data_av, st_lev_and_coord_av, 
+      timely_fine_scale_av, prog_acess_av
+    ),
+    names_to = "Feature",
+    values_to = "Status"
+  ) %>%
+  mutate(
+    Status = ifelse(is.na(Status), "No", Status),
+    Status = factor(Status, levels = c("no", "yes"), labels = c("No", "Yes"))
+  ) %>%
+  group_by(country, Feature, Status) %>%
+  summarize(Count = n(), .groups = 'drop') %>%
+  group_by(country, Feature) %>%
+  mutate(Proportion = Count / sum(Count)) %>%
+  filter(Status == "Yes")  # Only keep the "Yes" status for bubble size
+
+# Plot: Bubble Matrix
+p <- ggplot(bubble_data %>% filter(country %in% c("india", "australia")), aes(x = Feature, y = country, size = Proportion, fill = Proportion)) +
+  geom_point(shape = 21, color = "black") +
+  scale_size_area(max_size = 15) +
+  scale_fill_gradient(low = "red", high = "green") +
+  theme_minimal() +
+  labs(
+    title = "Bubble Matrix of Air Quality Policies by Region",
+    subtitle = "Bubble Size and Color Represent Proportion of Countries Complying",
+    x = "Policy Feature",
+    y = "Region",
+    size = "Proportion",
+    fill = "Proportion"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 10),
+    axis.text.y = element_text(size = 10),
+    plot.title = element_text(size = 16, face = "bold"),
+    plot.subtitle = element_text(size = 12)
+  )
+
+
+
+```

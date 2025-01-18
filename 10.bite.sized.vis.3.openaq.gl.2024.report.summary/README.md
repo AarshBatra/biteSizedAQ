@@ -24,6 +24,8 @@ Let’s dive into the data—one plot at a time!
 
 ## **The Global Air Quality Crisis: Why Fully Open and Transparent Data is the First Step Toward Clean Air**
 
+![](final.plt.png)
+
 Air pollution is one of the world’s deadliest threats, responsible for
 over seven million premature deaths annually. Despite its critical
 importance, the availability of air quality data—the very foundation for
