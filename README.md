@@ -52,7 +52,8 @@ find time. To kick things off, check out the first few projects below!
   [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary).
 
 - Underlying README Rmd file with R code used to generate the visual can
-  be found here.
+  be found
+  [here](https://github.com/AarshBatra/biteSizedAQ/blob/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary.Rmd).
 
 - Rmd for the blog can be found in the project’s respective folder
   number. Here is a [quick
@@ -65,7 +66,8 @@ find time. To kick things off, check out the first few projects below!
 - Data Dictionary:
   [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary/data_dictionary.txt)
 
-- High resolution PNG file for the Visual for quick sharing: Link
+- High resolution PNG file for the Visual for quick sharing:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary/final.plt.png)
 
 ## Project 9: biteSizedVisual \#2 - **India’s PM2.5 Pollution: A 25 year Story of Crisis and Contrast**
 

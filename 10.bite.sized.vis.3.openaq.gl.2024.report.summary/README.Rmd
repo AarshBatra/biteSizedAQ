@@ -177,7 +177,9 @@ realized for all.
 
 ## **Share This Visual!**
 
-Here is a link to download the PNG file for the above plot: Link to PNG.
+Here is a [link to download the PNG
+file](https://github.com/AarshBatra/biteSizedAQ/blob/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary/final.plt.png)
+for the above plot: Link to PNG.
 
 Help raise awareness about the severity of air pollution in India by
 sharing this and other visuals in the biteSizedVisuals series. By
@@ -206,8 +208,10 @@ by millions across the country.
 ## Rmd for this blog
 
 This visualization was produced using R programming language. Code can
-be found in the corresponding Rmd file. Here is a quick link to access
-it. The underlying Rmd for this blog post can be found here.
+be found in the corresponding Rmd file. Here is a [quick
+link](https://github.com/AarshBatra/biteSizedAQ/blob/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary.Rmd)
+to access it. The underlying Rmd for this blog post [can be found
+here](https://github.com/AarshBatra/biteSizedAQ/blob/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary/README.Rmd).
 
 ## Support This Work: Give It a Star
 
