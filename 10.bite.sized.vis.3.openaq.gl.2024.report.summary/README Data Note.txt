@@ -1,0 +1,1 @@
+Only 198 countries were analyzed under the OpenAQ analysis, for all other countries a data sharing status was not determined and is shown as grey in the map. Have other questions?: Reach out to me at aarshbatra.in@gmail.com

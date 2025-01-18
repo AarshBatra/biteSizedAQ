@@ -1,0 +1,19 @@
+
+Data Dictionary:
+
+- country: Name of the country.
+- cur_gov_aq_mon_2024: Whether the government monitored air quality in 2024.
+- cur_gov_aq_mon_2022: Whether the government monitored air quality in 2022.
+- pub_acc_data_in_country_only: Whether data is publicly accessible within the country only.
+- ful_trans: Whether data is fully transparent, open, and maximally useful.
+- par_trans: Whether data is only partially transparent.
+- physical_data_av: Whether data is available in physical units (e.g., micrograms per cubic meter).
+- st_lev_and_coord_av: Whether station-level exact coordinates are available.
+- timely_fine_scale_av: Whether data is available in a fine time scale for granular analysis.
+- prog_access_av: Whether programmatic access to data is available (e.g., via an API).
+- data_sharing_status: Categorizes countries into one of the following:
+  - "Do not monitor"
+  - "Monitor: share data fully"
+  - "Monitor: share data partially"
+  - "Monitor: do not share data"
+
