@@ -61,7 +61,11 @@ find time. To kick things off, check out the first few projects below!
   to access it.
 
 - Final processed data used to generate the visual:
-  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary/final.plot.data.csv)
+  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary/final.plot.data.csv).
+  This is the same as the 2024 [Open AQ Global Landscape Report
+  Worksheet](https://docs.google.com/spreadsheets/d/1SVd5ODK2cCEmV0eIS7gn6gmWMvUufxIOfaCOX8Ukb2w/edit?gid=0#gid=0)
+  with countries and their tags, with an added data_sharing_status
+  column for plotting purposes.
 
 - Data Dictionary:
   [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary/data_dictionary.txt)

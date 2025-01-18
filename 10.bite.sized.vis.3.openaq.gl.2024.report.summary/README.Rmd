@@ -188,10 +188,16 @@ address the crisis and create a healthier future for all. Share this
 visual with your network to highlight the air quality challenges faced
 by millions across the country.
 
-## References
+## References/Citations
 
--   *Open Air Quality Data, the Global Landscape Report 2024, OpenAQ
-    [[Link](https://documents.openaq.org/reports/Open+Air+Quality+Data-The+Global+Landscape+2024.pdf)]*
+-   Rosales, C M F, Hagerbaumer, C, Sawant, V, Marte, J, Biggs, R,
+    (2024) 2024 Open Air Quality Data: The Global Landscape OpenAQ,
+    Washington, DC
+    *[[Link](https://documents.openaq.org/reports/Open+Air+Quality+Data-The+Global+Landscape+2024.pdf)]*
+
+-   2024 Open AQ Global Landscape Report Worksheet with countries and
+    their tags
+    *[[Link](https://docs.google.com/spreadsheets/d/1SVd5ODK2cCEmV0eIS7gn6gmWMvUufxIOfaCOX8Ukb2w/edit?gid=0#gid=0)]*
 
 -   *Accelerating Country-led Air Quality Reporting to Achieve Clean
     Air, Our Common Air
@@ -231,13 +237,12 @@ Get in touch about related topics/report any errors. Reach out to me at
 
 ## License and Reuse
 
-All content is shared under the Creative Commons Attribution 4.0
-International (CC BY 4.0) license. You are welcome to use this material
-in your reports or news stories. Just remember to give appropriate
-credit and include a link back to the original work. Thank you for
-respecting these terms!
-
-For more details, see the LICENSE file.
+All content is provided under the Creative Commons Attribution 4.0
+International (CC BY 4.0) license. Feel free to incorporate this
+material into your reports or news stories, as long as you give
+appropriate credit to the original creators and include links to all
+their original works. Thank you for adhering to these terms!For more
+details, see the LICENSE file.
 
 If you use this in your work, please cite this repository as follows:\
 *[Aarsh Batra, biteSizedAQ,
