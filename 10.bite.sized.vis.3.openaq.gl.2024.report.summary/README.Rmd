@@ -191,9 +191,10 @@ by millions across the country.
 ## References/Citations
 
 -   Rosales, C M F, Hagerbaumer, C, Sawant, V, Marte, J, Biggs, R,
+
     (2024) 2024 Open Air Quality Data: The Global Landscape OpenAQ,
-    Washington, DC
-    *[[Link](https://documents.openaq.org/reports/Open+Air+Quality+Data-The+Global+Landscape+2024.pdf)]*
+           Washington, DC
+           *[[Link](https://documents.openaq.org/reports/Open+Air+Quality+Data-The+Global+Landscape+2024.pdf)]*
 
 -   2024 Open AQ Global Landscape Report Worksheet with countries and
     their tags

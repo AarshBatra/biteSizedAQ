@@ -46,6 +46,13 @@ find time. To kick things off, check out the first few projects below!
 
 ------------------------------------------------------------------------
 
+## Project 11: Different Approaches, Consistent Findings: How Researchers Measure Air Pollution’s Toll on Life
+
+- Read the blog here.
+
+- Rmd for the blog can be found in the project’s respective folder
+  number. Here is a quick link to access it.
+
 ## Project 10: biteSizedVisual \#3 - Air Quality Data Deficit: 45% of Nations Either Don’t Monitor or Monitor but Don’t Share Any Data
 
 - See the Visual and blog

@@ -230,7 +230,7 @@ plt <- world_joined_open_aq %>%
 
 plt1 <- ggbackground(plt, "./10.bite.sized.vis.3.openaq.gl.2024.report.summary/images/b20.png")
 
- ggsave("final.plt.biteSizedVis3.png", plt1, width = 20, height = 11, dpi = 620, units = "in")
+ ggsave("final.plt.biteSizedVis3_v2.png", plt1, width = 20, height = 11, dpi = 320, units = "in")
  
 ```
 

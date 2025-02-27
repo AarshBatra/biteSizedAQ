@@ -39,7 +39,13 @@ This repository will continue to grow with new projects as and when I find time.
 
 ------------------------------------------------------------------------
 
-##  Project 10: biteSizedVisual #3 - Air Quality Data Deficit: 45% of Nations Either Don’t Monitor or Monitor but Don't Share Any Data
+## Project 11: Different Approaches, Consistent Findings: How Researchers Measure Air Pollution’s Toll on Life
+
+-   Read the blog here.
+
+-   Rmd for the blog can be found in the project's respective folder number. Here is a quick link to access it.
+
+## Project 10: biteSizedVisual #3 - Air Quality Data Deficit: 45% of Nations Either Don’t Monitor or Monitor but Don't Share Any Data
 
 -   See the Visual and blog [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/10.bite.sized.vis.3.openaq.gl.2024.report.summary).
 
