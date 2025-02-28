@@ -48,10 +48,13 @@ find time. To kick things off, check out the first few projects below!
 
 ## Project 11: Different Approaches, Consistent Findings: How Researchers Measure Air Pollution’s Toll on Life
 
-- Read the blog here.
+- Read the blog
+  [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/11.air.pol.life.exp.calc.apte.other.methods).
 
 - Rmd for the blog can be found in the project’s respective folder
-  number. Here is a quick link to access it.
+  number. Here is a [quick
+  link](https://github.com/AarshBatra/biteSizedAQ/blob/main/11.air.pol.life.exp.calc.apte.other.methods/README.Rmd)
+  to access it.
 
 ## Project 10: biteSizedVisual \#3 - Air Quality Data Deficit: 45% of Nations Either Don’t Monitor or Monitor but Don’t Share Any Data
 

@@ -387,7 +387,8 @@ clear: Air Pollution Kills, this is well established and there is no
 denying that. This should always be a given, the specifics come after
 this.
 
-Let’s briefly review some of these research methodologies:
+Let’s briefly review other research methodologies that we often find in
+the air pollution research:
 
 ## Experimental Methods
 
@@ -397,13 +398,7 @@ Let’s briefly review some of these research methodologies:
 where they breathe air with carefully controlled amounts of pollution.
 Researchers then measure immediate changes in their body functions.
 
-**Real-World Example:** In 2009, Robert Brook and colleagues published a
-study in Environmental Health Perspectives examining what happens to
-blood vessels when people briefly breathe air containing fine particles.
-Volunteers were exposed to either filtered air or air containing
-concentrated ambient particles in a controlled setting.
-
-**Simplified Explanation of How These Methods Generally Work:**
+**Simplified Explanation of How These Methods Might Generally Work:**
 
 1.  Recruit healthy volunteers
 
@@ -414,11 +409,6 @@ concentrated ambient particles in a controlled setting.
     inflammation
 
 4.  Compare the differences between clean air and polluted air exposure
-
-**What They Found:** Brook’s team found that even brief exposure to
-particulate air pollution caused blood vessels to constrict and blood
-pressure to increase, suggesting mechanisms by which pollution might
-lead to heart disease over time.
 
 **Strengths:**
 
@@ -433,12 +423,8 @@ lead to heart disease over time.
 
 - Ethical constraints prevent deliberately exposing people to high
   levels of pollution in studies.
-
-<!-- -->
-
 - Long-term effects of pollution cannot be studied in a controlled lab
   setting, as people live in diverse real-world environments.
-
 - Studies often rely on relatively healthy volunteers, which may not
   fully represent the more vulnerable populations most affected by
   pollution**.**
@@ -449,12 +435,7 @@ lead to heart disease over time.
 or rats) to different levels of air pollution over extended periods to
 see how it affects their health.
 
-**Real-World Example:** In 2005, Qinghua Sun and colleagues published a
-study in the Journal of the American Medical Association that exposed
-mice to air pollution for six hours a day, five days a week, for six
-months – equivalent to long-term exposure in humans.
-
-**How They Work:**
+**Simplified Explanation of How These Methods Might Generally Work:**
 
 1.  Expose groups of animals to different levels of pollution
 
@@ -463,11 +444,6 @@ months – equivalent to long-term exposure in humans.
 3.  Monitor their health over time
 
 4.  Examine their organs after death to look for damage
-
-**What They Found:** Sun’s team discovered that mice exposed to PM2.5
-pollution developed more arterial plaque (a risk factor for heart
-attacks) than mice breathing clean air. This provided evidence that air
-pollution can accelerate heart disease.
 
 **Strengths:**
 
@@ -494,12 +470,7 @@ pollution can accelerate heart disease.
 real-world events that change air pollution levels, such as factory
 closings, strikes, or new regulations.
 
-**Real-World Example:** In 2018, Corwin Zigler and colleagues published
-a study in Epidemiology examining what happened to health outcomes when
-areas were designated as “nonattainment” under the Clean Air Act,
-triggering stricter pollution controls.
-
-**How They Work:**
+**Simplified Explanation of How These Methods Might Generally Work:**
 
 1.  Identify an event that changed pollution levels in some areas but
     not others
@@ -508,17 +479,6 @@ triggering stricter pollution controls.
 
 3.  Compare how health outcomes changed in areas affected by the event
     versus unaffected areas
-
-**What They Found:** Zigler’s team found that areas designated as
-nonattainment saw greater reductions in PM2.5 levels and corresponding
-improvements in health outcomes compared to areas that weren’t
-designated for stricter controls.
-
-**Comparison with Life Tables:**
-
-If life tables are like predicting health based on a computer model,
-natural experiments are like watching what actually happens when
-pollution levels change in the real world.
 
 **Strengths:**
 
@@ -541,13 +501,7 @@ pollution levels change in the real world.
 **What They Are:** This approach compares how health outcomes change
 over time in areas that experience different trends in pollution levels.
 
-**Real-World Example:** In 2013, Yuyu Chen and colleagues published a
-landmark study in Proceedings of the National Academy of Sciences
-examining China’s Huai River policy, which provided free coal for winter
-heating to people living north of the river but not to those living
-south of it.
-
-**How They Work:**
+**Simplified Explanation of How These Methods Might Generally Work:**
 
 1.  Identify a dividing line (like a river or policy boundary) where
     pollution levels differ
@@ -556,11 +510,6 @@ south of it.
 
 3.  Calculate how much the differences in health outcomes are caused by
     the differences in pollution
-
-**What They Found:** Chen’s team discovered that areas north of the Huai
-River had PM2.5 concentrations about 184 micrograms per cubic meter
-higher than areas south of the river. This pollution difference caused
-people in the north to live about 5.5 years less on average.
 
 **Strengths:**
 
@@ -585,13 +534,7 @@ people in the north to live about 5.5 years less on average.
 that affects pollution levels but doesn’t directly affect health to help
 establish cause and effect.
 
-**Real-World Example:** In 2019, Tatyana Deryugina and colleagues
-published a study in American Economic Review using wind direction as an
-“instrument” for air pollution. Wind direction affects pollution levels
-(by blowing pollution toward or away from an area) but doesn’t directly
-affect health.
-
-**How They Work:**
+**Simplified Explanation of How These Methods Might Generally Work:**
 
 1.  Find something that changes pollution levels but doesn’t directly
     affect health
@@ -605,11 +548,6 @@ Think of it like this: If more people get sick on days when the wind
 blows from a factory toward a town (compared to days when it blows away
 from the town), the factory’s pollution is likely causing the health
 problems.
-
-**What They Found:** Deryugina’s team found that each 1 microgram per
-cubic meter increase in PM2.5 exposure (as predicted by wind patterns)
-increased death rates by 0.69 per million elderly Americans over the
-following three days.
 
 **Strengths:**
 
@@ -634,12 +572,7 @@ following three days.
 pollution levels or regulations change abruptly to detect health
 effects.
 
-**Real-World Example:** In 2014, Michael Greenstone and Rema Hanna
-published a study in American Economic Review examining the effects of
-environmental regulations in India, including air pollution control
-policies.
-
-**How They Work:**
+**Simplified Explanation of How These Methods Might Generally Work:**
 
 1.  Find a threshold where something changes sharply (like a regulatory
     boundary)
@@ -652,12 +585,6 @@ policies.
 For example, if a regulation applies to cities above 100,000 population
 but not smaller cities, comparing health in cities of 99,000 people
 versus 101,000 people can show the regulation’s effects.
-
-**What They Found:** Greenstone and Hanna found that while India’s
-environmental regulations did reduce air pollution levels, the magnitude
-was modest. The air pollution policies were associated with a small
-decline in infant mortality (0.64%), though this estimate wasn’t
-statistically significant.
 
 **Strengths:**
 
@@ -681,12 +608,7 @@ statistically significant.
 years, measuring their exposure to pollution and tracking their health
 outcomes.
 
-**Real-World Example:** In 2009, C. Arden Pope III and colleagues
-published a study in the New England Journal of Medicine examining how
-changes in particulate air pollution related to changes in life
-expectancy across 51 U.S. metropolitan areas from 1980 to 2000.
-
-**How They Work:**
+**Simplified Explanation of How These Methods Might Generally Work:**
 
 1.  Recruit thousands or even millions of people
 
@@ -699,12 +621,6 @@ expectancy across 51 U.S. metropolitan areas from 1980 to 2000.
 
 5.  Analyze whether those with higher pollution exposure had worse
     health outcomes
-
-**What They Found:** Pope’s team found that metropolitan areas with
-larger decreases in PM2.5 pollution had larger increases in life
-expectancy. Specifically, a decrease of 10 micrograms per cubic meter in
-PM2.5 was associated with an increase of about 0.61 years in life
-expectancy.
 
 **Strengths:**
 
@@ -731,11 +647,7 @@ expectancy.
 strengthen our ability to determine whether pollution actually causes
 health problems, rather than just being associated with them.
 
-**Real-World Example:** In 2019, Xiao Wu and colleagues published a
-study in Annals of Applied Statistics addressing the challenge of
-measurement error in air pollution studies.
-
-**How They Work:**
+**Simplified Explanation of How These Methods Might Generally Work:**
 
 1.  Use mathematical frameworks to clarify what factors might influence
     both pollution levels and health
@@ -748,12 +660,6 @@ measurement error in air pollution studies.
 For instance, these methods might help determine whether people in
 polluted areas die earlier because of the pollution itself or because
 polluted areas tend to have more poverty (which also affects health).
-
-**What They Found:** Wu’s team showed that traditional approaches
-underestimate the uncertainty in pollution-mortality associations.
-However, even after accounting for this additional uncertainty, they
-still found significant effects of PM2.5 on mortality, suggesting the
-relationship is robust.
 
 **Strengths:**
 
@@ -777,12 +683,7 @@ relationship is robust.
 pollution each person is actually exposed to, using satellites, computer
 models, and monitoring networks.
 
-**Real-World Example:** In 2017, Qian Di and colleagues published a
-study in the New England Journal of Medicine using a new approach to
-estimate daily air pollution levels across the entire continental United
-States at a resolution of 1 square kilometer.
-
-**How They Work:**
+**Simplified Explanation of How These Methods Might Generally Work:**
 
 1.  Combine data from ground-level pollution monitors
 
@@ -792,11 +693,6 @@ States at a resolution of 1 square kilometer.
 
 4.  Apply machine learning to predict pollution levels where no monitors
     exist
-
-**What They Found:** Di and colleagues linked their high-resolution
-pollution estimates to Medicare records for 61 million older Americans.
-They found significant increases in death rates associated with PM2.5
-and ozone exposure, even at levels below current national standards.
 
 **Strengths:**
 
@@ -880,15 +776,10 @@ action. Every fraction of a year we gain by reducing PM2.5 is a victory
 against a deadly enemy. It’s time to take the science seriously and work
 together to secure a healthier, longer future for everyone.
 
-## Resources and Notes
-
-- 
-
 ## Rmd for this blog
 
-This visualization was produced using R programming language. Code can
-be found in the corresponding Rmd file. Here is a quick link to access
-it. The underlying Rmd for this blog post can be found here.
+The underlying Rmd for this blog post can be found
+[here](https://github.com/AarshBatra/biteSizedAQ/blob/main/11.air.pol.life.exp.calc.apte.other.methods/README.Rmd).
 
 ## Support This Work: Give It a Star
 
@@ -899,7 +790,7 @@ star the
 repository](https://github.com/AarshBatra/biteSizedAQ/stargazers) and
 join other folks who follow biteSizedAQ.  
   
-![](images/clipboard-2655384799.png)
+![](images/clipboard-526920622.png)
 
 ## Get in touch
 
