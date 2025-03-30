@@ -9,7 +9,7 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Super Pollutants: The Double-Edged Sword of Air Pollution and Climate Change
+# Super Pollutants: The Deadly Link Between Air Pollution and Climate Change
 
 <br>
 
@@ -287,7 +287,7 @@ agreement aimed at **reducing methane emissions by 30% by 2030**
 joined, committing to targeted reductions across key methane-emitting
 sectors:
 
--    **Agriculture**: Cutting emissions from livestock and rice paddies
+-   **Agriculture**: Cutting emissions from livestock and rice paddies
     through improved manure management, feed additives, and sustainable
     farming practices.
 
@@ -319,10 +319,10 @@ refrigeration, air conditioning, and aerosol propellants.
     consumption by 80–85% by 2047**, with developed nations phasing down
     first, followed by developing countries in a staggered timeline.
 
--    If fully implemented, it is expected to **prevent up to 0.5°C of
+-   If fully implemented, it is expected to **prevent up to 0.5°C of
     global warming by 2100**.
 
--    It encourages the adoption of **climate-friendly alternatives**,
+-   It encourages the adoption of **climate-friendly alternatives**,
     including **natural refrigerants** (CO₂, ammonia, hydrocarbons) and
     next-generation **low-GWP refrigerants**.
 
@@ -338,16 +338,16 @@ tackling air pollution by supporting **data-driven policies,
 technological innovation, and advocacy**. Unlike governmental
 initiatives, the Clean Air Fund focuses on:
 
--    **Investing in low- and middle-income countries**, where air
+-   **Investing in low- and middle-income countries**, where air
     pollution levels are often highest.
 
--    **Funding air pollution research** and real-time monitoring
+-   **Funding air pollution research** and real-time monitoring
     technologies, such as AI-driven air quality modeling.
 
--    **Mobilizing private-sector engagement** in air quality improvement
+-   **Mobilizing private-sector engagement** in air quality improvement
     efforts.
 
--    The fund collaborates with organizations like the **World Health
+-   The fund collaborates with organizations like the **World Health
     Organization (WHO)**, **United Nations Environment Programme
     (UNEP)**, and **Bloomberg Philanthropies** to advance clean air
     policies globally.
@@ -436,7 +436,7 @@ emissions:
     In rice paddies, apply intermittent aeration—allowing fields time to
     drain, much like intermittent fasting helps the body reset—to reduce
     methane production. When rice paddies are continuously flooded, the
-    soil becomes oxygen-deprived (anaerobic). \
+    soil becomes oxygen-deprived (anaerobic).\
     \
     In these conditions, specialized microorganisms called methanogens
     thrive and produce methane as they break down organic matter.
@@ -444,13 +444,13 @@ emissions:
     at strategic times during the growing season. This introduces oxygen
     into the soil, which:\
 
-    1.   Disrupts the activity of methane-producing microbes
+    1.  Disrupts the activity of methane-producing microbes
         (methanogens)
 
-    2.   Promotes the growth of methane-consuming microbes
+    2.  Promotes the growth of methane-consuming microbes
         (methanotrophs)
 
-    3.   Changes the soil chemistry to favor less methane production
+    3.  Changes the soil chemistry to favor less methane production
 
     \
     Other techniques include: Improving livestock management through
@@ -727,18 +727,18 @@ mitigation efforts.
 
 The major SLCPs include:
 
--    **Methane (CH₄):** Lasts about **12 years** in the atmosphere but
+-   **Methane (CH₄):** Lasts about **12 years** in the atmosphere but
     has **over 80 times** the warming potential of CO₂ over a 20-year
     period.
 
--    **Black Carbon (soot):** Remains in the air for **days to weeks**,
+-   **Black Carbon (soot):** Remains in the air for **days to weeks**,
     absorbs heat efficiently, and contributes to glacier and ice melt.
 
--    **Hydrofluorocarbons (HFCs):** Can persist for **a few years to
+-   **Hydrofluorocarbons (HFCs):** Can persist for **a few years to
     decades**, depending on the specific type, and have **thousands of
     times the warming potential of CO₂**.
 
--    **Tropospheric Ozone (O₃):** A short-lived pollutant that
+-   **Tropospheric Ozone (O₃):** A short-lived pollutant that
     contributes to warming and harms respiratory health.
 
 Because of their **short atmospheric lifetime**, reducing SLCP emissions
@@ -753,12 +753,12 @@ as SLCPs.
 
 For example:
 
--    **Nitrous Oxide (N₂O):** A powerful greenhouse gas primarily
-    emitted from **agriculture and industrial activities**. It remains
-    in the atmosphere for **over 100 years**, making it a **long-lived
-    climate pollutant (LLCP)** rather than an SLCP.
+-   **Nitrous Oxide (N₂O):** A powerful greenhouse gas primarily emitted
+    from **agriculture and industrial activities**. It remains in the
+    atmosphere for **over 100 years**, making it a **long-lived climate
+    pollutant (LLCP)** rather than an SLCP.
 
--    **Sulfur Hexafluoride (SF₆):** Used in electrical insulation, SF₆
+-   **Sulfur Hexafluoride (SF₆):** Used in electrical insulation, SF₆
     has a **lifetime of over 1,000 years** and a **warming potential
     25,000 times higher than CO₂** over a century.
 
@@ -768,12 +768,12 @@ atmosphere.
 
 ### **Why This Distinction Matters**
 
--    **SLCP mitigation offers near-term benefits:** Because SLCPs
+-   **SLCP mitigation offers near-term benefits:** Because SLCPs
     disappear quickly from the atmosphere, reducing their emissions
     leads to **immediate climate and air quality improvements**—helping
     slow warming in the coming decades.
 
--    **Super pollutant strategies must include both SLCPs and long-lived
+-   **Super pollutant strategies must include both SLCPs and long-lived
     pollutants:** While focusing on SLCPs can deliver rapid results,
     long-term climate stability requires also addressing CO₂, N₂O, and
     other persistent greenhouse gases.

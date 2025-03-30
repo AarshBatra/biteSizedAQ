@@ -1,5 +1,5 @@
 
-# Super Pollutants: The Double-Edged Sword of Air Pollution and Climate Change
+# Super Pollutants: The Deadly Link Between Air Pollution and Climate Change
 
 <br>
 
