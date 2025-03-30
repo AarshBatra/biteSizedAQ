@@ -46,7 +46,7 @@ find time. To kick things off, check out the first few projects below!
 
 ------------------------------------------------------------------------
 
-## Project 12: Super Pollutants: The Double-Edged Sword of Air Pollution and Climate Change
+## Project 12: Super Pollutants: The Deadly Link Between Air Pollution and Climate Change
 
 - Read the blog
   [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/12.super.pollutants).
