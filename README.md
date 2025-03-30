@@ -46,6 +46,13 @@ find time. To kick things off, check out the first few projects below!
 
 ------------------------------------------------------------------------
 
+## Project 12: Super Pollutants: The Double-Edged Sword of Air Pollution and Climate Change
+
+- Read the blog here.
+
+- Rmd for the blog can be found in the project’s respective folder
+  number. Here is a quick link to access it.
+
 ## Project 11: Different Approaches, Consistent Findings: How Researchers Measure Air Pollution’s Toll on Life
 
 - Read the blog
