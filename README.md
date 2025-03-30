@@ -48,10 +48,13 @@ find time. To kick things off, check out the first few projects below!
 
 ## Project 12: Super Pollutants: The Double-Edged Sword of Air Pollution and Climate Change
 
-- Read the blog here.
+- Read the blog
+  [here](https://github.com/AarshBatra/biteSizedAQ/tree/main/12.super.pollutants).
 
 - Rmd for the blog can be found in the project’s respective folder
-  number. Here is a quick link to access it.
+  number. Here is a [quick
+  link](https://github.com/AarshBatra/biteSizedAQ/blob/main/12.super.pollutants/README.Rmd)
+  to access it.
 
 ## Project 11: Different Approaches, Consistent Findings: How Researchers Measure Air Pollution’s Toll on Life
 

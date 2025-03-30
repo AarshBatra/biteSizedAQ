@@ -3,7 +3,7 @@
 
 <br>
 
-<img src="images/clipboard-4181539632.png" width="965" height="744" />
+<img src="images/image.png" width="975" height="836" />
 
 > *Image Source: <https://in.pinterest.com/pin/5981412000211089/>*
 
@@ -835,7 +835,8 @@ super pollutants.
 
 ## Rmd for this blog
 
-The underlying Rmd for this blog post can be found here.
+The underlying Rmd for this blog post can be found
+[here](https://github.com/AarshBatra/biteSizedAQ/blob/main/12.super.pollutants/README.Rmd).
 
 <br>
 
