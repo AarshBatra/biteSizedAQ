@@ -2,10 +2,38 @@
 % Please edit documentation in R/sat.derived.data.helper.R
 \name{nc_to_raster_layer}
 \alias{nc_to_raster_layer}
-\title{nc to rasterlayer}
+\title{Convert NetCDF PM2.5 Data to RasterLayer}
 \usage{
 nc_to_raster_layer(nc_file_path, pm2.5_var_name, lat_var_name, long_var_name)
 }
+\arguments{
+\item{nc_file_path}{A character string specifying the path to the NetCDF file.}
+
+\item{pm2.5_var_name}{A character string specifying the name of the PM2.5 variable in the NetCDF file.}
+
+\item{lat_var_name}{A character string specifying the name of the latitude variable in the NetCDF file.}
+
+\item{long_var_name}{A character string specifying the name of the longitude variable in the NetCDF file.}
+}
+\value{
+A `RasterLayer` object representing the PM2.5 data, georeferenced using the latitude
+and longitude values from the NetCDF file.
+}
 \description{
-converts a .nc pollution file to a raster layer
+This function reads PM2.5 data from a NetCDF file and converts it into a `RasterLayer` object
+with a geographic coordinate reference system.
+}
+\details{
+The function performs the following steps:
+\itemize{
+  \item Opens the NetCDF file using `ncdf4::nc_open`.
+  \item Extracts the PM2.5, latitude, and longitude variables.
+  \item Reverses the latitude axis to match the raster orientation.
+  \item Creates a raster using the longitude and latitude bounds.
+  \item Fills the raster with the PM2.5 values.
+  \item Assigns a WGS84 geographic coordinate reference system.
+}
+
+This function is useful for converting gridded air quality data from NetCDF format to raster
+for spatial analysis.
 }

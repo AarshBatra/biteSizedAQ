@@ -1,7 +1,36 @@
-#' nc to rasterlayer
+#' Convert NetCDF PM2.5 Data to RasterLayer
 #'
+#' This function reads PM2.5 data from a NetCDF file and converts it into a `RasterLayer` object
+#' with a geographic coordinate reference system.
 #'
-#' converts a .nc pollution file to a raster layer
+#' @param nc_file_path A character string specifying the path to the NetCDF file.
+#' @param pm2.5_var_name A character string specifying the name of the PM2.5 variable in the NetCDF file.
+#' @param lat_var_name A character string specifying the name of the latitude variable in the NetCDF file.
+#' @param long_var_name A character string specifying the name of the longitude variable in the NetCDF file.
+#'
+#' @return A `RasterLayer` object representing the PM2.5 data, georeferenced using the latitude
+#' and longitude values from the NetCDF file.
+#'
+#' @details
+#' The function performs the following steps:
+#' \itemize{
+#'   \item Opens the NetCDF file using `ncdf4::nc_open`.
+#'   \item Extracts the PM2.5, latitude, and longitude variables.
+#'   \item Reverses the latitude axis to match the raster orientation.
+#'   \item Creates a raster using the longitude and latitude bounds.
+#'   \item Fills the raster with the PM2.5 values.
+#'   \item Assigns a WGS84 geographic coordinate reference system.
+#' }
+#'
+#' This function is useful for converting gridded air quality data from NetCDF format to raster
+#' for spatial analysis.
+#'
+#' @importFrom ncdf4 nc_open ncvar_get nc_close
+#' @importFrom raster raster values crs
+#' @importFrom sp CRS
+#'
+#' @export
+
 
 nc_to_raster_layer <- function(nc_file_path, pm2.5_var_name, lat_var_name, long_var_name){
 
@@ -35,12 +64,53 @@ nc_to_raster_layer <- function(nc_file_path, pm2.5_var_name, lat_var_name, long_
 }
 
 
-#' Processes those polygons for which pollution and/or population data was not captured
+#' Process Uncaptured UIDs with Raster Resampling and Population-Weighted Pollution Calculation
 #'
+#' This function handles administrative units (UIDs) that were missed in the original
+#' population-weighted pollution aggregation. It rasterizes shapefile regions for these UIDs,
+#' resamples pollution and population rasters to a finer resolution, and computes
+#' population-weighted average PM2.5 values.
 #'
+#' @param uids_not_captured A numeric vector of `uid_for_rasterization` values corresponding to
+#' regions that were not included in the initial processing.
+#' @param unit_pol_raster A `RasterLayer` containing unit-level PM2.5 (or other pollutant) values.
+#' @param unit_pop_raster A `RasterLayer` with unit-level population values at a coarser resolution.
+#' @param ref_shp_file_to_be_rasterized A `sf` object representing the reference shapefile with a
+#' column named `uid_for_rasterization` used for filtering and rasterization.
+#' @param resample_to_res A numeric value specifying the target resolution (in degrees) to which
+#' rasters are resampled. Defaults to `0.001`.
+#' @param res_resample_from A numeric value indicating the original resolution (in degrees) of the
+#' population raster. Defaults to `0.00833333` (approx. 1km).
 #'
+#' @return A data frame summarizing the population-weighted pollution for each UID, with the following columns:
+#' \describe{
+#'   \item{sh_rast}{UID of the processed shapefile region.}
+#'   \item{total_population}{Total resampled population in the region.}
+#'   \item{avg_pm2.5_pollution}{Population-weighted average PM2.5 value.}
+#' }
 #'
+#' @details
+#' For each UID, the function performs:
+#' \itemize{
+#'   \item Filtering the shapefile to the UID.
+#'   \item Rasterizing the filtered polygon.
+#'   \item Cropping, resampling, and masking the pollution and population rasters to match the polygon.
+#'   \item Adjusting population raster values to represent densities before resampling.
+#'   \item Creating a raster stack and converting to a data frame.
+#'   \item Computing population weights and weighted pollution.
+#'   \item Aggregating to produce population-weighted pollution summaries.
+#' }
 #'
+#' This is useful for recovering and summarizing air quality data for regions initially excluded
+#' due to raster alignment or small size.
+#'
+#' @importFrom dplyr filter mutate summarise group_by ungroup
+#' @importFrom purrr map_dfr
+#' @importFrom raster crop mask resample extent crs stack as.data.frame values
+#' @importFrom fasterize fasterize
+#' @importFrom arrow as_arrow_table
+#'
+#' @export
 
 process_uncaptured_uids <- function(uids_not_captured, unit_pol_raster, unit_pop_raster, ref_shp_file_to_be_rasterized, resample_to_res = 0.001, res_resample_from = 0.00833333) {
 
@@ -87,12 +157,52 @@ process_uncaptured_uids <- function(uids_not_captured, unit_pol_raster, unit_pop
 }
 
 
-#' Processes those polygons for which pollution and/or population data was not captured v2
+#' Process Uncaptured UIDs for Population-Weighted PM2.5 Calculation
 #'
+#' This function processes regions (UIDs) that were not captured during the initial population-weighted
+#' PM2.5 calculation. It resamples both the population and pollution rasters to a finer resolution,
+#' rasterizes the corresponding shapefile regions, and computes the population-weighted average PM2.5 values.
 #'
+#' @param uids_not_captured A vector of unique identifiers (`uid_for_rasterization`) corresponding to regions
+#' that were not captured in the initial processing.
+#' @param unit_pol_raster A `RasterLayer` of unit-level PM2.5 pollution values.
+#' @param unit_pop_raster A `RasterLayer` of unit-level population values, typically at coarser resolution.
+#' @param ref_shp_file_to_be_rasterized A `sf` object containing the shapefile with administrative boundaries
+#' and a column `uid_for_rasterization` used for rasterization.
+#' @param resample_to_res A numeric value indicating the target resolution (in degrees) to which both the
+#' pollution and population rasters will be resampled. Defaults to 0.0005.
+#' @param res_resample_from A numeric value indicating the original resolution (in degrees) of the
+#' population raster. Defaults to 0.00833333 (approximately 1km).
 #'
+#' @return A data frame with one row per successfully processed UID, containing:
+#' \describe{
+#'   \item{sh_rast}{The UID of the processed region.}
+#'   \item{total_population}{Total population within the region after resampling.}
+#'   \item{avg_pm2.5_pollution}{Population-weighted average PM2.5 value for the region.}
+#' }
 #'
+#' @details
+#' The function performs the following for each UID:
+#' \itemize{
+#'   \item Filters the shapefile to the current UID.
+#'   \item Rasterizes the shapefile region at the specified finer resolution.
+#'   \item Resamples the pollution and population rasters to match this new resolution.
+#'   \item Converts the raster data to a data frame.
+#'   \item Calculates population weights and weighted pollution.
+#'   \item Aggregates to obtain population-weighted PM2.5 values.
+#' }
+#' This is useful for recovering data for small or sparsely populated regions that were dropped due to
+#' mismatches or resolution limitations in the initial processing.
 #'
+#' @importFrom dplyr filter mutate summarise group_by ungroup bind_rows
+#' @importFrom purrr map_dfr
+#' @importFrom raster crop mask resample extent crs stack as.data.frame values
+#' @importFrom fasterize fasterize
+#' @importFrom arrow as_arrow_table
+#' @importFrom tictoc tic toc
+#'
+#' @export
+
 
 process_uncaptured_uids_v2 <- function(uids_not_captured, unit_pol_raster, unit_pop_raster, ref_shp_file_to_be_rasterized, resample_to_res = 0.0005, res_resample_from = 0.00833333) {
 
@@ -148,13 +258,36 @@ process_uncaptured_uids_v2 <- function(uids_not_captured, unit_pol_raster, unit_
 
 
 
-#' process yearly pop weighted pol from raw rasters
+#' Process Population-Weighted PM2.5 Pollution Data for a Given Year
 #'
+#' Computes average population-weighted PM2.5 pollution levels at a specified administrative level
+#' using yearly pollution and population rasters, and a shapefile to rasterize for regional identification.
 #'
+#' @param pol_raster_path File path to the NetCDF (.nc) raster containing PM2.5 pollution data for a specific year.
+#' @param ref_admin_level_shp_file A spatial object (e.g., `sf` or `sp`) representing the reference administrative boundaries for cropping and masking.
+#' @param ref_shp_file_to_be_rasterized A spatial object with a column named `uid_for_rasterization` to be rasterized and used for aggregation.
+#' @param unit_pop_raster A raster object representing the population data (e.g., at 1 km resolution).
+#' @param unit_pop_raster_crp_msk A cropped and masked version of the population raster aligned with the reference shapefile.
 #'
+#' @return A data frame with administrative region identifiers (`sh_rast`), total population, and average population-weighted PM2.5 pollution
+#' for the year extracted from the filename.
 #'
+#' @details The function performs the following steps:
+#' \enumerate{
+#'   \item Loads and preprocesses the pollution raster from NetCDF.
+#'   \item Crops and masks the pollution raster to the reference shapefile.
+#'   \item Resamples the pollution raster to match the resolution of the population raster.
+#'   \item Rasterizes the reference shapefile using `uid_for_rasterization`.
+#'   \item Combines pollution, population, and region rasters into a brick, converts to a data frame, and calculates population weights.
+#'   \item Computes population-weighted pollution averages by region.
+#'   \item Identifies and attempts to reprocess regions with missing or zero data.
+#'   \item Returns a final data frame with cleaned and complete population-weighted pollution estimates.
+#' }
 #'
+#' @seealso \code{\link{nc_to_raster_layer}}, \code{\link{matchResolution}}, \code{\link{fasterize}}, \code{\link{process_uncaptured_uids}}
 #'
+#' @export
+
 
 process_yearly_raw_pop_weighted_pol <- function(pol_raster_path, ref_admin_level_shp_file, ref_shp_file_to_be_rasterized, unit_pop_raster, unit_pop_raster_crp_msk) {
   cur_rast_year <- as.numeric(str_remove(str_extract(pol_raster_path, "\\d+\\.nc"), "12.nc"))
@@ -260,12 +393,20 @@ process_yearly_raw_pop_weighted_pol <- function(pol_raster_path, ref_admin_level
 
 
 
-
-#' Function to chunk the list into groups of n, with the last sublist containing the remaining elements
+#' Split a List into Chunks
 #'
+#' Divides a list into smaller sublists (chunks) of approximately equal size.
 #'
+#' @param lst A list to be split.
+#' @param n An integer specifying the size of each chunk (i.e., the maximum number of elements in each sublist).
 #'
+#' @return A list of lists, where each sublist contains at most \code{n} elements from the original list.
 #'
+#' @examples
+#' chunk_list(as.list(1:10), 3)
+#' chunk_list(list("a", "b", "c", "d", "e"), 2)
+#'
+#' @export
 
 chunk_list <- function(lst, n) {
   # Calculate the number of full chunks

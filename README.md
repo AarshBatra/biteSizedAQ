@@ -46,6 +46,15 @@ find time. To kick things off, check out the first few projects below!
 
 ------------------------------------------------------------------------
 
+## Project 13: Block level satellite derived population weighted air pollution dataset for India from 1998-2023
+
+- Read more about this project and download proccessed data from here.
+  This folder is present at the root of the repo.
+
+- Data Processing pipeline Rmd file for this project: Also, present at
+  the root of the biteSizedAQ repo. Here is a quick link to access the
+  pipeline.
+
 ## Project 12: Super Pollutants: The Deadly Link Between Air Pollution and Climate Change
 
 - Read the blog

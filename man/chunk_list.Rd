@@ -2,10 +2,23 @@
 % Please edit documentation in R/sat.derived.data.helper.R
 \name{chunk_list}
 \alias{chunk_list}
-\title{Function to chunk the list into groups of n, with the last sublist containing the remaining elements}
+\title{Split a List into Chunks}
 \usage{
 chunk_list(lst, n)
 }
+\arguments{
+\item{lst}{A list to be split.}
+
+\item{n}{An integer specifying the size of each chunk (i.e., the maximum number of elements in each sublist).}
+}
+\value{
+A list of lists, where each sublist contains at most \code{n} elements from the original list.
+}
 \description{
-Function to chunk the list into groups of n, with the last sublist containing the remaining elements
+Divides a list into smaller sublists (chunks) of approximately equal size.
+}
+\examples{
+chunk_list(as.list(1:10), 3)
+chunk_list(list("a", "b", "c", "d", "e"), 2)
+
 }
