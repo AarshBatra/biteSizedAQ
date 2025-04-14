@@ -51,7 +51,7 @@ The administrative region structure of India is a multi-tiered system comprising
 
 The processed dataset resulting from this pipeline can be downloaded from [this link](https://drive.google.com/file/d/1F2fQZwvqDuQGWUDR7CbISQVN4GvPgzMW/view?usp=drive_link "pm2.5_pop_wt_ann_avg_1998_2023"). It can also be found under `data/processed/13.ind.block.pm2.5.sat.data.processing.1998.2023`. The SHRUG shapefiles used in the process and code, can be downloaded either directly from the [SHRUG website](https://www.devdatalab.org/shrug_download/). To use the exact version, used in code and files in this repo, download shapefiles from [here](https://drive.google.com/file/d/1H3I45FeLXG5YSg3OoU4MRdhQJ_Azj5EW/view?usp=drive_link "shapefiles"). The latter contains a modified versions with additional columns that are needed if the processing pipeline is used. In both cases, please make sure to properly cite the datasets used (see citations sections below for more info on this).
 
-If you are interested in reading more about the pipeline, continue reading the sections below, or access the code here. Otherwise, you can directly start analyzing the data. Do check out the data dictionary section before starting analysis.
+If you are interested in reading more about the pipeline, continue reading the sections below, or [access the full pipeline code here](https://github.com/AarshBatra/biteSizedAQ/blob/main/13.ind.block.pm2.5.sat.data.processing.1998.2023.Rmd). Otherwise, you can directly start analyzing the data. Do check out the data dictionary section before starting analysis.
 
 ## Data Dictionary {#data-dictionary}
 

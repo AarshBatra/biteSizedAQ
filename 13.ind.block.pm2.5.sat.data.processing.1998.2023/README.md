@@ -74,9 +74,10 @@ sure to properly cite the datasets used (see citations sections below
 for more info on this).
 
 If you are interested in reading more about the pipeline, continue
-reading the sections below, or access the code here. Otherwise, you can
-directly start analyzing the data. Do check out the data dictionary
-section before starting analysis.
+reading the sections below, or [access the full pipeline code
+here](https://github.com/AarshBatra/biteSizedAQ/blob/main/13.ind.block.pm2.5.sat.data.processing.1998.2023.Rmd).
+Otherwise, you can directly start analyzing the data. Do check out the
+data dictionary section before starting analysis.
 
 ## Data Dictionary
 
