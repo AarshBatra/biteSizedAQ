@@ -3,18 +3,18 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-# India PM2.5 Satellite Data Processing Pipeline, Block Level (1998-2023)
+# Nepal PM2.5 Satellite Data Processing Pipeline, Local Government Unit Level (1998-2023)
 
 This repository contains a pipeline for processing satellite data to
-analyze air pollution levels in India. The pipeline reads pollution and
-population raster data, processes it, and outputs summarized India block
-level pollution data weighted by population. The annual average
-pollution data extends from 1998 to 2023. As an example plot from the
-dataset, below I have plotted annual average PM2.5 in 2023 at block
-level (block boundaries are very light so as to make it easier to see
-the colors).
-
-![](images/img.png)
+analyze air pollution levels in Nepal. The pipeline reads pollution and
+population raster data, processes it, and outputs population weighted
+annual average PM2.5 at Nepal’s local government unit level, i.e. lgu,
+(read more about how admin regions are structured in the Introduction
+section below). The annual average PM2.5 pollution data extends from
+1998 to 2023. As an example plot from the dataset, below I have plotted
+annual average PM2.5 in 2023 for all local government units in Nepal
+level (boundaries are very light so as to make it easier to see the
+colors).
 
 ## Table of Contents
 
@@ -43,39 +43,52 @@ the colors).
 
 ## Introduction
 
-The administrative region structure of India is a multi-tiered system
-comprising states, districts, and subdistricts, each delineated by
-distinct geographical boundaries. At the subdistrict level, commonly
-referred to as blocks, administrative units are smaller in scale,
-allowing for more localized governance and decision-making. This
-granular structure serves as the foundation for various governmental and
-developmental initiatives, facilitating targeted interventions and
-resource allocation tailored to the specific needs of communities within
-each block. By operating at the block level, datasets can capture
+Nepal’s administrative structure is commonly organized into three levels
+below federal government: province, district, and local government unit.
+In this hierarchy, districts are nested within provinces, and local
+governments are nested within districts. This dataset corresponds to the
+local government level—the most granular administrative tier—situated
+within the broader provincial and district framework.
+
+Local government units (LGUs) include metropolitan cities,
+sub-metropolitan cities, municipalities, and rural municipalities. They
+serve as the primary units of local administration and are responsible
+for planning and service delivery at the community level.
+
+By operating at the local government unit level, datasets can capture
 nuanced variations in demographic, environmental, and socioeconomic
 factors, enabling comprehensive analyses and informed policy decisions
 at a finer spatial resolution.
 
+***In this dataset we have data for 7 provinces, which contain 77
+districts and those districts contain 728 local government units.***
+
+> ***Note:*** Nepal transitioned to a federal structure following the
+> 2015 Constitution, which reorganized local governance and replaced the
+> earlier system of zones, development regions, and village development
+> committees (VDCs). If you’re analyzing data from before this period,
+> you may need to refer to the older administrative boundaries for
+> accurate comparisons.
+
 ## Processed Data and Shapefiles
 
 The processed dataset resulting from this pipeline can be downloaded
-from [this
-link](https://drive.google.com/file/d/1F2fQZwvqDuQGWUDR7CbISQVN4GvPgzMW/view?usp=drive_link "pm2.5_pop_wt_ann_avg_1998_2023").
-It can also be found under
-`data/processed/13.ind.block.pm2.5.sat.data.processing.1998.2023`. The
-SHRUG shapefiles used in the process and code, can be downloaded either
-directly from the [SHRUG
-website](https://www.devdatalab.org/shrug_download/). To use the exact
-version, used in code and files in this repo, download shapefiles from
-[here](https://drive.google.com/file/d/1H3I45FeLXG5YSg3OoU4MRdhQJ_Azj5EW/view?usp=drive_link "shapefiles").
-The latter contains a modified versions with additional columns that are
-needed if the processing pipeline is used. In both cases, please make
-sure to properly cite the datasets used (see citations sections below
-for more info on this).
+from [this link](). It can also be found under
+`data/processed/14.nep.lgu.pm2.5.sat.data.processing.1998.2023`. The
+shapefiles used in the process, can be downloaded either directly from
+[The Humanitarian Data
+Exchange](https://data.humdata.org/dataset/cod-ab-npl).
+
+To use the exact version, used in code and files in this repo, download
+shapefiles from [here](). The latter is a cleaned version.
+
+In both cases, please make sure to properly cite the datasets used using
+their original source (see citations sections below for more info on how
+to properly cite these datasets).
 
 If you are interested in reading more about the pipeline, continue
 reading the sections below, or [access the full pipeline code
-here](https://github.com/AarshBatra/biteSizedAQ/blob/main/13.ind.block.pm2.5.sat.data.processing.1998.2023.Rmd).
+here](https://github.com/AarshBatra/biteSizedAQ/blob/main/14.nep.lgu.pm2.5.sat.data.processing.1998.2023.Rmd).
 Otherwise, you can directly start analyzing the data. Do check out the
 data dictionary section before starting analysis.
 
@@ -83,49 +96,45 @@ data dictionary section before starting analysis.
 
 Below listed is a data dictionary for the processed block level dataset:
 
-| Column_Name            | Description                                               |
-|:-----------------------|:----------------------------------------------------------|
-| pc11_state_id          | shrug state id                                            |
-| pc11_district_id       | shrug district id                                         |
-| pc11_subdistrict_id    | shrug subdistrict id                                      |
-| state_name             | shrug name of the state                                   |
-| district_name          | shrug name of the district                                |
-| subdistrict_name       | shrug name of the subdistrict                             |
-| subdistrict_population | population of the subdistrict                             |
-| avg_pm2.5_1998         | annual average pm2.5 in 1998 (micrograms per cubic meter) |
-| avg_pm2.5_1999         | annual average pm2.5 in 1999 (micrograms per cubic meter) |
-| avg_pm2.5_2000         | annual average pm2.5 in 2000 (micrograms per cubic meter) |
-| avg_pm2.5_2001         | annual average pm2.5 in 2001 (micrograms per cubic meter) |
-| avg_pm2.5_2002         | annual average pm2.5 in 2002 (micrograms per cubic meter) |
-| avg_pm2.5_2003         | annual average pm2.5 in 2003 (micrograms per cubic meter) |
-| avg_pm2.5_2004         | annual average pm2.5 in 2004 (micrograms per cubic meter) |
-| avg_pm2.5_2005         | annual average pm2.5 in 2005 (micrograms per cubic meter) |
-| avg_pm2.5_2006         | annual average pm2.5 in 2006 (micrograms per cubic meter) |
-| avg_pm2.5_2007         | annual average pm2.5 in 2007 (micrograms per cubic meter) |
-| avg_pm2.5_2008         | annual average pm2.5 in 2008 (micrograms per cubic meter) |
-| avg_pm2.5_2009         | annual average pm2.5 in 2009 (micrograms per cubic meter) |
-| avg_pm2.5_2010         | annual average pm2.5 in 2010 (micrograms per cubic meter) |
-| avg_pm2.5_2011         | annual average pm2.5 in 2011 (micrograms per cubic meter) |
-| avg_pm2.5_2012         | annual average pm2.5 in 2012 (micrograms per cubic meter) |
-| avg_pm2.5_2013         | annual average pm2.5 in 2013 (micrograms per cubic meter) |
-| avg_pm2.5_2014         | annual average pm2.5 in 2014 (micrograms per cubic meter) |
-| avg_pm2.5_2015         | annual average pm2.5 in 2015 (micrograms per cubic meter) |
-| avg_pm2.5_2016         | annual average pm2.5 in 2016 (micrograms per cubic meter) |
-| avg_pm2.5_2017         | annual average pm2.5 in 2017 (micrograms per cubic meter) |
-| avg_pm2.5_2018         | annual average pm2.5 in 2018 (micrograms per cubic meter) |
-| avg_pm2.5_2019         | annual average pm2.5 in 2019 (micrograms per cubic meter) |
-| avg_pm2.5_2020         | annual average pm2.5 in 2020 (micrograms per cubic meter) |
-| avg_pm2.5_2021         | annual average pm2.5 in 2021 (micrograms per cubic meter) |
-| avg_pm2.5_2022         | annual average pm2.5 in 2022 (micrograms per cubic meter) |
-| avg_pm2.5_2023         | annual average pm2.5 in 2023 (micrograms per cubic meter) |
+| Column_Name             | Description                                               |
+|:------------------------|:----------------------------------------------------------|
+| province_name           | province name                                             |
+| district_name           | district name                                             |
+| loc_gov_unit_name       | local government unit name                                |
+| loc_gov_unit_population | local government unit population                          |
+| avg_pm2.5_1998          | annual average pm2.5 in 1998 (micrograms per cubic meter) |
+| avg_pm2.5_1999          | annual average pm2.5 in 1999 (micrograms per cubic meter) |
+| avg_pm2.5_2000          | annual average pm2.5 in 2000 (micrograms per cubic meter) |
+| avg_pm2.5_2001          | annual average pm2.5 in 2001 (micrograms per cubic meter) |
+| avg_pm2.5_2002          | annual average pm2.5 in 2002 (micrograms per cubic meter) |
+| avg_pm2.5_2003          | annual average pm2.5 in 2003 (micrograms per cubic meter) |
+| avg_pm2.5_2004          | annual average pm2.5 in 2004 (micrograms per cubic meter) |
+| avg_pm2.5_2005          | annual average pm2.5 in 2005 (micrograms per cubic meter) |
+| avg_pm2.5_2006          | annual average pm2.5 in 2006 (micrograms per cubic meter) |
+| avg_pm2.5_2007          | annual average pm2.5 in 2007 (micrograms per cubic meter) |
+| avg_pm2.5_2008          | annual average pm2.5 in 2008 (micrograms per cubic meter) |
+| avg_pm2.5_2009          | annual average pm2.5 in 2009 (micrograms per cubic meter) |
+| avg_pm2.5_2010          | annual average pm2.5 in 2010 (micrograms per cubic meter) |
+| avg_pm2.5_2011          | annual average pm2.5 in 2011 (micrograms per cubic meter) |
+| avg_pm2.5_2012          | annual average pm2.5 in 2012 (micrograms per cubic meter) |
+| avg_pm2.5_2013          | annual average pm2.5 in 2013 (micrograms per cubic meter) |
+| avg_pm2.5_2014          | annual average pm2.5 in 2014 (micrograms per cubic meter) |
+| avg_pm2.5_2015          | annual average pm2.5 in 2015 (micrograms per cubic meter) |
+| avg_pm2.5_2016          | annual average pm2.5 in 2016 (micrograms per cubic meter) |
+| avg_pm2.5_2017          | annual average pm2.5 in 2017 (micrograms per cubic meter) |
+| avg_pm2.5_2018          | annual average pm2.5 in 2018 (micrograms per cubic meter) |
+| avg_pm2.5_2019          | annual average pm2.5 in 2019 (micrograms per cubic meter) |
+| avg_pm2.5_2020          | annual average pm2.5 in 2020 (micrograms per cubic meter) |
+| avg_pm2.5_2021          | annual average pm2.5 in 2021 (micrograms per cubic meter) |
+| avg_pm2.5_2022          | annual average pm2.5 in 2022 (micrograms per cubic meter) |
+| avg_pm2.5_2023          | annual average pm2.5 in 2023 (micrograms per cubic meter) |
 
 ## Data Sources and description
 
 This project utilizes the following public data sources:
 
-1.  **SHRUG Platform Developed by Data Development Lab**: This dataset
-    provides block (subdistrict) level shapefiles essential for detailed
-    geographic analysis. We
+1.  Humanitarian Data Exchange - Nepal Sub-national Administrative
+    Boundaries
 
 2.  **Atmospheric Composition Analysis Group (V5.GL.05.02 Version)**:
     This public version of the dataset is downloaded from the ACAG
@@ -158,16 +167,6 @@ This project utilizes the following public data sources:
 
 Please refer to the citation section for instructions on proper citing
 of these data sources.
-
-## Why use SHRUG shapefiles for India?
-
-Prior to the SHRUG, linking different Indian datasets was a hassle. The
-common geographic frame of SHRUG now makes it easy to share information
-and link data. Researchers can immediately tap into SHRUG to mine a
-wealth of previously unavailable socioeconomic data for the geographies
-that they are working on, and can then publish their own data back to
-SHRUG, making it available to researchers working on other topics. Read
-more on [SHRUG website](https://www.devdatalab.org/shrug).
 
 ## Prerequisites for running the pipeline
 
@@ -250,8 +249,8 @@ ensure they can be processed together seamlessly.
 ### Handling Unprocessed IDs
 
 Some IDs may not be processed in the initial round due to various
-reasons such as zero population or missing data. The pipeline handles
-these unprocessed IDs by:
+reasons such as zero population or missing data. If such IDs are
+present, the pipeline handles these unprocessed IDs by:
 
 1.  **Identifying Unprocessed IDs**: IDs not captured in the first round
     are identified.
@@ -270,9 +269,9 @@ population-weighted pollution levels for each region. The data includes:
 
 ### Important notes and current limitations
 
-- We use SHRUG boundaries to enhance the geographic interoperability of
-  our datasets. However, it’s important to note that boundaries may
-  change over time. If you prefer using more updated boundaries, the
+- I use [HDX boundaries for
+  Nepal](Note:%20Nepal%20transitioned%20to%20a%20federal%20structure%20following%20the%202015%20Constitution,%20which%20reorganized%20local%20governance%20and%20replaced%20the%20earlier%20system%20of%20zones,%20development%20regions,%20and%20village%20development%20committees%20(VDCs).%20If%20you're%20analyzing%20data%20from%20before%20this%20period,%20you%20may%20need%20to%20refer%20to%20the%20older%20administrative%20boundaries%20for%20accurate%20comparisons.)
+  If you prefer using more updated boundaries (e.g pre-2015 ones), the
   pipeline can be adapted accordingly.
 
 - Satellite-derived pollution data serves as a supplementary tool to
@@ -301,6 +300,18 @@ population-weighted pollution levels for each region. The data includes:
   comes with higher uncertainty. In such cases, it’s advisable to treat
   the estimates as broad reference points rather than precise figures.
 
+- There is one LGU in Parsa district, named Parsa Wildlife Reserve. Here
+  there is no discenrnable/recorded human population as per the
+  satellite derived population data. So here, you will see that
+  pollution number is not reported (NA).
+
+- In the processing pipeline Rmd, you may notice that in the end we
+  coalesce the actual local government unit name column with an
+  alternate loc government unit name column. This is important because
+  the alternate column, although is a lgu itself, but sometimes contains
+  the detailed area name, which is needed to uniquely identify LGUs,
+  within districts.
+
 - If in your version of R, certain packages are not compatible, many
   alternatives exist for doing similar tasks (e.g. rasterizing,
   resampling, etc).
@@ -314,15 +325,15 @@ star the
 repository](https://github.com/AarshBatra/biteSizedAQ/stargazers) and
 join other folks who follow biteSizedAQ.
 
-![](images/clipboard-2014856040.png)
+![](images/clipboard-407917026.png)
 
 ### License and Reuse
 
-The block level pollution dataset processed by me is licensed under the
-Creative Commons Attribution 4.0 International (CC BY 4.0) license. This
-means you are welcome to reuse the data in your reports or news stories
-as long as you abide the terms of the license, which means you have to
-give credit and link back to the original work.
+The local government unit level pollution dataset for Nepal processed is
+licensed under the Creative Commons Attribution 4.0 International (CC BY
+4.0) license. This means you are welcome to reuse the data in your
+reports or news stories as long as you abide the terms of the license,
+which means you have to give credit and link back to the original work.
 
 For more details, see the LICENSE file.
 
@@ -334,18 +345,15 @@ follows:
 
 ### Citations
 
-When using this data/pipeline, please also cite the following data
-sources, without which the producing the above block level pollution
-data would not be possible:
+When using this data/pipeline, please also cite the following
+foundational data sources, without which the producing the above block
+level pollution data would not be possible:
 
-1.  [SHRUG platform](https://www.devdatalab.org/shrug_download/)
-    developed by Data Development Lab. The block (subdist) level
-    shapefile comes from SHRUG.
-    - Asher, Sam, Tobias Lunt, Ryu Matsuura, and Paul Novosad.
-      “Development research at high geographic resolution: an analysis
-      of night-lights, firms, and poverty in India using the SHRUG open
-      data platform.” The World Bank Economic Review 35, no. 4 (2021).
-      Oxford University Press.
+1.  [Humanitarian Data Exchange: Nepal Sub-national
+    Boundaries](https://data.humdata.org/dataset/cod-ab-npl)
+    - Sourced from Survey Department of Nepal
+      (<http://ngiip.gov.np/index.php>), UN Resident Coordinators Office
+      in Nepal (<https://un.org.np/>)
 2.  Atmospheric Composition Analysis Group (V5.GL.05.02 version) 0.01 x
     0.01
     [data](https://sites.wustl.edu/acag/datasets/surface-pm2-5/#V5.GL.05.02):

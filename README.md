@@ -46,7 +46,17 @@ find time. To kick things off, check out the first few projects below!
 
 ------------------------------------------------------------------------
 
-## Project 13: Block level satellite derived population weighted air pollution dataset for India from 1998-2023
+## Project 14: Block level satellite derived population weighted PM2.5 dataset for Nepal from 1998-2023
+
+- Read the blog post on this link.
+
+- Download processed data from this link.
+
+- Data Processing pipeline Rmd file for this project: Also, present at
+  the root of the biteSizedAQ repo. Here is a quick link to access the
+  pipeline.
+
+## Project 13: Block level satellite derived population weighted PM2.5 dataset for India from 1998-2023
 
 - Read the blog post on [this
   link](https://github.com/AarshBatra/biteSizedAQ/tree/main/13.ind.block.pm2.5.sat.data.processing.1998.2023).
