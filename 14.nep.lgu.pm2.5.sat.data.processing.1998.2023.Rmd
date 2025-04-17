@@ -78,12 +78,17 @@ document()
 `%notin%` <- Negate(`%in%`)
 
 #> nep gadm3 level shapefile with uid for rasterization
-nep_gadm3 <- st_read(str_c(here(), "/data/raw/other.datasets/shpfiles/nepal_gadm3/nep_gadm3.gpkg"))
-nep_gadm3 <- nep_gadm3 %>%
+nep_lgu <- st_read(str_c(here(), "/data/raw/other.datasets/shpfiles/nepal_lgu/nep_lgu.gpkg"))
+nep_lgu <- nep_lgu %>%
   mutate(uid_for_rasterization = row_number()) %>%
   dplyr::select(-geom, geom) %>%
   mutate_if(is.character, tolower) %>%
   st_as_sf()
+
+#> also load nepal country and province level shapefile for later plotting
+nep_country <-  st_read(str_c(here(), "/data/raw/other.datasets/shpfiles/nepal_country/nep_country.gpkg"))
+nep_prov <-  st_read(str_c(here(), "/data/raw/other.datasets/shpfiles/nepal_province/nep_province.gpkg"))
+
 
 #> load in a single pollution raster, and crop it to India
 
@@ -95,10 +100,10 @@ unit_pop_raster <- raster("./data/raw/landscan-global-2023-assets/landscan-globa
 yearly_data_processed_list <- list()
   
 #> [To be set by user]set the ref admin layer to be used for cropping and masking global rasters
-ref_admin_level_shp_file <- nep_gadm3
+ref_admin_level_shp_file <- nep_lgu
 
 #> [To be set by user] set the ref admin layer
-ref_shp_file_to_be_rasterized <- nep_gadm3
+ref_shp_file_to_be_rasterized <- nep_lgu
 
 #> Set parameters for raw pollution rasters (check for a given raster once a year once data is downloaded from ACAG website)
 pm25_rast_name <- "GWRPM25"
@@ -366,29 +371,70 @@ final_all_years_cbind_df_sh_mapped <- final_all_years_cbind_df %>%
 ## [EXTRA CODE FOR PLOTTING, not part of main pipeline] Plotting a sample map: annual avg pm2.5 in 2023 in India at block level in micrograms per cubic meter
 
 ```{r eval=FALSE, include=FALSE}
+lgu_border_color <- rgb(0, 0, 0, alpha = 0.1)
+province_border_color <- rgb(0, 0, 0, alpha = 0.3)
+country_border_color <- rgb(0, 0, 0, alpha = 0.8)
+
 
 # plot 2023 pollution
 plt_pol_2023 <- final_all_years_cbind_df_sh_mapped  %>%
-  left_join(nep_gadm3 %>%
+  left_join(nep_lgu %>%
               dplyr::select(ADM1_EN, ADM2_EN, ADM3_EN, ADM3ALT1EN), by = c("province_name" = "ADM1_EN", "district_name" = "ADM2_EN", "loc_gov_unit_name" = "ADM3_EN", "ext_loc_gov_alt_name" = "ADM3ALT1EN"))  %>%
-  st_as_sf() %>% ggplot() + geom_sf(mapping = aes(fill = avg_pm2.5_2023), color = "transparent") + scale_fill_viridis(option = "magma", direction = -1, breaks = c(0, 5, 10, 20, 40, 60, 80, 120), limits = c(0, 120)) +
-  # geom_sf(data = ind_st_level_shp, color = "black", lwd = 0.12, fill = "transparent") +
+  st_as_sf() %>% ggplot() + geom_sf(mapping = aes(fill = avg_pm2.5_2023), color = lgu_border_color) + scale_fill_viridis(option = "magma", direction = -1, breaks = c(0, 5, 10, 20, 40, 60, 80, 120), limits = c(0, 120)) +
+   geom_sf(data = nep_prov, color = province_border_color, lwd = 0.12, fill = "transparent") +
+  geom_sf(data = nep_prov, color = country_border_color, lwd = 0.35, fill = "transparent") +
   theme_map() +
   labs(fill = expression("Annual Average"~PM[2.5]~"(micrograms per cubic metre)"),
-       title = expression("Block level"~PM[2.5]~"pollution in Nepal, 2023")) +
+       title = "2023") +
  theme(legend.position = "bottom",           # Place legend at the bottom
         legend.direction = "horizontal",
        legend.key.width = unit(3, "cm"),
        plot.background = element_rect(fill = "white", color = "white"),
        legend.title = element_text(size = 14, family = "Mono"),
        legend.text = element_text(size = 11, family = "Mono"),
-       plot.title = element_text(size = 18, family = "Mono", hjust = 0)) +
+       plot.title = element_text(size = 18, family = "Mono", hjust = 0.3, face = "bold")) +
+    guides(fill = guide_colorbar(title.position = "top")) 
+
+# plot 1998 pollution
+plt_pol_1998 <- final_all_years_cbind_df_sh_mapped  %>%
+  left_join(nep_lgu %>%
+              dplyr::select(ADM1_EN, ADM2_EN, ADM3_EN, ADM3ALT1EN), by = c("province_name" = "ADM1_EN", "district_name" = "ADM2_EN", "loc_gov_unit_name" = "ADM3_EN", "ext_loc_gov_alt_name" = "ADM3ALT1EN"))  %>%
+  st_as_sf() %>% ggplot() + geom_sf(mapping = aes(fill = avg_pm2.5_1998), color = lgu_border_color) + scale_fill_viridis(option = "magma", direction = -1, breaks = c(0, 5, 10, 20, 40, 60, 80, 120), limits = c(0, 120)) +
+   geom_sf(data = nep_prov, color = province_border_color, lwd = 0.12, fill = "transparent") +
+  geom_sf(data = nep_prov, color = country_border_color, lwd = 0.35, fill = "transparent") +
+  theme_map() +
+  labs(fill = expression("Annual Average"~PM[2.5]~"(micrograms per cubic metre)"),
+       title = "1998") +
+ theme(legend.position = "bottom",           # Place legend at the bottom
+        legend.direction = "horizontal",
+       legend.key.width = unit(3, "cm"),
+       plot.background = element_rect(fill = "white", color = "white"),
+       legend.title = element_text(size = 14, family = "Mono"),
+       legend.text = element_text(size = 11, family = "Mono"),
+       plot.title = element_text(size = 18, family = "Mono", hjust = 0.3, face = "bold")) +
     guides(fill = guide_colorbar(title.position = "top"))
 
+combined_plot <- (plt_pol_1998 + plt_pol_2023) +
+  plot_layout(guides = "collect") +
+  plot_annotation(
+    title = expression("Local Government Unit level"~PM[2.5]~"pollution in Nepal, 1998 v/s 2023"),
+    theme = theme(
+      plot.title = element_text(
+        hjust = 0.5,          # Centers the title
+        size = 22,            # Increases font size
+        family = "mono",      # Sets monospaced font
+        face = "bold",         # Optional: makes the title bold
+        margin = margin(b = 2, unit = "cm")
+        )
+    )
+  ) &
+  theme(legend.position = "bottom")
+
+ggsave("./plt_1998_2023.png", combined_plot, width = 20, height = 8, dpi = 520)
 
 ```
 
-## For analysis coalesce certain lgu alternative names with the lgu name col
+## For analysis coalesce certain lgu alternative names with the lgu name col [note this chunk should be run after the plot chunk as plot chunk uses  non-coalesced version of final data to plot]
 
 ```{r}
 

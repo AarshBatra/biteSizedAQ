@@ -16,6 +16,8 @@ annual average PM2.5 in 2023 for all local government units in Nepal
 level (boundaries are very light so as to make it easier to see the
 colors).
 
+![](images/plt_1998_2023.png)
+
 ## Table of Contents
 
 1.  [Introduction](#introduction)
@@ -72,15 +74,19 @@ districts and those districts contain 728 local government units.***
 
 ## Processed Data and Shapefiles
 
-The processed dataset resulting from this pipeline can be downloaded
-from [this link](). It can also be found under
+The processed dataset resulting from this pipeline can be [downloaded
+from this
+link](https://drive.google.com/drive/folders/1zD2V5aGkY-YyRZMlVcPPNQMMMX7Ml2po?usp=drive_link).
+It can also be found under
 `data/processed/14.nep.lgu.pm2.5.sat.data.processing.1998.2023`. The
 shapefiles used in the process, can be downloaded either directly from
 [The Humanitarian Data
-Exchange](https://data.humdata.org/dataset/cod-ab-npl).
-
-To use the exact version, used in code and files in this repo, download
-shapefiles from [here](). The latter is a cleaned version.
+Exchange](https://data.humdata.org/dataset/cod-ab-npl), or if you want
+to use the exact version, used in code and files in this repo, download
+shapefiles [from
+here](https://drive.google.com/drive/folders/1IK8PJ2NRb7a-r_NvQ6rhYna-gDgZLVIZ?usp=drive_link).
+The latter is a cleaned version of the former. Also, the drive link has
+shapefiles at 4 levels. I use lgu level shapefile in this project.
 
 In both cases, please make sure to properly cite the datasets used using
 their original source (see citations sections below for more info on how
@@ -133,8 +139,8 @@ Below listed is a data dictionary for the processed block level dataset:
 
 This project utilizes the following public data sources:
 
-1.  Humanitarian Data Exchange - Nepal Sub-national Administrative
-    Boundaries
+1.  Humanitarian Data Exchange - [Nepal Sub-national Administrative
+    Boundaries](https://data.humdata.org/dataset/cod-ab-npl)
 
 2.  **Atmospheric Composition Analysis Group (V5.GL.05.02 Version)**:
     This public version of the dataset is downloaded from the ACAG
