@@ -51,7 +51,7 @@ Local government units (LGUs) include metropolitan cities, sub-metropolitan citi
 
 By operating at the local government unit level, datasets can capture nuanced variations in demographic, environmental, and socioeconomic factors, enabling comprehensive analyses and informed policy decisions at a finer spatial resolution.
 
-***In this dataset we have data for 7 provinces, which contain 77 districts and those districts contain 728 local government units.***
+***In this dataset we have data for 7 provinces, which contain 77 districts and those districts contain 775 local government units.***
 
 > ***Note:*** Nepal transitioned to a federal structure following the 2015 Constitution, which reorganized local governance and replaced the earlier system of zones, development regions, and village development committees (VDCs). If you're analyzing data from before this period, you may need to refer to the older administrative boundaries for accurate comparisons.
 

@@ -63,7 +63,7 @@ factors, enabling comprehensive analyses and informed policy decisions
 at a finer spatial resolution.
 
 ***In this dataset we have data for 7 provinces, which contain 77
-districts and those districts contain 728 local government units.***
+districts and those districts contain 775 local government units.***
 
 > ***Note:*** Nepal transitioned to a federal structure following the
 > 2015 Constitution, which reorganized local governance and replaced the
