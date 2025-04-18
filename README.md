@@ -46,7 +46,7 @@ find time. To kick things off, check out the first few projects below!
 
 ------------------------------------------------------------------------
 
-## Project 14: Block level satellite derived population weighted PM2.5 dataset for Nepal from 1998-2023
+## Project 14: Local Government Unit level Satellite derived population weighted PM2.5 dataset for Nepal from 1998-2023
 
 - Read the blog post on [this
   link](https://github.com/AarshBatra/biteSizedAQ/tree/main/14.nep.lgu.pm2.5.sat.data.processing.1998.2023).
