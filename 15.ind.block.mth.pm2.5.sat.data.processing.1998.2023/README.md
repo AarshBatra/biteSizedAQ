@@ -10,10 +10,22 @@ analyze air pollution levels in India. The pipeline reads pollution and
 population raster data, processes it, and outputs summarized India block
 level pollution data weighted by population. The monthly average
 pollution data extends from 1998 to 2023. As an example plot from the
-dataset, below I have plotted monthly average PM2.5 snapshot for in 2023
-for all months at block level (block boundaries are very light so as to
-make it easier to see the colors). Other similar snapshots for other
-years are stored in the images folder here.
+dataset, below I have plotted monthly average PM2.5 snapshot for 2023
+and 1998 for all months at block level (block boundaries are very light
+so as to make it easier to see the colors). Other similar snapshots for
+other years are stored in this folder of the repo.
+
+The deterioration in terms of general increase in pollution, across all
+months of the year in the past 2+ decades can be seen in the 2 snapshots
+below:
+
+## 2023
+
+![](monthly.india.pm2.5.snapshot.all.yrs/mth_avg_pm2.5_india_snapshot_2023.png)
+
+## **1998**
+
+![](monthly.india.pm2.5.snapshot.all.yrs/mth_avg_pm2.5_india_snapshot_1998.png)
 
 ## Table of Contents
 
@@ -60,10 +72,12 @@ data. This blog gives us monthly average PM2.5, which give us a more
 granular temporal resolution to do both intra-year and inter-year
 analysis of block level pollution trends.
 
-## Processed Data and Shapefiles
+## Processed Data, Shapefiles and High Resolution Snapshots
 
 The processed dataset resulting from this pipeline can be downloaded
-from this link. It can also be found under
+from [this
+link](https://drive.google.com/drive/folders/1OPraUtyrL-WOhdfa_972D3l3RUFtalgy?usp=drive_link).
+It can also be found under
 `data/processed/15.ind.block.mth.pm2.5.sat.data.processing.1998.2023`.
 The dataset is available in both long and wide form.
 
@@ -71,22 +85,28 @@ The SHRUG shapefiles used in the process and code, can be downloaded
 either directly from the [SHRUG
 website](https://www.devdatalab.org/shrug_download/). To use the exact
 version, used in code and files in this repo, download shapefiles from
-[here](https://drive.google.com/file/d/1H3I45FeLXG5YSg3OoU4MRdhQJ_Azj5EW/view?usp=drive_link "shapefiles").
+[here](https://drive.google.com/drive/folders/1aGl8rvRUbbHf3tURDI6BdBMEnYBmWGYO?usp=drive_link).
 The latter contains a modified versions with additional columns that are
 needed if the processing pipeline is used. In both cases, please make
 sure to properly cite the datasets used (see citations sections below
 for more info on this).
 
 If you are interested in reading more about the pipeline, continue
-reading the sections below, or [access the full pipeline code
-here](https://github.com/AarshBatra/biteSizedAQ/blob/main/13.ind.block.pm2.5.sat.data.processing.1998.2023.Rmd).
+reading the sections below, or access the full pipeline code
+[here](https://github.com/AarshBatra/biteSizedAQ/blob/main/15.ind.block.mth.pm2.5.sat.data.processing.1998.2023.Rmd).
 Otherwise, you can directly start analyzing the data. Do check out the
 data dictionary section before starting analysis.
 
+High resolution snapshots for all years, similar to the ones shown in
+the blog post can be found in this folder of the repo. Feel free to
+share this further for outreach or awareness purposes.
+
 ## Data Dictionary
 
-The data dictionary for both long and wide version of the processed
-block-month level PM2.5 dataset is available on this link.
+The data dictionary of the processed block-month level PM2.5 dataset is
+available [on this
+link](https://docs.google.com/spreadsheets/d/1YyGe_gtmKB-FyWhD7XKY7cDpFcS23lcVWnQpbca2jr0/edit?gid=912722240#gid=912722240)
+in 2 different tabs (for wide and long versions).
 
 ## Data Sources and description
 
@@ -94,7 +114,7 @@ This project utilizes the following public data sources:
 
 1.  **SHRUG Platform Developed by Data Development Lab**: This dataset
     provides block (subdistrict) level shapefiles essential for detailed
-    geographic analysis. We
+    geographic analysis.
 
 2.  **Atmospheric Composition Analysis Group (V5.GL.05.02 Version)**:
     This public version of the dataset is downloaded from the ACAG

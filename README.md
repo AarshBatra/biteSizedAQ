@@ -48,13 +48,24 @@ find time. To kick things off, check out the first few projects below!
 
 ## Project 15: Block level Satellite derived population weighted Monthly PM2.5 dataset for India from 1998-2023
 
-- Read the blog post on this link.
+- Read the blog post on [this
+  link](https://github.com/AarshBatra/biteSizedAQ/tree/main/15.ind.block.mth.pm2.5.sat.data.processing.1998.2023).
 
-- Download processed data from this link.
+- Download processed data from [this
+  link](https://drive.google.com/drive/folders/1OPraUtyrL-WOhdfa_972D3l3RUFtalgy?usp=drive_link).
+
+- Data Dictionary for both long and wide version of the dataset can be
+  found in 2 separated tabs of [this Google
+  Sheet](https://docs.google.com/spreadsheets/d/1YyGe_gtmKB-FyWhD7XKY7cDpFcS23lcVWnQpbca2jr0/edit?gid=912722240#gid=912722240).
+
+- High resolution snapshots for all years, similar to the ones shown in
+  the blog post can be found in this folder of the repo. Feel free to
+  share this further for outreach or awareness purposes.
 
 - Data Processing pipeline Rmd file for this project: Also, present at
-  the root of the biteSizedAQ repo. Here is a quick link to access the
-  pipeline.
+  the root of the biteSizedAQ repo. Here is a [quick
+  link](https://github.com/AarshBatra/biteSizedAQ/blob/main/15.ind.block.mth.pm2.5.sat.data.processing.1998.2023.Rmd)
+  to access the pipeline.
 
 ## Project 14: Local Government Unit level Satellite derived population weighted PM2.5 dataset for Nepal from 1998-2023
 
