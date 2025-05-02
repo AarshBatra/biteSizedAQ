@@ -65,7 +65,7 @@ The SHRUG shapefiles used in the process and code, can be downloaded either dire
 
 If you are interested in reading more about the pipeline, continue reading the sections below, or access the full pipeline code [here](https://github.com/AarshBatra/biteSizedAQ/blob/main/15.ind.block.mth.pm2.5.sat.data.processing.1998.2023.Rmd). Otherwise, you can directly start analyzing the data. Do check out the data dictionary section before starting analysis.
 
-High resolution snapshots for all years, similar to the ones shown in the blog post can be found in this folder of the repo. Feel free to share this further for outreach or awareness purposes.
+High resolution snapshots for all years, similar to the ones shown in the blog post can be found in [this folder of the repo](https://github.com/AarshBatra/biteSizedAQ/tree/main/15.ind.block.mth.pm2.5.sat.data.processing.1998.2023/monthly.india.pm2.5.snapshot.all.yrs). Feel free to share this further for outreach or awareness purposes.
 
 ## Data Dictionary {#data-dictionary}
 

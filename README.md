@@ -59,8 +59,9 @@ find time. To kick things off, check out the first few projects below!
   Sheet](https://docs.google.com/spreadsheets/d/1YyGe_gtmKB-FyWhD7XKY7cDpFcS23lcVWnQpbca2jr0/edit?gid=912722240#gid=912722240).
 
 - High resolution snapshots for all years, similar to the ones shown in
-  the blog post can be found in this folder of the repo. Feel free to
-  share this further for outreach or awareness purposes.
+  the blog post can be found in [this folder of the
+  repo](https://github.com/AarshBatra/biteSizedAQ/tree/main/15.ind.block.mth.pm2.5.sat.data.processing.1998.2023/monthly.india.pm2.5.snapshot.all.yrs).
+  Feel free to share this further for outreach or awareness purposes.
 
 - Data Processing pipeline Rmd file for this project: Also, present at
   the root of the biteSizedAQ repo. Here is a [quick
