@@ -39,6 +39,14 @@ This repository will continue to grow with new projects as and when I find time.
 
 ------------------------------------------------------------------------
 
+## Project 15: Block level Satellite derived population weighted Monthly PM2.5 dataset for India from 1998-2023
+
+-   Read the blog post on this link.
+
+-   Download processed data from this link.
+
+-   Data Processing pipeline Rmd file for this project: Also, present at the root of the biteSizedAQ repo. Here is a quick link to access the pipeline.
+
 ## Project 14: Local Government Unit level Satellite derived population weighted PM2.5 dataset for Nepal from 1998-2023
 
 -   Read the blog post on [this link](https://github.com/AarshBatra/biteSizedAQ/tree/main/14.nep.lgu.pm2.5.sat.data.processing.1998.2023).
