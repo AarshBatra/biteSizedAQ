@@ -414,7 +414,7 @@ final_all_years_cbind_df_sh_mapped_long <- final_all_years_cbind_df_sh_mapped %>
 
 ```{r}
 
-#### plot monthly screenshot for all years for India at block level
+#### plot monthly screenshot for all years for India at block level----------------------
 ref_yr <- c(1998:2023)
 
 
@@ -466,6 +466,152 @@ ggsave(paste0("./15.ind.block.mth.pm2.5.sat.data.processing.1998.2023/monthly.in
 
 print(paste0(i, " out of ", length(ref_yr), " year snapshot saved!"))
 }
+
+
+#### plot for selected years for all months for Delhi-----------------------
+
+# Create your main plot 
+plt1 <- final_all_years_cbind_df_sh_mapped_long %>%
+  filter(year %in% c(1998, 2003, 2008, 2013, 2018, 2023), state_name %in% c("nct of delhi")) %>%
+  mutate(month = factor(month, levels = str_to_lower(month.name), labels = month.abb)) %>%
+  left_join(
+    shrug_master_subdist_shp %>%
+      dplyr::select(state_name, district_name, subdistrict_name, geom), 
+    by = c("state_name", "district_name", "subdistrict_name")
+  ) %>%
+  st_as_sf() %>%
+  ggplot() +
+  geom_sf(aes(fill = avg_pm2.5), color = NA) +
+  scale_fill_stepsn(
+    colors = rev(viridisLite::magma(7)),
+    breaks = c(0, 40, 80, 120, 200, 300),
+    limits = c(0, 300),
+    na.value = "white"
+  ) +
+  theme_map() +
+  labs(
+    fill = expression("Monthly Average" ~ PM[2.5] ~ "(μg/m³)"),
+    title = expression("Block-level Monthly Average" ~ PM[2.5] ~ "Pollution in NCT of Delhi Blocks"),
+    caption = expression("Graphic · Aarsh Batra | github.com/AarshBatra/biteSizedAQ")
+  ) +
+  theme(
+    legend.position = "bottom",
+    legend.justification = "center",
+    legend.direction = "horizontal",
+    legend.key.width = unit(3, "cm"),
+    legend.box.margin = margin(0, 0, 15, 0),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA),
+    strip.background = element_blank(),
+    strip.text = element_text(size = 12, family = "Mono"),
+    plot.title = element_text(size = 16, family = "Mono", hjust = 0, margin = margin(t = 0.5, b = 0.5, unit = "cm")),
+    legend.title = element_text(size = 14, family = "Mono", margin = margin(t = 0.2, b = 0.1, unit = "cm")),
+    legend.text = element_text(size = 12, family = "Mono"),
+    plot.caption = element_text(size = 9, family = "Mono", margin = margin(t = 0.8, unit = "cm"), hjust = 0.5), 
+    plot.margin = margin(l = 0.5, r = 0.5, unit = "cm")
+  ) +
+  guides(fill = guide_colorbar(title.position = "top", title.hjust = 0.5)) +
+  facet_grid(year ~ month, switch = "y")   
+
+
+#### Delhi block level names map------------------------------
+
+# library(ggspatial)
+
+# Extract the Delhi shapefile
+delhi_sf <- shrug_master_subdist_shp %>%
+  filter(state_name %in% c("nct of delhi"))
+
+# Get the centroid coordinates for labeling
+# This avoids font issues with geom_sf_text
+delhi_centroids <- delhi_sf %>%
+  st_centroid() %>%
+  st_coordinates() %>%
+  as.data.frame() %>%
+  bind_cols(
+    subdistrict_name = delhi_sf$subdistrict_name
+    
+  )
+
+delhi_map <- ggplot() +
+  # Base layer with clean outline and subtle background
+  geom_sf(
+    data = delhi_sf,
+    fill = "gray98",
+    color = "gray50",
+    size = 0.3
+  ) +
+  # Add improved labels with better styling and placement
+  geom_label_repel(
+    data = delhi_centroids,
+    aes(x = X, y = Y, label = subdistrict_name),
+    color = "gray15",
+    fill = alpha("white", 0.9),
+    label.size = 0.15,
+    size = 10,
+    segment.color = "gray60",
+    segment.size = 0.2,
+    segment.alpha = 0.7,
+    box.padding = 0.35,
+    point.padding = 0.5,
+    force = 10,
+    max.overlaps = 40,
+    min.segment.length = 0,
+    label.padding = 0.15,
+    label.r = unit(0.15, "lines"),
+    seed = 42 # For reproducible placement
+  ) +
+  # Add subtle dots for centroids
+  geom_point(
+    data = delhi_centroids,
+    aes(x = X, y = Y),
+    size = 0.4,
+    color = "gray40",
+    alpha = 0.7
+  ) +
+  # Customize the coordinate appearance
+  coord_sf(expand = FALSE) +
+  # Add scale bar with improved styling
+  annotation_scale(
+    location = "br",
+    width_hint = 0.15,    # Keep original width
+    style = "bar",        # Bar style for better visibility
+    pad_x = unit(0.4, "cm"),
+    pad_y = unit(0.4, "cm"),
+    text_family = "franklin",
+    text_col = "black",   # Darker text
+    line_col = "black",   # Darker line
+    bar_cols = c("black", "white"), # High contrast colors
+    height = unit(0.25, "cm"), # Slightly taller
+    text_cex = 1.1        # Slightly larger text
+  ) +
+  # Add north arrow with improved styling
+  annotation_north_arrow(
+    location = "tr",
+    which_north = "true",
+    pad_x = unit(0.4, "cm"),
+    pad_y = unit(0.4, "cm"),
+    style = north_arrow_fancy_orienteering(
+      line_col = "black",
+      fill = "gray30",
+      text_col = "black",
+      text_size = 14,
+      line_width = 1.5
+    ),
+    height = unit(1.5, "cm"),
+    width = unit(1.5, "cm")
+  ) +
+  # Clean, minimalist theme
+  theme_map() +
+  labs(title = "NCT of Delhi Blocks") +
+  theme(
+    plot.title = element_text(size = 46, hjust = 0.5, margin = margin(b = 1, t = 0.5, unit = "cm")), 
+    panel.border = element_rect(color = "black", fill = NA, size = 0.3), 
+    plot.background = element_rect(fill = "white", color = "white")
+  )
+
+# Save the map with high resolution
+ggsave("delhi_map_inset.png", delhi_map, width = 10, height = 10, dpi = 300)
 
 
 ```
