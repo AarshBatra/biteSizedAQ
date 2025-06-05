@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# 🎉 biteSizedAQ Turns One! Celebrating with an AirGradient Monitor Giveaway + New Logo Reveal
+# 🎉 biteSizedAQ Turns One! Celebrating with AirGradient Monitors Giveaway + New Logo Reveal
 
 ![](images/biteSizedAQ_transparent_logo_2.png)
 
