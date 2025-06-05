@@ -3,10 +3,10 @@
 
 # biteSizedAQ
 
-# ![](images/biteSizedAQ_transparent_logo.png)
-
 <!-- badges: start -->
 <!-- badges: end -->
+
+![](16.bite.sized.aq.turns.one.year.old/images/biteSizedAQ_transparent_logo.png)
 
 ## Background
 
