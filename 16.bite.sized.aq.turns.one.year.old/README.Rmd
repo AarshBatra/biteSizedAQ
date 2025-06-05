@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 # 🎉 biteSizedAQ Turns One! Celebrating with an AirGradient Monitor Giveaway + New Logo Reveal
 
-![](images/biteSizedAQ_airgrad_transparent_logo.png)
+![](images/biteSizedAQ_transparent_logo_2.png)
 
 Hello air quality enthusiasts!
 
