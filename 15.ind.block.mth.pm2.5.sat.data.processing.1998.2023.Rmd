@@ -615,3 +615,227 @@ ggsave("delhi_map_inset.png", delhi_map, width = 10, height = 10, dpi = 300)
 
 
 ```
+
+#### testing
+```{r}
+
+# Simple PM2.5 Monthly Stripes Visualization
+# This script creates a simple climate stripe visualization for PM2.5 data
+# showing 12 months for a specific block and year
+
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+library(viridis)  # For the magma color palette
+
+# -------------------------------------------------------
+# PART 1: SIMPLE FUNCTION FOR SINGLE BLOCK-YEAR STRIPES
+# -------------------------------------------------------
+
+create_monthly_stripes <- function(data, selected_state, selected_district, selected_block, selected_year) {
+  # Filter data for the specific block and year
+  filtered_data <- data %>% 
+    filter(
+      state_name == selected_state,
+      district_name == selected_district,
+      subdistrict_name == selected_block,
+      year == selected_year
+    ) %>%
+    # Ensure months are in correct order
+    arrange(month)
+  
+# Create the plot with custom tile width
+  p <- ggplot(filtered_data, aes(x = factor(month), y = 1, fill = avg_pm2.5)) +
+    # Set width of tiles (0.9 means 90% of available space)
+    geom_tile(width = 0.9) +
+    scale_fill_viridis_c(
+      name = "PM2.5 (μg/m³)",
+      option = "magma",      # Magma color palette
+      direction = 1          # Direction: 1 for dark=high, -1 for dark=low
+    ) +
+    scale_x_discrete(
+      breaks = 1:12,
+      labels = month.abb     # Use abbreviated month names (Jan, Feb, etc.)
+    ) +
+    labs(
+      title = paste("PM2.5 Monthly Pattern:", selected_block, selected_year),
+      subtitle = paste("Population:", format(filtered_data$subdistrict_population[1], big.mark=",")),
+      x = NULL, 
+      y = NULL
+    ) +
+    theme_minimal() +
+    theme(
+      axis.text.y = element_blank(),
+      axis.ticks = element_blank(),
+      panel.grid = element_blank(),
+      legend.position = "bottom",
+      plot.title = element_text(hjust = 0.5, face = "bold"),
+      plot.subtitle = element_text(hjust = 0.5),
+      axis.text.x = element_text(angle = 0, hjust = 0.5, size = 10, face = "bold")
+    )
+  
+  return(p)
+}
+
+create_monthly_stripes(final_all_years_cbind_df_sh_mapped_long, selected_state =  "uttar pradesh", selected_district = "ghaziabad", selected_block = "modinagar", selected_year = "1998")
+
+# -------------------------------------------------------
+# PART 2: EXAMPLE USAGE WITH SAMPLE DATA
+# -------------------------------------------------------
+
+# Create sample data (replace this with your actual data)
+set.seed(123)
+sample_data <- expand.grid(
+  state_name = "State1",
+  district_name = "District1",
+  subdistrict_name = paste0("Block", 1:5),
+  year = 2020:2023,
+  month = 1:12
+)
+
+sample_data$subdistrict_population <- round(runif(nrow(sample_data), 10000, 100000))
+
+# Create PM2.5 data with seasonal pattern
+sample_data$avg_pm2.5 <- 30 + 
+                         # Year-over-year increase
+                         (sample_data$year - 2020) * 5 + 
+                         # Seasonal pattern (higher in winter months)
+                         ifelse(sample_data$month %in% c(11, 12, 1, 2), 40, 
+                           ifelse(sample_data$month %in% c(5, 6, 7, 8), -10, 0))
+
+# Add some random variation
+sample_data$avg_pm2.5 <- sample_data$avg_pm2.5 + rnorm(nrow(sample_data), mean = 0, sd = 10)
+
+# Example: Create stripes for Block1 in 2022
+example_plot <- create_monthly_stripes(sample_data, "Block1", 2022)
+print(example_plot)
+
+# Save plot (uncomment to use)
+# ggsave("Block1_2022_pm25_stripes.png", example_plot, width = 8, height = 2, dpi = 300)
+
+# -------------------------------------------------------
+# PART 3: SHINY APP SKELETON
+# -------------------------------------------------------
+
+# Uncomment and use this code as a starting point for your Shiny app
+
+# library(shiny)
+# 
+# # UI
+# ui <- fluidPage(
+#   titlePanel("PM2.5 Monthly Climate Stripes"),
+#   
+#   sidebarLayout(
+#     sidebarPanel(
+#       # Block selection dropdown
+#       selectInput("block", "Select Block:",
+#                  choices = unique(sample_data$subdistrict_name)),
+#       
+#       # Year selection slider
+#       sliderInput("year", "Select Year:",
+#                  min = min(sample_data$year),
+#                  max = max(sample_data$year),
+#                  value = min(sample_data$year),
+#                  step = 1,
+#                  sep = ""),
+#       
+#       # Optional: Add filtering by state/district if needed
+#       # selectInput("district", "Select District:",
+#       #           choices = unique(sample_data$district_name))
+#     ),
+#     
+#     mainPanel(
+#       # Output plot
+#       plotOutput("stripesPlot"),
+#       
+#       # Optional: Add summary statistics
+#       verbatimTextOutput("summaryStats")
+#     )
+#   )
+# )
+# 
+# # Server
+# server <- function(input, output) {
+#   # Reactive data filtering
+#   filtered_data <- reactive({
+#     sample_data %>%
+#       filter(
+#         subdistrict_name == input$block,
+#         year == input$year
+#       )
+#   })
+#   
+#   # Generate the stripes plot
+#   output$stripesPlot <- renderPlot({
+#     create_monthly_stripes(sample_data, input$block, input$year)
+#   })
+#   
+#   # Optional: Generate summary statistics
+#   output$summaryStats <- renderPrint({
+#     data_summary <- filtered_data() %>%
+#       summarize(
+#         avg = mean(avg_pm2.5, na.rm = TRUE),
+#         min = min(avg_pm2.5, na.rm = TRUE),
+#         max = max(avg_pm2.5, na.rm = TRUE)
+#       )
+#     
+#     cat("Average PM2.5:", round(data_summary$avg, 1), "μg/m³\n")
+#     cat("Range:", round(data_summary$min, 1), "to", round(data_summary$max, 1), "μg/m³\n")
+#   })
+# }
+# 
+# # Run the app
+# shinyApp(ui = ui, server = server)
+```
+
+
+## number of blocks exceeding x micrograms per cubic meter
+```{r}
+
+
+# Set threshold
+threshold <- 5
+
+# Add column for number of months exceeding threshold
+df1 <- final_all_years_cbind_df_sh_mapped_wide %>%
+  rowwise() %>%
+  mutate(
+    months_exceeding_threshold = sum(c_across(starts_with("avg_pm2.5_")) > threshold, na.rm = TRUE)
+  ) %>%
+  ungroup()
+
+
+# plt <- df1 %>%
+#   filter(months_exceeding_threshold > 300)
+#   ggplot() + 
+#   geom_histogram(mapping = aes(x = months_exceeding_threshold), color = "white") 
+  
+  
+# Create summary data for plotting
+plot_data <- tibble(threshold = 0:max(df1$months_exceeding_threshold)) %>%
+  rowwise() %>%
+  mutate(
+    percent_blocks_exceeding = mean(df1$months_exceeding_threshold > threshold) * 100
+  ) %>%
+  ungroup()
+
+# Create the plot
+plt <- ggplot(plot_data, aes(x = threshold, y = percent_blocks_exceeding)) +
+  geom_line(color = "steelblue", size = 1) +
+  labs(
+    title = paste0("Share of Indian Blocks exceeding WHO annual average PM2.5 guideline"),
+     subtitle = paste0("WHO annual average PM2.5 safe limit: ", threshold,  " μg/m³"),
+    x = paste0("Number of months (1998 to 2023) exceeding 5 μg/m³"),
+    y = "Percent of Blocks (%)", 
+    caption = "*Note:There are a total of 312 months from 1998 to 2023"
+  ) +
+  theme_minimal() +
+  theme(plot.caption = element_text(hjust = 0, margin = margin(t = 1, unit = "cm"), face = "italic", size = 9), 
+        plot.subtitle = element_text(hjust = 0, margin = margin(b = 0.8, unit = "cm"), face = "italic", size = 10), 
+             plot.title = element_text(hjust = 0, margin = margin(b = 0.2, unit = "cm"), face = "bold", size = 13), 
+        axis.title.x = element_text(size = 11, margin = margin(t = 0.5, unit = "cm")), 
+        axis.title.y = element_text(size = 11, margin = margin(r = 0.5, unit = "cm")), 
+        axis.text = element_text(size = 10))
+  
+
+```

@@ -3,6 +3,8 @@
 
 # biteSizedAQ
 
+# ![](images/biteSizedAQ_transparent_logo.png)
+
 <!-- badges: start -->
 <!-- badges: end -->
 
@@ -45,6 +47,13 @@ find time. To kick things off, check out the first few projects below!
   it to be easily identifiable.  
 
 ------------------------------------------------------------------------
+
+## Project 16: 🎉 biteSizedAQ Turns One! Celebrating with an AirGradient Monitor Giveaway + New Logo Reveal
+
+- Read the full blog post here and checkout biteSizedAQ’s new logo: Link
+
+- Fill in the Survey for a chance to win an outdoor AirGradient AQ
+  monitor: Link
 
 ## Project 15: Block level Satellite derived population weighted Monthly PM2.5 dataset for India from 1998-2023
 
