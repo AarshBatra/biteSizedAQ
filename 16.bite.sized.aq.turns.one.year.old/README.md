@@ -8,11 +8,14 @@
 Hello air quality enthusiasts!
 
 I’m excited to announce a special milestone — **biteSizedAQ just turned
-one year old!** To celebrate this journey of making air quality data
-accessible, open, and easy to understand, I’m thrilled to launch a
-**global giveaway** of two outdoor air quality monitors, thanks to the
-generous support from **AirGradient**, plus a brand new biteSizedAQ logo
-reveal!
+one year old!** biteSizedAQ now has 15 projects under it’s belt and it’s
+growing! All content is provided fully openly. You can explore all
+projects here: <https://github.com/AarshBatra/biteSizedAQ/tree/main>.
+
+To celebrate this journey of making air quality data accessible, open,
+and easy to understand, I’m thrilled to launch a **global giveaway** of
+two outdoor air quality monitors, thanks to the generous support from
+**AirGradient**, plus a brand new biteSizedAQ logo reveal!
 
 ## 🎁 Giveaway: Win One of Two Outdoor AirGradient Monitors
 
