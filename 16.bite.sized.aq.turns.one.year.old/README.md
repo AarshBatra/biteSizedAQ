@@ -30,6 +30,8 @@ effort to measure, visualize, and share air quality data openly.
 
 **Anyone, anywhere in the world!**
 
+**Fill in this survey:** <https://forms.gle/PMf3dH2iwoq7ebrBA>
+
 While the giveaway is open globally, preference will be given to
 applicants from regions with limited or no existing air quality
 monitoring infrastructure. However, this is not a requirement to
@@ -39,6 +41,8 @@ participate.
 
 🗓️ **Deadline for submissions:** June 15 (Sunday), 11:59 pm IST (Indian
 Standard Time, GMT+5:30)
+
+Winners will be announced soon after the deadline.
 
 ## 🌍 Why This Matters: Building Cleaner, More Informed Communities
 
@@ -102,7 +106,7 @@ healthier planet.
 
 Thank you for being part of the biteSizedAQ journey!
 
-— **Aarsh Batra, Founder of biteSizedAQ**
+— **Aarsh Batra, Founder, biteSizedAQ**
 
 *Feel free to share this post with anyone interested in air quality and
 open data.*

@@ -48,12 +48,19 @@ find time. To kick things off, check out the first few projects below!
 
 ------------------------------------------------------------------------
 
-## Project 16: 🎉 biteSizedAQ Turns One! Celebrating with an AirGradient Monitor Giveaway + New Logo Reveal
+## Project 16: 🎉 biteSizedAQ Turns One! Celebrating with AirGradient Monitors Giveaway + New Logo Reveal
 
-- Read the full blog post here and checkout biteSizedAQ’s new logo: Link
+- Read the full blog post here and checkout biteSizedAQ’s new logo:
+  [Link to
+  Blog](https://github.com/AarshBatra/biteSizedAQ/tree/main/16.bite.sized.aq.turns.one.year.old)
 
 - Fill in the Survey for a chance to win an outdoor AirGradient AQ
-  monitor: Link
+  monitor: [Link to Survey](https://forms.gle/PMf3dH2iwoq7ebrBA)
+
+  - ***Deadline:*** June 15 (Sunday), 11:59 pm IST (Indian Standard
+    Time, GMT+5:30)
+
+  - Winners will be announced soon after the deadline
 
 ## Project 15: Block level Satellite derived population weighted Monthly PM2.5 dataset for India from 1998-2023
 
