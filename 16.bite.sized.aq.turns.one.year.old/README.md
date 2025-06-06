@@ -20,10 +20,11 @@ two outdoor air quality monitors, thanks to the generous support from
 ## 🎁 Giveaway: Win One of Two Outdoor AirGradient Monitors
 
 AirGradient, a leader in affordable and open-source air quality
-monitoring technology, has kindly provided **two Outdoor Open Air
-monitors** to be given away — completely free of cost! These monitors
-are perfect for anyone passionate about clean air, open data, and
-community-driven environmental action.
+monitoring technology, has kindly provided **two [AirGradient Open Air
+Outdoor O1-PST](https://www.airgradient.com/outdoor/#comparison)
+monitors (fully assembled and tested)** to be given away — completely
+free of cost! These monitors are perfect for anyone passionate about
+clean air, open data, and community-driven environmental action.
 
 Whether you’re a student, educator, researcher, maker, activist, or just
 curious about air pollution, this is your chance to join the global
