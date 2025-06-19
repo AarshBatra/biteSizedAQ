@@ -57,7 +57,7 @@ find time. To kick things off, check out the first few projects below!
 - Fill in the Survey for a chance to win an outdoor AirGradient AQ
   monitor: [Link to Survey](https://forms.gle/PMf3dH2iwoq7ebrBA)
 
-  - ***Deadline:*** June 15 (Sunday), 11:59 pm IST (Indian Standard
+  - ***Deadline:*** June 22 (Sunday), 11:59 pm IST (Indian Standard
     Time, GMT+5:30)
 
   - Winners will be announced soon after the deadline

@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# biteSizedAQ 
+# biteSizedAQ
 
 <!-- badges: start -->
 
@@ -47,7 +47,7 @@ This repository will continue to grow with new projects as and when I find time.
 
 -   Fill in the Survey for a chance to win an outdoor AirGradient AQ monitor: [Link to Survey](https://forms.gle/PMf3dH2iwoq7ebrBA)
 
-    -   ***Deadline:*** June 15 (Sunday), 11:59 pm IST (Indian Standard Time, GMT+5:30)
+    -   ***Deadline:*** June 22 (Sunday), 11:59 pm IST (Indian Standard Time, GMT+5:30)
 
     -   Winners will be announced soon after the deadline
 

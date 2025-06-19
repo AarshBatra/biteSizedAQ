@@ -43,7 +43,7 @@ participate.
 
 ### Important Dates
 
-🗓️ **Deadline for submissions:** June 15 (Sunday), 11:59 pm IST (Indian
+🗓️ **Deadline for submissions:** June 22 (Sunday), 11:59 pm IST (Indian
 Standard Time, GMT+5:30)
 
 Winners will be announced soon after the deadline.
