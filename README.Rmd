@@ -29,6 +29,10 @@ All projects under this repository are free and open, provided under the CC BY 4
 
 This repository will continue to grow with new projects as and when I find time. To kick things off, check out the first few projects below!
 
+## Dream Tenets
+
+![](images/9.png)
+
 ## General structure and how to navigate projects in this repo
 
 -   The number prefix at the start of every project folder/Rmd name is the project id under this repo.

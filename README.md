@@ -27,6 +27,10 @@ and accessible for all.
 This repository will continue to grow with new projects as and when I
 find time. To kick things off, check out the first few projects below!
 
+## Dream Tenets
+
+![](images/9.png)
+
 ## General structure and how to navigate projects in this repo
 
 - The number prefix at the start of every project folder/Rmd name is the
