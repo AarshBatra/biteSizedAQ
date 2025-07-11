@@ -62,7 +62,7 @@ an Environmental Consultancy firm in Peru. Together, they plan to raise
 awareness and involve a broader audience through interviews, outreach,
 and ongoing collaboration with the community.
 
-### Ashish Ranjan (Araria, Bihar, India) <img src="images/clipboard-2155041401.png" width="553" />
+### Ashish Ranjan (Araria, Bihar, India) <img src="images/clipboard-2155041401.png" width="339" />
 
 Ashish is a grassroots activist based in Araria, Bihar, where he works
 with Jan Jagran Shakti Sangathan, a trade union of unorganized rural

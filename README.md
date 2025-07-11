@@ -55,8 +55,10 @@ find time. To kick things off, check out the first few projects below!
 ## Project 17: 🎉 biteSizedAQ x AirGradient Monitors Giveaway Results!
 
 - Read the full blog post here and read about the stories of all those
-  who applied and also find about the winners of the give away: Link to
-  Blog
+  who applied and also find about the winners of the give away: [Link to
+  Blog](https://github.com/AarshBatra/biteSizedAQ/tree/main/17.bite.sized.aq.monitor.give.away.results)
+
+- Thank you everyone who applied!
 
 ## Project 16: 🎉 biteSizedAQ Turns One! Celebrating with AirGradient Monitors Giveaway + New Logo Reveal
 
