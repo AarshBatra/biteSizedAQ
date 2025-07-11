@@ -25,7 +25,7 @@ Over the course of 2 weeks, we received 34 thoughtful applications from 14 count
 
 We have now selected 2 candidates from this list. Thanks to the generous support of AirGradient, the monitors are on their way to these changemakers!
 
-##  🎉 The Winners
+## 🎉 The Winners
 
 After reviewing 34 applications from 14 countries, I’m thrilled to announce the 2 winners of this give away:
 
@@ -39,20 +39,22 @@ After reviewing 34 applications from 14 countries, I’m thrilled to announce th
 | 
 | Sebastián is planning to install the community-based air quality monitor at the Interpretation Center of the Lomas de Lúcumo, a natural area increasingly threatened by urban expansion and human activity. The monitor will collect data on various pollutants, filling a critical gap in environmental information for this ecosystem and complementing existing meteorological records.
 | 
-| With its placement in a visible, publicly accessible location, the device will also serve as an educational tool. Local volunteers and students will be trained to participate in the monitoring, fostering environmental education and engagement. 
+| With its placement in a visible, publicly accessible location, the device will also serve as an educational tool. Local volunteers and students will be trained to participate in the monitoring, fostering environmental education and engagement.
 | 
 | Sebastián’s work is supported by Evelyn Melgar, CEO of Mangle Consultora an Environmental Consultancy firm in Peru. Together, they plan to raise awareness and involve a broader audience through interviews, outreach, and ongoing collaboration with the community.
 
-### Ashish Ranjan (Araria, Bihar, India)   ![](images/clipboard-2155041401.png){width="339"}
+### Ashish Ranjan (Araria, Bihar, India)
+
+![](images/clipboard-2155041401.png){width="425"}
 
 | Ashish is a grassroots activist based in Araria, Bihar, where he works with Jan Jagran Shakti Sangathan, a trade union of unorganized rural workers. Trained as an engineer, he now devotes himself fully to community organizing and advocacy. His interest in air quality took shape during a local protest against a meat processing factory, where foul odours had made daily life difficult for nearby residents. The agitation drew strong public participation, and while no formal action was taken, the factory eventually made some improvements. The experience left a lasting impression on Ashish, reinforcing how deeply environmental issues affect people's lives and how collective action can push for change, even in small ways.
 | 
-| Ashish has since become more aware of the poor air quality in Araria—a rural town without major industries, yet still burdened by dust and pollution. He plans to install an air quality monitor in a location that will have the most impact, with the aim of identifying sources of pollution and opening up conversations around mitigation.  
+| Ashish has since become more aware of the poor air quality in Araria—a rural town without major industries, yet still burdened by dust and pollution. He plans to install an air quality monitor in a location that will have the most impact, with the aim of identifying sources of pollution and opening up conversations around mitigation.
 | 
 | In this effort, Ashish is working in collaboration with Rashmi Krishnan, a PhD candidate in Environmental Health Sciences at UC Berkeley, who is offering support to Ashish as the project takes shape. Together, they hope to bridge the gap between data and lived experience, making air quality a visible and actionable issue for communities often left out of the conversation.
 
 \
-Both Ashish and Sebastien, alongside their teams will install and maintain these monitors to generate low cost sensor based AQ monitoring awareness in their respective communities. \
+Both Ashish and Sebastien, alongside their teams will install and maintain these monitors to generate low cost sensor based AQ monitoring awareness in their respective communities.\
 \
 Furthermore, in line with the Open Source ideals of biteSizedAQ and AirGradient - both candidates aim to share this data fully openly with everyone.
 
@@ -60,7 +62,7 @@ By doing so they not only help raise awareness of the issue in their local commu
 
 I thank you all for your efforts and all the time you have and will put into raising awareness via this initiative in the near future!
 
-##  🌍 To those Who Applied but did not get a Monitor
+## 🌍 To those Who Applied but did not get a Monitor
 
 Given the limited number of monitors available in this round, we had to make some very difficult choices. Many strong and deserving applications couldn’t be selected - not because their applications weren’t compelling, but simply because of the limited resources available.
 
@@ -75,7 +77,7 @@ We applaud your efforts and encourage you to not get discouraged, but rather con
 Below are the **21 individuals** (excluding winners) who gave permission to share their plans:\
 
 | Name                               | Country       | Plans to tackle Air Pollution                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|---------------------------|----------|----------------------------------------------------|
+|------------------------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Alexis Pelhâte                     | France        | Linux System Administrator from Buxerolles, France, working at Datacampus. Lives in an area with generally minor pollution but wants to share data widely through applications like AirVisual to increase public interest and awareness about air quality monitoring.                                                                                                                                                                                                                                                                                                                                                                                              |
 | Aniket Chavan                      | India         | Research scholar from Nagpur, Maharashtra, India, at VNIT studying Environmental Engineering. Experiences seasonal pollution and wants to use the monitor as supplementary data for PhD research on seasonal and spatial air pollution trends in areas without CAAQMS coverage.                                                                                                                                                                                                                                                                                                                                                                                    |
 | Boudewijn Sterk                    | Bangladesh    | General Manager from Dhaka, Bangladesh, at Smart Air Bangladesh. Deals with persistent air pollution and wants to highlight that air pollution affects areas beyond Dhaka, specifically monitoring industrial sites and making pollution data visible to the public.                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -102,7 +104,7 @@ Below are the **21 individuals** (excluding winners) who gave permission to shar
 
 I thank you all for your time and effort and I hope you continue to engage in the AQ space.
 
-##  Why Low‑Cost Sensors Matter?
+## Why Low‑Cost Sensors Matter?
 
 Imagine living in a city or village and not knowing the quality of the air you breathe each day. In many parts of the world—especially low-income, rural, or marginalized areas—this is still the case. Reference grade air quality stations (usually govt based) are few and far between, very expensive to set up and in some places, they don’t exist at all. Even where stations exist, their data is often outdated, inaccessible, or not trusted by communities.
 
@@ -118,7 +120,7 @@ A recent great example is the EPIC Air Quality Fund Awardee, WASARU, launched a 
 
 > ***That's why even one monitor counts! and that’s why getting these useful tools into more hands (especially in resource constrained settings disproportionately hit by air pollution) matters so much.***
 
-##  Why More Funding Is Crucial?
+## Why More Funding Is Crucial?
 
 Reading the applications for this giveaway was both inspiring and difficult. People across 14 countries came forward with creative, thoughtful, and highly needed ideas, everything from student-led school campaigns and open-data dashboards to village monitoring pilots, concerned parents and health impact research.
 
@@ -134,7 +136,7 @@ The need is clear. The people are ready. With the right backing, we can move fro
 
 Read more about the state of funding in this space in the following blog by Clean Air Fund [here](https://www.cleanairfund.org/resource/air-quality-funding-2024/).
 
-##  Finally, a Suggestion: Collaborate Locally!
+## Finally, a Suggestion: Collaborate Locally!
 
 If you applied, or even if you’re just following this work—and know someone nearby doing something similar, get in touch with them, maybe they'll be interested in collaborating with you! One of the most powerful things we can do is join forces.
 
@@ -144,7 +146,7 @@ Some of the applicants in this giveaway may live in the same city or region with
 
 | ***If you work in the AQ space and even if you didn't apply for this giveaway but you'd like to collaborate with some of the candidates above. I encourage you to get in touch, have a chat and maybe something will come out of that.***
 
-##  What’s Next?
+## What’s Next?
 
 Keep going!
 
