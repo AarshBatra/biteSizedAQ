@@ -52,9 +52,13 @@ It's important to note that this short analysis largely focuses on the
 **existence** of a standard for a specific pollutant, rather than on the
 stringency of the concentration levels.
 
-For e.g. if India's count is 6 that means that in India there are
-national standards corresponding to all six criteria pollutants and they
-are made available in line with WHO averaging times.
+> ***For e.g. If India’s count is 6, it indicates that national
+> standards exist for all six criteria pollutants, with averaging times
+> aligned to WHO guidance. In this analysis, a country is considered to
+> have a standard for a pollutant even if it specifies only a single
+> averaging time (e.g., 24 hours); multiple averaging times are
+> beneficial but not required for a country to qualify as having a
+> standard for that pollutant.***
 
 ## Key Air Pollutants
 
