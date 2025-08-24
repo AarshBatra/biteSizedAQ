@@ -69,6 +69,9 @@ find time. To kick things off, check out the first few projects below!
   link](https://github.com/AarshBatra/biteSizedAQ/blob/main/18.bite.sized.vis.4.who.nat.aq.st.database.2025.Rmd)
   to access the pipeline.
 
+- Link to high res final plot for sharing:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/18.bite.sized.vis.4.who.nat.aq.st.database.2025/high_res_plot.png)
+
 ## Project 17: 🎉 biteSizedAQ x AirGradient Monitors Giveaway Results!
 
 - Read the full blog post here and read about the stories of all those

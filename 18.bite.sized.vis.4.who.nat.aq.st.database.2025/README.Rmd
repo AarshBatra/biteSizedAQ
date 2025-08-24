@@ -225,7 +225,9 @@ realized for all.
 
 ## **Share This Visual!**
 
-Here is a link to download the PNG file for the above plot: Link to PNG.
+Here is a [link to
+download](https://github.com/AarshBatra/biteSizedAQ/blob/main/18.bite.sized.vis.4.who.nat.aq.st.database.2025/high_res_plot.png)
+the PNG file for the above plot: Link to PNG.
 
 Help raise awareness about the severity of air pollution in India by
 sharing this and other visuals in the biteSizedVisuals series. By
