@@ -229,7 +229,7 @@ address the crisis and create a healthier future for all. Share this
 visual with your network to highlight the air quality challenges faced
 by millions across the country.
 
-## Rmd for this blog
+## Analysis Code for this blog
 
 This analysis does some basic cleaning of the raw WHO dataset to produce
 the above visualization. All cleaning and analysis was done using the R
@@ -245,7 +245,9 @@ please consider starring it on GitHub. Your stars help others discover
 and benefit from this fully open and free repository. Click [here to
 star the
 repository](https://github.com/AarshBatra/biteSizedAQ/stargazers) and
-join other folks who follow biteSizedAQ.
+join the growing community of folks who follow biteSizedAQ.
+
+![](images/clipboard-2161359608.png)
 
 ## Get in touch
 
