@@ -222,19 +222,6 @@ Clean air should not be a luxury; it’s a human right. Let’s ensure that
 every breath we take moves us closer to a world where that right is
 realized for all.
 
-## **Share This Visual!**
-
-Here is a [link to
-download](https://github.com/AarshBatra/biteSizedAQ/blob/main/18.bite.sized.vis.4.who.nat.aq.st.database.2025/high_res_plot.png)
-the PNG file for the above plot: Link to PNG.
-
-Help raise awareness about the severity of air pollution in India by
-sharing this and other visuals in the biteSizedVisuals series. By
-spreading the message, we can collectively push for urgent actions to
-address the crisis and create a healthier future for all. Share this
-visual with your network to highlight the air quality challenges faced
-by millions across the country.
-
 ## Analysis Code for this blog
 
 This analysis does some basic cleaning of the raw WHO dataset to produce
@@ -262,13 +249,14 @@ Get in touch about related topics/report any errors. Reach out to me at
 
 ## License and Reuse
 
-All content is provided under the Creative Commons Attribution 4.0
-International (CC BY 4.0) license. Feel free to incorporate this
-material into your reports or news stories, as long as you give
-appropriate credit to the original creators and include links to all
-their original works. Thank you for adhering to these terms!For more
-details, see the LICENSE file.
-
-If you use this in your work, please cite this repository as follows:  
-*\[Aarsh Batra, biteSizedAQ,
-<https://github.com/AarshBatra/biteSizedAQ>\]*
+The dataset used in this visualization is provided by WHO under specific
+terms of use. It may not be used for commercial, promotional, or
+political purposes, nor in any way that suggests endorsement by WHO of
+any product, service, or organization. Reuse must respect the rights of
+WHO and attributed data owners, comply with WHO’s policies and
+principles, and not involve illegal activities. This visualization is
+shared for informational and educational purposes only, in accordance
+with those conditions. While every effort has been made to follow the
+applicable licensing guidelines, any unintended misuse or
+misinterpretation is unintentional, and corrections will be made if
+notified.
