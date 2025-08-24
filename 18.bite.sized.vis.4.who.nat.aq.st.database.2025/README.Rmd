@@ -28,21 +28,33 @@ Let’s dive into the data—one plot at a time!
 
 ------------------------------------------------------------------------
 
-![](images/air_quality_standards_analysis_final.png)
+![](images/air_quality_standards_analysis_final-01.png)
 
 Air pollution is a major environmental health risk, contributing to
 millions of premature deaths each year. A primary tool for combating
 this crisis is the use of **national air quality standards**, limits on
 air pollution set by countries to protect their citizens. This report,
-based on a database compiled by the World Health Organization (WHO) and
-the Swiss Tropical and Public Health Institute (Swiss TPH), provides an
-overview of the regulatory landscape. The analysis focuses on a simple
-count: for each of the **251 countries and territories** included, it
-tallies the number of the six key pollutants for which national
-standards have been set, specifically those that use averaging times
-aligned with the WHO's own data compilation. It's important to note that
-this analysis focuses on the **existence** of a standard for a specific
-pollutant, rather than on the stringency of the concentration levels.
+based on a database ([Link to
+Source](https://www.who.int/tools/air-quality-standards)) compiled by
+the World Health Organization (WHO) and the Swiss Tropical and Public
+Health Institute (Swiss TPH), provides an overview of the regulatory
+landscape.
+
+The analysis processes the raw data and focuses on a simple count: for
+each of the **251 countries and territories** included, it tallies the
+number of the six key pollutants for which national standards have been
+set in each country, specifically those that use averaging times aligned
+with the WHO's own data compilation (1 yr, 24 hrs, 8 hrs, 1 hr, 15
+minutes, 10 minutes). Standards set for additional averaging times not
+in line with the WHO are not compiled by WHO in this database. Please
+refer additional sources for that information and interpret accordingly.
+It's important to note that this short analysis largely focuses on the
+**existence** of a standard for a specific pollutant, rather than on the
+stringency of the concentration levels.
+
+For e.g. if India's count is 6 that means that in India there are
+national standards corresponding to all six criteria pollutants and they
+are made available in line with WHO averaging times.
 
 ## Key Air Pollutants
 
@@ -224,9 +236,12 @@ by millions across the country.
 
 ## Rmd for this blog
 
-This visualization was produced using R programming language. Code can
-be found in the corresponding Rmd file. Here is a quick link to access
-it. The underlying Rmd for this blog post can be found here.
+This analysis does some basic cleaning of the raw WHO dataset to produce
+the above visualization. All cleaning and analysis was done using the R
+programming language. Code can be found in the corresponding Rmd file.
+Here is a [quick
+link](https://github.com/AarshBatra/biteSizedAQ/blob/main/18.bite.sized.vis.4.who.nat.aq.st.database.2025.Rmd)
+to access it.
 
 ## Support This Work: Give It a Star
 

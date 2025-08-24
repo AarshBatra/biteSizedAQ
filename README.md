@@ -52,6 +52,23 @@ find time. To kick things off, check out the first few projects below!
 
 ------------------------------------------------------------------------
 
+## Project 18: biteSizedVisual \#4: Air Quality Standards National Coverage for Criterial Pollutants Across the World
+
+- Read the full blog post here and read about the stories of all those
+  who applied and also find about the winners of the give away: [Link to
+  Blog](https://github.com/AarshBatra/biteSizedAQ/tree/main/18.bite.sized.vis.4.who.nat.aq.st.database.2025)
+
+- Link to raw WHO/Swiss TPH compiled national air quality standards
+  database:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/18.bite.sized.vis.4.who.nat.aq.st.database.2025/raw.data.csv).
+  Source:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/18.bite.sized.vis.4.who.nat.aq.st.database.2025/raw.data.csv).
+
+- Data Processing and Visualization pipeline Rmd file for this project
+  is present at the root of the biteSizedAQ repo. Here is a [quick
+  link](https://github.com/AarshBatra/biteSizedAQ/blob/main/18.bite.sized.vis.4.who.nat.aq.st.database.2025.Rmd)
+  to access the pipeline.
+
 ## Project 17: 🎉 biteSizedAQ x AirGradient Monitors Giveaway Results!
 
 - Read the full blog post here and read about the stories of all those

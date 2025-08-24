@@ -1,17 +1,3 @@
----
-title: "18.bite.sized.vis.4.who.nat.aq.st.database.2025"
-author: "Aarsh Batra"
-date: "`r Sys.Date()`"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-#### load raw data
-
-```{r load_raw_data}
 # Load required libraries
 library(dplyr)
 library(ggplot2)
@@ -23,22 +9,10 @@ library(patchwork)  # For combining plots
 library(scales)
 library(here)
 library(tidyr)
-library(ggplot2)
-library(patchwork)
-library(scales)
-library(extrafont)
-library(dplyr)
-library(cowplot)
-library(magick)
 
 # Load raw data
 df <- read.csv(paste0(here(), "/18.bite.sized.vis.4.who.nat.aq.st.database.2025/raw.data.csv"), stringsAsFactors = FALSE) %>%
   as_tibble()
-```
-
-#### clean raw data
-
-```{r clean_raw_data}
 
 # Step 1: Calculate pollutant count per country
 # First, get all unique countries to ensure none are excluded
@@ -53,11 +27,11 @@ pollutant_counts <- df %>%
   summarise(pollutant_has_standard = any(has_valid_standard), .groups = 'drop') %>%
   # Count pollutants with standards per country
   group_by(country) %>%
-  summarise(pollutant_count = sum(pollutant_has_standard), .groups = 'drop') 
-  # # Ensure all countries are included, even those with 0 standards
-  # right_join(all_countries, by = "country") %>%
-  # # Replace NA counts with 0 for countries with no standards
-  # mutate(pollutant_count = coalesce(pollutant_count, 0))
+  summarise(pollutant_count = sum(pollutant_has_standard), .groups = 'drop')
+# # Ensure all countries are included, even those with 0 standards
+# right_join(all_countries, by = "country") %>%
+# # Replace NA counts with 0 for countries with no standards
+# mutate(pollutant_count = coalesce(pollutant_count, 0))
 
 # Step 2: Load world map data
 world <- ne_countries(scale = "medium", returnclass = "sf")
@@ -140,11 +114,7 @@ world_data <- world %>%
 world_data$pollutant_count[is.na(world_data$pollutant_count)] <- 0
 
 
-```
-
-
 #### plot cleaned data
-```{r}
 
 # Enhanced color palette for air quality theme
 air_quality_colors <- c(
@@ -360,7 +330,7 @@ combined_plot <- map_with_background / hist_plot +
 #   draw_image(
 #     "./18.bite.sized.vis.4.who.nat.aq.st.database.2025/gh_logo.png",  # Replace with your actual PNG file path
 #     x = 0.72,     # Horizontal position (0-1, where 0.5 is center)
-#     y = 0.020,    # Vertical position (0-1, where 0 is bottom)  
+#     y = 0.020,    # Vertical position (0-1, where 0 is bottom)
 #     width = 0.02, # Logo width (slightly larger than before)
 #     height = 0.02 # Logo height (slightly larger than before)
 #   )
@@ -373,4 +343,3 @@ ggsave(
   height = 17,
   dpi = 520
 )
-```
