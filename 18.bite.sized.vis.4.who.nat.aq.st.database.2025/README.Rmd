@@ -139,12 +139,14 @@ infrastructure, and legal frameworks.
 
 The divergence between WHO guidelines and a country's standards is
 evident when we compare countries and their standards for the same
-pollutants. For example, while Norway and Israel have set their national
-annual average standard for PM2.5​ at 5 micrograms per cubic meter
-(5 µg/m3), which aligns with the WHO guideline, Algeria's national
-standard for the same pollutant is set at 80 µg/m3. Countries in the
-middle also show wide variation: the United States has an annual average
-PM2.5​ standard of 9 µg/m3, while India's is 40 µg/m3.
+pollutants under same averaging times. For example, while Norway and
+Israel have set their national annual average standard for PM2.5​ at 5
+micrograms per cubic meter (5 µg/m3), which aligns with the WHO
+guideline, Algeria's national standard for the same pollutant is set at
+80 µg/m3. Countries in the middle also show wide variation: the United
+States has an annual average PM2.5​ standard of 9 µg/m3, while India's is
+40 µg/m3. Similar divergence is observed when we analyze other
+pollutants in the compiled database.
 
 These wide differences in stringency demonstrate that while setting a
 standard is a critical first step, a nation's true commitment to
