@@ -18,7 +18,7 @@ please link back to the original post.
 
 Let’s dive into the data—one plot at a time!
 
-## Air Quality Standards National Coverage for Criterial Pollutants Across the World
+## Air Quality Standards National Coverage for Criteria Pollutants Across the World
 
 ------------------------------------------------------------------------
 

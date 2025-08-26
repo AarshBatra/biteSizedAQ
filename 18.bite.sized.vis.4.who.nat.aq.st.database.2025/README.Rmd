@@ -24,7 +24,7 @@ please link back to the original post.
 
 Let’s dive into the data—one plot at a time!
 
-## Air Quality Standards National Coverage for Criterial Pollutants Across the World
+## Air Quality Standards National Coverage for Criteria Pollutants Across the World
 
 ------------------------------------------------------------------------
 
@@ -267,4 +267,3 @@ with those conditions. While every effort has been made to follow the
 applicable licensing guidelines, any unintended misuse or
 misinterpretation is unintentional, and corrections will be made if
 notified.
-
