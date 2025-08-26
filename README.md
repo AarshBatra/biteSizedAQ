@@ -61,8 +61,7 @@ find time. To kick things off, check out the first few projects below!
 - Link to raw WHO/Swiss TPH compiled national air quality standards
   database:
   [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/18.bite.sized.vis.4.who.nat.aq.st.database.2025/raw.data.csv).
-  Source:
-  [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/18.bite.sized.vis.4.who.nat.aq.st.database.2025/raw.data.csv).
+  Source: [Link](https://www.who.int/tools/air-quality-standards).
 
 - Data Processing and Visualization pipeline Rmd file for this project
   is present at the root of the biteSizedAQ repo. Here is a [quick
