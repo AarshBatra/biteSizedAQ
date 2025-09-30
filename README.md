@@ -52,9 +52,10 @@ find time. To kick things off, check out the first few projects below!
 
 ------------------------------------------------------------------------
 
-## Project 19: Our Planet’s Hidden Ledger: Decoding Pollution and Climate Across Space and Time
+## Project 19: How to Unlock Earth’s Climate and Pollution Diary: From Million Year Old Sediment Cores to Modern Tree Rings
 
-- Read the full blog post here: Link to Blog
+- Read the full blog post here: [Link to
+  Blog](https://github.com/AarshBatra/biteSizedAQ/tree/main/19.aq.hist.paleo.climatology)
 
 ## Project 18: biteSizedVisual \#4: Air Quality Standards National Coverage for Criterial Pollutants Across the World
 

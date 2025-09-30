@@ -1,5 +1,5 @@
 
-# Our Planet’s Hidden Ledger: Decoding Pollution and Climate Across Space and Time
+# How to Unlock Earth’s Climate and Pollution Diary: From Million Year Old Sediment Cores to Modern Tree Rings
 
 ![](images/clipboard-867911887.png)
 
@@ -284,9 +284,7 @@ combining data from forests across continents — from bristlecone pines
 in North America to Japanese cedars and European silver firs — we can
 construct a global picture of past climates, one ring at a time.
 
-Time Capsule \#3: The Bog’s Buried Secrets: Peatland Archives  
-  
-![](images/clipboard-1635878078.png)
+## Time Capsule \#3: The Bog’s Buried Secrets: Peatland Archives ![](images/clipboard-1635878078.png)
 
 *Image: A bog in Lauhanvuori National Park, Isojoki, Finland. Credit:
 Wikipedia*
