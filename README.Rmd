@@ -45,6 +45,10 @@ This repository will continue to grow with new projects as and when I find time.
 
 ------------------------------------------------------------------------
 
+## Project 19: Our Planet’s Hidden Ledger: Decoding Pollution and Climate Across Space and Time
+
+-   Read the full blog post here: Link to Blog
+
 ## Project 18: biteSizedVisual #4: Air Quality Standards National Coverage for Criterial Pollutants Across the World
 
 -   Read the full blog post here and read about the stories of all those who applied and also find about the winners of the give away: [Link to Blog](https://github.com/AarshBatra/biteSizedAQ/tree/main/18.bite.sized.vis.4.who.nat.aq.st.database.2025)

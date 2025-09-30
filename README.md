@@ -52,6 +52,10 @@ find time. To kick things off, check out the first few projects below!
 
 ------------------------------------------------------------------------
 
+## Project 19: Our Planet’s Hidden Ledger: Decoding Pollution and Climate Across Space and Time
+
+- Read the full blog post here: Link to Blog
+
 ## Project 18: biteSizedVisual \#4: Air Quality Standards National Coverage for Criterial Pollutants Across the World
 
 - Read the full blog post here and read about the stories of all those
