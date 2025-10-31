@@ -260,8 +260,8 @@ chemical and physical interaction occurs that significantly raises the
 health risk, creating a “double burden” on the lungs.
 
 The first interaction is physical: **chemical pollutants stick to the
-pollen**. Tiny particles, like **PM\$\_{2.5}\$** (Particulate Matter
-$2.5$ micrometers or less), are attracted to the pollen’s surface. This
+pollen**. Tiny particles, like **PM2.5** (Particulate Matter $2.5$
+micrometers or less), are attracted to the pollen’s surface. This
 effectively turns the pollen grain into a **super-allergen**—a larger,
 more irritating carrier particle that delivers both the natural allergen
 and the toxic chemical deep into the respiratory system simultaneously.
@@ -450,9 +450,9 @@ allergies.**
 Pollen isn’t just a seasonal nuisance — it’s a fundamental and
 increasingly important part of the air we breathe. With climate change,
 pollen seasons are becoming longer and more intense. Rising temperatures
-and higher carbon dioxide (\$CO_2\$) levels are prompting many
-allergenic plants to bloom earlier, release more pollen, and remain
-active later in the year.
+and higher carbon dioxide (CO2) levels are prompting many allergenic
+plants to bloom earlier, release more pollen, and remain active later in
+the year.
 
 In some regions, scientists have found that pollen seasons are now
 lasting nearly **three weeks longer** than they did just a few decades
