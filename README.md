@@ -54,7 +54,8 @@ find time. To kick things off, check out the first few projects below!
 
 ## Project 20: The Often Overlooked Air Pollutant: Understanding Pollen and Its Impact
 
-- Read the full blog post here: Link to Blog
+- Read the full blog post here: [Link to
+  Blog](https://github.com/AarshBatra/biteSizedAQ/tree/main/20.pollen.primer)
 
 ## Project 19: How to Unlock Earth’s Climate and Pollution Diary: From Million Year Old Sediment Cores to Modern Tree Rings
 

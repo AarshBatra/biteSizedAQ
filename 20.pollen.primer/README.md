@@ -542,7 +542,7 @@ star the
 repository](https://github.com/AarshBatra/biteSizedAQ/stargazers) and
 join other folks who follow biteSizedAQ.
 
-![](images/clipboard-4153043617.png)
+![](images/clipboard-521324436.png)
 
 ## License and Reuse
 
