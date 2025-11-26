@@ -534,8 +534,8 @@ solution items** under each chain. If you identify new chains, please
 feel free to add those. Let's build a repository of tactics we can pick
 and test quickly as a community.
 
-**Link to Google Doc: [Community Solution Repository (The Google
-Doc)](https://docs.google.com/document/d/1oe6AMwiSRmhZHvvU_88P34nT4EbBW6CCmzEjMEbZ028/edit?tab=t.0#heading=h.9agtkc3b30lh)**
+**Link to Google Doc:** [Community Solutions Repository (The Google
+Doc)](https://docs.google.com/document/d/1oe6AMwiSRmhZHvvU_88P34nT4EbBW6CCmzEjMEbZ028/edit?tab=t.0#heading=h.9agtkc3b30lh)
 
 ## Conclusion: The Fight for Our Breath is the Fight for Our Rights
 
@@ -553,8 +553,8 @@ Institutional Silence.**
 
 While this framework provides a starting point for collective action, we
 recognize it is **not exhaustive**. This is precisely where our
-[**Community Solution Repository (The Google
-Doc)**](https://docs.google.com/document/d/1oe6AMwiSRmhZHvvU_88P34nT4EbBW6CCmzEjMEbZ028/edit?tab=t.0#heading=h.9agtkc3b30lh)
+[Community Solutions Repository (The Google
+Doc)](https://docs.google.com/document/d/1oe6AMwiSRmhZHvvU_88P34nT4EbBW6CCmzEjMEbZ028/edit?tab=t.0#heading=h.9agtkc3b30lh)
 comes in. We must continue to evolve this list, identifying and tackling
 the chains we haven't yet captured.
 
@@ -594,4 +594,3 @@ Thank you for respecting these terms!
 
 Get in touch about related topics/report any errors. Reach out to me at
 aarshbatra.in\@gmail.com.
-

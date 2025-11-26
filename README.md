@@ -56,9 +56,9 @@ find time. To kick things off, check out the first few projects below!
 
 - Read the full blog post here: [Link to
   Blog](https://github.com/AarshBatra/biteSizedAQ/tree/main/21.air.pol.comms.failing.rectification).
-- After reading the blog please visit and explore the [**Community
-  Solution Repository (The Google
-  Doc)**](https://docs.google.com/document/d/1oe6AMwiSRmhZHvvU_88P34nT4EbBW6CCmzEjMEbZ028/edit?tab=t.0#heading=h.9agtkc3b30lh)**.**
+- After reading the blog please visit and explore the [Community
+  Solutions Repository (The Google
+  Doc)](https://docs.google.com/document/d/1oe6AMwiSRmhZHvvU_88P34nT4EbBW6CCmzEjMEbZ028/edit?tab=t.0#heading=h.9agtkc3b30lh)**.**
 
 ## Project 20: The Often Overlooked Air Pollutant: Understanding Pollen and Its Impact
 
