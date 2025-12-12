@@ -24,7 +24,7 @@ please link back to the original post.
 
 Let’s dive into the data—one plot at a time!
 
-## Air Quality Standards National Coverage for Criteria Pollutants Across the World
+## **biteSizedVisual #4:** Air Quality Standards National Coverage for Criteria Pollutants Across the World
 
 ------------------------------------------------------------------------
 
@@ -252,7 +252,7 @@ join the growing community of folks who follow biteSizedAQ.
 ## Get in touch
 
 Get in touch about related topics/report any errors. Reach out to me at
-[aarshbatra.in\@gmail.com](mailto:aarshbatra.in@gmail.com){.email}.
+bitesizedaq\@gmail.com.
 
 ## License and Reuse
 

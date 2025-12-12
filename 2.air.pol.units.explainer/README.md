@@ -497,7 +497,7 @@ repository](https://github.com/AarshBatra/biteSizedAQ/stargazers).
 ## Get in touch
 
 Get in touch about related topics, reach out to me at
-aarshbatra.in@gmail.com.
+<bitesizedaq@gmail.com>.
 
 ## License and Reuse
 

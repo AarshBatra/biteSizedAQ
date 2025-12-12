@@ -308,4 +308,4 @@ data would not be possible:
 ### Contact
 
 If you find any errors in the data or processing code, please report
-them to `aarshbatra.in@gmail.com`.
+them to `bitesizedaq@gmail.com`.

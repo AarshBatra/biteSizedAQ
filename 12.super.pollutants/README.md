@@ -860,7 +860,7 @@ join other folks who follow biteSizedAQ.
 Get in touch for related discussions or to report any errors. If I have
 accidentally included an image that requires prior permission, or if any
 image in the blog needs authorization before use, please contact me at
-aarshbatra.in@gmail.com.
+bitesizedaq@gmail.com
 
 <br>
 

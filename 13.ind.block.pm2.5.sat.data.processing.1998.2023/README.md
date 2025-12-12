@@ -125,7 +125,7 @@ This project utilizes the following public data sources:
 
 1.  **SHRUG Platform Developed by Data Development Lab**: This dataset
     provides block (subdistrict) level shapefiles essential for detailed
-    geographic analysis. We
+    geographic analysis.
 
 2.  **Atmospheric Composition Analysis Group (V5.GL.05.02 Version)**:
     This public version of the dataset is downloaded from the ACAG
@@ -374,4 +374,4 @@ data would not be possible:
 ### Contact
 
 If you find any errors in the data or processing code, please report
-them to `aarshbatra.in@gmail.com`.
+them to bitesizedaq@gmail.com.

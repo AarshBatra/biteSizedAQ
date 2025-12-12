@@ -150,12 +150,12 @@ star the
 repository](https://github.com/AarshBatra/biteSizedAQ/stargazers) and
 join other folks who follow biteSizedAQ.
 
-![](images/clipboard-1645959672.png)
+![](images/clipboard-3490142983.png)
 
 ## Get in touch
 
 Get in touch about related topics/report any errors. Reach out to me at
-<aarshbatra.in@gmail.com>.
+<bitesizedaq@gmail.com>.
 
 ## License and Reuse
 

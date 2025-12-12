@@ -125,7 +125,7 @@ detailing their release period and specific impact. This is in no way an
 exhaustive list.
 
 |                  |                                                                                 |                                                               |                                                                                                                             |                                                                                                             |
-|------------------|---------------------------------------------------------------------------------|---------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+|-------------|-------------|-------------|------------------|---------------|
 | **Pollen Type**  | **Example Sources**                                                             | **Typical Season/Timing**                                     | **Travel Distance & Impact**                                                                                                | **Key Allergenic Feature**                                                                                  |
 | **Tree Pollen**  | Oak, Birch, Cedar (**Global**); **Neem**, **Mango**, **Acacia** (**India**)     | **Late Winter** $\to$ Spring (earliest type in many areas)    | **Very Far:** Grains are small and light, carried easily by winds for hundreds of kilometers.                               | Major cause of the first seasonal allergy wave (spring allergies).                                          |
 | **Grass Pollen** | Timothy, Rye (**Global**); **Bermuda Grass**, **Cynodon**, **Rice** (**India**) | **Late Spring** $\to$ Summer (peak warmth and humidity)       | **Widespread:** Extremely abundant and produced across large areas. Affects the largest percentage of allergic individuals. | Highly consistent allergen proteins; extremely high volume of release.                                      |
@@ -182,7 +182,7 @@ air, while heavier ones settle quickly.
 Pollen moves from plant to plant using two very different strategies:
 
 |                     |                    |                                                                 |                                                                   |                                                                        |
-|---------------------|--------------------|-----------------------------------------------------------------|-------------------------------------------------------------------|------------------------------------------------------------------------|
+|--------------|--------------|---------------|---------------|----------------|
 | **Travel Strategy** | **Carrier**        | **What the Plant Looks Like**                                   | **Pollen Characteristics**                                        | **Allergy Risk**                                                       |
 | **Wind Traveler**   | **Wind**           | Plain, non-showy flowers (like grasses and many trees).         | **Light, dry, and super abundant** (they release billions).       | **HIGH.** This is the main cause of seasonal allergies.                |
 | **Insect Taxi**     | **Bees & Insects** | Brightly colored, fragrant flowers (like roses and sunflowers). | **Heavy, sticky, and less numerous.** Designed to stick to a bug. | **LOW.** It falls straight to the ground and doesn't float in the air. |
@@ -402,7 +402,7 @@ avoiding pollen can be challenging, here is a memorable tool to help you
 take action.
 
 |            |                     |                                                                                                                      |
-|------------|---------------------|----------------------------------------------------------------------------------------------------------------------|
+|------------|------------|------------------------------------------------|
 | **Letter** | **Reminder**        | **Action**                                                                                                           |
 | **P**      | Peak times          | Avoid outdoor activity in early mornings and on dry, windy days when pollen release is highest.                      |
 | **O**      | Observe weather     | Note that warm, windy days and the period *right after* a storm can be high risk for fragmentation.                  |
@@ -566,4 +566,4 @@ Thank you for respecting these terms!
 ## Get in touch {data-link="Get in touch"}
 
 Get in touch about related topics/report any errors. Reach out to me at
-aarshbatra.in\@gmail.com.
+bitesizedaq\@gmail.com.

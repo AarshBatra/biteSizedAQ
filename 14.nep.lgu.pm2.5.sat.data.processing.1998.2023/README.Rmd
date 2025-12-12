@@ -258,4 +258,4 @@ When using this data/pipeline, please also cite the following foundational data 
 
 ### Contact
 
-If you find any errors in the data or processing code, please report them to `aarshbatra.in@gmail.com`.
+If you find any errors in the data or processing code, please report them to `bitesizedaq@gmail.com`.

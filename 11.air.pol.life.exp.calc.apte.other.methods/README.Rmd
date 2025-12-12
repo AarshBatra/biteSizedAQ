@@ -328,7 +328,7 @@ used only for explanation purposes:
 ### 2. Survivor and Person-Years Calculation
 
 | Age Group | Scenario  | Initial Survivors (lₓ) | Death Probability (qₓ) | Survivors at End (lₓ₊₁) | Average Survivors | Years in Interval | Person-Years (Lₓ) |
-|-----------|-----------|------------------------|------------------------|-------------------------|-------------------|-------------------|-------------------|
+|---------|---------|---------|---------|---------|---------|---------|---------|
 | 0–4       | Baseline  | 100,000                | 0.005                  | 99,500                  | 99,750            | 5                 | 498,750           |
 | 0–4       | Clean Air | 100,000                | 0.0045                 | 99,550                  | 99,775            | 5                 | 498,875           |
 | 5–19      | Baseline  | 99,500                 | 0.001                  | 99,400                  | 99,450            | 15                | 1,491,750         |
@@ -868,7 +868,7 @@ join other folks who follow biteSizedAQ.
 ## Get in touch
 
 Get in touch about related topics/report any errors. Reach out to me at
-[aarshbatra.in\@gmail.com](mailto:aarshbatra.in@gmail.com){.email}.
+bitesizedaq\@gmail.com.
 
 <br>
 

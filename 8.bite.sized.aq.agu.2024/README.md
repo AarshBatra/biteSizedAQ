@@ -152,7 +152,7 @@ repository and join the growing community of biteSizedAQ followers!
 ## Get in touch
 
 Get in touch about related topics/report any errors. Reach out to me at
-<aarshbatra.in@gmail.com>.
+<bitesizedaq@gmail.com>.
 
 ## License and Reuse
 

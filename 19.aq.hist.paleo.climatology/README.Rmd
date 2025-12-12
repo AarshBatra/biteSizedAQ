@@ -79,7 +79,7 @@ By measuring this final O-18/O-16 ratio in each layer of the ice, scientists cre
 Finally, there is a vital, tricky detail that must be accounted for: the "delta age" or air-age offset. The air trapped in the ice is always younger than the ice layer itself. This occurs because the air only becomes permanently sealed in bubbles once the surface snow, called firn (which is porous like a sponge), is compressed into solid ice (as we saw above). This sealing process happens at significant depths (50 to 100 meters) and can take anywhere from decades to millennia. Scientists use sophisticated computer models to accurately calculate this age difference and ensure they correctly match the greenhouse gas record with the temperature record for the exact same moment in history.
 
 |                           |                                                      |                      |                                                                            |
-|---------------------------|------------------------------------------------------|----------------------|----------------------------------------------------------------------------|
+|--------------|------------------|--------------|--------------------------|
 | Layer/Component           | What It Tells Us                                     | Time Scale           | Specific Example                                                           |
 | **Trapped Air Bubbles**   | Direct record of past atmospheric gas concentrations | Up to 800,000+ years | CO2​ levels were stable before the 19th century and are now **50% higher**. |
 | **Stable Isotope Ratios** | Past temperatures (from O‑16 and O‑18 in water)      | Up to 800,000+ years | Low ratio of Oxygen-18 to Oxygen-16 indicates colder temperatures.         |
@@ -265,7 +265,7 @@ By combining these archives, scientists can **see the full picture of Earth’s 
 ### Summary Table of Natural Archives
 
 | Archive Type               | Temporal Resolution          | Time Span                                  | Key Measurements                                                       |
-|----------------------------|------------------------------|--------------------------------------------|------------------------------------------------------------------------|
+|---------------|---------------|----------------|--------------------------|
 | Tree Rings                 | Annual                       | Decades to 5,000+ years                    | Climate, precipitation, local pollution, growth conditions             |
 | Peat Bogs                  | Annual to decadal/centennial | Hundreds to 12,000+ years                  | Airborne pollutants, heavy metals, local environmental changes         |
 | Ice Cores                  | Annual to multi-decadal      | Thousands to 800,000+ years                | Atmospheric gases, isotopes, dust, global climate                      |
@@ -433,4 +433,4 @@ Thank you for respecting these terms!
 
 # Get in touch {data-link="Get in touch"}
 
-Get in touch about related topics/report any errors. Reach out to me at aarshbatra.in\@gmail.com.
+Get in touch about related topics/report any errors. Reach out to me at bitesizedaq\@gmail.com.
