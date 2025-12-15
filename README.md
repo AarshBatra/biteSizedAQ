@@ -54,7 +54,8 @@ find time. To kick things off, check out the first few projects below!
 
 ## Project 22: Block level Satellite derived population weighted Monthly PM2.5 dataset for India from 1998-2024
 
-- Read the blog post on this link.
+- Read the blog post on [this
+  link](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.pm2.5.sat.data.processing.1998.2024).
 
 - Download long and wide version of the processed monthly population
   weighted average pm2.5 India block level data from [this
@@ -65,12 +66,14 @@ find time. To kick things off, check out the first few projects below!
   Sheet](https://docs.google.com/spreadsheets/d/1lOgxsfelqSX0SyIUICVwLmrHziW45pl5E8D6UQ5AYB8/edit?usp=sharing).
 
 - High resolution snapshots for all years, similar to the ones shown in
-  the blog post can be found in this folder of the repo. Feel free to
-  share this further for outreach or awareness purposes.
+  the blog post can be found [in this folder of the
+  repo](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.pm2.5.sat.data.processing.1998.2024/monthly.india.pm2.5.snapshot.all.yrs).
+  Feel free to share this further for outreach or awareness purposes.
 
-- Data Processing pipeline Rmd file for this project: Also, present at
-  the root of the biteSizedAQ repo. Here is a quick link to access the
-  pipeline.
+- Data Processing pipeline Rmd file for this project can be found at the
+  root of the biteSizedAQ repo. Here is a [quick
+  link](https://github.com/AarshBatra/biteSizedAQ/blob/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024.Rmd)
+  to access the pipeline.
 
 ## Project 21: 💔 The Air is Burning Our Futures: Why Our Fight for Clean Air is Drowning in Silence
 

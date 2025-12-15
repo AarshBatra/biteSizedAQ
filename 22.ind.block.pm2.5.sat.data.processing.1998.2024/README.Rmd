@@ -73,9 +73,9 @@ The processed dataset resulting from this pipeline can be downloaded from [this 
 
 The SHRUG shapefiles used in the process and code, can be downloaded either directly from the [SHRUG website](https://www.devdatalab.org/shrug_download/). To use the exact version, used in code and files in this repo, download shapefiles from [here](https://drive.google.com/drive/folders/1_uBoZH46DkrN3VeP2dXL5x2arXTbFEu5?usp=sharing). The latter contains a modified versions with additional columns that are needed if the processing pipeline is used. In both cases, please make sure to properly cite the datasets used (see citations sections below for more info on this).
 
-If you are interested in reading more about the pipeline, continue reading the sections below, or access the full pipeline code here [UPDATE: ADD LINK]. Otherwise, you can directly start analyzing the data. Do check out the data dictionary section before starting analysis.
+If you are interested in reading more about the pipeline, continue reading the sections below, or access the [full pipeline code here](https://github.com/AarshBatra/biteSizedAQ/blob/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024.Rmd). Otherwise, you can directly start analyzing the data. Do check out the data dictionary section before starting analysis.
 
-High resolution snapshots for all years, similar to the ones shown in the blog post can be found in this folder of the repo [UPDATE: ADD LINK]. Feel free to share this further for outreach or awareness purposes.
+High resolution snapshots for all years, similar to the ones shown in the blog post can be found in this [folder of the repo](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.pm2.5.sat.data.processing.1998.2024/monthly.india.pm2.5.snapshot.all.yrs). Feel free to share this further for outreach or awareness purposes.
 
 ## Data Dictionary {#data-dictionary}
 

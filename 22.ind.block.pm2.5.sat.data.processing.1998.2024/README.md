@@ -11,17 +11,27 @@ population raster data, processes it, and outputs summarized India block
 level pollution data weighted by population. The monthly average
 pollution data extends from 1998 to 2024. As an example plot from the
 dataset, below I have plotted monthly average PM2.5 snapshot for 2024,
-2019 and 1998 for all months at block level (block boundaries are very
-light so as to make it easier to see the colors). Other similar
-snapshots for other years are stored in this folder of the repo.
+2023, 2019, 2012 and 1998 for all months at block level (block
+boundaries are very light so as to make it easier to see the colors).
+Other similar snapshots for other years are stored in [this
+folder](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.pm2.5.sat.data.processing.1998.2024/monthly.india.pm2.5.snapshot.all.yrs)
+of the repo.
 
 ## 2024
 
 ![](monthly.india.pm2.5.snapshot.all.yrs/mth_avg_pm2.5_india_snapshot_2024.png)
 
+## 2023
+
+![](monthly.india.pm2.5.snapshot.all.yrs/mth_avg_pm2.5_india_snapshot_2023.png)
+
 ## 2019
 
 ![](monthly.india.pm2.5.snapshot.all.yrs/mth_avg_pm2.5_india_snapshot_2019.png)
+
+## 2012
+
+![](monthly.india.pm2.5.snapshot.all.yrs/mth_avg_pm2.5_india_snapshot_2012.png)
 
 ## **1998**
 
@@ -92,14 +102,15 @@ sure to properly cite the datasets used (see citations sections below
 for more info on this).
 
 If you are interested in reading more about the pipeline, continue
-reading the sections below, or access the full pipeline code here
-\[UPDATE: ADD LINK\]. Otherwise, you can directly start analyzing the
-data. Do check out the data dictionary section before starting analysis.
+reading the sections below, or access the [full pipeline code
+here](https://github.com/AarshBatra/biteSizedAQ/blob/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024.Rmd).
+Otherwise, you can directly start analyzing the data. Do check out the
+data dictionary section before starting analysis.
 
 High resolution snapshots for all years, similar to the ones shown in
-the blog post can be found in this folder of the repo \[UPDATE: ADD
-LINK\]. Feel free to share this further for outreach or awareness
-purposes.
+the blog post can be found in this [folder of the
+repo](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.pm2.5.sat.data.processing.1998.2024/monthly.india.pm2.5.snapshot.all.yrs).
+Feel free to share this further for outreach or awareness purposes.
 
 ## Data Dictionary
 
