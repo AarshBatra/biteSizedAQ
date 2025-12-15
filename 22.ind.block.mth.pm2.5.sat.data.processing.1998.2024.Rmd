@@ -1,0 +1,853 @@
+---
+title: "13.ind.block.pm2.5.sat.data.processing.1998.2024"
+author: "Aarsh Batra"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load libraries
+
+```{r load_libraries}
+
+#> libraries
+library(tidyverse)
+library(jsonlite)
+library(here)
+library(sf)
+library(ggplot2)
+library(geojson)
+library(devtools)
+library(geojsonio)
+library(geojsonsf)
+library(roxygen2)
+library(magrittr)
+library(stringr)
+library(data.table)
+library(viridis)
+library(ggthemes)
+library(hrbrthemes)
+library(RColorBrewer)
+library(haven)
+library(janitor)
+library(lwgeom)
+library(rvest)
+library(dplyr)
+library(ggrepel)
+library(ggsflabel)
+library(fuzzyjoin)
+library(tidytext)
+library(tm)
+library(wordcloud2)
+library(recipes)
+library(forcats)
+library(sjlabelled) 
+library(geoarrow) # for exporting shapefiles to a geoparquet format
+library(paletteer)
+library(jpeg)
+library(patchwork)
+library(ggtext)
+library(readxl)
+library(tictoc)
+library(googlesheets4)
+library(reticulate)
+library(raster)
+library(fasterize)
+library(microbenchmark)
+library(future)
+library(raster)
+library(rasterVis)
+library(ncdf4)
+library(lattice)
+library(foster)
+library(rgdal)
+```
+
+
+## Load relevant functions, global variables and parameters setup
+```{r}
+# load and automatically document all functions
+load_all()
+document()
+
+
+#> Negation of the "%in%" operator function
+`%notin%` <- Negate(`%in%`)
+
+#> shrug district level shapefile with uid for rasterization
+shrug_master_district_shp <- st_read(str_c(here(), "/data/raw/shrug/shrug_master_district_shp_with_uid_for_rast_wa.gpkg"))
+
+#> shrug subdistrict level shapefile with uid for rasterization
+shrug_master_subdist_shp <- st_read(str_c(here(), "/data/raw/shrug/shrug_master_subdistrict_shp_with_uid_for_rast_wa.gpkg"))
+
+shrug_master_subdist_shp <- shrug_master_subdist_shp %>%
+  dplyr::mutate(uid_for_rasterization = row_number()) %>%
+  dplyr::select(-geom, geom) %>%
+  st_as_sf()
+
+#> state level shapefile
+ind_st_level_shp <- st_read(str_c(here(), "/data/raw/other.datasets/shpfiles/global_state.shp"))
+
+ind_st_level_shp <- ind_st_level_shp %>%
+  dplyr::filter(name0 == "India")
+
+
+#> load in a single pollution raster, and crop it to India
+#> 
+pol_raster_path_vec <- list.files("./data/raw/monthly_pm2.5_v5.gl.06_raw_rasters_0.01_0.01_1998_2024_asia/Monthly/", full.names = TRUE, recursive = TRUE) 
+
+#> load in the population raster
+unit_pop_raster <- raster("./data/raw/landscan-global-2024-assets/landscan-global-2024.tif")
+
+yearly_data_processed_list <- list()
+  
+#> [To be set by user]set the ref admin layer to be used for cropping and masking global rasters: using less detailed layers make cropping and masking more efficient later on
+ref_admin_level_shp_file <- shrug_master_district_shp
+
+#> [To be set by user] set the ref admin layer
+ref_shp_file_to_be_rasterized <- shrug_master_subdist_shp
+
+
+#> Set parameters for raw pollution rasters (check for a given raster once a year once data is downloaded from ACAG website)
+pm25_rast_name <- "GWRPM25"
+lat_rast_name <- "lat"
+lon_rast_name <- "lon"
+
+```
+
+
+## Process satellite derived PM2.5 data and produced population weighted PM2.5 at Pakistan tehsil level by year in a loop
+```{r process_satellite_data_in_loop}
+
+for(i in 143 : length(pol_raster_path_vec)){
+
+## testing
+# if(i == 7){
+#   break
+# }  
+  
+tic()
+  
+  cur_rast_year <- as.numeric(str_remove(str_extract(pol_raster_path_vec[i], "\\d+\\.nc"), "\\d{2}.nc"))
+  
+  cur_rast_month <- as.numeric(str_remove((str_extract(str_extract(pol_raster_path_vec[i], "\\d+\\.nc"), "\\d{2}.nc")), ".nc"))
+  
+  cur_rast_month <- str_to_lower(month.name[cur_rast_month])
+
+  print(str_c(cur_rast_year, "-", cur_rast_month, ": ", " (", i, "/", length(pol_raster_path_vec), ") pm2.5 pol data processing r1 starts!"))
+    
+  unit_pol_raster <- map(pol_raster_path_vec[i], ~nc_to_raster_layer(., pm25_rast_name, lat_rast_name, lon_rast_name), .progress = TRUE)
+
+#> crop the unit_raster using ref shp
+unit_pol_raster_cropped_admin_lev_shp_file <- raster::crop(unit_pol_raster[[1]], ref_admin_level_shp_file)
+
+#> mask the unit raster using ref shp
+unit_pol_raster_cropped_admin_lev_shp_file_mask <- mask(unit_pol_raster_cropped_admin_lev_shp_file, ref_admin_level_shp_file)
+
+#> clamp the pol raster, to replace any negative value pixels with pixels of value = 0, as pollution concentrations cannot have negative values
+unit_pol_raster_cropped_admin_lev_shp_file_mask <- terra::clamp(
+  unit_pol_raster_cropped_admin_lev_shp_file_mask,
+  lower = 0,  # Any value below 0 will be set to 0
+  values = TRUE  # Apply the threshold and replace values below 0 with 0
+)
+
+#> crop the population raster
+unit_pop_raster_cropped_admin_lev_shp_file <- raster::crop(unit_pop_raster, ref_admin_level_shp_file)
+
+#> mask the population raster
+unit_pop_raster_cropped_admin_lev_shp_file_mask <- mask(unit_pop_raster_cropped_admin_lev_shp_file, ref_admin_level_shp_file)
+
+#> clamp the pop raster, to replace any negative value pixels with pixels of value = 0, as population cannot have negative values
+unit_pop_raster_cropped_admin_lev_shp_file_mask <- terra::clamp(
+ unit_pop_raster_cropped_admin_lev_shp_file_mask,
+  lower = 0,  # Any value below 0 will be set to 0
+  values = TRUE  # Apply the threshold and replace values below 0 with 0
+)
+
+
+#> match pol raster to pop raster
+unit_pol_raster_cropped_admin_lev_shp_file_mask_match_pop <- matchResolution(unit_pol_raster_cropped_admin_lev_shp_file_mask, unit_pop_raster_cropped_admin_lev_shp_file_mask)
+
+#> fasterize the village level shapefile (with a uid for rasterization) to the same resolution as the pop, pol rasters
+sh_admin_int_shp_rasterized <- fasterize(ref_shp_file_to_be_rasterized, unit_pol_raster_cropped_admin_lev_shp_file_mask_match_pop, field = "uid_for_rasterization", fun = "last")
+
+#> set names for rasters
+
+names(unit_pol_raster_cropped_admin_lev_shp_file_mask_match_pop) <- "pol_rast"
+names(unit_pop_raster_cropped_admin_lev_shp_file_mask) <- "pop_rast"
+names(sh_admin_int_shp_rasterized) <- "sh_rast"
+
+#> create a raster brick out of pol rast, pop rast, sh vil rast
+region_raster_brick <- sh_admin_int_shp_rasterized %>%
+  addLayer(unit_pol_raster_cropped_admin_lev_shp_file_mask_match_pop) %>%
+  addLayer(unit_pop_raster_cropped_admin_lev_shp_file_mask)
+
+#> create a df out of the brick
+region_raster_brick_df <- raster::as.data.frame(region_raster_brick)
+region_raster_brick_df <- region_raster_brick_df %>%
+  dplyr::filter(!is.na(pol_rast), !is.na(pop_rast))
+
+#> create an arrow table from the df before collapsing
+region_raster_brick_df_arrow <- region_raster_brick_df %>%
+  arrow::as_arrow_table()
+
+#> collapse arrow table
+region_raster_brick_df_arrow_collapse <- region_raster_brick_df_arrow %>%
+  # dplyr::filter((!is.na(sh_rast)) & ((as.character(sh_rast) != "NA"))) %>%
+  dplyr::group_by(sh_rast) %>%
+  dplyr::collect() %>%
+  dplyr::mutate(pop_weights = pop_rast/sum(pop_rast, na.rm = TRUE), 
+         pollution_pop_weighted = pop_weights*pol_rast) %>%
+  dplyr::summarise(total_population = sum(pop_rast, na.rm = TRUE), 
+            avg_pm2.5_pollution = sum(pollution_pop_weighted, na.rm = TRUE)) %>%
+  dplyr::ungroup() 
+
+#> shrug ids not captured in the first round of processing
+uids_not_captured_r1 <- ref_shp_file_to_be_rasterized$uid_for_rasterization[ref_shp_file_to_be_rasterized$uid_for_rasterization %notin% region_raster_brick_df_arrow_collapse$sh_rast]
+
+#> uids with NA pop
+uids_with_na_pop <- region_raster_brick_df_arrow_collapse %>% dplyr::filter(is.na(total_population)) %>% 
+  dplyr::select(sh_rast) %>%
+  unlist() %>%
+  as.vector()
+
+#> uids with NA pol
+uids_with_na_pol <- region_raster_brick_df_arrow_collapse %>% dplyr::filter(is.na(avg_pm2.5_pollution)) %>% 
+  dplyr::select(sh_rast) %>%
+  unlist() %>%
+  as.vector()
+
+#> uids with 0 population
+uids_with_zero_pop <- region_raster_brick_df_arrow_collapse %>%
+  dplyr::filter(total_population == 0) %>%
+  dplyr::select(sh_rast) %>%
+  unlist() %>%
+  as.vector()
+
+#> concat all unprocessed shrud ids into a single vector
+uids_not_captured_master_r1 <- c(uids_not_captured_r1, uids_with_na_pop, uids_with_na_pol, uids_with_zero_pop)
+uids_not_captured_master_r1 <- uids_not_captured_master_r1 %>%
+  unique()
+
+#> resample and capture uncaptured blocks
+if(length(uids_not_captured_master_r1) == 0){
+  print("all blocks captured in first round, resampling not needed")
+  region_raster_brick_df_arrow_collapse_final <- region_raster_brick_df_arrow_collapse
+
+#> rename pollution column
+colnames(region_raster_brick_df_arrow_collapse_final)[colnames(region_raster_brick_df_arrow_collapse_final) == "avg_pm2.5_pollution"] <- str_c("avg_pm2.5_", cur_rast_year)
+
+yearly_data_processed_list[[i]] <- region_raster_brick_df_arrow_collapse_final
+
+print(str_c(cur_rast_year, " pm2.5 pol data processing r1 completed!"))
+
+
+  next
+} else {
+  
+
+
+### Process unprocess shrug ids by resampling======================================================
+
+#> resampling details
+
+print(str_c(cur_rast_year, "capturing residual tiny blocks..."))
+
+resample_to_res <- 0.001 
+res_resample_from <- 0.00833333
+resample_obj_capture_list <- list()
+
+#> restricting the shp file to the unprocessed shr ids that will be processed one at a time
+sh_admin_int_shp_unprocessed  <- ref_shp_file_to_be_rasterized  %>%
+  filter(uid_for_rasterization %in% uids_not_captured_master_r1)
+
+
+if(length(sh_admin_int_shp_unprocessed))
+
+#> reprocessing unprocessed shr ids one at a time
+for (j in 1 : length(uids_not_captured_master_r1)){
+  
+  # rasterize shpfile to the current unprocessed shr id
+  sh_admin_int_shp_unprocessed_rasterized <- fasterize(sh_admin_int_shp_unprocessed %>% filter(uid_for_rasterization == uids_not_captured_master_r1[j]), raster::raster(ext = raster::extent(sh_admin_int_shp_unprocessed %>% filter(uid_for_rasterization == uids_not_captured_master_r1[j])), resolution = resample_to_res, crs = crs(sh_admin_int_shp_unprocessed)), field = "uid_for_rasterization", fun = "last")
+  
+  # set name of the rasterized shapefile
+  names(sh_admin_int_shp_unprocessed_rasterized) <- "sh_rast"
+  
+  # crop pol raster to the cur unprocessed shr id
+  unit_pol_raster_crop_unproc <- raster::crop(unit_pol_raster[[1]], sh_admin_int_shp_unprocessed_rasterized)
+  
+  # resample to the new resolution
+  unit_pol_raster_crop_unproc_resample <- raster::resample(unit_pol_raster_crop_unproc, sh_admin_int_shp_unprocessed_rasterized, method = "ngb")
+  
+  # mask resampled pol raster to the cur unprocessed shr id
+   unit_pol_raster_crop_unproc_resample_mask <- raster::mask(unit_pol_raster_crop_unproc_resample, sh_admin_int_shp_unprocessed_rasterized)
+   
+  #> clamp the pol raster, to replace any negative value pixels with pixels of value = 0, as pollution concentrations cannot have negative values
+unit_pol_raster_crop_unproc_resample_mask <- terra::clamp(
+  unit_pol_raster_crop_unproc_resample_mask,
+  lower = 0,  # Any value below 0 will be set to 0
+  values = TRUE  # Apply the threshold and replace values below 0 with 0
+) 
+   
+    # crop pop raster to the cur unprocessed shr id
+  unit_pop_raster_crop_unproc <- crop(unit_pop_raster, sh_admin_int_shp_unprocessed_rasterized)
+  
+  # replace population values with population densities before resampling
+  raster::values(unit_pop_raster_crop_unproc) <- as.vector(unit_pop_raster_crop_unproc * (((resample_to_res)^2)/((res_resample_from)^2)))
+  
+  # resample to the new resolution
+  unit_pop_raster_crop_unproc_resample <- raster::resample(unit_pop_raster_crop_unproc, sh_admin_int_shp_unprocessed_rasterized, method = "ngb")
+  
+  # mask resampled pop raster to the cur unprocessed shr id
+   unit_pop_raster_crop_unproc_resample_mask <- raster::mask(unit_pop_raster_crop_unproc_resample, sh_admin_int_shp_unprocessed_rasterized)
+   
+    #> clamp the pop raster, to replace any negative value pixels with pixels of value = 0, as population cannot have negative values
+unit_pop_raster_crop_unproc_resample_mask <- terra::clamp(
+  unit_pop_raster_crop_unproc_resample_mask,
+  lower = 0,  # Any value below 0 will be set to 0
+  values = TRUE  # Apply the threshold and replace values below 0 with 0
+) 
+   #> set names for rasters
+
+names(unit_pol_raster_crop_unproc_resample_mask) <- "pol_rast"
+names(unit_pop_raster_crop_unproc_resample_mask) <- "pop_rast"
+names(sh_admin_int_shp_unprocessed_rasterized) <- "sh_rast"
+   
+  
+  #> create a raster brick out of pol rast, pop rast, sh vil rast
+region_raster_brick_resample <- sh_admin_int_shp_unprocessed_rasterized %>%
+  addLayer(unit_pol_raster_crop_unproc_resample_mask) %>%
+  addLayer(unit_pop_raster_crop_unproc_resample_mask)
+
+#> create a df out of the brick
+region_raster_brick_df_resample <- raster::as.data.frame(region_raster_brick_resample)
+region_raster_brick_df_resample <- region_raster_brick_df_resample %>%
+  dplyr::filter(!is.na(pol_rast), !is.na(pop_rast))
+
+#> create an arrow table from the df before collapsing
+region_raster_brick_df_arrow_resample <- region_raster_brick_df_resample %>%
+  arrow::as_arrow_table()
+
+#> collapse arrow table
+region_raster_brick_df_arrow_collapse_resample <- region_raster_brick_df_arrow_resample %>%
+  # dplyr::filter((!is.na(sh_rast)) & ((as.character(sh_rast) != "NA"))) %>%
+  dplyr::group_by(sh_rast) %>%
+  dplyr::collect() %>%
+  dplyr::mutate(pop_weights = pop_rast/sum(pop_rast, na.rm = TRUE), 
+         pollution_pop_weighted = pop_weights*pol_rast) %>%
+  dplyr::summarise(total_population = sum(pop_rast, na.rm = TRUE), 
+            avg_pm2.5_pollution = sum(pollution_pop_weighted, na.rm = TRUE)) %>%
+  dplyr::ungroup() 
+
+resample_obj_capture_list[[j]] <- region_raster_brick_df_arrow_collapse_resample
+
+print(str_c(j, " out of ", length(uids_not_captured_master_r1), " tiny blocks reprocessed!"))
+
+
+}
+
+#> rbind all residual blocks captured in r2 of processing
+resample_obj_capture_df <- resample_obj_capture_list %>%
+  rbindlist() %>%
+  as_tibble()
+
+#> rbind the residual blocks processed in r2 with the blocks from r1
+region_raster_brick_df_arrow_collapse_final <- region_raster_brick_df_arrow_collapse %>%
+  rbind(resample_obj_capture_df) %>%
+  arrange(sh_rast)
+
+}
+
+#> rename pollution column
+colnames(region_raster_brick_df_arrow_collapse_final)[colnames(region_raster_brick_df_arrow_collapse_final) == "avg_pm2.5_pollution"] <- str_c("avg_pm2.5_", cur_rast_year, "_", cur_rast_month)
+
+yearly_data_processed_list[[i]] <- region_raster_brick_df_arrow_collapse_final
+
+yearly_data_processed_list[[i]] %>%
+  writexl::write_xlsx(paste0("./data/intermediate/22.ind.block.pm2.5.sat.data.processing.1998.2024/monthly_pm2.5_v5.gl.06_0.01_0.01_1998_2024_asia/year-month-datasets/", "avg_pm2.5_", cur_rast_year, "_", cur_rast_month, ".xlsx"))
+
+print(str_c(cur_rast_year, "-", cur_rast_month, ": ", " pm2.5 pol data processing fully completed and files preserved!"))
+
+
+
+
+toc()  
+}
+
+
+
+```
+
+## create a master final SHRUG mapped dataset
+
+```{r master_sh_map_data_create}
+
+#### uncomment and run this (after updating appropriate ver of dataset) if you have already processed the month-year files above and want to directly load and perform remaining steps to finalize. 
+# yearly_data_processed_list <- map(list.files("./data/intermediate/22.ind.block.pm2.5.sat.data.processing.1998.2024/monthly_pm2.5_v5.gl.06_0.01_0.01_1998_2024_asia/year-month-datasets/", full.names = TRUE), ~readxl::read_excel(.x), .progress = TRUE)
+
+# removing any duplicate regions
+yearly_data_processed_list_fin <- yearly_data_processed_list %>% map(~.x %>% distinct_all())
+
+# adding a NA for pol where while population is 0
+yearly_data_processed_list_fin <- yearly_data_processed_list_fin %>%   map(~ .x %>%
+        mutate(across(starts_with("avg_pm2.5"),
+                      ~ na_if(., 0))))
+
+# creating a master dataset for all years from 1998 to 2024
+final_all_years_cbind_df <- reduce(yearly_data_processed_list_fin, function(x, y) left_join(x, y, by = c("sh_rast", "total_population")))
+
+# adding SHRUG admin area names from the block level shapefile
+final_all_years_cbind_df_sh_mapped <- final_all_years_cbind_df %>%
+  left_join(ref_shp_file_to_be_rasterized %>% st_drop_geometry(), by = c("sh_rast" = "uid_for_rasterization")) %>%
+  dplyr::select(state_name, district_name, subdistrict_name, total_population, starts_with("avg_pm")) %>%
+  rename(subdistrict_population = total_population)
+
+final_all_years_cbind_df %>%  write_csv(paste0("./data/processed/22.ind.block.pm2.5.sat.data.processing.1998.2024/av_pm2.5_ind_blk_mth_1998_2024_wide.csv"))
+
+# long form version of the dataset
+final_all_years_cbind_df_sh_mapped_long <- final_all_years_cbind_df_sh_mapped %>% pivot_longer(cols = !c(state_name, district_name, subdistrict_name, subdistrict_population), names_to = c("year", "month"), names_pattern = "(\\d{4})_(.+)", values_to = "avg_pm2.5") %>%
+  dplyr::mutate(year = as.numeric(year)) %>%
+     dplyr::mutate(month = factor(month, 
+                          levels = c("january", "february", "march", "april", "may", "june", 
+                                     "july", "august", "september", "october", "november", "december"))) 
+
+final_all_years_cbind_df_sh_mapped_long %>%  write_csv(paste0("./data/processed/22.ind.block.pm2.5.sat.data.processing.1998.2024/av_pm2.5_ind_blk_mth_1998_2024_long.csv"))
+
+```
+
+
+## [EXTRA CODE FOR PLOTTING, not part of main pipeline] Plotting a sample map: monthly avg pm2.5 in all years in a loop in India at block level in micrograms per cubic meter
+
+```{r}
+
+#### plot monthly screenshot for all years for India at block level----------------------
+ref_yr <- c(1998:2024)
+
+
+for(i in 1 : length(ref_yr)){
+plt1 <- final_all_years_cbind_df_sh_mapped_long %>%
+  mutate(month = factor(month, levels = str_to_lower(month.name), labels = month.name)) %>%
+  filter(year %in% c(ref_yr[i])) %>%
+  left_join(
+    shrug_master_subdist_shp %>%
+      dplyr::select(state_name, district_name, subdistrict_name, geom), 
+    by = c("state_name", "district_name", "subdistrict_name")
+  ) %>%
+  st_as_sf() %>%
+  ggplot() +
+  geom_sf(aes(fill = avg_pm2.5), color = NA) +
+  scale_fill_stepsn(
+    colors = rev(viridisLite::magma(8)),
+    breaks = c(0, 20, 40, 60, 100, 140, 220, 300),
+    limits = c(0, 300),
+    na.value = "white"
+  ) +
+  theme_map() +
+  labs(
+    fill = expression("Monthly Average" ~ PM[2.5] ~ "(μg/m³)"),
+    title = expression("Block-level Monthly Average" ~ PM[2.5] ~ "Pollution in India"),
+    subtitle = as.character(ref_yr[i]),
+    caption = expression("Graphic · Aarsh Batra | github.com/AarshBatra/biteSizedAQ")
+  ) +
+  theme(
+    legend.position = "bottom",  # Position legend at bottom of plot
+    legend.justification = "center",  # Center the legend
+    legend.direction = "horizontal",
+    legend.key.width = unit(3, "cm"),
+    legend.box.margin = margin(0, 0, 15, 0),  # Add space below legend
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA),
+    strip.background = element_blank(),
+    strip.text = element_text(size = 13, face = "bold", family = "Mono"),
+    plot.title = element_text(size = 20, family = "Mono", hjust = 0),
+    plot.subtitle = element_text(size = 18, family = "Mono", hjust = 0, face = "bold", margin = margin(b = 1.5, unit = "cm")),
+    legend.title = element_text(size = 14, family = "Mono", margin = margin(t = 0.2, unit = "cm")),
+    legend.text = element_text(size = 12, family = "Mono"),
+    plot.caption = element_text(size = 11, family = "Mono", margin = margin(t = 0.8, unit = "cm"), hjust = 0.5),
+    plot.margin = margin(t = 0.3, r = 1, b = 0.3, l = 0.8, unit = "cm")
+  ) +
+  guides(fill = guide_colorbar(title.position = "top", title.hjust = 0.5)) +
+  facet_wrap(~month, nrow = 3)
+ggsave(paste0("./22.ind.block.pm2.5.sat.data.processing.1998.2024/monthly.india.pm2.5.snapshot.all.yrs/mth_avg_pm2.5_india_snapshot_", ref_yr[i], ".png"), plt1, width = 10, height = 10, dpi = 520)
+
+print(paste0(i, " out of ", length(ref_yr), " year snapshot saved!"))
+}
+
+
+#### plot for selected years for all months for Delhi-----------------------
+
+# Create your main plot 
+plt1 <- final_all_years_cbind_df_sh_mapped_long %>%
+  filter(year %in% c(1998, 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024), state_name %in% c("nct of delhi")) %>%
+  mutate(month = factor(month, levels = str_to_lower(month.name), labels = month.abb)) %>%
+  left_join(
+    shrug_master_subdist_shp %>%
+      dplyr::select(state_name, district_name, subdistrict_name, geom), 
+    by = c("state_name", "district_name", "subdistrict_name")
+  ) %>%
+  st_as_sf() %>%
+  ggplot() +
+  geom_sf(aes(fill = avg_pm2.5), color = NA) +
+  scale_fill_stepsn(
+    colors = rev(viridisLite::magma(7)),
+    breaks = c(0, 40, 80, 120, 200, 300),
+    limits = c(0, 300),
+    na.value = "white"
+  ) +
+  theme_map() +
+  labs(
+    fill = expression("Monthly Average" ~ PM[2.5] ~ "(μg/m³)"),
+    title = expression("Block-level Monthly Average" ~ PM[2.5] ~ "Pollution in NCT of Delhi Blocks"),
+    caption = expression("Graphic · Aarsh Batra | github.com/AarshBatra/biteSizedAQ")
+  ) +
+  theme(
+    legend.position = "bottom",
+    legend.justification = "center",
+    legend.direction = "horizontal",
+    legend.key.width = unit(3, "cm"),
+    legend.box.margin = margin(0, 0, 15, 0),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA),
+    strip.background = element_blank(),
+    strip.text = element_text(size = 12, family = "Mono"),
+    plot.title = element_text(size = 16, family = "Mono", hjust = 0, margin = margin(t = 0.5, b = 0.5, unit = "cm")),
+    legend.title = element_text(size = 14, family = "Mono", margin = margin(t = 0.2, b = 0.1, unit = "cm")),
+    legend.text = element_text(size = 12, family = "Mono"),
+    plot.caption = element_text(size = 9, family = "Mono", margin = margin(t = 0.8, unit = "cm"), hjust = 0.5), 
+    plot.margin = margin(l = 0.5, r = 0.5, unit = "cm")
+  ) +
+  guides(fill = guide_colorbar(title.position = "top", title.hjust = 0.5)) +
+  facet_grid(year ~ month, switch = "y")   
+
+
+# Save the map with high resolution
+ggsave("./22.ind.block.pm2.5.sat.data.processing.1998.2024/experimental.plots/delhi_map_inset.png", plt1, width = 14, height = 14, dpi = 300)
+
+
+```
+
+## Testing Block [IGNORE]
+```{r eval=FALSE, include=FALSE}
+
+# Simple PM2.5 Monthly Stripes Visualization
+# This script creates a simple climate stripe visualization for PM2.5 data
+# showing 12 months for a specific block and year
+
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+library(viridis)  # For the magma color palette
+
+# -------------------------------------------------------
+# PART 1: SIMPLE FUNCTION FOR SINGLE BLOCK-YEAR STRIPES
+# -------------------------------------------------------
+
+create_monthly_stripes <- function(data, selected_state, selected_district, selected_block, selected_year) {
+  # Filter data for the specific block and year
+  filtered_data <- data %>% 
+    filter(
+      state_name == selected_state,
+      district_name == selected_district,
+      subdistrict_name == selected_block,
+      year == selected_year
+    ) %>%
+    # Ensure months are in correct order
+    arrange(month)
+  
+# Create the plot with custom tile width
+  p <- ggplot(filtered_data, aes(x = factor(month), y = 1, fill = avg_pm2.5)) +
+    # Set width of tiles (0.9 means 90% of available space)
+    geom_tile(width = 0.9) +
+    scale_fill_viridis_c(
+      name = "PM2.5 (μg/m³)",
+      option = "magma",      # Magma color palette
+      direction = 1          # Direction: 1 for dark=high, -1 for dark=low
+    ) +
+    scale_x_discrete(
+      breaks = 1:12,
+      labels = month.abb     # Use abbreviated month names (Jan, Feb, etc.)
+    ) +
+    labs(
+      title = paste("PM2.5 Monthly Pattern:", selected_block, selected_year),
+      subtitle = paste("Population:", format(filtered_data$subdistrict_population[1], big.mark=",")),
+      x = NULL, 
+      y = NULL
+    ) +
+    theme_minimal() +
+    theme(
+      axis.text.y = element_blank(),
+      axis.ticks = element_blank(),
+      panel.grid = element_blank(),
+      legend.position = "bottom",
+      plot.title = element_text(hjust = 0.5, face = "bold"),
+      plot.subtitle = element_text(hjust = 0.5),
+      axis.text.x = element_text(angle = 0, hjust = 0.5, size = 10, face = "bold")
+    )
+  
+  return(p)
+}
+
+create_monthly_stripes(final_all_years_cbind_df_sh_mapped_long, selected_state =  "uttar pradesh", selected_district = "ghaziabad", selected_block = "modinagar", selected_year = "1998")
+
+# -------------------------------------------------------
+# PART 2: EXAMPLE USAGE WITH SAMPLE DATA
+# -------------------------------------------------------
+
+# Create sample data (replace this with your actual data)
+set.seed(123)
+sample_data <- expand.grid(
+  state_name = "State1",
+  district_name = "District1",
+  subdistrict_name = paste0("Block", 1:5),
+  year = 2020:2024,
+  month = 1:12
+)
+
+sample_data$subdistrict_population <- round(runif(nrow(sample_data), 10000, 100000))
+
+# Create PM2.5 data with seasonal pattern
+sample_data$avg_pm2.5 <- 30 + 
+                         # Year-over-year increase
+                         (sample_data$year - 2020) * 5 + 
+                         # Seasonal pattern (higher in winter months)
+                         ifelse(sample_data$month %in% c(11, 12, 1, 2), 40, 
+                           ifelse(sample_data$month %in% c(5, 6, 7, 8), -10, 0))
+
+# Add some random variation
+sample_data$avg_pm2.5 <- sample_data$avg_pm2.5 + rnorm(nrow(sample_data), mean = 0, sd = 10)
+
+# Example: Create stripes for Block1 in 2022
+example_plot <- create_monthly_stripes(sample_data, "Block1", 2022)
+print(example_plot)
+
+# Save plot (uncomment to use)
+# ggsave("./22.ind.block.pm2.5.sat.data.processing.1998.2024/experimental.plots/Block1_2022_pm25_stripes.png", example_plot, width = 8, height = 2, dpi = 300)
+
+# -------------------------------------------------------
+# PART 3: SHINY APP SKELETON
+# -------------------------------------------------------
+
+# Uncomment and use this code as a starting point for your Shiny app
+
+# library(shiny)
+# 
+# # UI
+# ui <- fluidPage(
+#   titlePanel("PM2.5 Monthly Climate Stripes"),
+#   
+#   sidebarLayout(
+#     sidebarPanel(
+#       # Block selection dropdown
+#       selectInput("block", "Select Block:",
+#                  choices = unique(sample_data$subdistrict_name)),
+#       
+#       # Year selection slider
+#       sliderInput("year", "Select Year:",
+#                  min = min(sample_data$year),
+#                  max = max(sample_data$year),
+#                  value = min(sample_data$year),
+#                  step = 1,
+#                  sep = ""),
+#       
+#       # Optional: Add filtering by state/district if needed
+#       # selectInput("district", "Select District:",
+#       #           choices = unique(sample_data$district_name))
+#     ),
+#     
+#     mainPanel(
+#       # Output plot
+#       plotOutput("stripesPlot"),
+#       
+#       # Optional: Add summary statistics
+#       verbatimTextOutput("summaryStats")
+#     )
+#   )
+# )
+# 
+# # Server
+# server <- function(input, output) {
+#   # Reactive data filtering
+#   filtered_data <- reactive({
+#     sample_data %>%
+#       filter(
+#         subdistrict_name == input$block,
+#         year == input$year
+#       )
+#   })
+#   
+#   # Generate the stripes plot
+#   output$stripesPlot <- renderPlot({
+#     create_monthly_stripes(sample_data, input$block, input$year)
+#   })
+#   
+#   # Optional: Generate summary statistics
+#   output$summaryStats <- renderPrint({
+#     data_summary <- filtered_data() %>%
+#       summarize(
+#         avg = mean(avg_pm2.5, na.rm = TRUE),
+#         min = min(avg_pm2.5, na.rm = TRUE),
+#         max = max(avg_pm2.5, na.rm = TRUE)
+#       )
+#     
+#     cat("Average PM2.5:", round(data_summary$avg, 1), "μg/m³\n")
+#     cat("Range:", round(data_summary$min, 1), "to", round(data_summary$max, 1), "μg/m³\n")
+#   })
+# }
+# 
+# # Run the app
+# shinyApp(ui = ui, server = server)
+
+#### [experimetation] number of blocks exceeding x micrograms per cubic meter
+
+# Set threshold
+threshold <- 5
+
+# Add column for number of months exceeding threshold
+df1 <- final_all_years_cbind_df_sh_mapped_wide %>%
+  rowwise() %>%
+  mutate(
+    months_exceeding_threshold = sum(c_across(starts_with("avg_pm2.5_")) > threshold, na.rm = TRUE)
+  ) %>%
+  ungroup()
+
+
+# plt <- df1 %>%
+#   filter(months_exceeding_threshold > 300)
+#   ggplot() + 
+#   geom_histogram(mapping = aes(x = months_exceeding_threshold), color = "white") 
+  
+  
+# Create summary data for plotting
+plot_data <- tibble(threshold = 0:max(df1$months_exceeding_threshold)) %>%
+  rowwise() %>%
+  mutate(
+    percent_blocks_exceeding = mean(df1$months_exceeding_threshold > threshold) * 100
+  ) %>%
+  ungroup()
+
+# Create the plot
+plt <- ggplot(plot_data, aes(x = threshold, y = percent_blocks_exceeding)) +
+  geom_line(color = "steelblue", size = 1) +
+  labs(
+    title = paste0("Share of Indian Blocks exceeding WHO annual average PM2.5 guideline"),
+     subtitle = paste0("WHO annual average PM2.5 safe limit: ", threshold,  " μg/m³"),
+    x = paste0("Number of months (1998 to 2024) exceeding 5 μg/m³"),
+    y = "Percent of Blocks (%)", 
+    caption = "*Note:There are a total of 324 months from 1998 to 2024"
+  ) +
+  theme_minimal() +
+  theme(plot.caption = element_text(hjust = 0, margin = margin(t = 1, unit = "cm"), face = "italic", size = 9), 
+        plot.subtitle = element_text(hjust = 0, margin = margin(b = 0.8, unit = "cm"), face = "italic", size = 10), 
+             plot.title = element_text(hjust = 0, margin = margin(b = 0.2, unit = "cm"), face = "bold", size = 13), 
+        axis.title.x = element_text(size = 11, margin = margin(t = 0.5, unit = "cm")), 
+        axis.title.y = element_text(size = 11, margin = margin(r = 0.5, unit = "cm")), 
+        axis.text = element_text(size = 10))
+
+
+
+#### Delhi block level names map------------------------------
+
+library(ggspatial)
+
+# Extract the Delhi shapefile
+delhi_sf <- shrug_master_subdist_shp %>%
+  filter(state_name %in% c("nct of delhi"))
+
+# Get the centroid coordinates for labeling
+# This avoids font issues with geom_sf_text
+delhi_centroids <- delhi_sf %>%
+  st_centroid() %>%
+  st_coordinates() %>%
+  as.data.frame() %>%
+  bind_cols(
+    subdistrict_name = delhi_sf$subdistrict_name
+    
+  )
+
+delhi_map <- ggplot() +
+  # Base layer with clean outline and subtle background
+  geom_sf(
+    data = delhi_sf,
+    fill = "gray98",
+    color = "gray50",
+    size = 0.3
+  ) +
+  # Add improved labels with better styling and placement
+  geom_label_repel(
+    data = delhi_centroids,
+    aes(x = X, y = Y, label = subdistrict_name),
+    color = "gray15",
+    fill = alpha("white", 0.9),
+    label.size = 0.15,
+    size = 10,
+    segment.color = "gray60",
+    segment.size = 0.2,
+    segment.alpha = 0.7,
+    box.padding = 0.35,
+    point.padding = 0.5,
+    force = 10,
+    max.overlaps = 40,
+    min.segment.length = 0,
+    label.padding = 0.15,
+    label.r = unit(0.15, "lines"),
+    seed = 42 # For reproducible placement
+  ) +
+  # Add subtle dots for centroids
+  geom_point(
+    data = delhi_centroids,
+    aes(x = X, y = Y),
+    size = 0.4,
+    color = "gray40",
+    alpha = 0.7
+  ) +
+  # Customize the coordinate appearance
+  coord_sf(expand = FALSE) +
+  # Add scale bar with improved styling
+  annotation_scale(
+    location = "br",
+    width_hint = 0.15,    # Keep original width
+    style = "bar",        # Bar style for better visibility
+    pad_x = unit(0.4, "cm"),
+    pad_y = unit(0.4, "cm"),
+    text_family = "franklin",
+    text_col = "black",   # Darker text
+    line_col = "black",   # Darker line
+    bar_cols = c("black", "white"), # High contrast colors
+    height = unit(0.25, "cm"), # Slightly taller
+    text_cex = 1.1        # Slightly larger text
+  ) +
+  # Add north arrow with improved styling
+  annotation_north_arrow(
+    location = "tr",
+    which_north = "true",
+    pad_x = unit(0.4, "cm"),
+    pad_y = unit(0.4, "cm"),
+    style = north_arrow_fancy_orienteering(
+      line_col = "black",
+      fill = "gray30",
+      text_col = "black",
+      text_size = 14,
+      line_width = 1.5
+    ),
+    height = unit(1.5, "cm"),
+    width = unit(1.5, "cm")
+  ) +
+  # Clean, minimalist theme
+  theme_map() +
+  labs(title = "NCT of Delhi Blocks") +
+  theme(
+    plot.title = element_text(size = 46, hjust = 0.5, margin = margin(b = 1, t = 0.5, unit = "cm")), 
+    panel.border = element_rect(color = "black", fill = NA, size = 0.3), 
+    plot.background = element_rect(fill = "white", color = "white")
+  )
+
+
+#### Sanity Check: state, year wise population weight annual average pm2.5 (for comaprison with ACAG estimates)
+final_all_years_cbind_df_sh_mapped_long %>% group_by(state_name, year) %>% mutate(st_pop = sum(subdistrict_population, na.rm = TRUE), pop_wt = subdistrict_population/st_pop, pop_wt_pm2.5 = pop_wt*avg_pm2.5) %>% summarise(avg_st_yr_pm2.5 = sum(pop_wt_pm2.5, na.rm = TRUE)) %>% ungroup() %>% View()
+  
+
+```
+
