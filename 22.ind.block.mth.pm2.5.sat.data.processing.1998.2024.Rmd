@@ -423,6 +423,10 @@ final_all_years_cbind_df_sh_mapped_long %>%  write_csv(paste0("./data/processed/
 
 ```{r}
 
+# #### If want to directly load the processed data (assuming data is already processed) and plot, uncomment the below code. Make sure to update the version and folder names of the data for which you want to make the plot. As of last time the latest data was 1998 to 2024
+# 
+# final_all_years_cbind_df_sh_mapped_long <- read_csv("./data/processed/22.ind.block.pm2.5.sat.data.processing.1998.2024/av_pm2.5_ind_blk_mth_1998_2024_long.csv")
+
 #### plot monthly screenshot for all years for India at block level----------------------
 ref_yr <- c(1998:2024)
 
@@ -477,11 +481,11 @@ print(paste0(i, " out of ", length(ref_yr), " year snapshot saved!"))
 }
 
 
-#### plot for selected years for all months for Delhi-----------------------
+#### plot for selected years for all months for IGP-----------------------
 
 # Create your main plot 
 plt1 <- final_all_years_cbind_df_sh_mapped_long %>%
-  filter(year %in% c(1998, 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024), state_name %in% c("nct of delhi")) %>%
+  filter(year %in% c(1998, 2016, 2020, 2024), state_name %in% c("nct of delhi", "punjab", "haryana", "uttar pradesh", "bihar", "west bengal")) %>%
   mutate(month = factor(month, levels = str_to_lower(month.name), labels = month.abb)) %>%
   left_join(
     shrug_master_subdist_shp %>%
@@ -500,7 +504,7 @@ plt1 <- final_all_years_cbind_df_sh_mapped_long %>%
   theme_map() +
   labs(
     fill = expression("Monthly Average" ~ PM[2.5] ~ "(μg/m³)"),
-    title = expression("Block-level Monthly Average" ~ PM[2.5] ~ "Pollution in NCT of Delhi Blocks"),
+    title = expression("Block-level Monthly Average" ~ PM[2.5] ~ "Pollution in the Northern Plains of India"),
     caption = expression("Graphic · Aarsh Batra | github.com/AarshBatra/biteSizedAQ")
   ) +
   theme(
@@ -520,11 +524,11 @@ plt1 <- final_all_years_cbind_df_sh_mapped_long %>%
     plot.margin = margin(l = 0.5, r = 0.5, unit = "cm")
   ) +
   guides(fill = guide_colorbar(title.position = "top", title.hjust = 0.5)) +
-  facet_grid(year ~ month, switch = "y")   
+  facet_grid(month ~ year, switch = "y")   
 
 
 # Save the map with high resolution
-ggsave("./22.ind.block.pm2.5.sat.data.processing.1998.2024/experimental.plots/delhi_map_inset.png", plt1, width = 14, height = 14, dpi = 300)
+ggsave("./22.ind.block.pm2.5.sat.data.processing.1998.2024/experimental.plots/igp_map_facetted.png", plt1, width = 15, height = 20, dpi = 420)
 
 
 ```
@@ -846,7 +850,7 @@ delhi_map <- ggplot() +
 
 
 #### Sanity Check: state, year wise population weight annual average pm2.5 (for comaprison with ACAG estimates)
-final_all_years_cbind_df_sh_mapped_long %>% group_by(state_name, year) %>% mutate(st_pop = sum(subdistrict_population, na.rm = TRUE), pop_wt = subdistrict_population/st_pop, pop_wt_pm2.5 = pop_wt*avg_pm2.5) %>% summarise(avg_st_yr_pm2.5 = sum(pop_wt_pm2.5, na.rm = TRUE)) %>% ungroup() %>% View()
+foo <- final_all_years_cbind_df_sh_mapped_long %>% group_by(state_name, year, month) %>% mutate(st_pop = sum(subdistrict_population, na.rm = TRUE), pop_wt = subdistrict_population/st_pop, pop_wt_pm2.5 = pop_wt*avg_pm2.5) %>% summarise(avg_st_yr_pm2.5 = sum(pop_wt_pm2.5, na.rm = TRUE)) %>% ungroup() 
   
 
 ```

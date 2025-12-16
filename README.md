@@ -57,6 +57,10 @@ find time. To kick things off, check out the first few projects below!
 - Read the blog post on [this
   link](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.pm2.5.sat.data.processing.1998.2024).
 
+- Specifically explore the Northern Plains of India data in this
+  [interactive data
+  explorer](https://india-northern-plains-aq-explorer.lovable.app).
+
 - Download long and wide version of the processed monthly population
   weighted average pm2.5 India block level data from [this
   link](https://drive.google.com/drive/folders/12k87ckqgXW6A8B6OHNd9TtAmCndKLXE1?usp=sharing).

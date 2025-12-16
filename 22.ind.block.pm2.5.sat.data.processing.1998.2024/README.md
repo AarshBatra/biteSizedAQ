@@ -40,14 +40,16 @@ of the repo.
 ## Table of Contents
 
 1.  [Introduction](#introduction)
-2.  [Processed Data and Shapefiles](#processed-data-and-shapefiles)
-3.  [Data Dictionary](#data-dictionary)
-4.  [Data Sources and description](#data-sources-and-description)
-5.  [Why use SHRUG shapefiles for
+2.  [Processed Data, Shapefiles and](#processed-data-and-shapefiles)
+3.  [Interactive Northern Plains of India AQ data
+    explorer](#northernplainsaqexplorerapp)
+4.  [Data Dictionary](#data-dictionary)
+5.  [Data Sources and description](#data-sources-and-description)
+6.  [Why use SHRUG shapefiles for
     India?](#why-use-shrug-shapefiles-for-india?)
-6.  [Prerequisites for running the
+7.  [Prerequisites for running the
     pipeline](#prerequisites-for-running-the-pipeline)
-7.  [Pipeline Overview](#pipeline-overview)
+8.  [Pipeline Overview](#pipeline-overview)
     - [Load and Crop Pollution Data](#load-and-crop-pollution-data)
     - [Load and Process Population
       Data](#load-and-process-population-data)
@@ -59,8 +61,8 @@ of the repo.
     - [Output](#output)
     - [Important notes and current
       limitations](#important-notes-and-current-limitations)
-8.  [License and Reuse](#license-and-reuse)
-9.  [Citations](#citations)
+9.  [License and Reuse](#license-and-reuse)
+10. [Citations](#citations)
 
 ## Introduction
 
@@ -111,6 +113,16 @@ High resolution snapshots for all years, similar to the ones shown in
 the blog post can be found in this [folder of the
 repo](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.pm2.5.sat.data.processing.1998.2024/monthly.india.pm2.5.snapshot.all.yrs).
 Feel free to share this further for outreach or awareness purposes.
+
+## Interactive Northern Plains of India AQ data explorer
+
+Northern Plains of India are part of the wider Indo-Gangetic Plains
+region and is one of the most polluted regions in the world. Here is a
+quick light weight app that I made for exploring this region using the
+data processed and shared above.
+
+Explore the interactive app here:
+[Link](https://india-northern-plains-aq-explorer.lovable.app/)
 
 ## Data Dictionary
 
