@@ -419,7 +419,7 @@ final_all_years_cbind_df_sh_mapped_long %>%  write_csv(paste0("./data/processed/
 ```
 
 
-## [EXTRA CODE FOR PLOTTING, not part of main pipeline] Plotting a sample map: monthly avg pm2.5 in all years in a loop in India at block level in micrograms per cubic meter
+## [EXTRA CODE FOR PLOTTING, not part of main pipeline. Various experimenation plots, feel free to explore] Plotting a sample map: monthly avg pm2.5 in all years in a loop in India at block level in micrograms per cubic meter
 
 ```{r}
 
@@ -485,7 +485,7 @@ print(paste0(i, " out of ", length(ref_yr), " year snapshot saved!"))
 
 # Create your main plot 
 plt1 <- final_all_years_cbind_df_sh_mapped_long %>%
-  filter(year %in% c(1998, 2016, 2020, 2024), state_name %in% c("nct of delhi", "punjab", "haryana", "uttar pradesh", "bihar", "west bengal")) %>%
+  filter(year %in% c(1998, 2024), state_name %in% c("nct of delhi", "punjab", "haryana", "uttar pradesh", "bihar", "west bengal")) %>%
   mutate(month = factor(month, levels = str_to_lower(month.name), labels = month.abb)) %>%
   left_join(
     shrug_master_subdist_shp %>%
@@ -530,7 +530,594 @@ plt1 <- final_all_years_cbind_df_sh_mapped_long %>%
 # Save the map with high resolution
 ggsave("./22.ind.block.pm2.5.sat.data.processing.1998.2024/experimental.plots/igp_map_facetted.png", plt1, width = 15, height = 20, dpi = 420)
 
+library(ggplot2)
+library(dplyr)
 
+# Assuming your data is in a dataframe called 'df'
+# Filter for 1998 and 2024, calculate state-level statistics
+state_stats <- final_all_years_cbind_df_sh_mapped_long %>%
+  filter(year %in% c(1998, 2024)) %>%
+  group_by(state_name, year) %>%
+  summarise(
+    min_pollution = min(avg_pm2.5, na.rm = TRUE),
+    max_pollution = max(avg_pm2.5, na.rm = TRUE),
+    mean_pollution = weighted.mean(avg_pm2.5, subdistrict_population, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  group_by(year) %>%
+  arrange(mean_pollution) %>%
+  mutate(state_name = tools::toTitleCase(state_name),
+         state_order = row_number()) %>%
+  ungroup()
+
+# Create the plot
+plt <- ggplot(state_stats, aes(y = reorder(state_name, state_order))) +
+  # Add line segments from min to max with smokey effect
+  geom_segment(aes(x = min_pollution, xend = max_pollution, 
+                   yend = reorder(state_name, state_order), color = mean_pollution),
+               linewidth = 2.5, alpha = 0.8) +
+  # Add subtle shadow effect
+  geom_segment(aes(x = min_pollution, xend = max_pollution, 
+                   yend = reorder(state_name, state_order)),
+               linewidth = 4, alpha = 0.15, color = "white") +
+  # Add points for min, max, and mean with glow effect
+  geom_point(aes(x = min_pollution), size = 5, shape = 21, 
+             fill = "#2d2d2d", color = "#808080", stroke = 0.5, alpha = 0.9) +
+  geom_point(aes(x = min_pollution), size = 3, shape = 21, 
+             fill = "#404040", color = "#a0a0a0", stroke = 1) +
+  geom_point(aes(x = max_pollution), size = 5, shape = 21, 
+             fill = "#2d2d2d", color = "#808080", stroke = 0.5, alpha = 0.9) +
+  geom_point(aes(x = max_pollution), size = 3, shape = 21, 
+             fill = "#404040", color = "#a0a0a0", stroke = 1) +
+  # Mean point with smokey glow
+  geom_point(aes(x = mean_pollution, color = mean_pollution), 
+             size = 7, shape = 16, alpha = 0.4) +
+  geom_point(aes(x = mean_pollution, color = mean_pollution), 
+             size = 5, shape = 16) +
+  # Facet by year
+  facet_wrap(~ year, ncol = 2, scales = "free_y") +
+  # Color scale - smokey orange to hazardous red gradient
+scale_color_gradientn(
+  colors = c("#ffeda0", "#feb24c", "#fd8d3c", "#fc4e2a", "#e31a1c", "#bd0026", "#800026"),
+  values = scales::rescale(c(0, 0.15, 0.3, 0.5, 0.7, 0.85, 1)),
+  limits = c(0, 175),
+  breaks = seq(0, 150, by = 25),
+  name = expression("Mean PM"[2.5]),
+  guide = guide_colorbar(
+    title.position = "top",
+    barwidth = 15,
+    barheight = 0.6,
+    frame.colour = "#606060",
+    ticks.colour = "#808080",
+    nbin = 500
+  )
+) +
+  # Add more x-axis breaks
+  scale_x_continuous(n.breaks = 8) +
+  # Add spacing between y-axis categories
+  scale_y_discrete(expand = expansion(add = 0.6)) +
+  # Labels and theme
+labs(
+  title = expression(bold("Air Quality Inequality Across Indian States")),
+  subtitle = "PM2.5 range from cleanest to most polluted block-months, with population-weighted state means (1998 vs 2024)",
+  x = expression("PM"[2.5]*" Level (µg/m³)"),
+  y = "State", 
+  caption = expression("Graphic · Aarsh Batra | github.com/AarshBatra/biteSizedAQ")
+) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(size = 20, hjust = 0.5, color = "#E8E8E8", 
+                              margin = margin(b = 10)),
+    plot.subtitle = element_text(size = 12, hjust = 0.5, color = "#B8B8B8",
+                                 margin = margin(b = 25)),
+    panel.grid = element_blank(),
+    axis.text.y = element_text(size = 10, color = "#C8C8C8", margin = margin(r = 8)),
+    axis.text.x = element_text(size = 10, color = "#C8C8C8", margin = margin(t = 15)),
+    axis.title.x = element_text(color = "#B0B0B0", margin = margin(t = 20), size = 12),
+    axis.title.y = element_text(color = "#B0B0B0", margin = margin(r = 20), size = 12),
+    axis.ticks.length = unit(0.3, "cm"),
+    legend.position = "top",
+    legend.justification = "center",
+    legend.direction = "horizontal",
+    legend.text = element_text(color = "#C8C8C8", size = 10),
+    legend.title = element_text(color = "#B0B0B0", size = 11, hjust = 0.5),
+    legend.box.background = element_rect(fill = "#0f0f0f", color = NA),
+    legend.margin = margin(5, 5, 10, 5),
+    strip.text = element_text(color = "#E8E8E8", size = 14, face = "bold", 
+                              margin = margin(b = 15)),
+    strip.background = element_rect(fill = "#1a1a1a", color = NA),
+    panel.spacing = unit(2, "lines"),
+    plot.background = element_rect(fill = "#0f0f0f", color = NA),
+    panel.background = element_rect(fill = "#0f0f0f", color = NA),
+    legend.background = element_rect(fill = "#0f0f0f", color = NA),
+    plot.margin = margin(25, 25, 25, 25), 
+    plot.caption = element_text(size = 13, family = "Mono", color = "white", margin = margin(t = 0.8, unit = "cm"), hjust = 0.5)
+  )
+
+# If you want to save the plot
+# ggsave("state_pollution_1998_vs_2024.png", width = 16, height = 12, dpi = 300)
+# If you want to save the plot
+ggsave("./22.ind.block.pm2.5.sat.data.processing.1998.2024/experimental.plots/state_pollution_plot.png", plt, width = 22, height = 12, dpi = 300)
+
+  
+ # Load required libraries
+library(tidyverse)
+library(viridis)
+
+#### animated bar chart state wise=============================================
+
+library(ggplot2)
+library(dplyr)
+library(gganimate)
+library(tidyr)
+
+# Assuming your data is in a dataframe called 'df'
+# Calculate annual state-level statistics with population-weighted mean
+state_annual <- final_all_years_cbind_df_sh_mapped_long %>%
+  group_by(state_name, year) %>%
+  summarise(
+    mean_pollution = weighted.mean(avg_pm2.5, subdistrict_population, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(state_name = tools::toTitleCase(state_name)) %>%
+  group_by(year) %>%
+  arrange(year, desc(mean_pollution)) %>%
+  mutate(rank = row_number()) %>%
+  ungroup() %>%
+  mutate(state_name = ifelse(state_name == "Andaman Nicobar Islands", "A.N. Islands", state_name), 
+         state_name = ifelse(state_name == "Arunachal Pradesh", "Arun. P.", state_name))
+
+# Create the static plot
+p <- ggplot(state_annual, aes(x = rank, y = mean_pollution, fill = mean_pollution)) +
+    geom_hline(yintercept = 40, linetype = "dotted", color = "#FFA500", linewidth = 1.3) +
+  geom_text(aes(x = max(rank), y = 83, label = "India Annual Avg PM2.5 Limit (40 µg/m³)"),
+            hjust = 1, vjust = 2.7, size = 6, color = "#FFA500", fontface = "bold") +
+  geom_hline(yintercept = 5, linetype = "dotted", color = "cornflowerblue", linewidth = 1.3) +
+  geom_text(aes(x = max(rank), y = 32, label = "WHO Guideline (5 µg/m³)"),
+            hjust = 1, vjust = 2.7, size = 6, color = "cornflowerblue", fontface = "bold") +
+  geom_col(alpha = 0.9, width = 0.9) +
+  # Add reference lines
+  geom_text(aes(y = mean_pollution, label = state_name), 
+            hjust = 1.05, 
+            size = 5.5, 
+            color = "#000000",
+            fontface = "bold") +
+  geom_text(aes(y = mean_pollution, label = sprintf("%.1f", mean_pollution)), 
+            hjust = -0.15, 
+            size = 5, 
+            color = "#E8E8E8",
+            fontface = "bold") +
+  # Color scale - smokey gradient
+  scale_fill_gradientn(
+    colors = c("#FFE5B4", "#FFD700", "#FFA500", "#FF6347", "#DC143C", "#8B0000"),
+    values = scales::rescale(c(0, 0.3, 0.5, 0.7, 0.85, 1)),
+    name = expression("Mean PM"[2.5])
+  ) +
+  coord_flip(clip = "off") +
+  scale_x_reverse() +
+  labs(
+    title = "India State Annual Average PM2.5 Rankings 1998-2024",
+    subtitle = "Year: {closest_state}",
+    x = NULL,
+    y = "Population-Weighted Mean PM2.5 (µg/m³)"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(size = 22, hjust = 0.5, color = "#E8E8E8", 
+                              face = "bold", margin = margin(b = 5)),
+    plot.subtitle = element_text(size = 18, hjust = 0.5, color = "#FFD700",
+                                 face = "bold", margin = margin(b = 20)),
+    axis.text.y = element_blank(),
+    axis.text.x = element_text(size = 14, color = "#E8E8E8"),
+    axis.title.x = element_text(size = 13, color = "#E8E8E8", margin = margin(t = 15)),
+    axis.ticks = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_line(color = "#2a2a2a", linewidth = 0.3),
+    legend.position = "none",
+    plot.background = element_rect(fill = "#0f0f0f", color = NA),
+    panel.background = element_rect(fill = "#0f0f0f", color = NA),
+    plot.margin = margin(20, 60, 20, 100)
+  )
+
+# Animate the plot
+anim <- p +
+  transition_states(year, 
+                    transition_length = 2, 
+                    state_length = 1) +
+  ease_aes('cubic-in-out') +
+  enter_fade() +
+  exit_fade()
+
+# Render the animation
+p_anim <- animate(anim, 
+        nframes = 300,
+        fps = 10, 
+        width = 1200, 
+        height = 1200,
+        renderer = gifski_renderer())
+
+# Save the animation
+anim_save("./22.ind.block.pm2.5.sat.data.processing.1998.2024/experimental.plots/pollution_race.gif")
+
+
+
+
+#### animated racing pollution chart region and airshed wise===================================
+library(ggplot2)
+library(dplyr)
+library(gganimate)
+library(tidyr)
+
+# ============================================================================
+# VERSION 1: POLITICAL REGIONS (5 categories)
+# ============================================================================
+
+library(ggplot2)
+library(dplyr)
+library(gganimate)
+library(tidyr)
+
+# ============================================================================
+# VERSION 1: GEOGRAPHIC REGIONS (5 categories)
+# ============================================================================
+
+geographic_mapping <- tribble(
+  ~state_name, ~region,
+  # North & Central
+  "Punjab", "North & Central",
+  "Haryana", "North & Central",
+  "Chandigarh", "North & Central",
+  "Nct of Delhi", "North & Central",
+  "Uttar Pradesh", "North & Central",
+  "Uttarakhand", "North & Central",
+  "Himachal Pradesh", "North & Central",
+  "Jammu Kashmir", "North & Central",
+  "Madhya Pradesh", "North & Central",
+  "Chhattisgarh", "North & Central",
+  
+  # East
+  "Bihar", "East",
+  "Jharkhand", "East",
+  "West Bengal", "East",
+  "Odisha", "East",
+  
+  # South
+  "Andhra Pradesh", "South",
+  "Karnataka", "South",
+  "Kerala", "South",
+  "Tamil Nadu", "South",
+  "Telangana", "South",
+  "Puducherry", "South",
+  "Lakshadweep", "South",
+  "Andaman Nicobar Islands", "South",
+  
+  # West
+  "Gujarat", "West",
+  "Maharashtra", "West",
+  "Goa", "West",
+  "Rajasthan", "West",
+  "Dadra Nagar Haveli", "West",
+  "Daman Diu", "West",
+  
+  # Northeast
+  "Assam", "Northeast",
+  "Arunachal Pradesh", "Northeast",
+  "Manipur", "Northeast",
+  "Meghalaya", "Northeast",
+  "Mizoram", "Northeast",
+  "Nagaland", "Northeast",
+  "Sikkim", "Northeast",
+  "Tripura", "Northeast"
+)
+
+# ============================================================================
+# VERSION 2: AIRSHEDS (4 categories) - SCIENTIFICALLY GROUNDED
+# ============================================================================
+
+airshed_mapping <- tribble(
+  ~state_name, ~airshed,
+  # Indo-Gangetic Plain (IGP) - Most polluted, well-defined airshed
+  "Punjab", "IGP",
+  "Haryana", "IGP",
+  "Chandigarh", "IGP",
+  "Nct of Delhi", "IGP",
+  "Uttar Pradesh", "IGP",
+  "Bihar", "IGP",
+  "West Bengal", "IGP",
+  
+  # Central-East (Industrial/mining belt + arid dust)
+  "Rajasthan", "Central-East",
+  "Madhya Pradesh", "Central-East",
+  "Jharkhand", "Central-East",
+  "Chhattisgarh", "Central-East",
+  "Odisha", "Central-East",
+  
+  # Peninsular (Deccan Plateau + Western coast)
+  "Gujarat", "Peninsular",
+  "Maharashtra", "Peninsular",
+  "Goa", "Peninsular",
+  "Telangana", "Peninsular",
+  "Andhra Pradesh", "Peninsular",
+  "Karnataka", "Peninsular",
+  "Tamil Nadu", "Peninsular",
+  "Kerala", "Peninsular",
+  "Puducherry", "Peninsular",
+  "Dadra Nagar Haveli", "Peninsular",
+  "Daman Diu", "Peninsular",
+  "Lakshadweep", "Peninsular",
+  "Andaman Nicobar Islands", "Peninsular",
+  
+  # Mountain-NE (Himalayan region)
+  "Jammu Kashmir", "Mountain-NE",
+  "Himachal Pradesh", "Mountain-NE",
+  "Uttarakhand", "Mountain-NE",
+  "Sikkim", "Mountain-NE",
+  "Arunachal Pradesh", "Mountain-NE",
+  "Assam", "Mountain-NE",
+  "Manipur", "Mountain-NE",
+  "Meghalaya", "Mountain-NE",
+  "Mizoram", "Mountain-NE",
+  "Nagaland", "Mountain-NE",
+  "Tripura", "Mountain-NE"
+)
+
+# ============================================================================
+# SELECT WHICH VERSION TO USE: "geographic" or "airshed"
+# ============================================================================
+VERSION <- "airsheds"  # Change to "airshed" for airshed regions
+
+# Prepare data based on selected version
+state_annual <- final_all_years_cbind_df_sh_mapped_long %>%
+  group_by(state_name, year) %>%
+  summarise(
+    mean_pollution = weighted.mean(avg_pm2.5, subdistrict_population, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(state_name = tools::toTitleCase(state_name))
+
+if (VERSION == "geographic") {
+  state_annual <- state_annual %>%
+    left_join(geographic_mapping, by = "state_name") %>%
+    mutate(category = coalesce(region, "West"))
+  
+  # Define colors explicitly for geographic regions (5 categories)
+  category_colors <- c(
+    "North & Central" = "#E57373",  # Soft red
+    "East" = "#FF9800",             # Orange
+    "South" = "#42A5F5",            # Blue
+    "West" = "#FDD835",             # Yellow
+    "Northeast" = "#66BB6A"         # Green
+  )
+  
+  plot_title <- "India State Annual Average PM2.5 Rankings by Geographic Region (1998-2024)"
+  plot_subtitle <- "Year: {closest_state}  |  East (Orange), North & Central (Red), Northeast (Green), South (Blue), West (Yellow)"
+  legend_title <- "Geographic Region"
+  
+} else {  # airshed
+  state_annual <- state_annual %>%
+    left_join(airshed_mapping, by = "state_name") %>%
+    mutate(category = coalesce(airshed, "Peninsular"))
+  
+  # Define colors explicitly for airsheds (4 categories)
+  category_colors <- c(
+    "IGP" = "#D32F2F",              # Dark red (most polluted)
+    "Central-East" = "#FF9800",     # Orange
+    "Peninsular" = "#42A5F5",       # Blue
+    "Mountain-NE" = "#66BB6A"       # Green
+  )
+  
+  plot_title <- "India State Annual Average PM2.5 Rankings by Airshed (1998-2024)"
+  plot_subtitle <- "Year: {closest_state}  |  Central-East (Orange), IGP (Red), Mountain-NE (Green), Peninsular (Blue)"
+  legend_title <- "Airshed"
+}
+
+# Complete data preparation
+state_annual <- state_annual %>%
+  group_by(year) %>%
+  arrange(year, desc(mean_pollution)) %>%
+  mutate(rank = row_number()) %>%
+  ungroup() %>%
+  mutate(state_name = ifelse(state_name == "Arunachal Pradesh", "Arun. P.", state_name), 
+         state_name = ifelse(state_name == "Andaman Nicobar Islands", "A.N. Islands", state_name))
+
+# Create the plot
+p <- ggplot(state_annual, aes(x = rank, y = mean_pollution, fill = category)) +
+  geom_hline(yintercept = 40, linetype = "dotted", color = "#FFA500", linewidth = 1.3) +
+  geom_text(aes(x = max(rank), y = 83, label = "India Annual Avg PM2.5 Limit (40 µg/m³)"),
+            hjust = 1, vjust = 2.85, size = 6, color = "#FFA500", fontface = "bold") +
+  geom_hline(yintercept = 5, linetype = "dotted", color = "cornflowerblue", linewidth = 1.3) +
+  geom_text(aes(x = max(rank), y = 32, label = "WHO Guideline (5 µg/m³)"),
+            hjust = 1, vjust = 2.85, size = 6, color = "cornflowerblue", fontface = "bold") +
+  geom_col(alpha = 0.9, width = 0.9) +
+  # State names
+  geom_text(aes(y = mean_pollution, label = state_name), 
+            hjust = 1.05, 
+            size = 5, 
+            color = "#FFFFFF",
+            fontface = "bold") +
+  # Pollution values
+  geom_text(aes(y = mean_pollution, label = sprintf("%.1f", mean_pollution)), 
+            hjust = -0.15, 
+            size = 4.5, 
+            color = "#E8E8E8",
+            fontface = "bold") +
+  # Color scale
+  scale_fill_manual(values = category_colors, name = legend_title) +
+  coord_flip(clip = "off") +
+  scale_x_reverse() +
+  labs(
+    title = plot_title,
+    subtitle = plot_subtitle,
+    x = NULL,
+    y = "Population-Weighted Mean PM2.5 (µg/m³)"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(size = 20, hjust = 0.5, color = "#E8E8E8", 
+                              face = "bold", margin = margin(b = 5)),
+    plot.subtitle = element_text(size = 14, hjust = 0.5, color = "#B8B8B8",
+                                 margin = margin(b = 15)),
+    axis.text.y = element_blank(),
+    axis.text.x = element_text(size = 13, color = "#E8E8E8"),
+    axis.title.x = element_text(size = 15, color = "#B0B0B0", margin = margin(t = 15)),
+    axis.ticks = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_line(color = "#2a2a2a", linewidth = 0.3),
+    legend.position = "bottom",
+    legend.direction = "horizontal",
+    legend.title = element_text(color = "#E8E8E8", size = 13, face = "bold"),
+    legend.text = element_text(color = "#E8E8E8", size = 12),
+    legend.key.size = unit(1.2, "cm"),
+    legend.background = element_rect(fill = "#0f0f0f", color = "#FFFFFF", linewidth = 1),
+    legend.box.background = element_rect(fill = "#0f0f0f", color = "#FFFFFF", linewidth = 1),
+    legend.margin = margin(10, 10, 10, 10),
+    plot.background = element_rect(fill = "#0f0f0f", color = NA),
+    panel.background = element_rect(fill = "#0f0f0f", color = NA),
+    plot.margin = margin(20, 60, 20, 120)
+  )
+
+# Animate the plot
+anim <- p +
+  transition_states(year, 
+                    transition_length = 2, 
+                    state_length = 1) +
+  ease_aes('cubic-in-out') +
+  enter_fade() +
+  exit_fade()
+
+# Render the animation
+p_anim_custom <- animate(anim, 
+        nframes = 300,
+        fps = 10, 
+        width = 1200, 
+        height = 1200,
+        renderer = gifski_renderer())
+
+# Save the animation
+if (VERSION == "geographic") {
+  anim_save("./22.ind.block.pm2.5.sat.data.processing.1998.2024/experimental.plots/pollution_race_geographic_regions.gif", animation = p_anim_custom)
+} else {
+  anim_save("./22.ind.block.pm2.5.sat.data.processing.1998.2024/experimental.plots/pollution_race_airsheds.gif", animation = p_anim_custom)
+}
+# ============================================================================
+# HEATWAVE MATRIX: Monthly heatmap across years
+# ============================================================================
+viz_heatwave_matrix <- function(df, 
+                                selected_state = NULL,
+                                selected_district = NULL,
+                                selected_subdistrict = NULL) {
+  
+  cat("Building heatwave matrix...\n")
+  
+  # Determine what level we're plotting
+  level <- if(!is.null(selected_subdistrict)) {
+    "subdistrict"
+  } else if(!is.null(selected_district)) {
+    "district"
+  } else if(!is.null(selected_state)) {
+    "state"
+  } else {
+    "national"
+  }
+  
+  # Filter data based on selection
+  plot_data <- df %>%
+    filter(!is.na(avg_pm2.5), !is.na(subdistrict_population), subdistrict_population > 0)
+  
+  if(!is.null(selected_state)) {
+    plot_data <- plot_data %>% filter(state_name == selected_state)
+  }
+  if(!is.null(selected_district)) {
+    plot_data <- plot_data %>% filter(district_name == selected_district)
+  }
+  if(!is.null(selected_subdistrict)) {
+    plot_data <- plot_data %>% filter(subdistrict_name == selected_subdistrict)
+  }
+  
+  # Population-weighted aggregation
+  plot_data <- plot_data %>%
+    mutate(month_num = match(tolower(month), tolower(month.name))) %>%
+    filter(!is.na(month_num)) %>%
+    group_by(year, month_num) %>%
+    summarise(
+      pm25 = sum(avg_pm2.5 * subdistrict_population) / sum(subdistrict_population),
+      .groups = "drop"
+    ) %>%
+    mutate(month_name = factor(month.abb[month_num], levels = rev(month.abb)))
+  
+  # Create subtitle based on level
+  subtitle_text <- case_when(
+    level == "subdistrict" ~ paste0(selected_subdistrict, ", ", selected_district, ", ", selected_state),
+    level == "district" ~ paste0(selected_district, ", ", selected_state),
+    level == "state" ~ as.character(selected_state),
+    TRUE ~ "All India"
+  )
+  
+  cat("Level:", level, "\n")
+  cat("Year range:", range(plot_data$year), "\n")
+  cat("PM2.5 range:", range(plot_data$pm25), "\n")
+  cat("Data points:", nrow(plot_data), "\n")
+  
+  ggplot(plot_data, aes(x = year, y = month_name, fill = pm25)) +
+    geom_tile(color = "#0a0a0a", linewidth = 0.8) +
+    scale_fill_gradientn(
+      colors = c("#fffacd", "#ffed4e", "#ffba08", "#ff8500", 
+                 "#ff5400", "#dc2f02", "#9d0208", "#6a040f", "#1a0000"),
+      name = "PM2.5\n(μg/m³)",
+      guide = guide_colorbar(barwidth = 1.5, barheight = 15)
+    ) +
+    scale_x_continuous(expand = c(0, 0), breaks = seq(1998, 2024, 2)) +
+    scale_y_discrete(expand = c(0, 0)) +
+    labs(
+      title = "Air Quality Heatwave Matrix",
+      subtitle = paste("Population-weighted PM2.5 concentration:", subtitle_text),
+      x = "Year",
+      y = NULL,
+      caption = "Color scale: Light Yellow (Clean) → Orange → Red → Dark Red → Black (Hazardous)"
+    ) +
+    theme_minimal(base_size = 14) +
+    theme(
+      plot.background = element_rect(fill = "#0a0a0a", color = NA),
+      panel.background = element_rect(fill = "#0a0a0a", color = NA),
+      text = element_text(color = "#f0f0f0"),
+      axis.text = element_text(color = "#d0d0d0", size = 11),
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      axis.title.x = element_text(size = 13, margin = margin(t = 10)),
+      panel.grid = element_blank(),
+      legend.position = "right",
+      plot.title = element_text(size = 20, face = "bold", margin = margin(b = 5)),
+      plot.subtitle = element_text(size = 12, color = "#cccccc", margin = margin(b = 15)),
+      plot.caption = element_text(size = 9, color = "#999999", hjust = 0.5, margin = margin(t = 10)),
+      plot.margin = margin(20, 20, 20, 20)
+    )
+}
+
+# USAGE:
+
+# National level (all India):
+ p3 <- viz_heatwave_matrix(final_all_years_cbind_df_sh_mapped_long)
+
+# State level:
+# p3 <- viz_heatwave_matrix(final_all_years_cbind_df_sh_mapped_long, 
+#                           selected_state = "delhi")
+
+# District level:
+# p3 <- viz_heatwave_matrix(final_all_years_cbind_df_sh_mapped_long, 
+#                           selected_state = "delhi", 
+#                           selected_district = "central delhi")
+
+# Subdistrict level:
+# p3 <- viz_heatwave_matrix(final_all_years_cbind_df_sh_mapped_long, 
+#                           selected_state = "delhi", 
+#                           selected_district = "central delhi",
+#                           selected_subdistrict = "kotwali")
+
+# p3
+
+# To save:
+# ggsave("heatwave_matrix.png", p3, width = 16, height = 8, dpi = 300, bg = "#0f0f0f")
 ```
 
 ## Testing Block [IGNORE]
@@ -854,4 +1441,6 @@ foo <- final_all_years_cbind_df_sh_mapped_long %>% group_by(state_name, year, mo
   
 
 ```
+
+
 
