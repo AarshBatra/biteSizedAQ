@@ -14,7 +14,7 @@ dataset, below I have plotted monthly average PM2.5 snapshot for 2024,
 2023, 2019, 2012 and 1998 for all months at block level (block
 boundaries are very light so as to make it easier to see the colors).
 Other similar snapshots for other years are stored in [this
-folder](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.pm2.5.sat.data.processing.1998.2024/monthly.india.pm2.5.snapshot.all.yrs)
+folder](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024/monthly.india.pm2.5.snapshot.all.yrs)
 of the repo.
 
 ## 2024
@@ -113,7 +113,7 @@ data dictionary section before starting analysis.
 
 High resolution snapshots for all years, similar to the ones shown in
 the blog post can be found in this [folder of the
-repo](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.pm2.5.sat.data.processing.1998.2024/monthly.india.pm2.5.snapshot.all.yrs).
+repo](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024/monthly.india.pm2.5.snapshot.all.yrs).
 Feel free to share this further for outreach or awareness purposes.
 
 ## Interactive Northern Plains of India AQ data explorer
