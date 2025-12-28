@@ -40,16 +40,18 @@ of the repo.
 ## Table of Contents
 
 1.  [Introduction](#introduction)
-2.  [Processed Data, Shapefiles and](#processed-data-and-shapefiles)
+2.  [Processed Data, Shapefiles and High Resolution
+    Snapshots](#processed-data-and-shapefiles)
 3.  [Interactive Northern Plains of India AQ data
     explorer](#northernplainsaqexplorerapp)
-4.  [Data Dictionary](#data-dictionary)
-5.  [Data Sources and description](#data-sources-and-description)
-6.  [Why use SHRUG shapefiles for
+4.  [Pollution Race Animations](#sec-pollution-race-charts)
+5.  [Data Dictionary](#data-dictionary)
+6.  [Data Sources and description](#data-sources-and-description)
+7.  [Why use SHRUG shapefiles for
     India?](#why-use-shrug-shapefiles-for-india?)
-7.  [Prerequisites for running the
+8.  [Prerequisites for running the
     pipeline](#prerequisites-for-running-the-pipeline)
-8.  [Pipeline Overview](#pipeline-overview)
+9.  [Pipeline Overview](#pipeline-overview)
     - [Load and Crop Pollution Data](#load-and-crop-pollution-data)
     - [Load and Process Population
       Data](#load-and-process-population-data)
@@ -61,8 +63,8 @@ of the repo.
     - [Output](#output)
     - [Important notes and current
       limitations](#important-notes-and-current-limitations)
-9.  [License and Reuse](#license-and-reuse)
-10. [Citations](#citations)
+10. [License and Reuse](#license-and-reuse)
+11. [Citations](#citations)
 
 ## Introduction
 
@@ -123,6 +125,31 @@ data processed and shared above.
 
 Explore the interactive app here:
 [Link](https://india-northern-plains-aq-explorer.lovable.app/)
+
+## Pollution Race Animations
+
+I visualized how different state’s annual averages fair against each
+other over the entire panel of 27 years in an animated bar chart setup.
+I then also plotted this same animation but looked at it with the lens
+of geographic and air-shed regions. You can access the animation’s gif
+files [in this
+folder](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024/experimental.plots).
+(also displayed below) The code for these can be found in the
+[corresponding project
+Rmd](https://github.com/AarshBatra/biteSizedAQ/blob/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024.Rmd)
+in a chunk named “Extra Code for Plotting…”.
+
+#### ***Here is the one that shows the state wise air pollution race from 1998 to 2024, colored by pollution levels:***
+
+![](experimental.plots/pollution_race_state_pollution_wise.gif)
+
+#### ***…and here is the same animation but instead color coded by geographic regions:***
+
+#### ![](experimental.plots/pollution_race_geographic_regions.gif)
+
+#### ***…and here is the same animation but instead color coded by major air-sheds:***
+
+![](experimental.plots/pollution_race_airsheds.gif)
 
 ## Data Dictionary
 

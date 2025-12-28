@@ -59,6 +59,8 @@ This repository will continue to grow with new projects as and when I find time.
 
 -   Data Processing pipeline Rmd file for this project can be found at the root of the biteSizedAQ repo. Here is a [quick link](https://github.com/AarshBatra/biteSizedAQ/blob/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024.Rmd) to access the pipeline.
 
+-   Animations of pollution race charts and other experimental resources: state wise, geographical region wise and airshed wise: [Link to Folder](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024/experimental.plots)
+
 ## Project 21: 💔 The Air is Burning Our Futures: Why Our Fight for Clean Air is Drowning in Silence
 
 -   Read the full blog post here: [Link to Blog](https://github.com/AarshBatra/biteSizedAQ/tree/main/21.air.pol.comms.failing.rectification).

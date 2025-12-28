@@ -79,6 +79,10 @@ find time. To kick things off, check out the first few projects below!
   link](https://github.com/AarshBatra/biteSizedAQ/blob/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024.Rmd)
   to access the pipeline.
 
+- Animations of pollution race charts and other experimental resources:
+  state wise, geographical region wise and airshed wise: [Link to
+  Folder](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024/experimental.plots)
+
 ## Project 21: 💔 The Air is Burning Our Futures: Why Our Fight for Clean Air is Drowning in Silence
 
 - Read the full blog post here: [Link to
