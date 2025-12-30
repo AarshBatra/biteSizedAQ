@@ -45,13 +45,14 @@ of the repo.
 3.  [Interactive Northern Plains of India AQ data
     explorer](#northernplainsaqexplorerapp)
 4.  [Pollution Race Animations](#sec-pollution-race-charts)
-5.  [Data Dictionary](#data-dictionary)
-6.  [Data Sources and description](#data-sources-and-description)
-7.  [Why use SHRUG shapefiles for
+5.  Subdistrict Level PM2.5 Compliance Over 27 Years
+6.  [Data Dictionary](#data-dictionary)
+7.  [Data Sources and description](#data-sources-and-description)
+8.  [Why use SHRUG shapefiles for
     India?](#why-use-shrug-shapefiles-for-india?)
-8.  [Prerequisites for running the
+9.  [Prerequisites for running the
     pipeline](#prerequisites-for-running-the-pipeline)
-9.  [Pipeline Overview](#pipeline-overview)
+10. [Pipeline Overview](#pipeline-overview)
     - [Load and Crop Pollution Data](#load-and-crop-pollution-data)
     - [Load and Process Population
       Data](#load-and-process-population-data)
@@ -63,8 +64,8 @@ of the repo.
     - [Output](#output)
     - [Important notes and current
       limitations](#important-notes-and-current-limitations)
-10. [License and Reuse](#license-and-reuse)
-11. [Citations](#citations)
+11. [License and Reuse](#license-and-reuse)
+12. [Citations](#citations)
 
 ## Introduction
 
@@ -150,6 +151,34 @@ in a chunk named “Extra Code for Plotting…”.
 #### ***…and here is the same animation but instead color coded by major air-sheds:***
 
 ![](experimental.plots/pollution_race_airsheds.gif)
+
+## Subdistrict Level Compliance Across 27 years
+
+This plot show percentage of the total 5968 districts that are meeting
+the national PM2.5 annual average limit (top panel) and WHO guidline
+(bottom panel). There is practically no WHO compliance in over 2 decades
+and when it comes to national compliance, things improve in the monsoon
+months and worsens in the winter months.
+
+Months in which majority of subdistricts were in compliance with the
+national guideline in pre 2000s (e.g Feb to May) have transitioned
+towards decreasing compliance over the years.
+
+Broadly speaking, three major patterns emerge:
+
+- **Seasonal lifeline:** Monsoon months (June-September) consistently
+  show ~70 to close to 100% compliance with national standard of 40
+  micrograms per cubic meter. Rain helps clear the air.
+
+- **Winter crisis:** October-April sees compliance collapse—often below
+  50%. In many recent winters, only 20-30% of subdistricts meet national
+  standards.
+
+- **The WHO gap:** Over 27 years, WHO compliance barely scratches 4% (at
+  max a handful of subdistricts). In most months across all 27 years,
+  it’s effectively zero. We’re not even close.
+
+![](images/pm25_compliance_heatmap.png)
 
 ## Data Dictionary
 
