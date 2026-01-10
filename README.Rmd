@@ -47,11 +47,11 @@ This repository will continue to grow with new projects as and when I find time.
 
 ## Project 23: biteSizedVisual #5: 27 years of PM₂.₅ compliance across Indian states — and how the standard you choose changes the story
 
--   Read the full blog here: Link to Blog
+-   Read the full blog here: [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/23.bite.sized.vis.5.aq.st.mth.yr.blk.compliance.chart)
 
 -   The underlying data that powers the visualizations in this blog were processed and shared in biteSizedAQ - Project 22. Here is a [link to that project](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024).
 
--   Link to high res plots and animations: Link
+-   Link to high res plots and animations: [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/23.bite.sized.vis.5.aq.st.mth.yr.blk.compliance.chart/images). Please feel free to share. But, if you do just link back and give credit to this original source (see License and Reuse section in the blog).
 
 ## Project 22: Block level Satellite derived population weighted Monthly PM2.5 dataset for India from 1998-2024
 

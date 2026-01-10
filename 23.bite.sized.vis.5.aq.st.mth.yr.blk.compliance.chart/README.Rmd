@@ -28,14 +28,17 @@ Let’s dive into the data—one plot at a time!
 
 ------------------------------------------------------------------------
 
-***[Click here to view high res image in a new window]:*** With respect
-to the Indian National PM2.5 Standard (\<=40 micrograms per cubic
-meter):
+***[Might take a few seconds to load. [Click
+here](https://github.com/AarshBatra/biteSizedAQ/blob/main/23.bite.sized.vis.5.aq.st.mth.yr.blk.compliance.chart/images/%5Btest3%5Dcompliance_stripes_chart_all_states_nat.png)
+to view high res image in a new window]:*** With respect to the Indian
+National PM2.5 Standard (\<=40 micrograms per cubic meter):
 
 ![](images/[test3]compliance_stripes_chart_all_states_nat.png)
 
-***[Click here to view high res image in a new window]:*** With respect
-to the WHO PM2.5 Guideline (\<=5 micrograms per cubic meter):
+***[Might take a few seconds to load. [Click
+here](https://github.com/AarshBatra/biteSizedAQ/blob/main/23.bite.sized.vis.5.aq.st.mth.yr.blk.compliance.chart/images/%5Btest3%5Dcompliance_stripes_chart_all_states_who.png)
+to view high res image in a new window]:*** With respect to the WHO
+PM2.5 Guideline (\<=5 micrograms per cubic meter):
 
 ![](images/[test3]compliance_stripes_chart_all_states_who.png)
 
@@ -425,6 +428,22 @@ data that I processed and shared in a separate biteSizedAQ blog post.
 Here is a link to that blog that contains the link to the data and other
 resources:
 [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024).
+
+## Share these Visualizations
+
+Here is a link which contains the high resolution versions of the above
+plots and animations:
+[Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/23.bite.sized.vis.5.aq.st.mth.yr.blk.compliance.chart/images).
+
+Help raise awareness about the severity of air pollution in India by
+sharing these and other visuals in the biteSizedVisuals series. By
+spreading the message, we can collectively push for urgent actions to
+address the crisis and create a healthier future for all.
+
+Share these visuals with your network to highlight the air quality
+challenges faced by millions across the country.
+
+See License and Reuse section for further guidance on content sharing.
 
 ## Support This Work: Give It a Star
 
