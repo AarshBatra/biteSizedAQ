@@ -425,8 +425,8 @@ final_all_years_cbind_df_sh_mapped_long %>%  write_csv(paste0("./data/processed/
 
 # #### If want to directly load the processed data (assuming data is already processed) and plot, uncomment the below code. Make sure to update the version and folder names of the data for which you want to make the plot. As of last time the latest data was 1998 to 2024
 # # 
-# final_all_years_cbind_df_sh_mapped_long <- read_csv("./data/processed/22.ind.block.pm2.5.sat.data.processing.1998.2024/av_pm2.5_ind_blk_mth_1998_2024_long.csv")
-# 
+final_all_years_cbind_df_sh_mapped_long <- read_csv("./data/processed/22.ind.block.pm2.5.sat.data.processing.1998.2024/av_pm2.5_ind_blk_mth_1998_2024_long.csv")
+
 # final_all_years_cbind_df_sh_mapped_wide <- read_csv("./data/processed/22.ind.block.pm2.5.sat.data.processing.1998.2024/av_pm2.5_ind_blk_mth_1998_2024_wide.csv")
 
 #### plot monthly screenshot for all years for India at block level----------------------
@@ -1011,10 +1011,10 @@ library(patchwork)
 
 # Calculate compliance counts by year-month
 compliance_summary <- final_all_years_cbind_df_sh_mapped_long %>%
-  group_by(year, month) %>%
+  group_by(year, month, state_name) %>%
   summarise(
     national_compliant = sum(avg_pm2.5 <= 40, na.rm = TRUE),
-    who_compliant = sum(avg_pm2.5 <= 5, na.rm = TRUE),
+    who_compliant = ifelse(first(year) >= 2021, sum(avg_pm2.5 <= 5, na.rm = TRUE), sum(avg_pm2.5 <= 10, na.rm = TRUE)),
     total_subdistricts = n(),
     .groups = 'drop'
   ) %>%
@@ -1035,8 +1035,8 @@ compliance_summary <- final_all_years_cbind_df_sh_mapped_long %>%
 p1 <- ggplot(compliance_summary, 
              aes(x = factor(year), y = month_name, fill = national_pct)) +
   geom_tile(color = "white", linewidth = 2) +
-  geom_text(aes(label = sprintf("%.1f%%", national_pct), color = national_text_color), 
-            size = 6, fontface = "bold") +
+  # geom_text(aes(label = sprintf("%.1f%%", national_pct), color = national_text_color), 
+  #           size = 6, fontface = "bold") +
   scale_fill_gradient2(
     low = "#d73027", 
     mid = "#fee090", 
@@ -1062,7 +1062,8 @@ p1 <- ggplot(compliance_summary,
     legend.text = element_text(size = 18),
     legend.key.width = unit(5, "cm"),
     legend.key.height = unit(1, "cm")
-  )
+  ) + 
+  facet_grid(~state_name)
 
 # WHO guideline heatmap
 p2 <- ggplot(compliance_summary, 
@@ -1080,7 +1081,7 @@ p2 <- ggplot(compliance_summary,
   ) +
   scale_color_identity() +  # Use the actual colors specified
   labs(
-    title = "WHO Guideline (≤5 µg/m³)",
+    title = "WHO Guideline (≤5 µg/m³ from 2021), before 2021: ≤10 µg/m³",
     x = "Year",
     y = NULL
   ) +
@@ -1102,8 +1103,8 @@ p2 <- ggplot(compliance_summary,
 combined_plot <- p1 / p2 + 
   plot_annotation(
     title = "The Air Quality Crisis in India: A 27-Year View of PM2.5 Compliance",
-    subtitle = "Percentage of 5,968 subdistricts meeting national and WHO air quality standards (1998-2024) Months show clear seasonal patterns, with monsoon months (June-September) exhibiting better compliance.There is also a diminishing\n 'greeness' in the national plot as we move from 1998 towards 2024. In any given month, later years have gotten 'on average' worse (especially October to April months) in terms of compliance compared to previous years.\nWhile the WHO guideline comparison is clear - practically no compliance in more than 2 decades.",
-    caption = "Data: Population-weighted monthly PM2.5 concentrations across Indian subdistricts\nNational Standard: 40 µg/m³ annual average | WHO Guideline: 5 µg/m³ annual average\nGreen = high compliance, Red = low compliance | Each cell shows percentage of subdistricts meeting the threshold\nGraphic: Aarsh Batra (github.com/AarshBatra/biteSizedAQ)",
+    subtitle = "Percentage of 5,968 subdistricts meeting national and WHO air quality standards (1998-2024) Months show clear seasonal patterns, with monsoon months (June-September) exhibiting better compliance.There is also a diminishing\n 'greeness' in the national plot as we move from 1998 towards 2024. In any given month, later years have gotten 'on average' worse (especially October to April months) in terms of compliance compared to previous years.\nWhile the WHO guideline comparison is clear - practically no compliance under the stricter standard and only some compliance in previous less stricter standard, and that too only few non-winter months in early years.",
+    caption = "Data: Population-weighted monthly PM2.5 concentrations across Indian subdistricts\nNational Standard: 40 µg/m³ annual average | WHO Guideline: 5 µg/m³ annual average (fro 2021) and 10 µg/m³ annual average (pre-2021)\nGreen = high compliance, Red = low compliance | Each cell shows percentage of subdistricts meeting the threshold\nGraphic: Aarsh Batra (github.com/AarshBatra/biteSizedAQ)",
     theme = theme(
       plot.title = element_text(size = 28, face = "bold", hjust = 0.5, margin = margin(b = 15)),
       plot.subtitle = element_text(size = 20, hjust = 0.5, color = "gray20", 
@@ -1116,12 +1117,658 @@ combined_plot <- p1 / p2 +
 print(combined_plot)
 
 # Save as VERY LARGE high-resolution plot
-ggsave("pm25_compliance_heatmap.png", 
+ggsave("pm25_compliance_heatmap_who_2_limits.png", 
        combined_plot, 
        width = 30,
        height = 22,
        dpi = 300,
        bg = "white")
+
+# Save as VERY LARGE high-resolution plot
+ggsave("pm25_compliance_heatmap_who_1_limit.png", 
+       p1, 
+       width = 32,
+       height = 20,
+       dpi = 300,
+       bg = "white")
+
+#### IGP compliance stripes chart============================================
+library(ggplot2)
+library(dplyr)
+
+convert_month <- function(x) {
+  month.abb[ match(x, month.name) ]
+}
+
+
+# Create binned categories with distinct colors
+compliance_summary_binned <- compliance_summary %>%
+  mutate(
+    compliance_bin_nat = cut(
+      national_pct,
+      breaks = c(0, 20, 40, 60, 80, 100),
+      labels = c("0-20%", "20-40%", "40-60%", "60-80%", "80-100%"),
+      include.lowest = TRUE
+    ), 
+     compliance_bin_who = cut(
+      who_pct,
+      breaks = c(0, 20, 40, 60, 80, 100),
+      labels = c("0-20%", "20-40%", "40-60%", "60-80%", "80-100%"),
+      include.lowest = TRUE
+    )
+  ) %>%
+  mutate(state_name = str_to_title(state_name)) %>%
+  mutate(month_name = recode(month_name, !!!setNames(month.abb, month.name))) %>%
+   mutate(year_short = paste0("'", substr(as.character(year), 3, 4)))
+
+# Define a bold, distinct color palette
+stripe_colors <- c(
+  "0-20%" = "#d73027",    # Deep red
+  "20-40%" = "#fc8d59",   # Orange
+  "40-60%" = "#fee090",   # Yellow
+  "60-80%" = "#91cf60",   # Light green
+  "80-100%" = "#1a9850"   # Deep green
+)
+
+# Then update your ggplot code to use year_short instead of year:
+# COMPLIANCE STRIPES CHART - ALL 27 STATES
+# COMPLIANCE STRIPES CHART - ALL 27 STATES
+p1 <- ggplot(
+  compliance_summary_binned,
+  aes(x = factor(year), y = month_name, fill = compliance_bin_nat)
+) +
+  geom_tile(color = "white", linewidth = 0.3, width = 0.95, height = 0.95) +
+  scale_fill_manual(
+    values = stripe_colors,
+    name = "% of Subdistricts\nMeeting National PM2.5 Standard",
+    drop = FALSE
+  ) +
+  scale_x_discrete(
+    breaks = seq(1998, 2024, 2),  # Show every 2 years
+    expand = expansion(mult = c(0.02, 0.02))
+  ) +
+  scale_y_discrete(expand = expansion(mult = c(0.02, 0.02))) +
+  labs(
+    title = "Compliance Stripes: All Indian States Across 27 Years (1998 to 2024)",
+    subtitle = "National PM2.5 Standard (≤40 µg/m³ annual average PM2.5)",
+    x = "Year",
+    y = NULL,
+    caption = "Each stripe represents the percentage of subdistricts meeting the National PM2.5 standard in a given month-year\nGraphic: Aarsh Batra (github.com/AarshBatra/biteSizedAQ)"
+  ) +
+  theme_minimal(base_size = 16) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 52, margin = margin(b = 8)),
+    plot.subtitle = element_text(hjust = 0.5, size = 33, color = "grey30", margin = margin(b = 20)),
+    plot.caption = element_text(hjust = 1, size = 23, color = "grey40", margin = margin(t = 20), lineheight = 1.2),
+    panel.grid = element_blank(),
+    panel.spacing.x = unit(1.5, "lines"),
+    panel.spacing.y = unit(1.5, "lines"),
+    axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 22),
+    axis.text.y = element_text(size = 22),
+    axis.title.x = element_text(size = 31, margin = margin(t = 1.2, b = 1, unit = "cm"), face = "bold"),
+    strip.text = element_text(face = "bold", size = 28, margin = margin(b = 6, t = 6)),
+    strip.background = element_blank(),
+    legend.position = "bottom",
+    legend.title = element_text(size = 30, face = "bold"),
+    legend.text = element_text(size = 25),
+    legend.key.width = unit(2, "cm"),
+    legend.key.height = unit(0.6, "cm"),
+    legend.background = element_rect(fill = "white", color = "grey60", linewidth = 0.5),
+    legend.box.background = element_rect(fill = "white", color = "grey60", linewidth = 0.5),
+    legend.margin = margin(12, 12, 12, 12),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA),
+    plot.margin = margin(20, 20, 20, 20)
+  ) +
+  facet_wrap(~state_name, nrow = 5, ncol = 7, scales = "free")
+
+# Save with appropriate dimensions for 27 states
+ggsave("[test3]compliance_stripes_chart_all_states_nat.png", p1, 
+       width = 54, height = 34, dpi = 520, bg = "white", limits = FALSE)
+
+
+p2 <- ggplot(
+  compliance_summary_binned,
+  aes(x = factor(year), y = month_name, fill = compliance_bin_who)
+) +
+  geom_tile(color = "white", linewidth = 0.3, width = 0.95, height = 0.95) +
+  scale_fill_manual(
+    values = stripe_colors,
+    name = "% of Subdistricts\nMeeting WHO PM2.5 Guideline",
+    drop = FALSE
+  ) +
+  scale_x_discrete(
+    breaks = seq(1998, 2024, 2),  # Show every 2 years
+    expand = expansion(mult = c(0.02, 0.02))
+  ) +
+  scale_y_discrete(expand = expansion(mult = c(0.02, 0.02))) +
+  labs(
+    title = "Compliance Stripes: All Indian States Across 27 Years (1998 to 2024)",
+    subtitle = "WHO PM2.5 Guideline (≤5 µg/m³ annual average PM2.5)",
+    x = "Year",
+    y = NULL,
+    caption = "Each stripe represents the percentage of subdistricts meeting the WHO PM2.5 guideline in a given month-year\nGraphic: Aarsh Batra (github.com/AarshBatra/biteSizedAQ)"
+  ) +
+  theme_minimal(base_size = 16) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 52, margin = margin(b = 8)),
+    plot.subtitle = element_text(hjust = 0.5, size = 33, color = "grey30", margin = margin(b = 20)),
+    plot.caption = element_text(hjust = 1, size = 23, color = "grey40", margin = margin(t = 20), lineheight = 1.2),
+    panel.grid = element_blank(),
+    panel.spacing.x = unit(1.5, "lines"),
+    panel.spacing.y = unit(1.5, "lines"),
+    axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 22),
+    axis.text.y = element_text(size = 22),
+    axis.title.x = element_text(size = 31, margin = margin(t = 1.2, b = 1, unit = "cm"), face = "bold"),
+    strip.text = element_text(face = "bold", size = 28, margin = margin(b = 6, t = 6)),
+    strip.background = element_blank(),
+    legend.position = "bottom",
+    legend.title = element_text(size = 30, face = "bold"),
+    legend.text = element_text(size = 25),
+    legend.key.width = unit(2, "cm"),
+    legend.key.height = unit(0.6, "cm"),
+    legend.background = element_rect(fill = "white", color = "grey60", linewidth = 0.5),
+    legend.box.background = element_rect(fill = "white", color = "grey60", linewidth = 0.5),
+    legend.margin = margin(12, 12, 12, 12),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA),
+    plot.margin = margin(20, 20, 20, 20)
+  ) +
+  facet_wrap(~state_name, nrow = 5, ncol = 7, scales = "free")
+
+# Save with appropriate dimensions for 27 states
+ggsave("[test3]compliance_stripes_chart_all_states_who.png", p2, 
+       width = 54, height = 34, dpi = 520, bg = "white", limits = FALSE)
+
+
+#### Block level pollution spike plot====================================
+
+library(sf)
+library(dplyr)
+library(ggplot2)
+
+# Use your shapefile (already loaded as shrug_master_subdist_shp)
+shp <- shrug_master_subdist_shp %>%
+  filter(state_name == "uttar pradesh")
+
+# Use your PM2.5 data (already loaded as final_all_years_cbind_df_sh_mapped_long)
+pm25_data <- final_all_years_cbind_df_sh_mapped_long
+
+# Calculate average PM2.5 per subdistrict (across all years/months)
+# Or filter to specific period first
+pm25_avg <- pm25_data %>%
+  # filter(year == 2023, month == 12) %>%  # Optional: specific time period
+  group_by(state_name, district_name, subdistrict_name) %>%
+  summarise(pm25_mean = mean(avg_pm2.5, na.rm = TRUE), .groups = "drop")
+
+# Get centroids
+centroids <- st_centroid(shp)
+
+# Join data - column names match exactly!
+plot_data <- centroids %>%
+  left_join(pm25_avg, by = c("state_name", "district_name", "subdistrict_name"))
+
+# Create spike endpoints
+spike_data <- plot_data %>%
+  filter(!is.na(pm25_mean)) %>%
+  mutate(
+    # Scale factor - adjust multiplier to control spike height visibility
+    spike_height = pm25_mean * 0.02,
+    lon = st_coordinates(.)[,1],
+    lat = st_coordinates(.)[,2],
+    lat_top = lat + spike_height
+  )
+
+# Create plot
+plt <- ggplot() +
+  # Base map
+  geom_sf(data = shp, fill = "grey90", color = "grey60", linewidth = 0.2) +
+  # Spikes
+  geom_segment(data = spike_data,
+               aes(x = lon, xend = lon, 
+                   y = lat, yend = lat_top,
+                   color = pm25_mean),
+               linewidth = 0.5, alpha = 0.7) +
+  scale_color_gradient2(low = "green", mid = "yellow", high = "red",
+                        midpoint = median(spike_data$pm25_mean, na.rm = TRUE),
+                        name = "PM2.5 (μg/m³)") +
+  theme_minimal() +
+  labs(title = "PM2.5 Pollution Spikes by Subdistrict",
+       subtitle = "Average across all time periods") +
+  theme(panel.grid = element_blank(),
+        axis.text = element_blank(),
+        axis.title = element_blank())
+
+# For a specific month/year:
+# pm25_specific <- pm25_data %>%
+#   filter(year == 2023, month == 11) %>%
+#   group_by(state_name, district_name, subdistrict_name) %>%
+#   summarise(pm25_mean = mean(avg_pm2.5, na.rm = TRUE), .groups = "drop")
+
+
+#### pollution relief plot with spikes======================================
+
+library(sf)
+library(dplyr)
+library(ggplot2)
+library(rayshader)
+library(raster)
+
+# Use your data
+shp <- shrug_master_subdist_shp %>%
+  filter(state_name == "nct of delhi")
+pm25_data <- final_all_years_cbind_df_sh_mapped_long
+
+# Calculate average PM2.5 per subdistrict
+pm25_avg <- final_all_years_cbind_df_sh_mapped_long %>%
+  # filter(year == 2023, month == 11) %>%  # Optional: specific time period
+  group_by(state_name, district_name, subdistrict_name) %>%
+  summarise(pm25_mean = mean(avg_pm2.5, na.rm = TRUE), .groups = "drop")
+
+# Join with shapefile
+shp_data <- shp %>%
+  left_join(pm25_avg, by = c("state_name", "district_name", "subdistrict_name"))
+
+# Create base ggplot
+p <- ggplot() +
+  geom_sf(data = shp_data, aes(fill = pm25_mean), color = NA) +
+  scale_fill_gradientn(
+    colors = c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c"),
+    na.value = "grey80",
+    name = "PM2.5\n(μg/m³)"
+  ) +
+  theme_void() +
+  labs(title = "PM2.5 Pollution Relief Map")
+
+# Save plot for rayshader
+ggsave("temp_pm25_plot.png", p, width = 8, height = 8, dpi = 300)
+
+# Convert to 3D relief
+plot_gg(p, 
+        width = 7, 
+        height = 7,
+        scale = 250,           # Vertical exaggeration
+        zoom = 0.6, 
+        phi = 30,              # Viewing angle (vertical)
+        theta = 45,            # Viewing angle (horizontal)
+        windowsize = c(1200, 1200),
+        multicore = TRUE)
+
+# Render snapshot
+render_snapshot("pm25_relief_3d.png")
+
+# Alternative: Create hillshade effect in 2D
+# This gives relief appearance without full 3D
+p_relief <- ggplot() +
+  geom_sf(data = shp_data, aes(fill = pm25_mean), color = "white", linewidth = 0.1) +
+  scale_fill_gradientn(
+    colors = c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c"),
+    na.value = "grey80",
+    name = "PM2.5\n(μg/m³)"
+  ) +
+  theme_void() +
+  theme(
+    plot.background = element_rect(fill = "#f0f0f0"),
+    panel.background = element_rect(fill = "#f0f0f0"),
+    legend.position = "right"
+  ) +
+  labs(title = "PM2.5 Pollution Relief Map",
+       subtitle = "Higher values shown with warm colors")
+
+print(p_relief)
+
+# To rotate the 3D view interactively:
+# render_camera(phi = 30, theta = 45, zoom = 0.6)
+
+# For high-quality render:
+render_highquality("pm25_relief_hq.png",
+                   samples = 300,
+                   preview = FALSE,
+                   light = TRUE,
+                   lightdirection = 45,
+                   lightaltitude = 45)
+
+
+
+#### cartogram plot===========================================================
+
+# Load required libraries
+library(sf)
+library(cartogram)
+library(ggplot2)
+library(dplyr)
+library(viridis)
+
+# STRATEGY 1: State Level (FAST!)
+# ================================
+create_state_cartogram <- function(pollution_data, 
+                                   state_shapefile,
+                                   selected_year, 
+                                   selected_month) {
+  
+  # Aggregate pollution data to state level
+  state_pollution <- pollution_data %>%
+    filter(year == selected_year, month == selected_month) %>%
+    group_by(state_name) %>%
+    summarise(
+      avg_pm2.5 = weighted.mean(avg_pm2.5, subdistrict_population, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    mutate(state_name = tolower(trimws(state_name)))
+  
+  # Use existing state shapefile
+  state_shp <- state_shapefile %>%
+    mutate(state_name = tolower(trimws(state_name)))
+  
+  # Join and filter
+  map_data <- state_shp %>%
+    left_join(state_pollution, by = "state_name") %>%
+    filter(!is.na(avg_pm2.5), avg_pm2.5 > 0)
+  
+  # Transform to projected CRS
+  map_data_projected <- st_transform(map_data, crs = 24378)
+  
+  # Create cartogram (very fast with ~36 states)
+  cartogram_map <- cartogram_cont(map_data_projected, 
+                                  weight = "avg_pm2.5", 
+                                  itermax = 5)
+  
+  # Create plot
+  plot <- ggplot() +
+    geom_sf(data = cartogram_map, 
+            aes(fill = avg_pm2.5), 
+            color = "white", 
+            size = 0.3) +
+    scale_fill_viridis(
+      option = "inferno",
+      name = expression(paste("PM"[2.5], " (μg/m"^3, ")")),
+      guide = guide_colorbar(
+        direction = "horizontal",
+        title.position = "top",
+        barwidth = 15,
+        barheight = 0.5
+      )
+    ) +
+    labs(
+      title = "Air Pollution Cartogram - India (State Level)",
+      subtitle = paste(tools::toTitleCase(selected_month), selected_year, 
+                      "| Area warped by PM2.5 concentration"),
+      caption = "Larger areas indicate higher pollution levels"
+    ) +
+    theme_minimal() +
+    theme(
+      legend.position = "bottom",
+      plot.title = element_text(size = 16, face = "bold"),
+      plot.subtitle = element_text(size = 12),
+      plot.caption = element_text(hjust = 0.5, size = 9, color = "gray50"),
+      axis.text = element_blank(),
+      axis.ticks = element_blank(),
+      panel.grid = element_blank()
+    )
+  
+  return(list(cartogram = cartogram_map, plot = plot))
+}
+
+
+# STRATEGY 2: State Level with State Labels
+# ==========================================
+create_state_cartogram_labeled <- function(pollution_data, 
+                                           state_shapefile,
+                                           selected_year, 
+                                           selected_month) {
+  
+  # Aggregate pollution data to state level
+  state_pollution <- pollution_data %>%
+    filter(year == selected_year, month == selected_month) %>%
+    group_by(state_name) %>%
+    summarise(
+      avg_pm2.5 = weighted.mean(avg_pm2.5, subdistrict_population, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    mutate(state_name = tolower(trimws(state_name)))
+  
+  # Use existing state shapefile
+  state_shp <- state_shapefile %>%
+    mutate(state_name = tolower(trimws(state_name)))
+  
+  # Join and filter
+  map_data <- state_shp %>%
+    left_join(state_pollution, by = "state_name") %>%
+    filter(!is.na(avg_pm2.5), avg_pm2.5 > 0)
+  
+  # Transform to projected CRS
+  map_data_projected <- st_transform(map_data, crs = 24378)
+  
+  # Create cartogram
+  cartogram_map <- cartogram_cont(map_data_projected, 
+                                  weight = "avg_pm2.5", 
+                                  itermax = 5)
+  
+  # Get centroids for labels
+  centroids <- st_centroid(cartogram_map)
+  
+  # Create plot with state labels
+  plot <- ggplot() +
+    geom_sf(data = cartogram_map, 
+            aes(fill = avg_pm2.5), 
+            color = "white", 
+            size = 0.3) +
+    geom_sf_text(data = centroids,
+                 aes(label = toupper(substr(state_name, 1, 3))),
+                 size = 2.5,
+                 color = "white",
+                 fontface = "bold") +
+    scale_fill_viridis(
+      option = "inferno",
+      name = expression(paste("PM"[2.5], " (μg/m"^3, ")")),
+      guide = guide_colorbar(
+        direction = "horizontal",
+        title.position = "top",
+        barwidth = 15,
+        barheight = 0.5
+      )
+    ) +
+    labs(
+      title = "Air Pollution Cartogram - India (State Level)",
+      subtitle = paste(tools::toTitleCase(selected_month), selected_year, 
+                      "| Area warped by PM2.5 concentration"),
+      caption = "Larger areas indicate higher pollution levels"
+    ) +
+    theme_minimal() +
+    theme(
+      legend.position = "bottom",
+      plot.title = element_text(size = 16, face = "bold"),
+      plot.subtitle = element_text(size = 12),
+      plot.caption = element_text(hjust = 0.5, size = 9, color = "gray50"),
+      axis.text = element_blank(),
+      axis.ticks = element_blank(),
+      panel.grid = element_blank()
+    )
+  
+  return(list(cartogram = cartogram_map, plot = plot))
+}
+
+
+# STRATEGY 2: Simplify Geometry (Faster but still slow)
+# ======================================================
+create_simplified_cartogram <- function(pollution_data, 
+                                        shapefile, 
+                                        selected_year, 
+                                        selected_month,
+                                        simplify_tolerance = 1000) {
+  
+  # Filter and join data
+  filtered_data <- pollution_data %>%
+    filter(year == selected_year, month == selected_month) %>%
+    mutate(across(c(state_name, district_name, subdistrict_name), 
+                  ~tolower(trimws(.))))
+  
+  shapefile_clean <- shapefile %>%
+    mutate(across(c(state_name, district_name, subdistrict_name), 
+                  ~tolower(trimws(.))))
+  
+  map_data <- shapefile_clean %>%
+    left_join(filtered_data, 
+              by = c("state_name", "district_name", "subdistrict_name")) %>%
+    filter(!is.na(avg_pm2.5), avg_pm2.5 > 0)
+  
+  # Transform to projected CRS
+  map_data_projected <- st_transform(map_data, crs = 24378)
+  
+  # Simplify geometry to reduce computation
+  # Higher tolerance = more simplification = faster but less detail
+  map_data_simple <- st_simplify(map_data_projected, 
+                                 dTolerance = simplify_tolerance,
+                                 preserveTopology = TRUE)
+  
+  # Create cartogram with simplified geometry
+  cartogram_map <- cartogram_cont(map_data_simple, 
+                                  weight = "avg_pm2.5", 
+                                  itermax = 3)  # Reduced iterations
+  
+  # Create plot
+  plot <- ggplot() +
+    geom_sf(data = cartogram_map, 
+            aes(fill = avg_pm2.5), 
+            color = "white", 
+            size = 0.05) +
+    scale_fill_viridis(
+      option = "inferno",
+      name = expression(paste("PM"[2.5], " (μg/m"^3, ")")),
+      guide = guide_colorbar(
+        direction = "horizontal",
+        title.position = "top",
+        barwidth = 15,
+        barheight = 0.5
+      )
+    ) +
+    labs(
+      title = "Air Pollution Cartogram - India (Subdistrict Level)",
+      subtitle = paste(tools::toTitleCase(selected_month), selected_year, 
+                      "| Area warped by PM2.5 concentration"),
+      caption = "Larger areas indicate higher pollution levels"
+    ) +
+    theme_minimal() +
+    theme(
+      legend.position = "bottom",
+      plot.title = element_text(size = 16, face = "bold"),
+      plot.subtitle = element_text(size = 12),
+      plot.caption = element_text(hjust = 0.5, size = 9, color = "gray50"),
+      axis.text = element_blank(),
+      axis.ticks = element_blank(),
+      panel.grid = element_blank()
+    )
+  
+  return(list(cartogram = cartogram_map, plot = plot))
+}
+
+
+# STRATEGY 3: Non-Contiguous Cartogram (MUCH FASTER!)
+# ====================================================
+create_noncont_cartogram <- function(pollution_data, 
+                                     shapefile, 
+                                     selected_year, 
+                                     selected_month) {
+  
+  # Filter and join data
+  filtered_data <- pollution_data %>%
+    filter(year == selected_year, month == selected_month) %>%
+    mutate(across(c(state_name, district_name, subdistrict_name), 
+                  ~tolower(trimws(.))))
+  
+  shapefile_clean <- shapefile %>%
+    mutate(across(c(state_name, district_name, subdistrict_name), 
+                  ~tolower(trimws(.))))
+  
+  map_data <- shapefile_clean %>%
+    left_join(filtered_data, 
+              by = c("state_name", "district_name", "subdistrict_name")) %>%
+    filter(!is.na(avg_pm2.5), avg_pm2.5 > 0)
+  
+  # Transform to projected CRS
+  map_data_projected <- st_transform(map_data, crs = 24378)
+  
+  # Use non-contiguous cartogram (scales polygons independently - FAST!)
+  cartogram_map <- cartogram_ncont(map_data_projected, 
+                                   weight = "avg_pm2.5",
+                                   k = 1.5)  # Scaling factor
+  
+  # Create plot
+  plot <- ggplot() +
+    geom_sf(data = cartogram_map, 
+            aes(fill = avg_pm2.5), 
+            color = "white", 
+            size = 0.05) +
+    scale_fill_viridis(
+      option = "inferno",
+      name = expression(paste("PM"[2.5], " (μg/m"^3, ")")),
+      guide = guide_colorbar(
+        direction = "horizontal",
+        title.position = "top",
+        barwidth = 15,
+        barheight = 0.5
+      )
+    ) +
+    labs(
+      title = "Air Pollution Cartogram - India (Non-Contiguous)",
+      subtitle = paste(tools::toTitleCase(selected_month), selected_year, 
+                      "| Size scaled by PM2.5 concentration"),
+      caption = "Larger polygons indicate higher pollution levels"
+    ) +
+    theme_minimal() +
+    theme(
+      legend.position = "bottom",
+      plot.title = element_text(size = 16, face = "bold"),
+      plot.subtitle = element_text(size = 12),
+      plot.caption = element_text(hjust = 0.5, size = 9, color = "gray50"),
+      axis.text = element_blank(),
+      axis.ticks = element_blank(),
+      panel.grid = element_blank()
+    )
+  
+  return(list(cartogram = cartogram_map, plot = plot))
+}
+
+
+# RECOMMENDED USAGE:
+# ==================
+# Use your existing state shapefile - SUPER FAST!
+result <- create_state_cartogram(
+  pollution_data = final_all_years_cbind_df_sh_mapped_long,
+  state_shapefile = ind_st_level_shp,  # Your existing state shapefile
+  selected_year = 1998,
+  selected_month = "april"
+)
+# print(result$plot)
+
+# With state labels (abbreviated to 3 letters)
+# result <- create_state_cartogram_labeled(
+#   pollution_data = your_data,
+#   state_shapefile = india_state_shp,  # Your existing state shapefile
+#   selected_year = 1998,
+#   selected_month = "december"
+# )
+# print(result$plot)
+
+# If you need subdistrict detail, use Strategy 3 (Non-contiguous) - FAST
+# result <- create_noncont_cartogram(
+#   pollution_data = your_data,
+#   shapefile = india_subdist_shp,
+#   selected_year = 1998,
+#   selected_month = "april"
+# )
+# print(result$plot)
+
+# Only use Strategy 2 if you really need contiguous subdistrict cartogram
+# (will still take several minutes)
+# result <- create_simplified_cartogram(
+#   pollution_data = your_data,
+#   shapefile = india_subdist_shp,
+#   selected_year = 1998,
+#   selected_month = "april",
+#   simplify_tolerance = 2000
+# )
+# print(result$plot)
 
 
 # ============================================================================

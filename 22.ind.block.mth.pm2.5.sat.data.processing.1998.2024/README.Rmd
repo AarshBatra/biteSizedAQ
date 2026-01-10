@@ -118,7 +118,7 @@ Broadly speaking, three major patterns emerge:
 
 ![](images/pm25_compliance_heatmap.png)
 
-## Data Dictionary
+## Data Dictionary {#data-dictionary}
 
 The data dictionary of the processed block-month level PM2.5 dataset is available [on this link](https://docs.google.com/spreadsheets/d/1lOgxsfelqSX0SyIUICVwLmrHziW45pl5E8D6UQ5AYB8/edit?usp=sharing) in 2 different tabs (for wide and long versions).
 
