@@ -38,10 +38,9 @@ National PM2.5 Standard (\<=40 micrograms per cubic meter):
 ***[Might take a few seconds to load. [Click
 here](https://github.com/AarshBatra/biteSizedAQ/blob/main/23.bite.sized.vis.5.aq.st.mth.yr.blk.compliance.chart/images/%5Btest4%5Dcompliance_stripes_chart_all_states_who.png)
 to view high res image in a new window]:*** With respect to the WHO
-PM2.5 Guideline (\<=5 micrograms per cubic meter from 2021, prior to
-that \<= 10 micrograms per cubic meter):
+PM2.5 Guideline (\<=5 micrograms per cubic meter):
 
-![](images/[test4]compliance_stripes_chart_all_states_who.png)
+![](images/[test5]compliance_stripes_chart_all_states_who.png)
 
 Air quality is usually discussed using annual averages, city rankings,
 or national maps. All of these compress time. This visual does the
@@ -169,8 +168,8 @@ Under the WHO guideline:
 
 -   Himalayan and coastal advantages weaken dramatically
 
--   Only a few places (e.g. Lakshadweep, parts of the Northeast, Andaman
-    and Nicobar Islands) show limited relief
+-   Only a few places (e.g. Lakshadweep, Andaman and Nicobar Islands)
+    show limited relief
 
 ## The most important change: seasonality largely disappears
 
