@@ -1015,6 +1015,7 @@ compliance_summary <- final_all_years_cbind_df_sh_mapped_long %>%
   summarise(
     national_compliant = sum(avg_pm2.5 <= 40, na.rm = TRUE),
     who_compliant = ifelse(first(year) >= 2021, sum(avg_pm2.5 <= 5, na.rm = TRUE), sum(avg_pm2.5 <= 10, na.rm = TRUE)),
+    us_epa_compliant = ifelse(first(year) >= 2021, sum(avg_pm2.5 <= 5, na.rm = TRUE), sum(avg_pm2.5 <= 10, na.rm = TRUE)),
     total_subdistricts = n(),
     .groups = 'drop'
   ) %>%
@@ -1104,7 +1105,7 @@ combined_plot <- p1 / p2 +
   plot_annotation(
     title = "The Air Quality Crisis in India: A 27-Year View of PM2.5 Compliance",
     subtitle = "Percentage of 5,968 subdistricts meeting national and WHO air quality standards (1998-2024) Months show clear seasonal patterns, with monsoon months (June-September) exhibiting better compliance.There is also a diminishing\n 'greeness' in the national plot as we move from 1998 towards 2024. In any given month, later years have gotten 'on average' worse (especially October to April months) in terms of compliance compared to previous years.\nWhile the WHO guideline comparison is clear - practically no compliance under the stricter standard and only some compliance in previous less stricter standard, and that too only few non-winter months in early years.",
-    caption = "Data: Population-weighted monthly PM2.5 concentrations across Indian subdistricts\nNational Standard: 40 µg/m³ annual average | WHO Guideline: 5 µg/m³ annual average (fro 2021) and 10 µg/m³ annual average (pre-2021)\nGreen = high compliance, Red = low compliance | Each cell shows percentage of subdistricts meeting the threshold\nGraphic: Aarsh Batra (github.com/AarshBatra/biteSizedAQ)",
+    caption = "Data: Population-weighted monthly PM2.5 concentrations across Indian subdistricts\nNational Standard: 40 µg/m³ annual average | WHO Guideline: 5 µg/m³ annual average (from 2021) and 10 µg/m³ annual average (pre-2021)\nGreen = high compliance, Red = low compliance | Each cell shows percentage of subdistricts meeting the threshold\nGraphic: Aarsh Batra (github.com/AarshBatra/biteSizedAQ)",
     theme = theme(
       plot.title = element_text(size = 28, face = "bold", hjust = 0.5, margin = margin(b = 15)),
       plot.subtitle = element_text(size = 20, hjust = 0.5, color = "gray20", 
@@ -1244,7 +1245,7 @@ p2 <- ggplot(
   scale_y_discrete(expand = expansion(mult = c(0.02, 0.02))) +
   labs(
     title = "Compliance Stripes: All Indian States Across 27 Years (1998 to 2024)",
-    subtitle = "WHO PM2.5 Guideline (≤5 µg/m³ annual average PM2.5)",
+    subtitle = "WHO Guideline (≤5 µg/m³ from 2021), before 2021: ≤10 µg/m³",
     x = "Year",
     y = NULL,
     caption = "Each stripe represents the percentage of subdistricts meeting the WHO PM2.5 guideline in a given month-year\nGraphic: Aarsh Batra (github.com/AarshBatra/biteSizedAQ)"
@@ -1277,7 +1278,7 @@ p2 <- ggplot(
   facet_wrap(~state_name, nrow = 5, ncol = 7, scales = "free")
 
 # Save with appropriate dimensions for 27 states
-ggsave("[test3]compliance_stripes_chart_all_states_who.png", p2, 
+ggsave("[test4]compliance_stripes_chart_all_states_who.png", p2, 
        width = 54, height = 34, dpi = 520, bg = "white", limits = FALSE)
 
 
