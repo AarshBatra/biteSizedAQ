@@ -1010,18 +1010,20 @@ library(tidyverse)
 library(patchwork)
 
 # Calculate compliance counts by year-month
-compliance_summary <- final_all_years_cbind_df_sh_mapped_long %>%
-  group_by(year, month, state_name) %>%
+
+compliance_summary_non_state <- final_all_years_cbind_df_sh_mapped_long %>%
+  group_by(year, month) %>%
   summarise(
     national_compliant = sum(avg_pm2.5 <= 40, na.rm = TRUE),
-    who_compliant = sum(avg_pm2.5 <= 5, na.rm = TRUE),
-    us_epa_compliant = ifelse(first(year) >= 2021, sum(avg_pm2.5 <= 5, na.rm = TRUE), sum(avg_pm2.5 <= 10, na.rm = TRUE)),
+    who_compliant = sum(avg_pm2.5 <= 5, na.rm = TRUE), 
+    us_epa_compliant = sum(avg_pm2.5 <= 9, na.rm = TRUE),
     total_subdistricts = n(),
     .groups = 'drop'
   ) %>%
   mutate(
     national_pct = (national_compliant / total_subdistricts) * 100,
     who_pct = (who_compliant / total_subdistricts) * 100,
+    us_epa_pct = (us_epa_compliant / total_subdistricts) * 100,
     month_proper = str_to_title(month),
     month_name = factor(month_proper, 
                         levels = rev(c("January", "February", "March", "April", 
@@ -1029,15 +1031,16 @@ compliance_summary <- final_all_years_cbind_df_sh_mapped_long %>%
                                        "September", "October", "November", "December"))),
     # Conditional text color: white for low % (red/dark), black for high % (yellow/light)
     national_text_color = ifelse(national_pct < 60, "black", "white"),
-    who_text_color = ifelse(who_pct < 60, "black", "white")
+    who_text_color = ifelse(who_pct < 60, "black", "white"), 
+    us_epa_text_color = ifelse(us_epa_pct < 60, "black", "white")
   )
 
 # National guideline heatmap
-p1 <- ggplot(compliance_summary, 
+p1 <- ggplot(compliance_summary_non_state, 
              aes(x = factor(year), y = month_name, fill = national_pct)) +
   geom_tile(color = "white", linewidth = 2) +
-  # geom_text(aes(label = sprintf("%.1f%%", national_pct), color = national_text_color), 
-  #           size = 6, fontface = "bold") +
+  geom_text(aes(label = sprintf("%.2f%%", national_pct), color = national_text_color),
+            size = 6, fontface = "bold") +
   scale_fill_gradient2(
     low = "#d73027", 
     mid = "#fee090", 
@@ -1063,14 +1066,13 @@ p1 <- ggplot(compliance_summary,
     legend.text = element_text(size = 18),
     legend.key.width = unit(5, "cm"),
     legend.key.height = unit(1, "cm")
-  ) + 
-  facet_grid(~state_name)
+  ) 
 
 # WHO guideline heatmap
-p2 <- ggplot(compliance_summary, 
+p2 <- ggplot(compliance_summary_non_state, 
              aes(x = factor(year), y = month_name, fill = who_pct)) +
   geom_tile(color = "white", linewidth = 2) +
-  geom_text(aes(label = sprintf("%.1f%%", who_pct), color = who_text_color), 
+  geom_text(aes(label = sprintf("%.2f%%", who_pct), color = who_text_color), 
             size = 6, fontface = "bold") +
   scale_fill_gradient2(
     low = "#d73027", 
@@ -1100,25 +1102,60 @@ p2 <- ggplot(compliance_summary,
     legend.key.height = unit(1, "cm")
   )
 
+# WHO guideline heatmap
+p3 <- ggplot(compliance_summary_non_state, 
+             aes(x = factor(year), y = month_name, fill = us_epa_pct)) +
+  geom_tile(color = "white", linewidth = 2) +
+  geom_text(aes(label = sprintf("%.2f%%", us_epa_pct), color = us_epa_text_color), 
+            size = 6, fontface = "bold") +
+  scale_fill_gradient2(
+    low = "#d73027", 
+    mid = "#fee090", 
+    high = "#1a9850",
+    midpoint = 50,
+    limits = c(0, 100),
+    name = "% Compliant"
+  ) +
+  scale_color_identity() +  # Use the actual colors specified
+  labs(
+    title = "US EPA National Annual Average PM2.5 Standard (≤9 µg/m³)",
+    x = "Year",
+    y = NULL
+  ) +
+  theme_minimal(base_size = 22) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 24),
+    panel.grid = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 18),
+    axis.text.y = element_text(size = 20),
+    axis.title.x = element_text(size = 20, face = "bold", margin = margin(t = 10)),
+    legend.position = "bottom",
+    legend.title = element_text(size = 20),
+    legend.text = element_text(size = 18),
+    legend.key.width = unit(5, "cm"),
+    legend.key.height = unit(1, "cm")
+  )
+
 # Combine plots with descriptive title, subtitle, and caption
-combined_plot <- p1 / p2 + 
+combined_plot <- p1 / p3 + 
   plot_annotation(
     title = "The Air Quality Crisis in India: A 27-Year View of PM2.5 Compliance",
-    subtitle = "Percentage of 5,968 subdistricts meeting national and WHO air quality standards (1998-2024) Months show clear seasonal patterns, with monsoon months (June-September) exhibiting better compliance.There is also a diminishing\n 'greeness' in the national plot as we move from 1998 towards 2024. In any given month, later years have gotten 'on average' worse (especially October to April months) in terms of compliance compared to previous years.\nWhile the WHO guideline comparison is clear - practically no compliance under the stricter standard and only some compliance in previous less stricter standard, and that too only few non-winter months in early years.",
-    caption = "Data: Population-weighted monthly PM2.5 concentrations across Indian subdistricts\nNational Standard: 40 µg/m³ annual average | WHO Guideline: 5 µg/m³ annual average (from 2021) and 10 µg/m³ annual average (pre-2021)\nGreen = high compliance, Red = low compliance | Each cell shows percentage of subdistricts meeting the threshold\nGraphic: Aarsh Batra (github.com/AarshBatra/biteSizedAQ)",
+    subtitle = "Percentage of 5,968 subdistricts meeting national and US EPA PM2.5 standards (1998-2024) Months show clear seasonal patterns, with monsoon months (June-September) exhibiting better compliance.There is also a diminishing\n 'greeness' in the national plot as we move from 1998 towards 2024. In any given month, later years have gotten 'on average' worse (especially October to April months) in terms of compliance compared to previous years.\nWhile the US EPA guideline comparison is clear - extremely low levels of compliance under this stricter standard and that too only few non-winter months in early years. From US Standards, India's picture looks bleak.",
+    caption = "Data: Population-weighted monthly PM2.5 concentrations across Indian subdistricts\nData Source: https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024\nIndia National Annual Average PM2.5 Standard: 40 µg/m³ annual average | US EPA National Annual Average PM2.5 Standard: 9 µg/m³\nGreen = high compliance, Red = low compliance | Each cell shows percentage of Indian Subdistricts meeting the respective threshold\nGraphic: Aarsh Batra (github.com/AarshBatra/biteSizedAQ)",
     theme = theme(
       plot.title = element_text(size = 28, face = "bold", hjust = 0.5, margin = margin(b = 15)),
       plot.subtitle = element_text(size = 20, hjust = 0.5, color = "gray20", 
                                    lineheight = 1.3, margin = margin(b = 20)),
-      plot.caption = element_text(size = 16, hjust = 0, color = "gray40", 
-                                  lineheight = 1.4, margin = margin(t = 20))
+      plot.caption = element_text(size = 17.5, hjust = 0, color = "grey40", 
+                                  lineheight = 1.4, margin = margin(t = 60), face = 
+                                    "italic")
     )
   )
 
 print(combined_plot)
 
 # Save as VERY LARGE high-resolution plot
-ggsave("pm25_compliance_heatmap_who_2_limits.png", 
+ggsave("./plots_for_jeff_smith/pm25_compliance_heatmap_ind_nat_us_epa_2_limits.png", 
        combined_plot, 
        width = 30,
        height = 22,
@@ -1126,20 +1163,45 @@ ggsave("pm25_compliance_heatmap_who_2_limits.png",
        bg = "white")
 
 # Save as VERY LARGE high-resolution plot
-ggsave("pm25_compliance_heatmap_who_1_limit.png", 
+ggsave("test.png", 
        p1, 
        width = 32,
        height = 20,
        dpi = 300,
        bg = "white")
 
-#### IGP compliance stripes chart============================================
+#### IGP compliance stripes chart (YEAR-MONTH-STATE wise)=======================
 library(ggplot2)
 library(dplyr)
 
 convert_month <- function(x) {
   month.abb[ match(x, month.name) ]
 }
+
+# compliance summary by year - month - state
+compliance_summary <- final_all_years_cbind_df_sh_mapped_long %>%
+  group_by(year, month, state_name) %>%
+  summarise(
+    national_compliant = sum(avg_pm2.5 <= 40, na.rm = TRUE),
+    who_compliant = sum(avg_pm2.5 <= 5, na.rm = TRUE), 
+    us_epa_compliant = sum(avg_pm2.5 <= 9, na.rm = TRUE),
+    total_subdistricts = n(),
+    .groups = 'drop'
+  ) %>%
+  mutate(
+    national_pct = (national_compliant / total_subdistricts) * 100,
+    who_pct = (who_compliant / total_subdistricts) * 100,
+    us_epa_pct = (us_epa_compliant / total_subdistricts) * 100,
+    month_proper = str_to_title(month),
+    month_name = factor(month_proper, 
+                        levels = rev(c("January", "February", "March", "April", 
+                                       "May", "June", "July", "August", 
+                                       "September", "October", "November", "December"))),
+    # Conditional text color: white for low % (red/dark), black for high % (yellow/light)
+    national_text_color = ifelse(national_pct < 60, "black", "white"),
+    who_text_color = ifelse(who_pct < 60, "black", "white"), 
+    us_epa_text_color = ifelse(us_epa_pct < 60, "black", "white")
+  )
 
 
 # Create binned categories with distinct colors
@@ -1156,7 +1218,13 @@ compliance_summary_binned <- compliance_summary %>%
       breaks = c(0, 20, 40, 60, 80, 100),
       labels = c("0-20%", "20-40%", "40-60%", "60-80%", "80-100%"),
       include.lowest = TRUE
-    )
+    ) ,
+      compliance_bin_us_epa = cut(
+      us_epa_pct,
+      breaks = c(0, 20, 40, 60, 80, 100),
+      labels = c("0-20%", "20-40%", "40-60%", "60-80%", "80-100%"),
+      include.lowest = TRUE
+    ) 
   ) %>%
   mutate(state_name = str_to_title(state_name)) %>%
   mutate(month_name = recode(month_name, !!!setNames(month.abb, month.name))) %>%
@@ -1194,13 +1262,13 @@ p1 <- ggplot(
     subtitle = "National PM2.5 Standard (≤40 µg/m³ annual average PM2.5)",
     x = "Year",
     y = NULL,
-    caption = "Each stripe represents the percentage of subdistricts meeting the National PM2.5 standard in a given month-year\nGraphic: Aarsh Batra (github.com/AarshBatra/biteSizedAQ)"
+    caption = "Data: Population-weighted monthly PM2.5 concentrations across Indian subdistricts\nData Source: https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024\nIndia National Annual Average PM2.5 Standard: 40 µg/m³\nGreen = high compliance, Red = low compliance | Each cell shows percentage of Indian Subdistricts meeting the National PM2.5 Standard in a given state in a given year and month\nGraphic: Aarsh Batra (github.com/AarshBatra/biteSizedAQ)"
   ) +
   theme_minimal(base_size = 16) +
   theme(
     plot.title = element_text(hjust = 0.5, face = "bold", size = 52, margin = margin(b = 8)),
     plot.subtitle = element_text(hjust = 0.5, size = 33, color = "grey30", margin = margin(b = 20)),
-    plot.caption = element_text(hjust = 1, size = 23, color = "grey40", margin = margin(t = 20), lineheight = 1.2),
+    plot.caption = element_text(hjust = 0, size = 26, color = "grey40", margin = margin(t = 40), lineheight = 1.2, face = "italic"),
     panel.grid = element_blank(),
     panel.spacing.x = unit(1.5, "lines"),
     panel.spacing.y = unit(1.5, "lines"),
@@ -1224,7 +1292,7 @@ p1 <- ggplot(
   facet_wrap(~state_name, nrow = 5, ncol = 7, scales = "free")
 
 # Save with appropriate dimensions for 27 states
-ggsave("[test3]compliance_stripes_chart_all_states_nat.png", p1, 
+ggsave("./plots_for_jeff_smith/compliance_stripes_state_wise_wrt_ind_nat_stan.png", p1, 
        width = 54, height = 34, dpi = 520, bg = "white", limits = FALSE)
 
 
@@ -1248,13 +1316,13 @@ p2 <- ggplot(
     subtitle = "WHO Guideline (≤5 µg/m³)",
     x = "Year",
     y = NULL,
-    caption = "Each stripe represents the percentage of subdistricts meeting the WHO PM2.5 guideline in a given month-year\nGraphic: Aarsh Batra (github.com/AarshBatra/biteSizedAQ)"
+    caption = "Data: Population-weighted monthly PM2.5 concentrations across Indian subdistricts\nData Source: https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024\nWHO Annual Average PM2.5 Guideline: 5 µg/m³\nGreen = high compliance, Red = low compliance | Each cell shows percentage of Indian Subdistricts meeting the WHO PM2.5 Guideline in a given state in a given year and month\nGraphic: Aarsh Batra (github.com/AarshBatra/biteSizedAQ)"
   ) +
   theme_minimal(base_size = 16) +
   theme(
     plot.title = element_text(hjust = 0.5, face = "bold", size = 52, margin = margin(b = 8)),
     plot.subtitle = element_text(hjust = 0.5, size = 33, color = "grey30", margin = margin(b = 20)),
-    plot.caption = element_text(hjust = 1, size = 23, color = "grey40", margin = margin(t = 20), lineheight = 1.2),
+    plot.caption = element_text(hjust = 0, size = 26, color = "grey40", margin = margin(t = 40), lineheight = 1.2, face = "italic"),
     panel.grid = element_blank(),
     panel.spacing.x = unit(1.5, "lines"),
     panel.spacing.y = unit(1.5, "lines"),
@@ -1278,7 +1346,62 @@ p2 <- ggplot(
   facet_wrap(~state_name, nrow = 5, ncol = 7, scales = "free")
 
 # Save with appropriate dimensions for 27 states
-ggsave("[test5]compliance_stripes_chart_all_states_who.png", p2, 
+ggsave("./plots_for_jeff_smith/compliance_stripes_state_wise_wrt_who_guideline.png", p2, 
+       width = 54, height = 34, dpi = 520, bg = "white", limits = FALSE)
+
+### us epa
+
+p3 <- ggplot(
+  compliance_summary_binned,
+  aes(x = factor(year), y = month_name, fill = compliance_bin_us_epa)
+) +
+  geom_tile(color = "white", linewidth = 0.3, width = 0.95, height = 0.95) +
+  scale_fill_manual(
+    values = stripe_colors,
+    name = "% of Subdistricts\nMeeting US EPA Standard",
+    drop = FALSE
+  ) +
+  scale_x_discrete(
+    breaks = seq(1998, 2024, 2),  # Show every 2 years
+    expand = expansion(mult = c(0.02, 0.02))
+  ) +
+  scale_y_discrete(expand = expansion(mult = c(0.02, 0.02))) +
+  labs(
+    title = "Compliance Stripes: All Indian States Across 27 Years (1998 to 2024)",
+    subtitle = "US EPA Annual Average PM2.5 Standard (≤9 µg/m³)",
+    x = "Year",
+    y = NULL,
+    caption = "Data: Population-weighted monthly PM2.5 concentrations across Indian subdistricts\nData Source: https://github.com/AarshBatra/biteSizedAQ/tree/main/22.ind.block.mth.pm2.5.sat.data.processing.1998.2024\nUS EPA National Annual Average PM2.5 Guideline: 9 µg/m³\nGreen = high compliance, Red = low compliance | Each cell shows percentage of Indian Subdistricts meeting the US EPA National PM2.5 Guideline in a given state in a given year and month\nGraphic: Aarsh Batra (github.com/AarshBatra/biteSizedAQ)"
+  ) +
+  theme_minimal(base_size = 16) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 52, margin = margin(b = 8)),
+    plot.subtitle = element_text(hjust = 0.5, size = 33, color = "grey30", margin = margin(b = 20)),
+    plot.caption = element_text(hjust = 0, size = 26, color = "grey40", margin = margin(t = 40), lineheight = 1.2),
+    panel.grid = element_blank(),
+    panel.spacing.x = unit(1.5, "lines"),
+    panel.spacing.y = unit(1.5, "lines"),
+    axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 22),
+    axis.text.y = element_text(size = 22),
+    axis.title.x = element_text(size = 31, margin = margin(t = 1.2, b = 1, unit = "cm"), face = "bold"),
+    strip.text = element_text(face = "bold", size = 28, margin = margin(b = 6, t = 6)),
+    strip.background = element_blank(),
+    legend.position = "bottom",
+    legend.title = element_text(size = 30, face = "bold"),
+    legend.text = element_text(size = 25),
+    legend.key.width = unit(2, "cm"),
+    legend.key.height = unit(0.6, "cm"),
+    legend.background = element_rect(fill = "white", color = "grey60", linewidth = 0.5),
+    legend.box.background = element_rect(fill = "white", color = "grey60", linewidth = 0.5),
+    legend.margin = margin(12, 12, 12, 12),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA),
+    plot.margin = margin(20, 20, 20, 20)
+  ) +
+  facet_wrap(~state_name, nrow = 5, ncol = 7, scales = "free")
+
+# Save with appropriate dimensions for 27 states
+ggsave("./plots_for_jeff_smith/compliance_stripes_state_wise_wrt_us_epa_guideline.png", p3, 
        width = 54, height = 34, dpi = 520, bg = "white", limits = FALSE)
 
 
