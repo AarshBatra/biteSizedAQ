@@ -1,6 +1,8 @@
 
 # **The Human Ledger: 13 Ways the Air is Currently Deleting the Moments That Make You Human**
 
+![](images/biological_reciept_aq.png)
+
 **How much of your life did you pay to the air today?**
 
 Air pollution is often discussed in the abstract—parts per million or

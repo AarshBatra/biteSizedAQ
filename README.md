@@ -68,7 +68,8 @@ find time. To kick things off, check out the first few projects below!
   we can finally quantify the silent theft of our most precious
   resource.
 
-- **Read the full blog post:** Link
+- **Read the full blog post:**
+  [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/24.human.centric.aq.metrics)
 
 ## Project 23: biteSizedVisual \#5: 27 years of PM₂.₅ compliance across Indian states — and how the standard you choose changes the story
 

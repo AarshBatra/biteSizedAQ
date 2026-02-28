@@ -7,6 +7,8 @@ editor_options:
 
 # **The Human Ledger: 13 Ways the Air is Currently Deleting the Moments That Make You Human**
 
+![](images/biological_reciept_aq.png)
+
 **How much of your life did you pay to the air today?**
 
 Air pollution is often discussed in the abstract—parts per million or
@@ -513,9 +515,9 @@ explicitly.
     counts only those skipped sessions — it does not claim that exercise
     in polluted air is always harmful. In fact, research (Tainio et al.,
     2016) shows that for most people in most cities, the health benefits
-    of regular exercise still outweigh the pollution cost — *as long as
-    exercise happens*. The loss here is from the sessions that simply do
-    not happen.
+          of regular exercise still outweigh the pollution cost — *as
+          long as exercise happens*. The loss here is from the sessions
+          that simply do not happen.
 -   **The Calculation:** Delhi and comparable cities may have
     approximately **120 "Poor or Severe" AQI days** per year. Assume a
     person would otherwise complete a **30-minute workout** on each of
@@ -720,7 +722,7 @@ what order of magnitude of loss they reveal, not to report clinically
 precise figures. Where this uncertainty is most material, a ⚠️ caveat is
 included in the relevant metric.
 
-**2. No single person experiences all 13 metrics in any single year.** \
+**2. No single person experiences all 13 metrics in any single year.**\
 The \~94-day annual figure in the Biological Receipt is the annualised
 cost of each metric, calculated as if it runs for a full year. In
 reality the metrics apply at different life stages: Metrics 3 and 4 hit
@@ -732,7 +734,7 @@ simultaneous burden. Across a lifetime, a Delhi resident plausibly
 experiences all 13 — just not at once.
 
 **3. Several inputs are reasoned assumptions, not measured survey
-figures.** \
+figures.**\
 The following specific numbers are illustrative estimates, not
 Delhi-specific population data: - 2 days/month of diminished parental
 presence (Metric 10) - 1 missed social connection/week (Metric 9) - 80
@@ -745,7 +747,7 @@ assumptions. The purpose is to illustrate the direction and scale of the
 loss, not to report a measured average.
 
 **4. The compounding cascade (Metric 12) is mechanistically plausible
-but not directly quantified in the literature.** \
+but not directly quantified in the literature.**\
 The interaction effect of 22.6 extra hours per year is a first-order
 illustrative calculation built from two conservative assumptions: a 10%
 worsening of cognitive output due to sleep deprivation (well-supported
@@ -754,7 +756,7 @@ fatigue-fog burden. No single study measures the combined interaction of
 all these deficits together. The cascade's direction is well-supported;
 the specific number is an informed estimate.
 
-**5. Association is not causation.** \
+**5. Association is not causation.**\
 This document is careful to use language like "is associated with" and
 "is linked to" rather than "causes" throughout — except where the
 mechanism is direct and well-established. All cited studies are
@@ -765,7 +767,7 @@ research and may affect the true magnitude of the relationships
 described.
 
 **6. The 8.2-year AQLI figure assumes sustained current pollution
-levels.** \
+levels.**\
 The AQLI life expectancy loss calculation is based on Delhi's current
 average PM₂.₅ concentration persisting over a lifetime. If air quality
 improves — through policy, technology, or behavioural change — the
@@ -814,17 +816,17 @@ The air's cost looks different in every neighbourhood. I am calling on
 local leaders and citizens to move beyond atmospheric sensors and start
 measuring what they care about.
 
-**The 3-Step Framework for Local Innovation:** \
+**The 3-Step Framework for Local Innovation:**\
 \
 1. **Identify the "Local Vitality Indicator"** — a specific, human
 activity that your community values. Examples: the number of outdoor
 morning walks completed by senior residents each week; the number of
 school recess periods that went ahead outdoors this month; the
-participation rate in your local weekend running club. \
+participation rate in your local weekend running club.\
 \
 2. **Calculate the Deterioration** — map your local "Severe" AQI days
 against that indicator. How many senior walks were cancelled? How many
-recess periods moved indoors? How many runners stayed home? \
+recess periods moved indoors? How many runners stayed home?\
 \
 3. **Name the Metric** — don't call it "reduced outdoor activity." Call
 it the **"Senior Social Bankruptcy Index."** Don't call it "school
@@ -888,4 +890,3 @@ inadvertently, please note that this is unintentional, and I will
 promptly address it upon notification.
 
 Thank you for respecting these terms!
-
