@@ -45,6 +45,14 @@ This repository will continue to grow with new projects as and when I find time.
 
 ------------------------------------------------------------------------
 
+## **Project 24: The Human Ledger: 13 Ways the Air is Currently Deleting the Moments That Make You Human**
+
+-   **Introduction:** Air pollution is often discussed in the abstract—parts per million or atmospheric chemistry. It is typically treated as an environmental problem when, in reality, it is a biological heist. Every day spent breathing toxic air, a specific portion of vitality and the future is being liquidated.
+
+    This isn't just about "getting sick." It is about the systemic erosion of the moments that make a life worth living — from the first breath to the last. I am introducing a suite of Human-Centric Metrics that translate air quality data into the actual units of human life: time, capacity, and development. By moving beyond chemical concentrations, we can finally quantify the silent theft of our most precious resource.
+
+-   **Read the full blog post:** Link
+
 ## Project 23: biteSizedVisual #5: 27 years of PM₂.₅ compliance across Indian states — and how the standard you choose changes the story
 
 -   Read the full blog here: [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/23.bite.sized.vis.5.aq.st.mth.yr.blk.compliance.chart)
