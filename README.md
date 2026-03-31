@@ -52,8 +52,19 @@ find time. To kick things off, check out the first few projects below!
 
 ------------------------------------------------------------------------
 
-## \*\* Project 25: The First-Responder Sensor: Why Your Body is Your Most Localized Air Quality Tool\*\*
+## **Project 25: The First-Responder Sensor: Why Your Body is Your Most Localized Air Quality Tool**
 
+- **Introduction:** Air quality apps and sensors have transformed how we
+  monitor pollution — but they work best when paired with something you
+  already carry: your own biology. A monitoring station kilometres away
+  gives you valuable trend data, but your body is streaming something
+  different — a live, hyper-local read of the air hitting your face
+  right now. Your eyes sting, the skyline goes soft, a metallic taste
+  appears at the back of your throat. These aren’t random discomforts.
+  They’re signals, and they’re worth learning to read. This piece maps
+  six everyday biological responses to the specific pollutants behind
+  them — not to replace your digital tools, but to help you get more out
+  of both.
 - Read the full blog post:
   [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/25.first.resp.sensor.human.body.aq.toolkit)
 
