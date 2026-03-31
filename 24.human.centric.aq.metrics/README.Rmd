@@ -665,7 +665,7 @@ apply at different life stages, the total row should be read as the
 year's simultaneous burden.
 
 | **Line Item**                 | **Life Stage**  | **Raw Units**                    | **Calculation**       | **Hours/Year**  | **Days/Year**   | **Decade Total (Days)** |
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|-------------------------------|-----------------|----------------------------------|-----------------------|-----------------|-----------------|-------------------------|
 | **Lifespan Tax (LYL)**        | All stages      | 8.2 years lost over 75-year life | 8.2 ÷ 75 × 365 × 24   | 957.8 hrs       | **39.9 Days**   | 399 Days                |
 | **Cognitive Brownout**        | Working adult   | 24 min/day × 365 days            | 8,760 min ÷ 60        | 146.0 hrs       | **6.1 Days**    | 61 Days                 |
 | **Sleep Debt**                | Adult (at-risk) | 38.4 min/night × 365 nights      | 14,016 min ÷ 60       | 233.6 hrs       | **9.7 Days**    | 97 Days                 |
@@ -853,7 +853,7 @@ a full account of where the numbers are precise and where they are
 illustrative.
 
 | **Topic**                                  | **Source**                                                                                                                                                                                         | **Verified Link**                                                                                                                                                          |
-|------------------------|------------------------|------------------------|
+|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **LYL / Life Expectancy Loss**             | AQLI, Energy Policy Institute, University of Chicago                                                                                                                                               | [aqli.epic.uchicago.edu](https://aqli.epic.uchicago.edu/)                                                                                                                  |
 | **Lung Function Decline (FEV₁)**           | Guo et al. (2018), *The Lancet Planetary Health* — long-term PM₂.₅ exposure, lung function decline and COPD risk in Asian adults                                                                   | [doi.org/10.1016/S2542-5196(18)30028-7](https://doi.org/10.1016/S2542-5196(18)30028-7)                                                                                     |
 | **Reproductive / First 1,000 Days**        | WHO Ambient Air Quality Fact Sheet                                                                                                                                                                 | [who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health](https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health) |
