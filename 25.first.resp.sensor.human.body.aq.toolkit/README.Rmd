@@ -213,7 +213,7 @@ you have already inhaled.
 | **Metallic taste**    | Battery-like tang      | Ground-level Ozone ($O_3$).       | Seek shade and hydrate. |
 | **Gritty skin**       | Fine film of debris    | Physical Aerosol/dust loading.    | Wash skin with soap.    |
 | **Muffled sounds**    | Loss of acoustic depth | Atmospheric stagnation.           | Avoid heavy exertion.   |
-| **Tight chest / Fog** | The Stifled Worker     | $CO_2$ build-up / Inflammation.   | **Flash Ventilation.**  |
+| **Tight chest / Fog** | The Stifled Worker     | $CO_2$ build-up / Inflammation.   | Flash Ventilation.      |
 
 ## **Conclusion**
 
