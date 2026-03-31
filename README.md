@@ -54,7 +54,8 @@ find time. To kick things off, check out the first few projects below!
 
 ## \*\* Project 25: The First-Responder Sensor: Why Your Body is Your Most Localized Air Quality Tool\*\*
 
-- Read the full blog post: Link
+- Read the full blog post:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/25.first.resp.sensor.human.body.aq.toolkit)
 
 ## **Project 24: The Human Ledger: 13 Ways the Air is Currently Deleting the Moments That Make You Human**
 
