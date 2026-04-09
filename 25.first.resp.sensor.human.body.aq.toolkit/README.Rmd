@@ -231,29 +231,54 @@ you have already inhaled.
 
 ## **A Note on Using These Signals Well**
 
+**A Note on Using These Signals Well**
+
 Your biological senses are genuinely powerful — but like any instrument,
 they work best when you know how to read them.
 
 **Look for clusters, not single signals.** One watering eye on a windy
-day is probably just wind. But watering eyes *combined* with a chemical
+day is probably just wind. But watering eyes combined with a chemical
 sharpness in your throat, near a busy junction, during rush hour? That
-pattern is telling you something worth acting on. The more signals that
-appear together, the more confident you can be in what they're pointing
-to.
+combination makes it considerably more likely that something in the air
+is worth acting on. The more signals that appear together, in the same
+place, at the same time, the more probable it becomes that air quality —
+rather than an unrelated cause — is the common thread.
 
-**Context is everything.** These signals are most meaningful when they
-appear in a specific place or time of day and ease when you move away or
-conditions change. That location-dependence is your strongest clue that
-air quality — not allergies or tiredness — is the driver.
+**Context is your best filter.** Your body cannot tell you *why* it is
+reacting — only that it is. So the most useful question to ask is not
+"what is wrong with me?" but "where and when does this happen?" If your
+eyes sting at a particular junction every morning and clear up when you
+turn onto a quieter street, that is a meaningful pattern. If your throat
+feels scratchy every afternoon near a construction site but not at home,
+that place-dependence raises the likelihood that something locally
+elevated is the more probable cause.
 
-**Your nose adapts; your monitor doesn't.** For chronic or background
-pollution that you've stopped noticing, digital tools remain your best
-ally. Think of your biological senses and your monitor as a team — your
-body catches the sharp, sudden, hyper-local spikes; your device tracks
-the slow, invisible, long-term trends neither of you can feel.
+Allergies and tiredness tend to follow you everywhere — they are present
+when you wake up, when you are indoors, when you are away from traffic.
+A spike in pollution is different. Even in cities where the air is
+heavily loaded across the board, there is still a meaningful difference
+between the background and a local peak. A symptom that noticeably
+worsens when you arrive somewhere and eases when you step away suggests
+you have moved into a zone of higher exposure. In heavily polluted
+environments you may never reach truly clean air — but you can still
+move from worse to less worse. Your body is often the first thing to
+tell you which direction that is.
+
+**Your nose goes blind; your monitor stays awake.** Olfactory adaptation
+— the process by which your nose stops registering a persistent smell —
+is not a feature. It is a vulnerability. If you live near a busy road or
+cook on a gas stove regularly, you may have long since stopped noticing
+what is still very much present in the air around you. Your monitor has
+no such blind spot. It does not habituate, normalise, or get tired. This
+is precisely why digital tools are indispensable for the slow,
+background pollution that your senses have quietly learned to ignore —
+and why the two work best as partners rather than substitutes for each
+other.
 
 **These are prompts, not diagnoses.** When your body raises a flag,
 treat it as an invitation to investigate and act — not a final verdict.
+Move, ventilate, check your monitor. Let the signal start the
+conversation, not end it.
 
 ## **Conclusion**
 
@@ -382,4 +407,3 @@ inadvertently, please note that this is unintentional, and I will
 promptly address it upon notification.
 
 Thank you for respecting these terms!
-
