@@ -47,7 +47,12 @@ This repository will continue to grow with new projects as and when I find time.
 
 ## **Project 25: The First-Responder Sensor: Why Your Body is Your Most Localized Air Quality Tool**
 
--   **Introduction:** Air quality apps and sensors have transformed how we monitor pollution — but they work best when paired with something you already carry: your own biology. A monitoring station kilometres away gives you valuable trend data, but your body is streaming something different — a live, hyper-local read of the air hitting your face right now. Your eyes sting, the skyline goes soft, a metallic taste appears at the back of your throat. These aren't random discomforts. They're signals, and they're worth learning to read. This piece maps six everyday biological responses to the specific pollutants behind them — not to replace your digital tools, but to help you get more out of both.
+-   **Introduction:** Air quality apps and sensors have transformed how we monitor pollution — but they work best when paired with something you already carry: your own biology. A monitoring station kilometres away gives you valuable trend data, but your body is streaming something different — a live, hyper-local read of the air hitting your face right now.
+
+    Your eyes sting at a particular junction every morning. The skyline loses its crispness before you've checked your phone. A metallic taste appears at the back of your throat on a hot afternoon. These aren't random discomforts — they are signals, and learning to read them is the point of this piece.
+
+    What follows maps six everyday biological responses to the specific pollutants behind them, explains the science in plain language, and shows you what to do when each signal appears. Not to replace your digital tools — but to help you use both together.\
+
 -   Read the full blog post: [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/25.first.resp.sensor.human.body.aq.toolkit)
 
 ## **Project 24: The Human Ledger: 13 Ways the Air is Currently Deleting the Moments That Make You Human**

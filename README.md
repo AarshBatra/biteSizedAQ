@@ -59,12 +59,19 @@ find time. To kick things off, check out the first few projects below!
   already carry: your own biology. A monitoring station kilometres away
   gives you valuable trend data, but your body is streaming something
   different — a live, hyper-local read of the air hitting your face
-  right now. Your eyes sting, the skyline goes soft, a metallic taste
-  appears at the back of your throat. These aren’t random discomforts.
-  They’re signals, and they’re worth learning to read. This piece maps
-  six everyday biological responses to the specific pollutants behind
-  them — not to replace your digital tools, but to help you get more out
-  of both.
+  right now.
+
+  Your eyes sting at a particular junction every morning. The skyline
+  loses its crispness before you’ve checked your phone. A metallic taste
+  appears at the back of your throat on a hot afternoon. These aren’t
+  random discomforts — they are signals, and learning to read them is
+  the point of this piece.
+
+  What follows maps six everyday biological responses to the specific
+  pollutants behind them, explains the science in plain language, and
+  shows you what to do when each signal appears. Not to replace your
+  digital tools — but to help you use both together.  
+
 - Read the full blog post:
   [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/25.first.resp.sensor.human.body.aq.toolkit)
 

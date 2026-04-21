@@ -17,20 +17,21 @@ same event is processed, averaged, and pushed to your screen from a
 monitoring station that might be kilometres away, several minutes have
 already passed. Your body was already there.
 
-Consumer monitors are brilliant bits of kit for a different job:
-tracking short and long-term pollutant trends in your home, and
-identifying “silent” pollutants that have no smell or sensation at all.
-For chronic, background pollution that your nose has long since stopped
-noticing, your device is indispensable. Think of your biological senses
-and your monitor as a team — your body catches the sharp, sudden,
-hyper-local spikes; your device tracks the slow, invisible, long-term
-trends that neither of you can feel.
+Consumer monitors are brilliant bits of kit for tracking short and
+long-term pollutant trends or even identifying “silent” pollutants that
+have no smell or sensation at all. For chronic, background pollution
+that your nose has long since stopped noticing, your device is
+indispensable. Think of your biological senses and your monitor as a
+team — your body catches the sharp, sudden, hyper-local spikes and
+informs you so that you can act; your device tracks the slow, invisible,
+long-term trends that neither of you can feel.
 
 To understand how this works in practice, I’ve laid out a few common
 daily scenarios that demonstrate how your biology “reads” the atmosphere
 alongside your digital tools. When you notice these signals — and can
 reasonably rule out other, more obvious causes — you can take immediate
-action to mitigate your exposure.
+action to mitigate your exposure. Your AQ monitor can then help you
+confirm and quantify what your body first detected.
 
 ## **1. The Morning Veil: Visual Clarity**
 
@@ -104,8 +105,18 @@ nose and irritation sensors working together.
 - **Trigeminal irritation**: Sharp, burning sensations from gases like
   SO₂ and NO₂ stimulating nerve endings
 
-The result is a phantom “taste”—metallic, chemical, or acrid—that’s
-actually smell plus irritation in the back of your throat.
+The result is a sensation the brain registers as taste — metallic,
+chemical, or acrid. This happens because three separate chemical
+detection systems fire at once: your olfactory receptors pick up the
+chemical signature of the pollutant; your trigeminal nerve endings in
+the nasal cavity and throat respond to the irritant quality of gases
+like SO₂ and NO₂; and in some cases, volatile chemicals travelling from
+the back of your throat through the nasal passage during exhalation — a
+process called retronasal airflow — can activate taste receptors in the
+throat and soft palate directly. Your brain receives all three signals
+simultaneously and integrates them into a single sensation it labels as
+taste. It is not a confusion or a misfire — it is the chemosensory
+system working exactly as designed.
 
 **The Action:** If you detect this chemical “taste-smell” sensation
 combined with throat irritation on a hot day—your upper respiratory
@@ -126,10 +137,17 @@ or “sticky,” and if you run a finger across your forehead, it feels
   or if your skin feels like there’s a fine film of sand on it, the air
   is saturated with physical debris.
 
-- **The Action:** If **you haven’t been doing manual labour or working
-  in a dusty environment**, your skin is signaling that it’s covered in
-  irritants. When you get home, a simple wash with soap and water is the
-  most effective way to remove these particles from your skin.
+- **The Action:** If you haven’t been doing manual labour or working in
+  a dusty environment, your skin is telling you that particles are
+  settling on it. Think of this signal as a surface alert — it confirms
+  something is in the air, but it cannot tell you how much, or what is
+  happening beneath the surface. The gritty feeling you notice on your
+  forehead is the visible tip; beneath it, repeated PM2.5 exposure has
+  been shown to degrade filaggrin — a structural protein that holds your
+  skin cells together and keeps your skin barrier intact — with no
+  sensation to warn you it is happening. Wash when you get home. And if
+  you live or work somewhere with persistent particle loading, your
+  monitor is the tool that catches what your fingertips cannot.
 
 ## **5. The Muffled City: Loss of Acoustic Depth**
 
@@ -212,18 +230,16 @@ you have already inhaled.
 
 ## **The Biological Early Warning Checklist**
 
-| The Signal                     | Signature                                                | What it likely represents                                  | Sustainable Action                                                        |
-|--------------------------------|----------------------------------------------------------|------------------------------------------------------------|---------------------------------------------------------------------------|
-| Blurry horizon                 | Loss of crispness                                        | High PM2.5 (Mie scattering)                                | Seal windows / Filter                                                     |
-| Watering eyes                  | Bleach or Matchstick smell                               | NO2 or SO2 plumes                                          | Step away from source                                                     |
-| Chemical taste/smell sensation | Chemical sharpness                                       | Mix of pollutants                                          | Move away, hydrate, minimise exertion                                     |
-| Gritty skin                    | Fine film of debris                                      | Physical Aerosol/dust loading                              | Wash skin with soap                                                       |
-| Muffled sounds ⚠️              | Loss of acoustic depth — best used alongside visual haze | Atmospheric stagnation (confirming signal, not standalone) | Combine with Signal 1 before acting; avoid heavy exertion if both present |
-| Tight chest / Fog              | The Stifled Worker                                       | CO2 build-up / Inflammation                                | Flash Ventilation                                                         |
+| The Signal                     | Signature                                                | What it likely represents                                                                                          | Sustainable Action                                                        |
+|--------------------------------|----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| Blurry horizon                 | Loss of crispness                                        | High PM2.5 (Mie scattering)                                                                                        | Seal windows / Filter                                                     |
+| Watering eyes                  | Bleach or Matchstick smell                               | NO2 or SO2 plumes                                                                                                  | Step away from source                                                     |
+| Chemical taste/smell sensation | Chemical sharpness                                       | Mix of pollutants                                                                                                  | Move away, hydrate, minimise exertion                                     |
+| Gritty skin ⚠️                 | Fine film of debris on skin surface                      | Physical Aerosol/dust loading — surface signal only; silent deeper effects on skin barrier not detectable by touch | Wash skin with soap; monitor long-term exposure                           |
+| Muffled sounds ⚠️              | Loss of acoustic depth — best used alongside visual haze | Atmospheric stagnation (confirming signal, not standalone)                                                         | Combine with Signal 1 before acting; avoid heavy exertion if both present |
+| Tight chest / Fog              | The Stifled Worker                                       | CO2 build-up / Inflammation                                                                                        | Flash Ventilation                                                         |
 
 ## **A Note on Using These Signals Well**
-
-**A Note on Using These Signals Well**
 
 Your biological senses are genuinely powerful — but like any instrument,
 they work best when you know how to read them.
@@ -235,6 +251,17 @@ combination makes it considerably more likely that something in the air
 is worth acting on. The more signals that appear together, in the same
 place, at the same time, the more probable it becomes that air quality —
 rather than an unrelated cause — is the common thread.
+
+**Not every signal will apply to you — and that is expected.** Which of
+these six responses you notice depends on where you live, what
+pollutants dominate your local environment, and how your own biology
+responds to them. You may go years without experiencing some of these
+signals, and encounter others regularly. The value of knowing all six is
+not that you will experience all of them — it is that when you find
+yourself somewhere new, you have a fuller vocabulary for what your body
+might be telling you. Think of them less as a daily checklist and more
+as a navigational toolkit: the wider your awareness, the better equipped
+you are to read any environment you move through.
 
 **Context is your best filter.** Your body cannot tell you *why* it is
 reacting — only that it is. So the most useful question to ask is not
@@ -299,76 +326,81 @@ There is a real opportunity here — not just for ourselves, but for the
 next generation. If we can teach children early to recognise the
 “Morning Veil” or the “Metallic Zing” the same way we teach them to look
 both ways before crossing the road, we give them a survival toolkit that
-stays with them for life.
+stays with them for life and something they can pass on further to the
+generations that will come after them.
 
-We won’t have to wait for an app to tell us when to act. We will already
-know.
+Sensory awareness is the oldest early-warning system we have. For most
+of human history, it was the only one. We built instruments to extend it
+— and those instruments changed everything. But the original is still
+running alongside them, still reliable, and still worth paying attention
+to. The two together are more powerful than either alone.
 
 ## Supporting Evidence
 
 #### 1. The Morning Veil: Visual Clarity (PM2.5 & Mie Scattering)
 
-**Tao, J., Zhang, L., Cao, J., et al.** (2021). Analysis of non-linear
+***Tao, J., Zhang, L., Cao, J., et al. (2021)***. Analysis of non-linear
 relationship of PM2.5 mass concentration with aerosol extinction
 coefficient and RH in Hefei, China. *Aerosol and Air Quality Research*,
 21(11), 200386. <https://aaqr.org/articles/aaqr-23-06-oa-0139>
 
 #### 2. The Chemical Sharpness: Eye & Throat Irritation (NO2 & SO2)
 
-**Yang, Y., Qi, J., Wang, B., et al.** (2019). Short-term exposure to
+***Yang, Y., Qi, J., Wang, B., et al. (2019)***. Short-term exposure to
 nitrogen dioxide pollution and the risk of eye and adnexa diseases in
 Xinxiang, China. *Atmospheric Environment*, 218, 117004.
 <https://www.sciencedirect.com/science/article/abs/pii/S1352231019306405>
 
-**Qiu et al** (2025)**.** Ambient sulfur dioxide and daily outpatient
+***Qiu et al (2025)*.** Ambient sulfur dioxide and daily outpatient
 visits for allergic conjunctivitis: a multi-city time-stratified
 case-crossover study in China.
 <https://link.springer.com/article/10.1186/s12889-025-25700-x>
 
 #### 3. The Chemical “Zing”: Midday Oxidation
 
-**On trigeminal nerve activation by air pollutants including SO₂ and
-ozone:** Purves et al. Trigeminal Chemoreception. *Neuroscience*, NCBI
+***Purves et al***. Trigeminal Chemoreception. *Neuroscience*, NCBI
 Bookshelf. <https://www.ncbi.nlm.nih.gov/books/NBK11036/>
 
-**On the interaction between olfactory detection and trigeminal
-irritation:** Ferdenzi, C. et al. (2018). Pleasantness and trigeminal
-sensations as salient dimensions in organizing the semantic and
-physiological spaces of odors. *Scientific Reports*.
+***Ferdenzi, C. et al. (2018).*** Pleasantness and trigeminal sensations
+as salient dimensions in organizing the semantic and physiological
+spaces of odors. *Scientific Reports*.
 <https://www.nature.com/articles/s41598-018-26510-5>
+
+***Blankenship, M.L., Grigorova, M., Katz, D.B., & Maier, J.X.
+(2019)***. Retronasal Odor Perception Requires Taste Cortex, but
+Orthonasal Does Not. *Current Biology*, 29(1).
+<https://pmc.ncbi.nlm.nih.gov/articles/PMC6604050/>
 
 #### 4. The Gritty Texture: Particulate Skin Deposition
 
-**Jin, S. P., Li, Z., Choi, E. K., et al.** (2018). Particulate matter
+***Jin, S. P., Li, Z., Choi, E. K., et al. (2018)***. Particulate matter
 causes skin barrier dysfunction. *JCI Insight*, 6(4), e145185.
 <https://insight.jci.org/articles/view/145185>
 
 #### 5. The Muffled City: Acoustic Attenuation
 
-**On aerosol particle attenuation of sound:** Temkin, S. & Dobbins, R.
-A. (1966). Propagation of Sound in an Aerosol. *Journal of the
-Acoustical Society of America*, 39(6).
+***Temkin, S. & Dobbins, R. A. (1966)***. Propagation of Sound in an
+Aerosol. *Journal of the Acoustical Society of America*, 39(6).
 <https://pubs.aip.org/asa/jasa/article/39/6_Supplement/1230/681022/Propagation-of-Sound-in-an-Aerosol>
 
-**On temperature inversions trapping pollutants and affecting sound
-propagation:** Salomons, E. M. & Heimann, D. (2003). Simulation of a
-morning air temperature inversion break-up in complex terrain and the
-influence on sound propagation on a local scale. *Applied Acoustics*,
-64(2).
+***Salomons, E. M. & Heimann, D. (2003).*** Simulation of a morning air
+temperature inversion break-up in complex terrain and the influence on
+sound propagation on a local scale. *Applied Acoustics*, 64(2).
 <https://www.sciencedirect.com/science/article/abs/pii/S0003682X02001044>
-
-**On atmospheric conditions and measurable differences in sound
-levels:** Svecharity et al. (2015). Influence of Atmospheric Conditions
-on Sound Propagation — Mathematical Modeling.
-<https://www.researchgate.net/publication/289525229>
 
 #### 6. The Internal Echo: CO2 Brain Fog & Bronchoconstriction
 
-**Allen, J. G., MacNaughton, P., Satish, U., et al.** (2016).
+***Allen, J. G., MacNaughton, P., Satish, U., et al. (2016)***.
 Associations of cognitive function scores with carbon dioxide,
 ventilation, and volatile organic compound exposures in office workers.
 *Environmental Health Perspectives*, 124(6), 805-812.
 <https://pubmed.ncbi.nlm.nih.gov/26502459/>
+
+***Linn, W.S., Avol, E.L., Peng, R.C., Shamoo, D.A., & Hackney, J.D.
+(1987)***. Replicated dose-response study of sulfur dioxide effects in
+normal, atopic, and asthmatic volunteers. *American Review of
+Respiratory Disease*, 136(5), 1127–1134.
+<https://pubmed.ncbi.nlm.nih.gov/3674575/>
 
 ## Support This Work: Give It a Star
 
