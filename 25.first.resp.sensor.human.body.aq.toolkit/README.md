@@ -1,7 +1,7 @@
 
 # **The First-Responder Sensor: Why Your Body is Your Most Localized Air Quality Tool**
 
-![](images/clipboard-2472701087.png)
+![](images/fin_img.png)
 
 I’ve noticed an interesting shift in how we relate to our environment.
 We’ve become increasingly reliant on air quality indexes and smartphone
@@ -205,11 +205,13 @@ you have already inhaled.
     Nervous System’s attention.
 
   - **The Signature:** This manifests as a sudden brain fog or a ‘heavy’
-    forehead — and in poorly ventilated spaces, an elevated pulse. If
-    these feelings are **unexplained by your workload or lack of
-    sleep**, your internal worker is being “stifled.” Your brain is
-    diverting energy away from thinking and toward managing the stress
-    of rising $CO_2$ and falling oxygen
+    forehead — and in poorly ventilated spaces, an elevated pulse. It is
+    worth noting that the brain fog signal is most pronounced and best
+    evidenced in indoor environments — a sealed office, a poorly
+    ventilated bedroom, a kitchen with a gas stove running. Outdoors,
+    CO₂ disperses too quickly to accumulate to the same effect; the more
+    relevant outdoor concern is CO from nearby combustion sources, which
+    has no smell and requires a monitor to detect reliably.
 
 - **The Action: The “Flash Reset”:** If you feel this mental friction,
   your internal engine is stalling. But what if the outdoor air is just
@@ -343,6 +345,15 @@ to. The two together are more powerful than either alone.
 relationship of PM2.5 mass concentration with aerosol extinction
 coefficient and RH in Hefei, China. *Aerosol and Air Quality Research*,
 21(11), 200386. <https://aaqr.org/articles/aaqr-23-06-oa-0139>
+
+***Note on geographic scope:*** The epidemiological studies cited for
+Signals 1 and 2 draw primarily on Chinese urban datasets, where
+large-scale air quality monitoring has produced some of the most
+comprehensive research available. The biological mechanisms they support
+— Mie scattering, lacrimation response, and airway irritation from NO₂
+and SO₂ — are universal physiological and physical processes that apply
+regardless of geography. The datasets are Chinese; the mechanisms are
+not.
 
 #### 2. The Chemical Sharpness: Eye & Throat Irritation (NO2 & SO2)
 
