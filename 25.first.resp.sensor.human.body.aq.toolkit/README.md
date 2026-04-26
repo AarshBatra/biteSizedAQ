@@ -341,10 +341,11 @@ to. The two together are more powerful than either alone.
 
 #### 1. The Morning Veil: Visual Clarity (PM2.5 & Mie Scattering)
 
-***Tao, J., Zhang, L., Cao, J., et al. (2021)***. Analysis of non-linear
-relationship of PM2.5 mass concentration with aerosol extinction
-coefficient and RH in Hefei, China. *Aerosol and Air Quality Research*,
-21(11), 200386. <https://aaqr.org/articles/aaqr-23-06-oa-0139>
+***Chen, Y., Zhang, S., Wu, Y., Yuan, K., Huang, J., Shi, D., Hu, S.
+(2023).** Analysis of Non-linear Relationship of PM2.5 Mass
+Concentration with Aerosol Extinction Coefficient and RH in Hefei,
+China. Aerosol Air Qual. Res. 23, 230139.
+<https://aaqr.org/articles/aaqr-23-06-oa-0139>*
 
 ***Note on geographic scope:*** The epidemiological studies cited for
 Signals 1 and 2 draw primarily on Chinese urban datasets, where
@@ -357,9 +358,11 @@ not.
 
 #### 2. The Chemical Sharpness: Eye & Throat Irritation (NO2 & SO2)
 
-***Yang, Y., Qi, J., Wang, B., et al. (2019)***. Short-term exposure to
-nitrogen dioxide pollution and the risk of eye and adnexa diseases in
-Xinxiang, China. *Atmospheric Environment*, 218, 117004.
+***Jie Song, Yue Liu, Mengxue Lu, Zhen An, Jianguo Lu, Ling Chao, Liheng
+Zheng, Juan Li, Sanqiao Yao, Weidong Wu, Dongqun Xu***, Short-term
+exposure to nitrogen dioxide pollution and the risk of eye and adnexa
+diseases in Xinxiang, China, Atmospheric Environment, Volume 218, 2019,
+117001, ISSN 1352-2310.
 <https://www.sciencedirect.com/science/article/abs/pii/S1352231019306405>
 
 ***Qiu et al (2025)*.** Ambient sulfur dioxide and daily outpatient
@@ -367,15 +370,31 @@ visits for allergic conjunctivitis: a multi-city time-stratified
 case-crossover study in China.
 <https://link.springer.com/article/10.1186/s12889-025-25700-x>
 
+***Pilotto LS, Douglas RM, Attewell RG, Wilson SR.** Respiratory effects
+associated with indoor nitrogen dioxide exposure in children. Int J
+Epidemiol. 1997 Aug;26(4):788-96. doi: 10.1093/ije/26.4.788. PMID:
+9279611.* <https://pubmed.ncbi.nlm.nih.gov/9279611/>
+
+***Thomas J. Kulle, Larry R. Sauder, J. Richard Hebel, W. Robert Miller,
+Donald J. Green, Frank Shanty***. Pulmonary effects of sulfur dioxide
+and respirable carbon aerosol, Environmental Research, Volume 41, Issue
+1, 1986, Pages 239-250, ISSN 0013-9351
+<https://www.sciencedirect.com/science/article/abs/pii/S0013935186801864>
+
 #### 3. The Chemical “Zing”: Midday Oxidation
 
 ***Purves et al***. Trigeminal Chemoreception. *Neuroscience*, NCBI
 Bookshelf. <https://www.ncbi.nlm.nih.gov/books/NBK11036/>
 
-***Ferdenzi, C. et al. (2018).*** Pleasantness and trigeminal sensations
-as salient dimensions in organizing the semantic and physiological
-spaces of odors. *Scientific Reports*.
-<https://www.nature.com/articles/s41598-018-26510-5>
+***Licon, C.C., Manesse, C., Dantec, M. et al.*** Pleasantness and
+trigeminal sensations as salient dimensions in organizing the semantic
+and physiological spaces of
+odors. <https://www.nature.com/articles/s41598-018-26510-5>
+
+***Khorisantono, P.A., Veldhuizen, M.G. & Seubert, J***. Tastes and
+retronasal odours evoke a shared flavour-specific neural code in the
+human insula. *Nat Commun* **16**, 8252 (2025).
+<https://www.nature.com/articles/s41467-025-63803-6>
 
 ***Blankenship, M.L., Grigorova, M., Katz, D.B., & Maier, J.X.
 (2019)***. Retronasal Odor Perception Requires Taste Cortex, but
@@ -384,8 +403,8 @@ Orthonasal Does Not. *Current Biology*, 29(1).
 
 #### 4. The Gritty Texture: Particulate Skin Deposition
 
-***Jin, S. P., Li, Z., Choi, E. K., et al. (2018)***. Particulate matter
-causes skin barrier dysfunction. *JCI Insight*, 6(4), e145185.
+***Kim., et al. (2018)***. Particulate matter causes skin barrier
+dysfunction. *JCI Insight*, 6(4), e145185.
 <https://insight.jci.org/articles/view/145185>
 
 #### 5. The Muffled City: Acoustic Attenuation
@@ -394,9 +413,10 @@ causes skin barrier dysfunction. *JCI Insight*, 6(4), e145185.
 Aerosol. *Journal of the Acoustical Society of America*, 39(6).
 <https://pubs.aip.org/asa/jasa/article/39/6_Supplement/1230/681022/Propagation-of-Sound-in-an-Aerosol>
 
-***Salomons, E. M. & Heimann, D. (2003).*** Simulation of a morning air
-temperature inversion break-up in complex terrain and the influence on
-sound propagation on a local scale. *Applied Acoustics*, 64(2).
+***Lars R. Hole, Gard Hauge***. Simulation of a morning air temperature
+inversion break-up in complex terrain and the influence on sound
+propagation on a local scale, Applied Acoustics, Volume 64, Issue 4,
+2003, Pages 401-414, ISSN 0003-682X.
 <https://www.sciencedirect.com/science/article/abs/pii/S0003682X02001044>
 
 #### 6. The Internal Echo: CO2 Brain Fog & Bronchoconstriction
