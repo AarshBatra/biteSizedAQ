@@ -444,7 +444,7 @@ join the growing community of folks who follow biteSizedAQ.
 
 ## Get in touch
 
-Get in touch about related topics/report any errors. Reach out to me at
+Get in touch about related topics/report any errors. Reach out to me at:
 bitesizedaq@gmail.com.
 
 ## License and Reuse
