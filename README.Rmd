@@ -45,6 +45,20 @@ This repository will continue to grow with new projects as and when I find time.
 
 ------------------------------------------------------------------------
 
+## Project 26: A Metadata Gap in Global Air Quality Monitoring — and One Paper's Attempt to Fix It
+
+-   Introduction: Governments around the world have spent decades building networks of air quality monitors — devices that sit beside highways, in city parks, and near factory fences, quietly measuring the air we breathe. But for a surprising share of these monitors, two basic questions went unanswered in official records: what kind of air is this station measuring, and what kind of place is it sitting in?
+
+    A new paper by Renna et al. (2026), published in Scientific Data, set out to fix that. The result is METAIR — the first global harmonized dataset of governmental air quality station metadata for particulate matter, covering roughly 15,000 stations across 106 countries. This post walks through what the dataset reveals, how the researchers filled in the missing labels, and what it means for anyone trying to make sense of air quality data at scale.
+
+-   Link to the full blog post: Link
+
+-   Link to the underlying paper's data file used to generate maps: Link
+
+-   Link to the code for reproducing maps:
+
+-   Share this visual with others!
+
 ## **Project 25: The First-Responder Sensor: Why Your Body is Your Most Localized Air Quality Tool**
 
 -   **Introduction:** Air quality apps and sensors have transformed how we monitor pollution — but they work best when paired with something you already carry: your own biology. A monitoring station kilometres away gives you valuable trend data, but your body is streaming something different — a live, hyper-local read of the air hitting your face right now.

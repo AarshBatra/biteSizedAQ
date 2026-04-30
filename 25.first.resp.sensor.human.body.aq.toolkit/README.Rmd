@@ -243,7 +243,7 @@ you have already inhaled.
 ## **The Biological Early Warning Checklist**
 
 | The Signal                     | Signature                                                | What it likely represents                                                                                          | Sustainable Action                                                        |
-|-----------------|-----------------|-----------------|--------------------|
+|--------------------------------|----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
 | Blurry horizon                 | Loss of crispness                                        | High PM2.5 (Mie scattering)                                                                                        | Seal windows / Filter                                                     |
 | Watering eyes                  | Bleach or Matchstick smell                               | NO2 or SO2 plumes                                                                                                  | Step away from source                                                     |
 | Chemical taste/smell sensation | Chemical sharpness                                       | Mix of pollutants                                                                                                  | Move away, hydrate, minimise exertion                                     |
