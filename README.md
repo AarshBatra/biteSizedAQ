@@ -72,10 +72,14 @@ find time. To kick things off, check out the first few projects below!
 - Link to the full blog post:
   [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/26.bite.sized.vis.6.aq.metadata.gap.filled)
 
-- Link to the underlying paper’s data file used to generate maps:
+- Link to the underlying paper’s (Renna et al) data file used to
+  generate maps:
   [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/26.bite.sized.vis.6.aq.metadata.gap.filled/global_aq_mon_metadata/dataset)
 
-- Link to the code for reproducing maps:
+- Link to the full paper by Renna et al:
+  [Link](https://www.nature.com/articles/s41597-026-06797-0)
+
+- Link to the my Rmd code for reproducing maps:
   [Link](https://github.com/AarshBatra/biteSizedAQ/blob/main/26.bite.sized.vis.6.aq.metadata.gap.filled.Rmd)
 
 - Share this visual with others!
