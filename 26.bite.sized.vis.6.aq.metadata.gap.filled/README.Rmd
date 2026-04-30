@@ -253,7 +253,8 @@ this work.
     Data* **13**, 466 (2026).
     <https://doi.org/10.1038/s41597-026-06797-0>
 
--   ***2 Map Visuals in this blog**: github.com/AarshBatra/biteSizedAQ*
+-   ***2 Map Visuals in this blog**:
+    [github.com/AarshBatra/biteSizedAQ](https://github.com/AarshBatra/biteSizedAQ/)*
 
 -   ***Initial AQ monitors split image***: Generated via Gemini
 
@@ -261,9 +262,14 @@ this work.
 
 ## Code for the Maps
 
-The Rmd file containing all analysis and code can be found here. It is
-based on the data that can be found in this folder (i.e. the dataset
-shared by this paper).
+The Rmd file containing all analysis and code can be [found
+here](https://github.com/AarshBatra/biteSizedAQ/blob/main/26.bite.sized.vis.6.aq.metadata.gap.filled.Rmd).
+It is based on the data that can be found in [this
+folder](https://github.com/AarshBatra/biteSizedAQ/tree/main/26.bite.sized.vis.6.aq.metadata.gap.filled/global_aq_mon_metadata/dataset)
+(i.e. the dataset shared by this paper's authors: Renna et al.). I used
+the data shared by the authors to generate these maps. For any data
+related specific Qs, please reach out to the authors of the paper (see
+References section above for more detail).
 
 ## Share these Visualizations
 
