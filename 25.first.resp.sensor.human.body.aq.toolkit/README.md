@@ -3,6 +3,40 @@
 
 ![](images/fin_img.png)
 
+## **Before we start: An important note (Please read this)**
+
+What you are about to read (or see in the visual above) is a public
+domain research-based awareness guide — not a medical document and not
+medical advice. Every signal described here is grounded in published,
+peer-reviewed science — all references used are listed at the end. The
+goal is to help you notice and interpret what your body may already be
+telling you about the air around you, and to act on that information in
+simple, practical ways.
+
+That said, this post is not a substitute for professional medical
+advice. It cannot account for your individual health history,
+pre-existing conditions, or the specific pollution profile of where you
+live. If you have asthma, a respiratory condition, skin concerns, or any
+symptoms that worry you, please consult a qualified medical professional
+rather than relying on these signals alone. The information presented
+here is general in nature based on research in public domain, linked at
+the end — any reliance you place on it is at your own discretion and you
+should feel free to further verify it on your end.
+
+Think of this as a starting point for awareness — not a finishing point
+for diagnosis. The signals described here are prompts to pay attention
+and investigate, not conclusions to act on in isolation. A doctor, a
+monitor, and your own patterns of observation over time will always tell
+you more than any single guide can. All references cited are studies
+published in the public domain and linked at the end. The findings
+described are based on the author’s (Aarsh’s) reading of this research
+and their published findings — but, the underlying work belongs to its
+original authors, and the author of this biteSizedAQ post takes no
+responsibility for the content, conclusions, or availability of those
+third-party sources. Please feel free to further verify it on your end.
+
+## **Introduction**
+
 I’ve noticed an interesting shift in how we relate to our environment.
 We’ve become increasingly reliant on air quality indexes and smartphone
 apps to tell us if the air is fit to breathe. While these digital tools
@@ -32,37 +66,6 @@ alongside your digital tools. When you notice these signals — and can
 reasonably rule out other, more obvious causes — you can take immediate
 action to mitigate your exposure. Your AQ monitor can then help you
 confirm and quantify what your body first detected.
-
-## **Before we start: An important note (Please read this)**
-
-What you are about to read is a research-based awareness guide — not a
-medical document and not medical advice. Every signal described here is
-grounded in published, peer-reviewed science — all references used are
-listed at the end. The goal is to help you notice and interpret what
-your body may already be telling you about the air around you, and to
-act on that information in simple, practical ways.
-
-That said, this post is not a substitute for professional medical
-advice. It cannot account for your individual health history,
-pre-existing conditions, or the specific pollution profile of where you
-live. If you have asthma, a respiratory condition, skin concerns, or any
-symptoms that worry you, please consult a qualified medical professional
-rather than relying on these signals alone. The information presented
-here is general in nature based on research in public domain, linked at
-the end — any reliance you place on it is at your own discretion and you
-should feel free to further verify it on your end.
-
-Think of this as a starting point for awareness — not a finishing point
-for diagnosis. The signals described here are prompts to pay attention
-and investigate, not conclusions to act on in isolation. A doctor, a
-monitor, and your own patterns of observation over time will always tell
-you more than any single guide can. All references cited are studies
-published in the public domain and linked at the end. The findings
-described are based on the author’s (Aarsh’s) reading of this research
-and their published findings — but, the underlying work belongs to its
-original authors, and the author of this biteSizedAQ post takes no
-responsibility for the content, conclusions, or availability of those
-third-party sources. Please feel free to further verify it on your end.
 
 ## **1. The Morning Veil: Visual Clarity**
 
