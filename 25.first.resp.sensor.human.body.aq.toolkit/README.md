@@ -3,7 +3,7 @@
 
 ![](images/fin_img.png)
 
-## **Before we start: An important note (Please read this)**
+## **Before we start: Content Disclaimer (Please read this)**
 
 What you are about to read (or see in the visual above) is a public
 domain research-based awareness guide — not a medical document and not
