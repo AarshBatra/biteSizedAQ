@@ -33,6 +33,28 @@ reasonably rule out other, more obvious causes — you can take immediate
 action to mitigate your exposure. Your AQ monitor can then help you
 confirm and quantify what your body first detected.
 
+## **Before we start: An important note**
+
+***What you are about to read is a research-based awareness guide - not
+a medical document and not medical advice***. Every signal described
+here is grounded in published, peer-reviewed science — all references
+used are listed at the end. The goal is to help you notice and interpret
+what your body may already be telling you about the air around you, and
+to act on that information in simple, practical ways.
+
+That said, this post is not a substitute for medical advice. It cannot
+account for your individual health history, pre-existing conditions, or
+the specific pollution profile of where you live. If you have asthma, a
+respiratory condition, skin concerns, or any symptoms that worry you,
+please consult a qualified medical professional rather than relying on
+these signals alone.
+
+Think of this as a starting point for awareness — not a finishing point
+for diagnosis. The signals described here are prompts to pay attention
+and investigate, not conclusions to act on in isolation. A doctor, a
+monitor, and your own patterns of observation over time will always tell
+you more than any single guide can.
+
 ## **1. The Morning Veil: Visual Clarity**
 
 Looking out from a balcony at 7:00 AM, you might notice the skyline
