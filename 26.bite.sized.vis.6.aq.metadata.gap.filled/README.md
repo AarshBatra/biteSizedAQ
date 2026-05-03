@@ -266,8 +266,10 @@ References section above for more detail).
 
 ## Share these Visualizations
 
-Here is a link which contains the high resolution versions of the above
-plots and animations: Link.
+Here is a
+[link](https://github.com/AarshBatra/biteSizedAQ/tree/main/26.bite.sized.vis.6.aq.metadata.gap.filled/final_plots)
+which contains the high resolution versions of the above plots and
+animations: Link.
 
 Help raise awareness about the severity of air pollution in India by
 sharing these and other visuals in the biteSizedVisuals series. By

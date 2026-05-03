@@ -79,8 +79,9 @@ your eyes and a tickle in your throat. This is often described as the
     environments with high levels of **Nitrogen Dioxide (**$NO_2$) or
     **Sulfur Dioxide (**$SO_2$).
 
-    -   $NO_2$ often carries a scent resembling **strong bleach or a
-        clinical swimming pool**.
+    -   $NO_2$ carries a sharp, pungent, acrid quality — harsh and
+        suffocating at higher concentrations, sometimes described as
+        bleach-like given its similarly oxidising character.
 
     -   $SO_2$ (often from low-quality fuel combustion or industrial
         exhaust) carries a sharp, pungent aroma like a **recently struck
@@ -133,9 +134,12 @@ exertion, seek shade, and stay hydrated.
 
 ## **4. The Gritty Texture: Atmospheric "Film"**
 
-Near a construction site in the evening, your skin might feel "prickly"
-or "sticky," and if you run a finger across your forehead, it feels
-**"gritty."**
+Near a construction site in the evening, your skin might feel 'prickly'
+or 'sticky,' and if you run a finger across your forehead, it feels
+'gritty.' What you are feeling is likely the coarser end of airborne
+debris — larger dust and aerosol particles — settling on your skin. The
+finer PM2.5 particles beneath this are too small to feel, which is
+exactly what makes them more insidious.
 
 -   **The Concept:** This is the physical accumulation of **Aerosols**
     and larger dust particles. Unlike gases, these have actual mass and
@@ -165,10 +169,13 @@ gone. Distant traffic doesn't hum; it sounds dull, as if you're
 listening through a layer of cotton wool.
 
 -   **The "Blanket" Analogy:** This is Acoustic Attenuation. In clear
-    air, sound waves travel with high-frequency details intact. Dense,
-    stagnant, aerosol-laden air absorbs and scatters that sound energy —
-    particularly the higher frequencies that give distant sounds their
-    sharpness and definition.
+    air, sound waves travel with high-frequency details intact. During
+    atmospheric stagnation, temperature inversions trap air near the
+    ground. This changes how sound travels — distant sounds can seem
+    oddly flat or stripped of their usual depth and definition. The
+    acoustic environment shifts alongside the visual one, both
+    reflecting the same underlying atmospheric condition: air that is
+    not mixing, not dispersing, and not moving.
 
 -   **The Signature:** The muffled effect on its own is subtle — too
     subtle to rely on in isolation. But it becomes a meaningful clue
@@ -243,7 +250,7 @@ you have already inhaled.
 ## **The Biological Early Warning Checklist**
 
 | The Signal                     | Signature                                                | What it likely represents                                                                                          | Sustainable Action                                                        |
-|--------------------------------|----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+|---------------|---------------|--------------------------|----------------|
 | Blurry horizon                 | Loss of crispness                                        | High PM2.5 (Mie scattering)                                                                                        | Seal windows / Filter                                                     |
 | Watering eyes                  | Bleach or Matchstick smell                               | NO2 or SO2 plumes                                                                                                  | Step away from source                                                     |
 | Chemical taste/smell sensation | Chemical sharpness                                       | Mix of pollutants                                                                                                  | Move away, hydrate, minimise exertion                                     |
