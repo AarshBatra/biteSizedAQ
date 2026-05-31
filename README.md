@@ -66,7 +66,8 @@ find time. To kick things off, check out the first few projects below!
   entry points into a problem that affects the air most of the world
   breathes.
 
-- Link to full blog post: Link
+- Link to full blog post:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/27.same.number.four.diff.kinds.of.bad)
 
 ## Project 26: A Metadata Gap in Global Air Quality Monitoring — and One Paper’s Attempt to Fix It
 

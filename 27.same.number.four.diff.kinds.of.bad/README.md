@@ -1,8 +1,6 @@
 
 # The Same Number on Your Air Quality App Could Be Four Different Kinds of Bad — Based on Where You Are
 
-------------------------------------------------------------------------
-
 **What this piece covers, a quick summary:** The PM2.5 air quality
 number on your phone is based on the weight of tiny particles in the
 air. But weight alone turns out to be an incomplete guide to how harmful
@@ -44,8 +42,6 @@ limitations section and conclusion follow the city profiles.
 > discuss this gap and look at three other (other than mass) metrics:
 > count, surface area and oxidative potential through which we can
 > assess the quality of air around us in a more nuanced fashion.
-
-------------------------------------------------------------------------
 
 ## Background
 
@@ -163,8 +159,6 @@ biological outcomes in the similar people — whether driven by particles,
 gases, or their interaction — it is unusually direct evidence that the
 single number does not capture what the body actually experiences.
 
-------------------------------------------------------------------------
-
 ## Four Ways to Measure the Same Air
 
 Before comparing four ways to measure air pollution, it helps to be
@@ -207,8 +201,6 @@ same thing.
 
 That is the starting point. Now here are four ways to look at the same
 air.
-
-------------------------------------------------------------------------
 
 To understand this, let’s picture a jar containing a dozen large
 marbles, 2 or 3 small pebbles, and ten million grains of sand.
@@ -429,8 +421,6 @@ types, not exceptional cases.
 > mass concentration can arise from very different pollution profiles,
 > and those differences can lead to very different health consequences.
 
-------------------------------------------------------------------------
-
 ## Delhi — A City Where Every Combustion Source Burns at Once
 
 *Most characteristic profile: biomass, vehicle exhaust, and residential
@@ -521,8 +511,6 @@ The weight reading tells you Delhi’s air is severely polluted. This
 alone is concerning. But, on top of that the other four dimensions help
 explain why it can be so much more concerning then what it appears to
 be.
-
-------------------------------------------------------------------------
 
 ## London — Where the Measurement-Exposure Gap becomes Visible
 
@@ -660,8 +648,6 @@ it means the science is appropriately uncertain at the margins, and that
 uncertainty is itself worth knowing. More research will further guide
 the way.
 
-------------------------------------------------------------------------
-
 ## Beijing — When Coal Declined, the Air Told a Different Story
 
 *Most characteristic profile: a city that was coal-dominated until
@@ -786,8 +772,6 @@ provided — and it is the same precision that would be available to every
 city, for every pollution source, if composition monitoring were routine
 rather than exceptional.
 
-------------------------------------------------------------------------
-
 ## Los Angeles — When the Suburbs Burn
 
 *Most characteristic profile: wildfire smoke, increasingly from fires
@@ -902,8 +886,6 @@ The LA PM2.5 number reported elevated particulate levels. It had no
 mechanism to communicate that some of what was being inhaled had no
 established place in any prior air quality framework.
 
-------------------------------------------------------------------------
-
 ## An Important Clarification
 
 > ***We have been discussing how mass concentration captures only one
@@ -939,8 +921,6 @@ traffic breathes something the distant monitor did not capture, why
 Beijing’s coal reduction improved health in organs the mass number
 cannot see, and why WUI wildfire smoke carries hazards that existing
 frameworks had not anticipated.
-
-------------------------------------------------------------------------
 
 ## The Technology Is Moving — at Different Speeds for Each Metric
 
@@ -987,8 +967,6 @@ has a mandate but needs standardisation. Surface area and composition
 remain research-grade. For the two most tractable metrics, the
 infrastructure decisions are being made now.
 
-------------------------------------------------------------------------
-
 ## What Can You Actually Do?
 
 ***\[Please read the disclaimer at the end for an accurate
@@ -1016,8 +994,6 @@ reasonable implications resulting from it:
 - And running a HEPA air purifier in the room where you sleep — where
   most people spend seven to nine hours — is likely the single most
   direct individual intervention with highest returns.
-
-------------------------------------------------------------------------
 
 ## **Limitations and What This Piece Can and Cannot Tell You**
 
@@ -1055,8 +1031,6 @@ not an exclusive description.
 > combustion-dominated environments, and although they do apply to other
 > environments - whether they apply with “equal force” in cleaner
 > settings is still being figured out.
-
-------------------------------------------------------------------------
 
 ## **Conclusion — What the Number Cannot Hold**
 
@@ -1114,8 +1088,6 @@ health circumstances, please consult a qualified medical professional.
 Air quality conditions vary considerably by location, time, and season —
 local public health authorities and healthcare providers are best placed
 to give advice relevant to your personal situation.
-
-------------------------------------------------------------------------
 
 ## Glossary
 
@@ -1224,8 +1196,6 @@ total PM2.5.
 wildland vegetation. As housing has expanded into fire-prone land, fires
 in these zones have increased in frequency and severity, and their smoke
 is chemically more complex than smoke from forest-only fires.
-
-------------------------------------------------------------------------
 
 ## References
 
@@ -1410,8 +1380,6 @@ particles and heavy metals: an experimental study along two commuting
 routes near Antwerp, Belgium. *Environmental Research*, 164, 530–538.
 <https://www.sciencedirect.com/science/article/abs/pii/S0013935118301245>
 
-------------------------------------------------------------------------
-
 ## Support This Work: Give It a Star
 
 Thank you for reading! If you found this project helpful or interesting,
@@ -1421,14 +1389,10 @@ star the
 repository](https://github.com/AarshBatra/biteSizedAQ/stargazers) and
 join the growing community of folks who follow biteSizedAQ.
 
-------------------------------------------------------------------------
-
 ## Get in touch
 
-Get in touch about related topics/report any errors. Reach out to me at
-bitesizedaq@gmail.com.
-
-------------------------------------------------------------------------
+Get in touch if you have thoughts on the above or about related AQ
+topics/report any errors. Reach out to me at bitesizedaq@gmail.com.
 
 ## License and Reuse
 
