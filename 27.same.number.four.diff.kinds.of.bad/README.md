@@ -313,8 +313,6 @@ important aspects such as count, surface area, and what coats each
 particle (which help determines the oxidative potential of the
 particle).
 
-------------------------------------------------------------------------
-
 > **Sidebar (feel free to skip if you are familiar with what PM2.5
 > means): What Does “2.5” Actually Mean? - A deeper dive**
 >
