@@ -52,6 +52,22 @@ find time. To kick things off, check out the first few projects below!
 
 ------------------------------------------------------------------------
 
+## Project 27: The Same Number on Your Air Quality App Could Be Four Different Kinds of Bad — Based on Where You Are
+
+- Introduction: Air quality apps give you a number. That number - PM2.5,
+  tells you the weight of tiny particles floating in the air around you.
+  Governments regulate it, doctors cite it, and millions of people check
+  it every morning. But weight turns out to be a surprisingly poor guide
+  to how harmful those particles actually are. The same reading in
+  Delhi, London, Beijing, and Los Angeles can represent four completely
+  different chemical realities — different particle counts, different
+  surface areas, different chemical coatings, different health
+  consequences. This piece explains why, using those four cities as
+  entry points into a problem that affects the air most of the world
+  breathes.
+
+- Link to full blog post: Link
+
 ## Project 26: A Metadata Gap in Global Air Quality Monitoring — and One Paper’s Attempt to Fix It
 
 - Introduction: Governments around the world have spent decades building

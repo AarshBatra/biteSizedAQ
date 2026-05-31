@@ -1,0 +1,1448 @@
+---
+output: github_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# The Same Number on Your Air Quality App Could Be Four Different Kinds of Bad — Based on Where You Are
+
+------------------------------------------------------------------------
+
+**What this piece covers, a quick summary:** The PM2.5 air quality
+number on your phone is based on the weight of tiny particles in the
+air. But weight alone turns out to be an incomplete guide to how harmful
+those particles actually are. This piece explains four additional things
+that matter beyond weight — how many particles there are, how much
+surface area they present to your lungs, how chemically aggressive they
+are, and what they are actually made of. It then walks through four
+cities — Delhi, London, Beijing, and Los Angeles — each representing a
+different pollution profile that the standard number cannot distinguish.
+A glossary is at the end for quick reference while reading; a
+limitations section and conclusion follow the city profiles.
+
+**A note on terms:**
+
+> Technical terms are defined in the glossary at the end of this piece.
+> If you are reading this on a device where you can open two windows, it
+> is worth keeping the glossary alongside — several terms (oxidative
+> potential, alveoli, source apportionment) recur throughout. But, feel
+> free to just start reading and refer when needed. The language is
+> mostly intended for the general reader, so you don't need a background
+> in AQ to understand most of the content below.
+
+**A quick note before we go further:**
+
+> Many apps show an **AQI — Air Quality Index** — rather than a raw
+> PM2.5 number (usually in micrograms per cubic meter). AQI is a
+> simplified scale (typically 0 to 500) that converts PM2.5
+> concentration (one of the most harmful pollutants), along with other
+> pollutants like ozone and nitrogen dioxide, into a single colour-coded
+> score. It was designed for public communication, not scientific
+> precision. The raw PM2.5 mass concentration number does a better job
+> at more precisely communicating the true level of health harm, which
+> can get lost in a general AQI score.
+>
+> Although, to assess health effects - looking at a raw PM2.5 mass
+> concentration for a region is better than reading a general AQI - this
+> raw PM2.5 mass still falls short of describing the actual level of
+> potential health risks linked to these particles. This piece aims to
+> discuss this gap and look at three other (other than mass) metrics:
+> count, surface area and oxidative potential through which we can
+> assess the quality of air around us in a more nuanced fashion.
+
+------------------------------------------------------------------------
+
+## Background
+
+Open your air quality app on a bad day in Delhi, London, Beijing, or Los
+Angeles and you will see a number. Governments regulate it. Doctors cite
+it. Millions of people check it every morning alongside the weather.
+
+Whether your app shows "AQI: 150" or "PM2.5: 55 μg/m³", both numbers are
+expressed as a mass concentration. But how that number was produced
+varies — and this matters.
+
+Reference-grade monitors measure mass directly by pulling air through a
+filter and weighing the particles collected. This is slow, expensive,
+and requires regular maintenance and laboratory analysis, which is why
+reference monitors are relatively sparse — typically one or two per city
+district, if that.
+
+> **How consumer sensors work — and why it matters**
+>
+> The majority of readings people encounter in consumer apps and on air
+> quality maps come from **low-cost sensors**, which use a different
+> approach: an optical sensor shines a laser beam through the air,
+> detects how particles scatter the light, and estimates mass
+> concentration from those scattering events using a conversion formula.
+> Low-cost sensors are transformative — they have made real-time air
+> quality data accessible to millions of people, enabled dense urban
+> monitoring networks that a handful of reference stations never could,
+> and empowered communities to track local pollution in ways that were
+> previously impossible. Their value is real and growing.
+>
+> What they measure is also genuinely different in one important way.
+> The conversion from light scattering to mass concentration relies on
+> assumptions about what the particles are like — their size, shape, and
+> composition. In environments where those assumptions hold well,
+> low-cost sensors perform closely to reference monitors. In
+> environments where particle composition shifts significantly — during
+> cooking smoke events, wildfires, or highly humid conditions, for
+> example — the conversion can introduce uncertainty. This does not make
+> low-cost sensor readings unreliable, but it is a reason to interpret
+> them alongside their context rather than as absolute precision
+> measurements.
+
+Either way, the number both types of instrument produce is a mass-based
+figure. And mass, as this piece explains, is not the whole story.
+
+That number — PM2.5 at its core — is expressed as a mass concentration.
+PM stands for particulate matter — airborne particles small enough to be
+inhaled. The 2.5 refers to size, which I will explain properly in a
+moment (see focus box below). The number is expressed in micrograms per
+cubic meter: one microgram is one millionth of a gram, and a typical
+grain of table salt weighs on the order of tens of micrograms (let's
+assume 20 micrograms). One cubic meter is roughly the volume of a large
+wardrobe. So a reading of 60 micrograms per cubic meter means that in
+every wardrobe-sized volume of air around you, the total weight of all
+floating particles together is comparable to the weight of a 3 grains of
+salt. That sounds like almost nothing. The reason it matters is not how
+heavy those particles are, but where they go when you breathe them in
+and what they do when they get there.
+
+Knowing this number is incredibly useful. But it is increasingly
+recognised by researchers as a profound oversimplification — one that
+makes four completely different chemical realities look equivalent. A
+2024 study published in *Nature Communications*, drawing on 385 PM2.5
+samples from 14 sites across four continents, found that the
+relationship between PM2.5 mass and actual particle toxicity is "largely
+non-linear due to significant differences in the intrinsic toxicity" of
+particles from different locations [1]. In plain language: the same
+number can represent very different dangers depending on where you are
+standing and what is burning nearby.
+
+To understand why, you need four ways of measuring the same air — not
+just one.
+
+A controlled clinical trial published in *npj Clean Air* in May 2026
+makes this concrete in a way that large-scale epidemiology — the study
+of health patterns across whole populations — cannot [22]. Researchers
+at the University of Manchester exposed 15 healthy volunteers, each aged
+over 50 with a family history of dementia, to four different pollution
+sources inside a precisely controlled chamber: woodsmoke, diesel
+exhaust, cooking emissions, and limonene secondary organic aerosol — a
+type of particle formed when limonene, a chemical found in many cleaning
+products and air fresheners, reacts with other compounds in indoor air.
+
+Crucially, the PM2.5 mass concentration was standardised to the same
+target across all four exposures. Same particle mass. Different sources
+— and, as the authors note, different co-emitted gases that could not be
+controlled, because real-world combustion sources produce them in fixed
+ratios alongside particles.
+
+The results differed. NOX concentrations were substantially higher in
+the diesel and woodsmoke conditions than in cooking emissions or
+limonene SOA. Diesel exhaust showed a trend toward worse performance on
+a test of focused attention. Woodsmoke and limonene SOA were associated
+with reduced lung function compared to clean air, even after just 60
+minutes of exposure. Woodsmoke and diesel exhaust were linked to faster
+basic reaction times. The authors caution that this may be driven by
+nitric oxide — a gas released alongside these pollutants — which can
+dilate blood vessels and briefly alter brain blood flow, rather than
+indicating any genuinely positive or beneficial effect of exposure.
+
+The authors concluded that "specific pollutant sources acutely
+influenced cognition and lung function, with responses varying by
+source" [22].
+
+The trial had only 13 participants who completed all visits — a small
+number for a health study — and the authors present it as an early-stage
+demonstration of the method rather than definitive clinical proof. The
+inability to control co-emitted gases means particle effects cannot be
+cleanly separated from gas-phase effects in this study, which the
+authors acknowledge.
+
+But, all that aside - as a demonstration that the same PM2.5 mass target
+from different real-world sources produces measurably different
+biological outcomes in the similar people — whether driven by particles,
+gases, or their interaction — it is unusually direct evidence that the
+single number does not capture what the body actually experiences.
+
+------------------------------------------------------------------------
+
+## Four Ways to Measure the Same Air
+
+Before comparing four ways to measure air pollution, it helps to be
+clear about what the current dominant way (micrograms per cubic meter)
+and its underlying unit - "mass" actually means — because everything
+else in this piece is a contrast to it.
+
+> **Mass and weight — a minor, but important distinction to keep in
+> mind**
+>
+> Mass and weight are often used interchangeably in everyday life, but
+> they are different things. **Mass** is the amount of physical matter
+> something contains — it does not change wherever you are. **Weight**
+> is the force that gravity exerts on that mass — it would be slightly
+> different on the Moon.
+>
+> In air quality measurement, this distinction rarely matters in
+> practice but is useful to keep in mind. Monitors effectively weigh
+> particles collected on a filter and, because gravity is constant,
+> report this as mass. So when PM2.5 is described as a mass-based
+> metric, it refers to the amount of material present, which can
+> effectively be interpreted as weight. But, aspects such as particle
+> count, surface area, oxidative potential, and chemical composition are
+> not captured by mass/weight. We use mass and weight interchangeably in
+> this post, as the distinction does not affect the discussion in
+> practice.
+
+When reference-grade air quality monitors measure PM2.5, they pull air
+through a filter over a period of time, then weigh the filter before and
+after. The difference is the mass of particles caught. This is the gold
+standard — slow and laboratory-grade, but precise.
+
+Mass is a useful and real measurement. But notice what it does not tell
+you. Weighing a bag of flour tells you nothing about how many individual
+grains there are, how much combined surface area those grains present,
+or whether the flour is ordinary or coated in something harmful. A bag
+of a hundred large lumps and a bag of ten million fine grains can weigh
+exactly the same. The scale reports one number. The contents are not the
+same thing.
+
+That is the starting point. Now here are four ways to look at the same
+air.
+
+------------------------------------------------------------------------
+
+To understand this, let's picture a jar containing a dozen large
+marbles, 2 or 3 small pebbles, and ten million grains of sand.
+
+You could describe the contents in four different ways, each revealing
+something the others hide.
+
+**Mass/Weight — what we currently measure**
+
+Put the jar on a scale. The marbles dominate. They are so much heavier
+individually that the sand barely registers (relatively), even though
+there are ten million grains of it. The scale gives you one number that
+mainly reflects the marbles. You know something is there. You do not
+know how many individual objects, how much combined surface area they
+have, or how harmful each type might be.
+
+This is the PM2.5 reading. It measures the total mass of airborne
+particles in a given volume of air by pulling air through a filter and
+weighing what gets caught.
+
+**Count — how many individual particles**
+
+Count every object in the jar individually. The ten million grains of
+sand overwhelm everything else entirely. The same jar looks completely
+different described by count rather than weight. In the lungs, more
+individual particles means more separate events — more sites where a
+particle lands, more locations where a biological response can be
+triggered, regardless of how little each particle weighs.
+
+**Surface area — how much combined exterior**
+
+Calculate the total exterior surface of everything in the jar. When
+particles differ substantially in size — as for e.g. ultrafine particles
+do compared to larger PM2.5 particles (or PM2.5 relative to PM10) — the
+smaller ones have dramatically more combined surface area for the same
+total weight.
+
+> **For the curious, a sidebar: why surface area scales differently from
+> mass**
+>
+> Think of a particle as a tiny sphere. A sphere has two relevant
+> measurements: its surface — the outside skin — and its volume — the
+> space it fills inside.
+>
+> Start with surface area. Imagine looking at a sphere straight on —
+> what you see is a circle. The area of that circle depends on the
+> radius squared. Double the diameter of the sphere and the circle you
+> see quadruples in area. That is what "surface area scales with the
+> square of the diameter" means in plain terms: make a sphere twice as
+> wide and its surface area becomes four times larger, not two times.
+>
+> Now think about volume — how much space the sphere fills. If you
+> double the diameter, every dimension of the sphere doubles at the same
+> time. Volume depends on three dimensions — width, height, and depth —
+> so doubling each of them multiplies the total space by two times two
+> times two. That equals eight. So doubling the diameter does not just
+> double the volume — it makes it eight times larger. That is what
+> “volume scales with the cube of the diameter” means: increase the size
+> in all directions, and the total space — and therefore the mass —
+> grows much faster.
+>
+> Now put those two facts together. Double the diameter: surface area
+> goes up by four, mass goes up by eight. So mass grew twice as fast as
+> surface area. Run this in reverse for smaller particles: halve the
+> diameter and mass drops to one-eighth, but surface area only drops to
+> one-quarter. That means the smaller particle now has twice as much
+> surface area relative to its mass as the original larger one.
+>
+> Repeat this logic across millions of ultrafine particles — each one a
+> fraction of the size of a PM2.5 particle — and the combined surface
+> area becomes very large relative to their combined weight. Far larger
+> than the same weight of bigger particles would produce.
+
+Think of the difference between a block of salt and the same weight of
+salt ground into fine crystals. Both contain the same amount of
+material, but the smaller crystals expose far more total surface area to
+the water, so they dissolve much faster. It is this increase in surface
+area that drives the effect. In the lungs, something similar happens:
+for the same mass, smaller particles collectively present much more
+surface area, creating more points of contact with tissue and allowing
+interactions to happen more quickly.
+
+**Oxidative potential — how chemically aggressive those surfaces are**
+
+The sand in one version of the jar is ordinary beach sand. In another,
+it is coated in a reactive chemical. Same weight. Same count. Same
+surface area. Completely different danger.
+
+**Oxidative potential** is the capacity of a particle to generate
+reactive oxygen species, or ROS. You can think of these as tiny chemical
+sparks produced when certain particles interact with biological tissue —
+either directly or by triggering cells to produce them. These highly
+reactive molecules can attack cell membranes, proteins, and DNA — like a
+slow internal rusting process applied to living tissue rather than an
+iron pipe. Over time, if this oxidative stress overwhelms the body’s
+defenses, it can damage the cell’s basic machinery: membranes can become
+leaky, proteins can misfold, and DNA can accumulate oxidative lesions or
+strand breaks, increasing the risk of errors during replication. The
+capacity of a particle to produce ROS varies enormously: near-zero for
+something like sea salt, very high for particles coated in combustion
+products, certain metals, or organic compounds from burning fuel.
+Research increasingly describes oxidative potential as a more
+health-relevant metric than mass concentration, precisely because mass
+can contain a mix of components ranging from highly toxic to relatively
+benign [5] — and the scale cannot tell them apart.
+
+The PM2.5 number on your app is the jar on the scale. Accurate.
+Standardised and very useful, yet systematically blind to other
+important aspects such as count, surface area, and what coats each
+particle (which help determines the oxidative potential of the
+particle).
+
+------------------------------------------------------------------------
+
+> **Sidebar (feel free to skip if you are familiar with what PM2.5
+> means): What Does "2.5" Actually Mean? - A deeper dive**
+>
+> The 2.5 is a size threshold. Particles smaller than 2.5 micrometers in
+> diameter get counted in the measurement. Larger ones do not. These
+> particles are made up of organics, soot (black carbon), inorganic
+> salts (like sulfates and nitrates), metals, and dust, with composition
+> varying by source.
+>
+> To get a sense of scale: a PM2.5 particle at the threshold is roughly
+> the size of a bacterium — something so small it was invisible to
+> humans until the invention of the microscope. A human hair is about 50
+> to 70 micrometers wide, meaning you could line up around 25 of these
+> particles across a single strand's width. You could inhale millions of
+> these harmful particles in a single breath.
+>
+> The reason this particular threshold matters is straightforward:
+> smaller particles travel deeper into the lungs. Larger particles get
+> trapped in the nose and throat before reaching vulnerable tissue.
+> Particles smaller than 2.5 micrometers in diameter make it all the way
+> to the deepest part of the lungs — and the smallest among them, reach
+> the alveolar region, where oxygen crosses from air into the
+> bloodstream. This is why scientists and regulators settled on this
+> cutoff. But, in general the smaller the particle gets the more deeper
+> inside the body it can easily reach.
+>
+> Think of it like a sieve. A sieve does not care what shape something
+> is, what it is made of, or how heavy it is — it only asks one
+> question: is it small enough to pass through the mesh? Anything that
+> passes through gets counted. Anything too big gets caught. PM2.5 works
+> the same way — it captures all particles whose diameter is below 2.5
+> micrometers, regardless of what they are made of, how many there are,
+> or how reactive their surfaces are - they all count as PM2.5. A
+> particle of sea salt and a particle of arsenic-coated soot both pass
+> through if they are small enough. The sieve cannot tell their chemical
+> nature apart.
+>
+> The sieve also has one imperfection worth knowing about. The cutoff is
+> not perfectly sharp — some particles slightly above 2.5 micrometers in
+> diameter slip through and get counted anyway [2]. This matters because
+> bigger particles are much heavier — doubling a particle's diameter
+> makes it eight times heavier, because mass scales with volume and
+> volume grows as the cube of the diameter. So even a small number of
+> slightly oversized particles can contribute disproportionately to the
+> final weight reading.
+>
+> Which brings us to the deeper issue. Whatever passes through the sieve
+> gets weighed. And weight is dominated by the biggest, heaviest
+> particles in the sample. The tiny particles do contribute to the total
+> weight — but because they weigh almost nothing individually, their
+> combined contribution is dwarfed by a much smaller number of heavier
+> particles. A few heavy particles can outweigh millions of tiny ones on
+> the scale. So the final number ends up reflecting the heavy end of
+> what passed through far more than the tiny end — even if the tiny
+> particles are present in vastly greater numbers and may pose more
+> health risk. We'll explore this further below.
+
+With those four lenses established and the meaning of "2.5" clarified,
+it is worth pausing to ask: if these nuances are real, why does the
+standard number ignore them?
+
+PM2.5 mass measurement was a genuine scientific advance when introduced
+in the 1990s, replacing a focus on coarser, less health-relevant
+particles with one grounded in evidence about how fine particles affect
+the lungs. It has contributed to substantial health improvements in
+regulated regions. At the same time, the metric relies on what was then
+(and continues to be) a practical and robust method—collecting particles
+on a filter and weighing them—which captures total mass but not the full
+range of biologically relevant properties. But, as monitoring
+technologies and toxicological insights have advanced, it has become
+clearer that mass alone cannot distinguish between more and less harmful
+particle mixtures. The four cities below are where that limitation
+becomes visible in human terms.
+
+One important framing note before the cities begin. Each city is
+presented because it illustrates a particular pollution profile most
+clearly — but these profiles are not unique to these cities. Biomass and
+combustion-dominated pollution like Delhi's exists across much of South
+and Southeast Asia, Sub-Saharan Africa, and anywhere biomass burning and
+older vehicles predominate. Traffic-dominated aging particle profiles
+like London's characterise many dense European and North American
+cities. Coal-sourced heavy metal loading like Beijing's is the story of
+many industrial cities in China, Eastern Europe, and parts of the Middle
+East. Wildfire-driven complex chemical exposures like Los Angeles's are
+increasingly the story of western North America, southern Europe, and
+Australia. The cities are entry points into recognisable pollution
+types, not exceptional cases.
+
+***Note on interpreting the city wise sections below:***
+
+> The city narratives that follow are illustrative, not exhaustive. They
+> highlight pollution patterns that are commonly observed in each
+> location, but real-world conditions are often more complex and can
+> vary across time, neighborhoods, and sources.
+>
+> These examples are drawn from general pollution profiles, but they are
+> not meant to suggest that such patterns are unique to one city or
+> absent in others. Similar processes—such as particle transformation,
+> source mixing, and exposure differences—can occur across urban
+> environments worldwide.
+>
+> The goal is not to define each city rigidly, but to use them as
+> concrete examples to understand a broader point: that the same PM2.5
+> mass concentration can arise from very different pollution profiles,
+> and those differences can lead to very different health consequences.
+
+------------------------------------------------------------------------
+
+## Delhi — A City Where Every Combustion Source Burns at Once
+
+*Most characteristic profile: biomass, vehicle exhaust, and residential
+burning layered simultaneously, trapped by geography*
+
+It is early morning in Delhi in January. The nights have been cold —
+temperatures dropping to around 8 to 10 degrees Celsius before dawn, the
+kind of cold that sends millions of households across the city reaching
+for whatever fuel is available: wood, pressed agricultural waste, crop
+residue. On the main roads, vehicles start up in the chill. In the
+surrounding states, farmers are burning the rice-paddy stubble left from
+harvest before the wheat planting begins. All of this happens
+simultaneously, across one of the most densely populated flatlands on
+earth.
+
+A monitor records the PM2.5 mass concentration. The reading is very high
+— Delhi's winter air consistently far exceeds WHO guidelines [3]. But
+the mass reading by itself does not answer the important question: what
+is actually in that number, and how harmful is it?
+
+**Mass:** High and roughly uniform across the entire region — whether
+inside Delhi or in the surrounding agricultural belt. The monitor's
+reading accurately reflects severity. But it treats all particles
+equally.
+
+**Count and surface area:** The particles dominating count and surface
+area are very small — organic aerosols produced when fuel burns
+incompletely. Small particles reach the deepest, most vulnerable part of
+the lungs and into the bloodstream in large numbers.
+
+> To understand why size matters so much here, consider how the
+> respiratory system defends itself.
+>
+> The nose and upper throat trap large particles in mucus. Further down,
+> the airways are lined with millions of microscopic hair-like
+> structures called **cilia** that beat in coordinated waves, moving a
+> thin layer of mucus upward like a slow conveyor belt — the
+> **mucociliary escalator**. Particles trapped in this mucus get swept
+> upward and out. This defence works well for particles larger than
+> about 2.5 micrometers.
+>
+> Smaller particles slip past entirely. They reach the **alveoli**:
+> roughly 300 million tiny air sacs packed into the deepest part of the
+> lungs, where oxygen passes from air into the bloodstream and carbon
+> dioxide passes back out. Alveolar walls are only one cell thick —
+> necessarily, because that thinness allows gas exchange. There are no
+> cilia here. And critically, PM2.5 particles that reach the alveoli do
+> not simply sit there: PM2.5 can cross tinto the bloodstream directly,
+> from where they are carried to secondary organs — the heart, liver,
+> brain — well beyond the lung itself.
+
+The combustion particles are exactly the size range that reaches the
+alveoli and, in part, passes beyond them. They arrive in enormous
+numbers per breath, presenting large combined surface area against
+tissue that has very limited defences.
+
+**Oxidative potential:** A 2024 study in *Nature Communications*
+examined PM2.5 at five sites inside and outside Delhi, chemically
+fingerprinting the particles to trace them back to their sources and
+measuring their oxidative potential [4].\
+\
+The study found this was overwhelmingly driven by organic aerosols from
+incomplete combustion, whether from traffic, household heating, or
+agricultural burning. The ammonium sulfate and nitrate particles found
+in higher proportions outside Delhi — formed when agricultural ammonia
+reacts with acidic gases in the atmosphere rather than from direct
+combustion — had much lower oxidative potential despite contributing
+similar mass to the reading. Same mass number. Substantially different
+chemical aggression in the body.
+
+**Chemical composition:** Delhi's combustion particles carry **PAHs —
+polycyclic aromatic hydrocarbons** — a family of organic compounds that
+form whenever any carbon-containing material burns incompletely. This is
+not unique to Delhi: it happens in car engines, open fires, coal
+furnaces, and agricultural burning worldwide. Several PAHs are
+classified as confirmed human carcinogens. When the body tries to break
+PAHs down, the process produces reactive intermediates that bind
+directly to DNA, damaging it in ways that can contribute to cancer over
+time. Research reviewing lung cancer in people who have never smoked
+identifies combustion-related indoor air pollution as an associated risk
+factor for lung cancer, with oxidative stress and DNA damage in lung
+tissue as the proposed biological mechanism — though separating the
+specific contribution of PAHs from the many other harmful compounds in
+combustion smoke is genuinely difficult to do in research, and has not
+been fully resolved [6].
+
+The weight reading tells you Delhi's air is severely polluted. This
+alone is concerning. But, on top of that the other four dimensions help
+explain why it can be so much more concerning then what it appears to
+be.
+
+------------------------------------------------------------------------
+
+## London — Where the Measurement-Exposure Gap becomes Visible
+
+*Most characteristic profile: combustion particles that transform
+between emission and measurement, creating a hidden exposure gap near
+busy roads — with traffic no longer the only significant source*
+
+London's busy main roads at rush hour look nothing like Delhi. No
+visible smoke. PM2.5 readings within ranges that European regulations
+consider borderline acceptable.
+
+But something important happens to particles in the seconds and metres
+between a vehicle exhaust pipe and the nearest air quality monitor,
+which may be several hundred metres away. They age — and in ageing, they
+change across all four dimensions simultaneously.
+
+**Count:** Fresh diesel exhaust produces **ultrafine particles** —
+particles smaller than 0.1 micrometers, so individually light that they
+contribute almost nothing to PM2.5 mass, but enormous in number. Within
+seconds of emission, these particles collide with each other and stick
+together, forming **agglomerates**: clusters of many small particles
+fused into single larger ones, like individual specks of dust clumping
+into a visible flake. Each agglomeration event replaces many small
+particles with one larger one. Particle count drops substantially as air
+travels away from the source.
+
+**Surface area:** A large agglomerate has less total exterior surface
+than the many small particles it assembled from — just as a snowball has
+less combined surface than all the individual snowflakes compressed
+inside it. As particles age and agglomerate, surface area per unit of
+mass falls. Someone breathing air directly near a vehicle exhaust is
+exposed to far more particle surface area per microgram than what the
+distant monitor captures (by when smaller particles have combined to
+make agglomerates).
+
+**Mass:** Each agglomerate is heavier than its component particles
+individually, so mass per particle rises even as count drops. By the
+time aged air reaches the monitor, the mass reading is reasonably
+representative of that air — but not of what someone breathing 20 metres
+from a bus is inhaling.
+
+**Oxidative potential:** Freshly formed combustion particles have
+chemically reactive surfaces that have not yet stabilised. As particles
+age, their surfaces oxidise and become less reactive. The monitor
+several hundred metres away captures older, calmer particles. The person
+near the exhaust pipe inhales fresher, more reactive ones — higher
+oxidative potential per particle than what the monitor records.
+
+What does this gap actually mean for health? A randomised controlled
+study published in *The Lancet* had participants — including people with
+chronic lung disease and heart disease — walk for two hours either along
+Oxford Street, one of central London's busiest shopping streets with
+heavy traffic, or through Hyde Park nearby [7]. The researchers measured
+**black carbon** (the elemental soot core of diesel combustion particles
+— a marker of how fresh and traffic-related the exposure is), nitrogen
+dioxide, PM2.5, and ultrafine particle counts at both locations.
+
+Oxford Street had substantially higher levels of all of these.
+
+-   People with chronic lung disease reported significantly more wheeze,
+    cough, and breathlessness after the Oxford Street walk.
+-   Across all participants, including healthy volunteers, walking in
+    Hyde Park was associated with improved lung function and reduced
+    **arterial stiffness** — a measure of how hard the heart must work
+    to pump blood through the arteries; stiffer arteries mean greater
+    cardiovascular strain over time.
+-   Walking on Oxford Street was associated with attenuated improvements
+    in both lung function and arterial stiffness.
+-   These differences persisted when measured 26 hours later [7].
+
+One walk. Two hours. Measurable in the body the next day. This does not
+mean a single walk causes heart disease — cardiovascular disease
+develops over years of repeated exposure. What the study demonstrates is
+that the biological processes involved in cardiovascular stress are
+already being activated at levels of short-term exposure that the nearby
+PM2.5 monitor did not fully capture.
+
+> **Chemical composition and long-term evidence:** London's black carbon
+> profile has shifted significantly over the past decade. Traffic was
+> historically the dominant source — a pattern well-documented in
+> measurements taken before 2015. But London's Ultra Low Emission Zone,
+> introduced in 2019 and expanded city-wide in 2023, has substantially
+> reduced exhaust emissions from older diesel vehicles. A 2025
+> peer-reviewed study measuring black carbon fluxes from the BT Tower in
+> central London found that non-road mobile machinery — generators and
+> heavy equipment on construction sites — can now dominate over vehicle
+> traffic as a black carbon source in areas with dense building activity
+> [23]. This is a finding specific to central London's
+> high-construction-density areas rather than a citywide conclusion, and
+> it is the first study of its kind in Europe. The broader picture for
+> London is that black carbon now comes from a more mixed set of
+> combustion sources than it did a decade ago, with construction,
+> residential wood burning, and residual traffic all contributing
+> alongside each other.
+>
+> The short-term health evidence from traffic exposure remains clear and
+> is not undermined by this shift: a study examining daily black carbon
+> levels and hospital admissions in London found consistent associations
+> between elemental carbon and adult cardiovascular admissions, as well
+> as paediatric respiratory admissions, independently of other
+> pollutants measured simultaneously [9]. The particle ageing physics
+> described above — fresh reactive particles near any combustion source,
+> calmer aged particles at the distant monitor — applies whether the
+> source is a bus or a diesel generator.
+>
+> For long-term effects, the picture is more complex and worth being
+> explicit about. A cohort study — one that follows a large group of
+> people over many years and tracks who develops disease — is the
+> standard tool for this kind of question. A London-specific study
+> tracking over 211,000 adults found the strongest associations between
+> traffic-related air pollution and heart failure, while associations
+> with other cardiovascular outcomes were harder to detect [19]. This is
+> not evidence that pollution is safe in London — it reflects the
+> genuine statistical difficulty of isolating traffic-specific effects
+> at the relatively lower pollution concentrations found in a European
+> city, where multiple pollutants move together and other health risk
+> factors complicate the picture. The evidence strengthens considerably
+> when looking across multiple European populations: the ELAPSE study,
+> which pooled data from six European cohort studies, found significant
+> associations between long-term black carbon exposure and stroke, at
+> concentrations below existing EU and WHO guideline limits [21]. A
+> separate British cohort study with over 25 years of follow-up found
+> associations between air pollution and cardiovascular mortality [20].
+
+The honest picture for London is this: the short-term biological effects
+of traffic pollution on cardiovascular function are well-documented. The
+long-term evidence from population studies for black carbon specifically
+driving cardiovascular disease in lower-pollution European settings is
+suggestive and consistent with what we know about the biological
+mechanisms, but still less definitive than the evidence for PM2.5 in
+higher-pollution settings. This does not mean the concern is unfounded —
+it means the science is appropriately uncertain at the margins, and that
+uncertainty is itself worth knowing. More research will further guide
+the way.
+
+------------------------------------------------------------------------
+
+## Beijing — When Coal Declined, the Air Told a Different Story
+
+*Most characteristic profile: a city that was coal-dominated until
+recently — and whose dramatic improvement shows exactly why composition
+monitoring matters more than mass monitoring alone*
+
+Beijing in winter was, for much of the 2000s and 2010s, one of the most
+severely polluted cities on earth. In the worst haze episodes the PM2.5
+readings were extreme — visibility dropped to a few city blocks, the
+skyline disappeared into yellow-brown murk, and there was sometimes a
+metallic taste in the air. That picture has changed substantially.
+China's coal controls began with the Air Pollution Prevention and
+Control Action Plan launched in 2013, which set binding PM2.5 reduction
+targets for Beijing and mandated coal substitution with natural gas and
+electricity. These were intensified through the Three-Year Action Plan
+for Winning the Blue Sky War from 2018. Together these policies have
+driven significant reductions in Beijing's PM2.5. Peer-reviewed research
+published in 2023 found that coal combustion is no longer an important
+contributor to PM2.5 in Beijing city itself, with secondary aerosol
+formation and biomass burning now the dominant sources [24]. Beijing's
+air quality story has genuinely improved.
+
+But Beijing is included here not as a current warning but as the
+clearest available demonstration of why composition monitoring matters —
+because it was composition data, not just mass measurements, that
+revealed what was causing harm and confirmed what the coal ban was
+fixing.
+
+> **How source apportionment works**
+>
+> **Source apportionment** is the scientific practice of chemically
+> fingerprinting pollutants, e.g. PM2.5 to identify what fraction came
+> from which emission source. Different combustion processes leave
+> different chemical fingerprints in the particles they produce: coal
+> burning deposits characteristic metals and sulfate compounds; diesel
+> exhaust leaves a black carbon and organic compound signature; biomass
+> burning releases elevated potassium — a marker that shows up reliably
+> in smoke from burning plant material; industrial smelting leaves its
+> own distinctive metal combinations. By analysing the full chemical
+> composition of PM2.5 samples, researchers can work backwards to
+> identify what fraction of the pollution came from coal, traffic,
+> agriculture, or industry — and crucially, which sources drive the most
+> harmful particle types.
+
+**Mass, count, and surface area:** During the coal-dominated years,
+Beijing's winter PM2.5 was heavily influenced by coal combustion
+particles, which have a somewhat broader size distribution than fresh
+diesel exhaust or biomass fires. The particles tended to be heavier
+individually, which meant the PM2.5 mass reading was quite
+representative of the total particle burden. Count and surface area were
+substantial — but neither is the most distinctive feature of Beijing's
+pollution story.
+
+**Oxidative potential:** High during heavy pollution episodes, driven by
+combustion organics and certain metals — particularly iron, copper, and
+manganese, which are known to generate reactive oxygen species. But
+again, not the most distinctive dimension. Oxidative potential depends
+on chemical composition (see below) because it is driven by reactive
+components like certain metals and organics, so major compositional
+changes can shift it. However, it is not a one-to-one reflection of
+composition, since interactions between components can amplify or
+suppress overall reactivity
+
+**Chemical composition — what the historical data revealed:** A health
+risk assessment of Beijing PM2.5 samples collected between 2013 and 2015
+— during the height of the coal-dominated period — found that arsenic
+carried the highest modelled individual cancer risk of any measured
+component, exceeding the internationally accepted risk threshold [10].
+The word "modelled" is worth noting: this is a calculated risk based on
+measured concentrations and established toxicological risk factors, not
+a direct count of cancer cases traceable to these particles. That said,
+the methodology is standard in environmental health risk assessment and
+the findings are consistent with the broader literature. Arsenic,
+cadmium, chromium, lead, and nickel — all classified as human
+carcinogens — were found at concentrations traceable primarily to coal
+combustion and road dust during that period. Coal combustion in winter
+drove the majority of heavy metal loading and the associated modelled
+cancer risk [10].
+
+This is the story the mass number could not tell.
+
+Arsenic is associated with bladder and kidney cancer. Cadmium is
+associated with kidney damage and lung cancer. These are not pollutants
+that remain localised at the point where particles land in the lung — as
+with PM2.5 more broadly, they are absorbed into the bloodstream and
+distributed throughout the body, accumulating in organs far from where
+inhalation occurred. This is most clearly documented in workers with
+very high occupational exposures — miners and smelter workers — but the
+same basic mechanism applies at lower environmental concentrations, even
+if the precise relationship between exposure level and health effect at
+those lower concentrations is less completely mapped.
+
+Consider a concrete illustration of what the mass number cannot
+distinguish. Two people in two different cities both check their apps
+and see a reading of 75 micrograms per cubic meter — a concerning level
+by any standard. Person A is in a coal-heavy city breathing coal
+combustion particles carrying arsenic and cadmium. Person B is in a
+rural agricultural region of Europe where the PM2.5 is dominated by
+ammonium sulfate and ammonium nitrate — secondary particles formed when
+ammonia from livestock and fertilisers reacts with acidic gases in the
+atmosphere, chemically inert, contributing substantially to mass but
+carrying relatively low oxidative potential and no heavy metals. Both
+apps show 75. Person A is being exposed to confirmed carcinogens that
+distribute beyond the lung. Person B is not. The instrument cannot
+distinguish them.
+
+**Why this is actually a story about what good monitoring can do:** When
+the Chinese government implemented strict coal combustion controls from
+2013 onward, researchers tracked not just PM2.5 mass but the detailed
+chemical composition of what was in the air. Research comparing heavy
+metal concentrations in PM2.5 across Chinese cities before and after
+China's 2018 air quality action plan found that concentrations of
+arsenic, cadmium, and related metals declined substantially in the
+post-2018 period compared to 2014–2018, consistent with coal reduction
+[11]. More recent research confirms that coal combustion is no longer a
+dominant primary source in Beijing city itself [24]. The mass reading
+told Beijing its air was improving. The composition data told it which
+organs were becoming safer, confirmed what the intervention was actually
+achieving, and provided the evidence base to show the coal ban worked.
+That precision is what mass monitoring alone could never have provided —
+and it is the same precision that would be available to every city, for
+every pollution source, if composition monitoring were routine rather
+than exceptional.
+
+------------------------------------------------------------------------
+
+## Los Angeles — When the Suburbs Burn
+
+*Most characteristic profile: wildfire smoke, increasingly from fires
+burning through built-up areas, releasing chemical compounds no prior
+air quality framework anticipated*
+
+Los Angeles sits at the intersection of two wildfire problems that are
+often conflated but are meaningfully different.
+
+The first is the familiar one: forest and shrubland fires burning
+vegetation in the hills and mountains surrounding the city, sending
+large plumes of PM2.5 downwind. This has characterised California's fire
+seasons for decades, and the health burden is substantial. A modelling
+study estimated that wildfire PM2.5 smoke in California between 2008 and
+2018 — is estimated to have contributed to a total of 52,480 to 55,710
+premature deaths over the 11-year period, equating to an economic impact
+of \$432 to \$456 billion[25].
+
+The second problem is newer and in some respects more concerning: the
+**wildland-urban interface fire**, or WUI fire. These are fires that
+begin in vegetation but spread into built-up neighbourhoods, burning
+houses, vehicles, and consumer goods alongside trees and grass. As
+residential development has expanded into fire-prone areas around
+California's cities, WUI fires have increased markedly: research found a
+more than fourfold increase in conditions conducive to extreme-impact
+WUI fires in California from 1990 to 2022 [18]. A report from the
+California Council on Science and Technology noted that smoke from WUI
+fires — combining burning buildings with burning biomass — was
+associated with substantially greater health risk than smoke from
+wildland-only fires [17].
+
+The distinction matters because what burns determines what is in the
+smoke. And in a suburb, almost everything that burns was not designed
+with combustion in mind.
+
+Here is how WUI fire smoke compares across the four dimensions:
+
+**Count:** Fresh wildfire smoke is dominated by ultrafine particles,
+enormous in number and chemically reactive, with high surface area per
+unit of mass [13]. Unlike London's aged diesel particles, these have not
+had time to agglomerate and stabilise. They arrive at the alveoli in a
+freshly reactive state.
+
+**Surface area:** Higher per unit of mass than almost any other common
+outdoor pollution scenario, because the particles are small and freshly
+emitted in huge numbers.
+
+**Mass:** Can spike to extreme levels during active fires, rivalling the
+worst pollution episodes in other cities. The mass number here
+accurately reflects acute severity.
+
+**Oxidative potential:** High, driven by fresh reactive particle
+surfaces. But oxidative potential does not capture everything harmful in
+WUI smoke — because some of the most concerning components act through
+entirely different biological pathways.
+
+**Chemical composition:** A field sampling study of the January 2025 Los
+Angeles fires found that standard PM2.5 mass measurements "may
+underestimate the toxicological burden" of such events [14]. The
+researchers documented elevated concentrations of PAHs, non-crustal
+metals (metals not from soil or rock, meaning they came from
+manufactured objects: electronics, vehicles, building materials), BTEX
+compounds — benzene, toluene, ethylbenzene, and xylene, a group of
+volatile toxic chemicals released from burning synthetic materials,
+several of which are confirmed or probable human carcinogens — and PFAS
+compounds.
+
+Wildfire smoke from burning vegetation and structures also generates
+**secondary organic aerosol (SOA)** — particles formed in the atmosphere
+when gases released during combustion react with each other to create
+new compounds that were not present in the original emissions. SOA from
+limonene, a compound released by burning vegetation and wood products,
+is one example. The HIPTox trial found that limonene SOA was associated
+with reduced lung function in healthy volunteers after 60 minutes of
+standardised exposure [22] — a finding that, while preliminary given the
+small sample, points toward health effects from particle types that
+outdoor monitoring systems are not designed to detect.
+
+> **PFAS in wildfire smoke — a plausible concern, not yet a settled
+> risk**
+>
+> **PFAS — per- and polyfluoroalkyl substances** — are a large family of
+> synthetic chemicals used in non-stick cookware coatings, waterproof
+> clothing, food packaging, carpet treatments, and firefighting foam.
+> They are sometimes called "forever chemicals" because the
+> carbon-fluorine bond that makes them useful is one of the strongest in
+> chemistry, making them extraordinarily resistant to breaking down in
+> the environment or inside the human body.
+>
+> When a suburban house burns, every PFAS-containing product in it
+> releases these compounds into the smoke, where they attach to
+> particles and are inhaled [14]. A 2024 review of PFAS lung health
+> effects found associations with impaired fetal lung development,
+> reduced immune function in children, and potential carcinogenicity
+> through inhalation [15]. These associations come largely from large
+> population studies and animal research. The specific health effects of
+> inhaling PFAS-bearing wildfire smoke particles — as distinct from
+> other routes of PFAS exposure such as drinking water — are not yet
+> well-characterised.
+>
+> What is established is that PFAS compounds act through mechanisms —
+> disrupting the immune system, interfering with hormone signalling,
+> accumulating persistently in body tissues — that are entirely
+> different from the reactive oxygen species pathway that dominates
+> combustion particle research. An oxidative potential measurement does
+> not detect PFAS toxicity. The concern is legitimate and warrants
+> research. It is not yet an established inhalation risk in the way that
+> diesel exhaust or arsenic exposure is, and should be understood
+> accordingly.
+
+The LA PM2.5 number reported elevated particulate levels. It had no
+mechanism to communicate that some of what was being inhaled had no
+established place in any prior air quality framework.
+
+------------------------------------------------------------------------
+
+## An Important Clarification
+
+> ***We have been discussing how mass concentration captures only one
+> aspect of the measurement story. But, I should note it clearly that
+> mass concentration is a very important and extremely useful aspect and
+> we will continue to use it. But, the piece aims at directing attention
+> to other less discussed aspects, which should also become part of
+> mainstream discussions as they are equally (if not more) important.***
+
+Mass concentration correlates with harm well enough that decades of
+research have established air pollution as associated with approximately
+7.9 million premature deaths per year globally [16]. That correlation is
+real, hard-won, and has driven genuine improvements in public health in
+cities that have reduced pollution. Reducing PM2.5 mass saves lives. No
+denying that. But as discussed in this post, "in addition" to this we
+need to keep the following in mind:
+
+A 2024 study drawing on samples from 14 sites across four continents
+found, however, that the relationship between PM2.5 mass and actual
+toxicity is largely non-linear globally — meaning reducing mass does not
+necessarily reduce harm proportionally if the most toxic fractions
+remain [1].
+
+The argument is more precise: mass concentration tells you *how much* is
+in the air. It cannot tell you *what* it is, *where it goes* in the
+body, *what it does* when it gets there, or *where it came from*. Count,
+surface area, oxidative potential, and chemical composition are not
+academic refinements.
+
+They are the questions that explain why identical mass readings in
+different cities produce different disease burdens, why the person near
+traffic breathes something the distant monitor did not capture, why
+Beijing's coal reduction improved health in organs the mass number
+cannot see, and why WUI wildfire smoke carries hazards that existing
+frameworks had not anticipated.
+
+------------------------------------------------------------------------
+
+## The Technology Is Moving — at Different Speeds for Each Metric
+
+The four metrics described in this piece are not hypothetical —
+instruments for measuring count, surface area, and oxidative potential
+already exist. What varies is how far each has travelled from research
+laboratory toward routine monitoring.
+
+**Particle count** is closest to deployment. Field-ready instruments now
+exist — QuantAQ launched the MODULAIR-UFP in May 2025, a condensation
+particle counter designed for continuous outdoor deployment [26]. More
+significantly, EU Directive 2024/2881, which entered into force in
+December 2024, requires all member states to monitor ultrafine particle
+number concentrations, with dedicated monitoring stations where particle
+number and size distribution must be measured continuously [27, 28].
+
+**Oxidative potential** has moved from laboratory to field deployment.
+Multiple independent research groups have developed instruments that
+continuously collect ambient PM2.5 and measure its oxidative activity
+with hourly time resolution [29, 30], deployed in field campaigns in
+Hong Kong and Delhi [29, 31]. The same EU directive explicitly names
+oxidative potential as a required measurement at monitoring stations —
+the first time any major air quality regulation has included it [28].
+The remaining obstacle is standardisation: a 2025 interlaboratory
+comparison across 20 laboratories found substantial variability in
+results between groups using different protocols, and concluded that
+harmonisation is a necessary prerequisite before OP data can be
+meaningfully compared across networks [32]. Different assays capture
+different aspects of oxidative activity, and the field has not yet
+agreed on which combination to standardise [33].
+
+**Surface area** is not independently monitored in any regulatory
+network. It can be derived from particle size distribution data, which
+the new EU directive explicitly requires at monitoring supersites — but
+the derivation is a research step, not a reported public metric.
+
+**Chemical composition** requires laboratory analytical techniques that
+cannot be miniaturised for real-time field use. It remains valuable for
+research and source apportionment, but operates on timescales of weeks
+to months from sample collection to result.
+
+In short: particle count has a regulatory deadline. Oxidative potential
+has a mandate but needs standardisation. Surface area and composition
+remain research-grade. For the two most tractable metrics, the
+infrastructure decisions are being made now.
+
+------------------------------------------------------------------------
+
+## What Can You Actually Do? 
+
+***[Please read the disclaimer at the end for an accurate interpretation
+of this section]:***
+
+The evidence in this piece does not translate into personal risk
+calculations — the science does not support that precision. While the
+monitoring and measurement technology catches up, there are simple
+guidelines you can still refer to, to better protect yourself. A few
+things are either consistently supported across the research or are
+reasonable implications resulting from it:
+
+-   Route matters more than the city-wide number suggests: taking a
+    quieter street over a main road meaningfully reduces exposure to the
+    freshest, most reactive particles, regardless of what the AQI says.
+
+-   A well-fitted N95 or KN95 mask reduces PM2.5 inhalation
+    substantially during high-pollution periods. Shifting outdoor
+    activity away from peak traffic hours reduces exposure in any
+    combustion-dominated city.
+
+-   Keeping windows closed during high-pollution events and opening them
+    for ventilation when air is cleaner is better than assuming fresh
+    air is always better.
+
+-   And running a HEPA air purifier in the room where you sleep — where
+    most people spend seven to nine hours — is likely the single most
+    direct individual intervention with highest returns.
+
+------------------------------------------------------------------------
+
+## **Limitations and What This Piece Can and Cannot Tell You**
+
+The science here is strong in places, early-stage in others. A few
+things to keep in mind before drawing conclusions:
+
+The PM2.5-mortality link is one of the most robustly replicated findings
+in environmental health. Not contested. The risks of arsenic, cadmium,
+PAHs, and black carbon are well-established. The four metrics — mass,
+count, surface area, oxidative potential — are real and their variation
+across sources is directly supported by the cited studies.
+
+Some findings are well-supported but not definitively proven: the
+long-term cardiovascular effects of black carbon in lower-pollution
+European settings, and the Beijing cancer risk projections, which are
+modelled estimates not measured case counts.
+
+Some are early-stage: neurological effects of air pollution, the HIPTox
+trial's cognitive findings with 13 participants, PFAS inhalation health
+effects from wildfire smoke specifically, and SOA effects at real-world
+concentrations.
+
+Throughout this piece, "associated with" means a statistical
+relationship found in a study population — not that pollution caused
+disease in any specific person. These are population-level risk
+patterns, not individual predictions. Each city's profile is a tendency,
+not an exclusive description.
+
+> ***And although 'all PM2.5 is harmful', not all PM2.5 is equally
+> harmful.*** In agricultural regions, ammonium sulfate and nitrate
+> dominate the PM2.5 mass reading while carrying relatively low
+> oxidative potential — a very different situation from diesel or coal
+> combustion particles at the same concentration. The strong health
+> associations in the literature were built largely on
+> combustion-dominated environments, and although they do apply to other
+> environments - whether they apply with "equal force" in cleaner
+> settings is still being figured out.
+
+------------------------------------------------------------------------
+
+## **Conclusion — What the Number Cannot Hold**
+
+We began with a number on an app — checked by millions every morning as
+a guide to the air they are about to breathe. That number is the product
+of genuine scientific effort and regulatory frameworks that have reduced
+pollution and saved lives in many parts of the world.
+
+But a number that only describes weight cannot hold count, surface area,
+chemical composition, or the knowledge of where pollution came from.
+These are not academic refinements — they are the questions that explain
+why identical mass readings in different cities produce different
+disease burdens, and why the interventions that actually work are the
+ones targeted at what the mass number cannot see.
+
+The four cities in this piece are not edge cases. Delhi-type combustion
+pollution affects hundreds of millions across Asia and Africa.
+London-type traffic exposure is the daily reality of most dense cities.
+Beijing showed that tracking composition — not just mass — is what
+allowed policymakers to confirm what they were fixing and which organs
+were becoming safer. Los Angeles illustrated that as the nature of what
+burns changes, the monitoring frameworks designed for twentieth-century
+pollution are increasingly inadequate for twenty-first-century
+exposures.
+
+For particle count and oxidative potential, the infrastructure decisions
+are being made right now. The gap between what is technically measurable
+and what is routinely reported to the public is primarily a question of
+regulatory will and data disclosure. For particle count, the science and
+instrumentation are ready — it is genuinely a policy question. For
+oxidative potential, standardisation of measurement methods across
+laboratories is still in progress, so there remains a technical barrier
+alongside the regulatory one.
+
+The jar has always contained more than the scale can read. The field is
+only now, slowly, learning to look inside it.
+
+## Disclaimer
+
+The information in this piece is provided for general educational and
+informational purposes only. It is not intended as, and should not be
+construed as, medical advice, clinical guidance, or a substitute for
+consultation with a qualified healthcare professional.
+
+The behavioural suggestions in the "What Can You Actually Do?" section
+are a set of general advice and may not be appropriate for every
+individual. People with pre-existing respiratory conditions (such as
+asthma or COPD), cardiovascular disease, or other health conditions;
+pregnant women; older adults; children; and others with specific
+vulnerabilities may face different risk profiles and benefit from
+tailored guidance that this piece cannot provide.
+
+If you have concerns about how air quality may affect your specific
+health circumstances, please consult a qualified medical professional.
+Air quality conditions vary considerably by location, time, and season —
+local public health authorities and healthcare providers are best placed
+to give advice relevant to your personal situation.
+
+------------------------------------------------------------------------
+
+## Glossary
+
+**PM2.5** — Tiny airborne particles small enough to be inhaled deep into
+the lungs. The standard global measure of fine particle air pollution,
+expressed as weight per volume of air — micrograms per cubic meter.
+
+**Microgram per cubic meter (μg/m³)** — The unit PM2.5 is measured in.
+One microgram is one millionth of a gram. One cubic meter is roughly the
+volume of a large wardrobe. A typical grain of table salt weighs around
+20 micrograms — so a PM2.5 reading of 60 μg/m³ means the total weight of
+all floating particles in that wardrobe-sized volume of air is roughly
+equivalent to the weight of 3 grains of salt.
+
+**Aerodynamic diameter** — A way of describing particle size based on
+how it moves through air rather than its physical dimensions — used
+because real particles are irregular lumps, not neat spheres.
+
+**Ultrafine particles** — Particles smaller than 0.1 micrometers — far
+tinier than PM2.5. Not separately regulated. They contribute almost
+nothing to the PM2.5 weight reading but can be present in enormous
+numbers and penetrate very deep into lung tissue.
+
+**Alveoli** — The tiny air sacs at the deepest part of the lungs where
+oxygen passes into the bloodstream and carbon dioxide passes out. Walls
+are only one cell thick. Particles that reach here are very difficult
+for the body to clear.
+
+**Mucociliary escalator** — The lung's built-in cleaning system. Tiny
+hair-like structures lining the airways beat continuously to sweep mucus
+— and any trapped particles — upward toward the throat. Works well for
+larger particles but cannot catch the smallest ones.
+
+**Oxidative potential** — A measure of how chemically aggressive a
+particle is — specifically its capacity to generate reactive oxygen
+species on contact with tissue. Independent of particle weight. Varies
+enormously depending on what the particle is made of.
+
+**Reactive oxygen species (ROS)** — Highly reactive molecular fragments
+produced when certain particles contact biological tissue. They damage
+cell membranes, proteins, and DNA. Think of it as a slow chemical
+assault on living tissue. A key mechanism linking combustion particle
+exposure to cancer and heart disease.
+
+**PAHs (polycyclic aromatic hydrocarbons)** — A family of toxic organic
+compounds formed whenever anything burns incompletely — car engines,
+open fires, coal, crop burning. Several are confirmed human carcinogens.
+The body's attempt to break them down produces intermediates that damage
+DNA directly.
+
+**Black carbon** — The elemental soot core of combustion particles. A
+reliable marker of fresh combustion, especially from traffic.
+Independently associated with cardiovascular disease beyond what PM2.5
+mass alone would predict.
+
+**Agglomerate** — What happens when many tiny fresh particles collide
+and stick together in the air, forming a single larger clump. Reduces
+particle count and surface area while increasing mass per particle.
+
+**Arterial stiffness** — A measure of how rigid the arteries are.
+Stiffer arteries make the heart work harder, which over time is linked
+to higher risk of heart attack and stroke. Used as an early indicator of
+cardiovascular stress in air pollution research.
+
+**Source apportionment** — The practice of chemically fingerprinting
+PM2.5 to work out what fraction came from which source — coal, traffic,
+agriculture, industry, and so on. Tells you not just how much pollution
+there is, but where it came from.
+
+**PFAS (per- and polyfluoroalkyl substances)** — A large family of
+synthetic chemicals used in non-stick coatings, waterproofing, food
+packaging, and firefighting foam. Called "forever chemicals" because
+they resist breaking down in the environment or the body. Released when
+synthetic materials burn. Their health effects from drinking water
+exposure are documented; their specific effects from inhaling wildfire
+smoke are not yet well understood.
+
+**BTEX** — Benzene, toluene, ethylbenzene, and xylene. Toxic chemicals
+released when synthetic materials and fuels burn. Several are confirmed
+or probable human carcinogens.
+
+**Organic aerosols** — Airborne particles made primarily of carbon-based
+compounds, produced when fuels and organic materials burn incompletely.
+High oxidative potential. A major component of PM2.5 in combustion-heavy
+cities.
+
+**Ammonium sulfate / ammonium nitrate** — Secondary particles formed
+when ammonia from farms and fertilisers reacts with acidic gases in the
+atmosphere. They add substantially to PM2.5 mass readings while carrying
+relatively low oxidative potential — an example of where a high PM2.5
+number does not necessarily mean high toxicity.
+
+**Olfactory nerve** — The nerve responsible for smell, running directly
+from the nose to the brain without crossing the blood-brain barrier.
+Animal research suggests ultrafine particles may travel along this
+pathway into brain tissue, though whether this happens in people
+breathing typical outdoor air is still being studied.
+
+**Secondary organic aerosol (SOA)** — Particles that form in the
+atmosphere when gases from combustion or consumer products chemically
+react with each other, creating new compounds that were not present in
+the original emissions. Poorly monitored but a significant fraction of
+total PM2.5.
+
+**Wildland-urban interface (WUI)** — Where residential areas meet
+wildland vegetation. As housing has expanded into fire-prone land, fires
+in these zones have increased in frequency and severity, and their smoke
+is chemically more complex than smoke from forest-only fires.
+
+------------------------------------------------------------------------
+
+## References
+
+[1] Salana, S. et al. (2024). Inter-continental variability in the
+relationship of oxidative potential and cytotoxicity with PM2.5 mass.
+*Nature Communications*, 15, 5263.
+<https://www.nature.com/articles/s41467-024-49649-4>
+
+[2] Saladin, S. (2025–2026). Beyond the Numbers series. AirGradient: -
+PM2.5 is not PM2.5 (Jan 2025):
+<https://www.airgradient.com/blog/pm25-is-not-pm25> - The Fundamental
+Dilemma of Size (Mar 2025):
+<https://www.airgradient.com/blog/pm25-series-part-2/> - The Practical
+Dilemma of Size (Oct 2025):
+<https://www.airgradient.com/blog/dilemma-of-pm25-size/> - The
+Controversy in PM2.5 and Health (Apr 2026):
+<https://www.airgradient.com/blog/the-controversy-in-pm25-and-health>
+
+[3] Fatima, S. et al. (2022). Physico-chemical properties and deposition
+potential of PM2.5 during severe smog event in Delhi, India.
+*International Journal of Environmental Research and Public Health*,
+19(22), 15387. <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9690713/>
+
+[4] Bhattu, D. et al. (2024). Local incomplete combustion emissions
+define the PM2.5 oxidative potential in Northern India. *Nature
+Communications*, 15, 3517.
+<https://www.nature.com/articles/s41467-024-47785-5>
+
+[5] Gao, D. et al. (2020). Characterization and comparison of PM2.5
+oxidative potential assessed by two acellular assays. *Atmospheric
+Chemistry and Physics*, 20, 5197–5210.
+<https://acp.copernicus.org/articles/20/5197/2020/>
+
+[6] Lim, J.U. et al. (2022). Narrative review: association between lung
+cancer development and ambient particulate matter in never-smokers.
+*Journal of Thoracic Disease*, 14(2).
+<https://jtd.amegroups.org/article/view/60538/html>
+
+[7] Sinharay, R. et al. (2018). Respiratory and cardiovascular responses
+to walking down a traffic-polluted road compared with walking in a
+traffic-free area. *The Lancet*, 391(10118), 339–349.
+<https://www.thelancet.com/journals/lancet/article/PIIS0140-67361732643-0/fulltext>
+
+[8] Gan, W.Q. et al. (2011). Long-term exposure to traffic-related air
+pollution and the risk of coronary heart disease hospitalization and
+mortality. *Environmental Health Perspectives*, 119(4), 501–507.
+<https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3080932/>
+
+[9] Samoli, E. et al. (2016). Associations of short-term exposure to
+traffic-related air pollution with cardiovascular and respiratory
+hospital admissions in London, UK. *Occupational and Environmental
+Medicine*, 73(5), 300–307.
+<https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4853598/>
+
+[10] Zhang, T., Chen, Y. & Xu, X. (2020). Health risk assessment of
+PM2.5-bound components in Beijing, China during 2013–2015. *Aerosol and
+Air Quality Research*, 20, 1938–1949.
+<https://aaqr.org/articles/aaqr-20-03-baq-0108>
+
+[11] Cha, Z. et al. (2025). Atmospheric heavy metal pollution
+characteristics and health risk assessment across various type of cities
+in China. *Toxics*, 13(3), 220.
+<https://pmc.ncbi.nlm.nih.gov/articles/PMC11945492/>
+
+[12] Benmarhnia, T., Errett, N.A. & Casey, J.A. (2025). Beneath the
+smoke: Understanding the public health impacts of the Los Angeles urban
+wildfires. *Environmental Epidemiology*, 9(3), e388.
+<https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12040033/>
+
+[13] Rizzo, L.V. & Rizzo, M.C.F.V. (2024). Wildfire smoke and health
+impacts: a narrative review. *Jornal de Pediatria*, 101(3), 241–250.
+<https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11962561/>
+
+[14] Cedeño-Laurent, J.G. et al. (2025). Chemical complexity and
+enrichment in wildland–urban interface fire emissions: a case study of
+particulate matter, gas-phase pollutants, and ash from the 2025 Los
+Angeles fires. *Environment International*.
+<https://www.sciencedirect.com/science/article/abs/pii/S030438942601335X>
+
+[15] Solan, M.E. & Park, S. (2024). Per- and poly-fluoroalkyl substances
+(PFAS) effects on lung health. *Frontiers in Toxicology*, 6.
+<https://www.frontiersin.org/journals/toxicology/articles/10.3389/ftox.2024.1423449/full>
+
+[16] Health Effects Institute. (2025). State of Global Air Report 2025.
+<https://www.stateofglobalair.org/>
+
+[17] California Council on Science and Technology (2025). Wildland Fire
+Smoke and Public Health.
+<https://ccst.us/reports/wildland-fire-smoke-and-public-health/> *Note:
+Policy report*
+
+[18] Kumar, M. et al. (2025). Compounding effects of climate change and
+WUI expansion quadruple the likelihood of extreme-impact wildfires in
+California. *npj Natural Hazards*, 2, 17.
+<https://www.nature.com/articles/s44304-025-00067-6>
+
+[19] Carey, I.M. et al. (2016). Traffic pollution and the incidence of
+cardiorespiratory outcomes in an adult cohort in London. *Occupational
+and Environmental Medicine*, 73(12), 849–856.
+<https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5241502/>
+
+[20] Dehbi, H.M. et al. (2017). Air pollution and cardiovascular
+mortality with over 25 years follow-up: a combined analysis of two
+British cohorts. *Environment International*, 99, 275–281.
+<https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5292102/>
+
+[21] Wolf, K. et al. (2021). Long-term exposure to low-level ambient air
+pollution and incidence of stroke and coronary heart disease: ELAPSE
+project. *The Lancet Planetary Health*.
+[https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(21)00195-9/fulltext](https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(21)00195-9/fulltext){.uri}
+
+[22] Faherty, T. et al. (2026). Neurological and respiratory outcomes of
+the HIPTox controlled double-blind air pollution exposure trial. *npj
+Clean Air*, 2, 34. <https://www.nature.com/articles/s44407-026-00068-3>
+
+[23] Cheng, Z. et al. (2025). Quantifying black carbon emissions from
+traffic and construction in central London using eddy covariance.
+*Environmental Science: Atmospheres*.
+<https://pubs.rsc.org/en/content/articlelanding/2025/ea/d5ea00039d>
+
+[24] Zhang, Y. et al. (2023). High-time-resolution chemical composition
+and source apportionment of PM2.5 in northern Chinese cities:
+implications for policy. *Atmospheric Chemistry and Physics*, 23,
+9455–9471. <https://acp.copernicus.org/articles/23/9455/2023/>
+
+[25] Connolly. et al. (2024). Mortality attributable to PM2.5 from
+wildland fires in California from 2008 to 2018. *Science Advances*,
+10(24). <https://www.science.org/doi/10.1126/sciadv.adl1252>
+
+[26] QuantAQ. (2025). QuantAQ launches MODULAIR-UFP: ultrafine particle
+monitoring for outdoor applications. *GlobeNewswire*, 20 May 2025.
+<https://www.globenewswire.com/news-release/2025/05/20/3085247/0/en/QuantAQ-Launches-MODULAIR-UFP-Ultrafine-Particle-Monitoring-for-Outdoor-Applications.html>
+
+[27] TSI Incorporated. (2024). The new EU Ambient Air Quality Directive:
+EPA guide.
+<https://tsi.com/resources/ufp-monitoring-fundamentals-and-more/the-new-eu-ambient-air-quality-eu-directive-addressing-environmental-protection-agencies-epas>
+*Note: Industry guidance document summarising Directive (EU) 2024/2881
+and EN 16976:2024.*
+
+[28] European Environment Agency. (2025). Benchmark analysis against the
+standards in the revised directive (EU) 2024/2881. *Air Quality Status
+Report 2025*.
+<https://www.eea.europa.eu/en/analysis/publications/air-quality-status-report-2025/benchmark-analysis-against-the-standards-in-the-revised-directive-eu-2024-2881>
+
+[29] Chen, H. & Yu, J.Z. (2025). An online instrument for assessing
+oxidative potential of ambient particulate matter via dithiothreitol
+assay, using particle-into-liquid sampler (PILS) coupled with improved
+light absorption measurement. *Atmospheric Environment*, 343, 120980.
+<https://doi.org/10.1016/j.atmosenv.2024.120980>
+
+[30] Barbero, A. et al. (2025). Qualification of an online device for
+the measurement of the oxidative potential of atmospheric particulate
+matter. *Atmospheric Measurement Techniques*, 18, 7085–7104.
+<https://doi.org/10.5194/amt-18-7085-2025>
+
+[31] Puthussery, J.V. et al. (2020). Real-time measurements of PM2.5
+oxidative potential using a dithiothreitol assay in Delhi, India.
+*Environmental Science & Technology Letters*, 7(7), 504–510.
+<https://doi.org/10.1021/acs.estlett.0c00342>
+
+[32] Dominutti, P. et al. (2025). An interlaboratory comparison to
+quantify oxidative potential measurement in aerosol particles:
+challenges and recommendations for harmonisation. *Atmospheric
+Measurement Techniques*, 18, 177–195.
+<https://doi.org/10.5194/amt-18-177-2025>
+
+[33] Camman, J. et al. (2024). Oxidative potential apportionment of
+atmospheric PM1: a new approach combining high-sensitive online
+analysers for chemical composition and offline OP measurement technique.
+*Atmospheric Chemistry and Physics*, 24, 3257–3278.
+<https://doi.org/10.5194/acp-24-3257-2024>
+
+[34] Brand et al. (2019). Impact of route choice and period of the day
+on cyclists' exposure to black carbon in London, Rotterdam and São
+Paulo. *Transportation Research Part D*, 68, 59–73.
+[https://www.researchgate.net/publication/332032127_Impact_of_route_choice_and_period_of_the_day_on_cyclists'\_exposure_to_black_carbon_in_London_Rotterdam_and_Sao_Paulo](https://www.researchgate.net/publication/332032127_Impact_of_route_choice_and_period_of_the_day_on_cyclists'_exposure_to_black_carbon_in_London_Rotterdam_and_Sao_Paulo){.uri}
+
+[35] Hofman et al. (2018). Cyclist exposure to black carbon, ultrafine
+particles and heavy metals: an experimental study along two commuting
+routes near Antwerp, Belgium. *Environmental Research*, 164, 530–538.
+<https://www.sciencedirect.com/science/article/abs/pii/S0013935118301245>
+
+------------------------------------------------------------------------
+
+## Support This Work: Give It a Star
+
+Thank you for reading! If you found this project helpful or interesting,
+please consider starring it on GitHub. Your stars help others discover
+and benefit from this fully open and free repository. Click [here to
+star the
+repository](https://github.com/AarshBatra/biteSizedAQ/stargazers) and
+join the growing community of folks who follow biteSizedAQ.
+
+------------------------------------------------------------------------
+
+## Get in touch
+
+Get in touch about related topics/report any errors. Reach out to me at
+bitesizedaq\@gmail.com.
+
+------------------------------------------------------------------------
+
+## License and Reuse
+
+All content under **biteSizedAQ** is shared under the **Creative Commons
+Attribution 4.0 International (CC BY 4.0) license**. You are welcome to
+use this material in your reports or news stories—just remember to give
+appropriate credit and include a link back to the original work.
+
+Every effort is made to ensure that only original or appropriately
+licensed material is shared. If any copyrighted content has been used
+inadvertently, please note that this is unintentional, and I will
+promptly address it upon notification.
+
+Thank you for respecting these terms!
