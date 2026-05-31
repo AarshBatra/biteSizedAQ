@@ -10,7 +10,7 @@ those particles actually are. This piece explains four additional things
 that matter beyond weight — how many particles there are, how much
 surface area they present to your lungs, how chemically aggressive they
 are, and what they are actually made of. It then walks through four
-cities — Delhi, London, Beijing, and Los Angeles — each representing a
+cities — Delhi, London, Beijing, and Los Angeles - each representing a
 different pollution profile that the standard number cannot distinguish.
 A glossary is at the end for quick reference while reading; a
 limitations section and conclusion follow the city profiles.
