@@ -1,6 +1,8 @@
 
 # The Same Number on Your Air Quality App Could Be Four Different Kinds of Bad — Based on Where You Are
 
+![](images/clipboard-1753913010.png)
+
 **What this piece covers, a quick summary:** The PM2.5 air quality
 number on your phone is based on the weight of tiny particles in the
 air. But weight alone turns out to be an incomplete guide to how harmful
@@ -350,6 +352,12 @@ particle).
 > through if they are small enough. The sieve cannot tell their chemical
 > nature apart.
 >
+> ![](images/clipboard-46980168.png)
+>
+> ***Image Source:** Different types and sizes of fine particulate
+> matter: soot mixed with inorganic and organic compounds.
+> [Link](https://www.nature.com/articles/s41612-024-00610-8/figures/1).*
+>
 > The sieve also has one imperfection worth knowing about. The cutoff is
 > not perfectly sharp — some particles slightly above 2.5 micrometers in
 > diameter slip through and get counted anyway \[2\]. This matters
@@ -420,6 +428,11 @@ types, not exceptional cases.
 > and those differences can lead to very different health consequences.
 
 ## Delhi — A City Where Every Combustion Source Burns at Once
+
+![](images/clipboard-4114803299.png)
+
+> *Image Source:
+> [Link](https://www.scobserver.in/journal/delhi-pollution-crisis-can-the-supreme-court-clear-the-air/)*
 
 *Most characteristic profile: biomass, vehicle exhaust, and residential
 burning layered simultaneously, trapped by geography*
@@ -511,6 +524,10 @@ explain why it can be so much more concerning then what it appears to
 be.
 
 ## London — Where the Measurement-Exposure Gap becomes Visible
+
+![](images/clipboard-395153640.png)
+
+> *Image Source**:*** Guy Bell/Alamy Stock Photo
 
 *Most characteristic profile: combustion particles that transform
 between emission and measurement, creating a hidden exposure gap near
@@ -648,6 +665,11 @@ the way.
 
 ## Beijing — When Coal Declined, the Air Told a Different Story
 
+![](images/clipboard-286725710.png)
+
+> *Image Source: Getty Images and [this
+> Article](https://www.bbc.com/news/world-asia-china-35028483)*
+
 *Most characteristic profile: a city that was coal-dominated until
 recently — and whose dramatic improvement shows exactly why composition
 monitoring matters more than mass monitoring alone*
@@ -771,6 +793,12 @@ city, for every pollution source, if composition monitoring were routine
 rather than exceptional.
 
 ## Los Angeles — When the Suburbs Burn
+
+![](images/clipboard-198990295.png)
+
+> *Image Source: The Eaton fire burns a bus stop in Altadena,
+> California. Ethan Swope/AP.
+> [Link](https://www.theguardian.com/world/2025/jan/09/los-angeles-wildfires-climate-disasters).*
 
 *Most characteristic profile: wildfire smoke, increasingly from fires
 burning through built-up areas, releasing chemical compounds no prior
