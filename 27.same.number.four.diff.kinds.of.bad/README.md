@@ -1,7 +1,7 @@
 
 # The Same Number on Your Air Quality App Could Be Four Different Kinds of Bad — Based on Where You Are
 
-![](images/clipboard-1753913010.png)
+![](images/clipboard-2759319217.png)
 
 **What this piece covers, a quick summary:** The PM2.5 air quality
 number on your phone is based on the weight of tiny particles in the
