@@ -57,7 +57,8 @@ find time. To kick things off, check out the first few projects below!
 *Two years writing about air pollution, and what it taught me about why
 we keep solving ourselves into new problems*
 
-Link to the full blog post: Link
+Link to the full blog post:
+[Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/28.coming.clean.about.the.planet)
 
 ## Project 27: The Same Number on Your Air Quality App Could Be Four Different Kinds of Bad — Based on Where You Are
 
