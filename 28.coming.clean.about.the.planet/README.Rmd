@@ -1,0 +1,558 @@
+---
+output: github_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# Coming Clean About the Planet
+
+*Two years writing about air pollution, and what it taught me about why
+we keep solving ourselves into new problems*
+
+biteSizedAQ is 2 years old this June!
+
+Two years ago I started biteSizedAQ. The plan was to write easy to
+understand posts about complex themes in the air quality literature.
+Somewhere along the way the themes got more personal - what it means for
+an individual when air quality is bad, not just the city they live in as
+a whole. I kept meaning to write about air and kept ending up writing
+about the creature breathing it, the one that pollutes and cleans up
+after itself in the same afternoon.
+
+So before I go back to charting air pollution, I want to set down where
+this has actually taken me — not from above the problem but from inside
+it, breathing the same air and making the same compromises I'm about to
+pick apart.
+
+In this post, I'll go through a series of behavioral themes and unpick
+them to put forward how I understand and view air pollution as an
+societal/environmental problem. The conclusions I derive here are more
+generally applicable to other fields. These views are my own and may or
+may not match your thinking. This post's objective is not to convince
+you of my thinking but rather put forward my take on how I view the
+human race in the context of general problem solving. The idea is to
+identify and address certain forms of hypocrisy so that we can better
+understand the problems that arise in front of us and the hope is that
+will allow us to take more realistic actions to address them.
+
+## We Want to Survive, Just Not Inconveniently
+
+Most of what humans call "saving the planet" is self-preservation
+wearing a better coat. We want to live, but we'd also prefer to ideally
+not to give up anything we like in order to do it.
+
+You can watch the pattern repeat for more than a century. We built cars
+running on petrol to climb out of a genuine catastrophe, because by the
+late 1800s large cities around the world were drowning in horse manure
+and everything that bred in it. At the time, the car was the clean
+option. Then the exhaust from the clean option turned out to be killing
+us slowly, and now we're busy phasing it out. We built air conditioning
+to survive heat that genuinely kills, and ran it on enough electricity
+to warm the planet we were trying to stay cool on, so now we're shopping
+for an alternative to the alternative. Plastics arrived as a miracle,
+cheap and sterile and good for everything. Researchers now pull
+microplastics out of human placentas. We sprayed DDT on the mosquitoes
+that were killing us, then watched it move up the food chain and thin
+the eggshells of bald eagles and peregrine falcons until both nearly
+blinked out. We split the atom for clean and limitless power, but at a
+later point Chernobyl happened, the reactor that melted down and
+poisoned a whole region, plus waste that stays dangerous longer than our
+entire written history. Fix a thing, break a thing, go again.
+
+Let me be extremely clear - none of this was stupidity. Each move was
+the sane choice with the facts available at the time. The manure really
+was a public health disaster. Heat really does kill. We don't keep
+choosing wrong, exactly. We keep choosing in a hurry, and the cost shows
+up later, paid by someone else.
+
+But, what's the alternative then - to not do anything? Of course, NOT.
+
+Answering this clearly is the heart of this post and I'll get into this
+in the coming sections.
+
+## The Gap We Paper Over
+
+I want to be careful here, because I'm describing a habit of mind, not
+throwing a punch.
+
+Most people don't love the planet. Not the way they say at dinner
+parties. If we did, we'd stop, full stop: stop driving, stop flying,
+stop eating beef that crossed an ocean to reach the plate, stop
+scrolling on a phone built from cobalt and other metals mined, often
+brutally, in places like Congo.
+
+We don't stop. We want the convenience and the clean air and the quiet
+flattery of thinking ourselves green. We buy the electric car and feel
+virtuous and skate right past the lithium mine and the coal plant
+feeding the charger. We recycle one yogurt cup and feel like we've made
+up for a whole week of throwing things away.
+
+The hypocrisy isn't the harm. It's the gap between what people say they
+value and what they actually do, and the story we tell ourselves to
+cover that gap. We need to be true to ourselves because otherwise we
+have two problems at hand - the dying planet and the untrue individual
+trying to save it.
+
+I want to be clear about one thing up front. This is not a tale of
+humans as victims. Nobody is being dragged into this against their will.
+Look around and you'll find plenty of people who know exactly what
+they're doing to the planet and feel nothing about it, working like
+pirates: take what you can, bank the profit, leave the wreckage on a
+coastline that belongs to someone else. That mode eats its own
+foundation; it can't last. The opposite pole is just as useless, though,
+the daydream of perfect purity, of some scrubbed humanity that consumes
+nothing and touches nothing and floats over the land like a congregation
+of saints. A species that turned down every comfort on principle
+wouldn't be holy — it would be dead, because refusing all use of the
+world is just a slow way of refusing to live in it.
+
+Neither pirate nor saint, then, but somewhere in the awkward middle in
+this broad spectrum — and the honest thing to admit is that we haven't
+located that middle yet. That isn't weakness of will; it's a hard
+problem, and we're still early.
+
+So here is something that people rarely say aloud, which is exactly why
+the hypocrisy act keeps running. We are going to keep taking from the
+planet. We'll drive and fly and consume and leave marks. And when we do
+try to ease up on the harm, we do it for two reasons at the same time,
+and the trouble starts the moment we pass one off as the other:
+
+-   Reason one is keeping ourselves alive. We want clean air because
+    dirty air kills us. We want a stable climate because the unstable
+    kind comes for our houses, our crops, our kids. There's nothing
+    noble in it; it's survival, the same reflex that makes you flinch
+    from a flame, just stretched across a whole species and a longer
+    clock.
+
+-   Reason two is real too, and I won't let the first one swallow it.
+    There's a genuine pull (evolutionary or altruistic) in us toward
+    being in tune with the living natural world, and it doesn't reduce
+    to pure self-interest. People protect animals they'll never eat or
+    sell or even lay eyes on. We spend money and pass laws to save a
+    far-off marsh, a stretch of reef, a particular birdsong that does
+    precisely nothing for our immediate survival. People mourn a fallen
+    tree they had no use for. We act on it at a sunk cost to ourselves,
+    and acting at a sunk cost is the only proof (or as close to a proof
+    as we can get) a value was ever real. It isn't something we merely
+    claim to feel, and it isn't a rounding error against self-interest
+    either — it's a real force.
+
+The honest move isn't to rank the two reasons, because the ratio is
+different in every person. In some, the love runs deep enough to drive
+real sacrifice. In most, if we're being straight, self-interest wins
+out. Sometimes that's plain indifference, even malice — the people who
+know exactly what they're doing and simply don't care. But for a great
+many it's something more ordinary than that: either they never sat with
+the question even when they easily could have, which is the comfortable
+and the rich who had every resource to think it through and didn't
+bother, or they were too busy surviving to afford the question at all,
+which is the people in extremely resource constrained settings for whom
+getting to tomorrow blots out any abstraction about nature. All of them
+harm the planet, but none is a hypocrite "the moment they own which
+reason is actually driving".
+
+So the hypocrisy was never the harm itself. It's that we called it love
+when, for most of us most of the time, it was mostly fear with a bit of
+love mixed in. Say that honestly — that we act partly to save ourselves
+and partly out of real care, in whatever proportion is actually true for
+you — and there's no longer a lie to catch you out, because your words
+finally match what you do. But honesty is only the easy half. Matching
+your words to your actions by admitting the truth doesn't change the
+actions; the harder half is to actually take less and wound less, for
+whatever reason moves you — because it'll save your own skin, because
+you happen to love the place, or both. Owning your motives isn't a free
+pass to keep taking whatever you want. It just clears away the
+pretending, so the real work starts from the truth instead of from a
+flattering story about it.
+
+## Comfort and Harm Aren't Welded Together
+
+There's a thread of hope I don't want to drop. The link between living
+well and wrecking the place we live in is not a law of physics. It's
+just the way we happen to have done it so far.
+
+Wanting to be cool in a heatwave does not require cooking the
+atmosphere; that's a fact about how we built air conditioning, not about
+the wish to be comfortable. Wanting to go places does not require a haze
+of tailpipe smog. Wanting light after dark once meant whale oil, then
+meant a great deal of coal, and now means steadily less. Comfort and
+damage arrived bundled together, but nothing fused them at the level of
+nature. In principle we can keep the comfort and unpick the damage.
+That's not soft optimism. It's just noticing that the knot was tied by
+circumstance, which means it can be untied over time with real work.
+
+## The Rope and the Wolves
+
+Here's the picture this keeps coming back to. I like to think of it in
+this way:
+
+You're hanging off a cliff. Someone drops a rope down to you. Up at the
+top, where the rope is anchored, you can see wolves pacing. Almost every
+time, all through our history, we've grabbed the rope and climbed
+anyway. The rope is whatever fast fix gets us off the ledge we're on
+right now, the technology or the policy that ends the emergency in front
+of us. The wolves are what's waiting at the top, the new problem the fix
+creates, the one that won't bite until later.
+
+Fossil fuels were a rope. They hauled us off the horse-manure ledge, and
+the wolves were a warming planet and polluted sky. CFCs were a rope;
+they solved refrigeration, and the wolves tore a hole in the ozone
+layer, the part of the atmosphere that shields us from the sun's harmful
+rays. Industrial monoculture, vast fields planted with a single crop,
+was a rope that fed billions, and the wolves were soil scraped down to
+dust. We grab, we climb, we swap one way to die for another, and we file
+the swap under progress.
+
+## Sometimes There's No Time to Look Up
+
+I owe you the obvious objection, because it's where most "slow down and
+think" preaching falls flat.
+
+Sometimes you really don't have a second to study the wolves. When COVID
+hit, the ground was coming up fast, and we grabbed every rope within
+reach: lockdowns, vaccines under emergency authorization, protocols
+invented on the fly. That was the correct call. When the cliff face is
+actually crumbling under your fingers, "hang here and think through
+everything this might cause down the line" isn't wisdom, it's a way to
+fall. Triage is real, and speed is occasionally the entire job.
+
+But statistically speaking, most of what we face is not COVID like
+problems. Most of the time the cliff is solid. We're hanging there,
+uncomfortable, sure, but not dropping or dying this second. And in those
+moments, which are most moments, we act as though the building's on fire
+regardless. We snatch the first rope with emergency-room urgency when we
+actually had time to look up, study the rock, and pick a line with fewer
+wolves at the end of it.
+
+Take AI, which sits in my head most days now. In AIs case, the building
+is not on fire — nobody is dying today because we paused to think about
+it. We have some time, not endless time but real time, to decide what
+we're building before it's built past the point of changing. Racing to
+ship versus pausing to steer is not a choice between progress and
+paralysis. It's a choice between a future we can stand in and one that
+just happens to us. Taking the time isn't cowardice; it's the gap
+between climbing toward something and scrambling upward because the rope
+was right there.
+
+So the rule isn't "always wait." It's closer to: be honest about whether
+this is actually a life threatning (e.g. COVID) emergency or whether
+you're just telling yourself it is, because we are remarkably good at
+inventing urgency and jumping to quick solutions to get out of thinking
+clearly to build something that has a long term vision.
+
+## The Same Shape, Over and Over
+
+Once the rope-and-wolves analogy is in your eye, you find it everywhere,
+well past air quality.
+
+With AI, the rope is shipping the most capable model before anyone else,
+and the wolves are everything we didn't slow down to get right, the
+social and economic and safety fallout we're now discovering in real
+time, on ourselves, after the thing is already out in the world.
+
+With biotech, the rope is curing the disease and editing the gene, and
+the wolves are whatever an edit does three generations downstream, or a
+world where the rich can simply buy better children.
+
+With geoengineering, the rope is dimming the sun to cancel the heat we
+trapped, a fix on top of a fix on top of a fix, with the whole sky as
+the test rig and no undo.
+
+Social media was a rope marked "connection," and we're only now learning
+the wolves' names: a generation's scrambled and short attention span, a
+snapped thread of shared reality.
+
+Ultra-processed food was a rope that aimed to address hunger and
+convenience, and the wolves are a slow epidemic of chronic disease. It's
+always the same shape: a rope thrown at the exact moment we feel
+desperate, or have talked ourselves into feeling desperate, and grabbed
+without a glance up.
+
+## We Don't Stop. We Manage.
+
+Here's the part that's bothered me most, and it cuts under the timing
+question. Even when we climb well, even when we pick the smart rope and
+check for wolves first, I'm not sure we ever stop leaving a residue.
+
+Look closely and you'll see we hardly ever erase a harm. We move it. We
+manage it. We park it somewhere quieter and announce the problem solved.
+
+We didn't stop making trash; we just learned to put it elsewhere, buried
+in landfills, shipped overseas, or loose in the ocean, where plastic now
+gathers in swirling patches, e.g. the Great Pacific Garbage Patch,
+bigger than a country like Mongolia.
+
+We didn't end e-waste; a lot of it gets stripped and burned in places
+like Agbogbloshie in Accra, where for years young men set fire to cable
+insulation over open flames to get at the copper underneath, breathing
+whatever came off it.
+
+And the clean future we're proud of trails its own exhaust, already
+stacking up. The electric revolution runs on lithium-ion batteries, a
+large share of which still go unrecycled, piling up faster than we've
+built the means to reclaim them.
+
+The solar panels going up on every other roof last twenty-five or thirty
+years and then turn into a stream of laminated glass and metal that ends
+up in landfills most of the time, for lack of anywhere better to send
+it.
+
+Even the rescue leaves a residue at the top of the cliff.
+
+This is what I've come to believe, slowly and against my own preference:
+take-and-manage may be the condition we're stuck with for a long time
+yet. We use, then we manage what's left. Then we invent something
+better, use that, and manage what that leaves behind. Maybe, far enough
+out — centuries, tens of thousands of years — we close the loop
+completely and learn to live weightlessly beside the world. But that's a
+distant horizon, not a near one. For now, and for a long stretch ahead,
+the load doesn't reach zero. It only changes shape.
+
+And there's a nasty wrinkle that was formalized by an economist named
+William Stanley Jevons in his book called *The Coal Question*. He
+noticed that as steam engines got better at burning coal, Britain didn't
+burn less of it — it burned far more, because efficiency made coal
+cheaper to use, so we used it for everything. People now call this
+Jevons' Paradox, and it has held up ever since. Better engines grew our
+appetite for fuel; cheaper light meant we lit up the whole night and
+never turned it off. Efficiency is a rope too. Whatever we gain in
+taking less per use, we tend to give right back in taking more by
+consuming a whole lot more in aggregate.
+
+## Is Real Harmony Even Possible?
+
+This is the question two years has left me holding. Not the carbon
+bookkeeping that lets us keep flying as long as we pay someone elsewhere
+to plant trees, but the real thing: progress that draws on the world to
+build something extraordinary and leaves no wound behind. A state where
+the load actually hits zero.
+
+I don't know, and nobody does. Maybe it's a real place, a future where
+every loop closes, where one process's waste is always another's raw
+material, where we take and the system mends as fast as we take. Or
+maybe it's a horizon, the kind that backs away at exactly your walking
+speed, a lovely hypothesis we steer by and never reach.
+
+Here's why I think it's worth steering by anyway. A species that aims at
+harmony and falls short still ends up somewhere far better than one that
+never aimed. The point of a North Star was never arrival. It's that it
+keeps you walking a straight line in the dark. And we are getting
+better, clumsily, with constant backsliding, but measurably.
+
+A river in Ohio, the Cuyahoga, was so thick with oil and industrial
+filth that it caught fire more than once; the 1969 blaze became a symbol
+that helped push through the Clean Water Act and the EPA, and today
+there are fish in it again.
+
+The ozone hole opened, we banned the chemicals tearing at it, and it's
+closing.
+
+We took the lead out of petrol and the air got cleaner. The arc is real
+even with the destination in doubt.
+
+Maybe harmony is something we close in on forever without quite
+touching, getting nearer each generation, carrying a little less,
+wounding a little less.
+
+That wouldn't be failure. That's just what it feels like to climb a
+cliff with no visible top.
+
+## In Defense of Solving Things
+
+Let me be flat about what I'm NOT saying.
+
+This is NOT a case against solving things. Solving things is the best
+trick we have. It's why we outlasted the manure crisis and the smallpox
+that wiped out whole populations and the famines that used to arrive as
+regularly as the seasons.
+
+We are alive in numbers and comfort no ancestor could have pictured, and
+we are alive that way because we keep grabbing ropes. The urge to climb
+is not a flaw; it's the whole reason we got this far up the wall. Every
+rope I've talked about here also saved lives, and most of the
+fixes-on-top-of-fixes are still, on balance, worth it. Saying otherwise
+would be its own dishonesty.
+
+So please don't read any of this as stop climbing. That's the one
+conclusion I'm not arguing for. A species that stops solving doesn't
+grow wise; it dies of the first problem it loses its nerve against.
+
+Caution that hardens into paralysis kills just as surely as
+recklessness. It only does it slower, and calls itself prudence. The aim
+was never fewer ropes. It was to grab them with our eyes open.
+
+## What It Buys Us to See the Pattern
+
+All of this is largely behavioral. It's a reflex. Desperation lands, a
+fix appears, relief floods in, and we grab and climb before the relief
+wears off — take first, manage the mess later, look up never. It's the
+same loop under air pollution and AI and the battery graveyard and the
+floating garbage: the same shape, a different rope.
+
+The useful thing about a reflex is that the instant you can see it, you
+get a sliver of control over it. The aim was never to stop being
+problem-solvers; that's our best trait. And the reflex that comes with
+it, the lunge for the nearest rope, isn't always wrong; sometimes the
+cliff is crumbling and grabbing fast is right. The trouble is when it
+fires out of comfort or false sense of self created urgency, when we had
+time to look up and didn't. You wouldn't want to switch off the impulse
+completely - that's not ideal. But you can catch it mid-swing and ask
+whether this is really the moment to act or do I need to think a bit
+more? Am I being duped by my senses into a false sense of urgency?
+Understanding these nuances is the difference between the loop running
+you and you running the loop.
+
+Breaking the habit completely, this cycle of taking what we need and
+then cleaning up the cost afterward, isn't something we can do yet, and
+won't be for a long time. So the realistic goal isn't escape. This is
+how we'll keep working, probably for generations: fix what's in front of
+us, then handle whatever that fix leaves behind. There's no clever
+shortcut out of that cycle for now, and pretending otherwise only wastes
+energy we could spend doing better things. The difference that's
+actually within reach is running the cycle with our eyes open instead of
+on reflex.
+
+Which means holding two true things at the same time.
+
+-   The first: we are likely going to keep taking resources from the
+    world, drawing on it to live and build, for as far ahead as anyone
+    can sensibly see.
+
+-   The second: the amount of damage that taking does is not fixed. We
+    can take in ways that wound less than they used to, and less still
+    after that, trimming the harm a little with each turn of the cycle.
+
+Neither half cancels the other. The work, the whole of it, is to keep
+both in view at once, to accept that we'll go on taking without letting
+that become permission to stop caring how much it costs.
+
+## Conclusion: Look Up First, and What That Actually Means
+
+When I say look up first, I mean something concrete, not just a nice
+metaphor.
+
+Looking up first is what separates a solution from a postponement. It's
+the handful of seconds where you ask the questions the relief wants you
+to skip. What does this break downstream? Who pays, and when? Where does
+it physically go when we're done with it, and is "somewhere else" really
+the same as gone? What's the exhaust, the runoff, the battery graveyard
+I'll be writing about in thirty years? Looking up is working out the
+knock-on consequences before you commit, instead of after the damage
+turns up in someone's blood. It's taking the slightly harder rope today,
+the one with fewer wolves up top, over the easy one that borrows against
+tomorrow.
+
+And it buys something concrete. It's the difference between banning
+leaded petrol in time and breathing it for another generation. Between
+phasing out the ozone chemicals while the hole could still close and
+finding out the hard way that it couldn't. Between an AI future we
+steered and one that merely happened to us. Looking up is what turns "we
+survived the crisis" into "we survived it without planting the next
+one."
+
+It doesn't even slow us down much; the lead ban and the ozone recovery
+are proof you can look up and still climb fast. It just means that each
+time we haul ourselves over a ledge, we land a little nearer to harmony
+than last time, carrying a little less, instead of trading one cliff for
+the next forever and calling the fall progress.
+
+So where does two years of this leave me? Not repentant, because I
+wasn't pretending in the first place — I was clear-eyed about this from
+the start, and that was never the problem. The problem is collective, in
+how we talk about ourselves: a civilization that claims to love a planet
+it keeps wounding, mistaking its fear for devotion. The fix isn't to
+climb less, and it isn't to manufacture guilt. It's to say the true
+thing out loud — that we'll go on taking resources from the world, that
+we try to take less for two reasons that are both real, the loud one
+that wants to survive and the quiet one that actually loves the place,
+and that the proportion is different in each of us and is nobody's to
+fake. The honesty doesn't stop the harm, and it won't make anyone a
+saint or close the cliff. What it does is close the one gap that can
+actually be closed: the one between what we say and what we do.
+
+And maybe that's enough to be going on with. Honesty about our motives
+won't unmelt a glacier or refill an aquifer, but it changes the kind of
+climbers we are. It lets us stop spending energy on the performance of
+virtue and put it toward the slower work of actually wounding less —
+better batteries, closed loops, ropes chosen with the wolves in full
+view. It lets us forgive ourselves for being the contradictory animal we
+are, comfort-seeking and genuinely loving at once, without using that
+forgiveness as a license to stop trying. We don't have to choose between
+the pirate and the saint. We can be the third thing: people who keep
+taking what they need, keep building extraordinary things, and keep
+inching toward a way of living that takes a little less each time, with
+their eyes open and their reasons admitted. That won't get us to perfect
+harmony, which may not exist. But it points us at it, and a species
+pointed at harmony is a better neighbor to the rest of life than one
+that never looked up at all.
+
+We may never reach the top. But there's all the difference in the world
+between climbing while lying to ourselves about why, and climbing with
+our reasons — fear and love both — finally out in the open.
+
+## Sources
+
+-   **Microplastics in human placenta:** "Microplastics Found in Every
+    Human Placenta Tested" — ScienceAlert, 2024.
+    <https://www.sciencealert.com/microplastics-found-in-every-human-placenta-tested-study-finds>
+
+-   **Microplastics in newborns / cord blood:** "Microplastic Particles
+    Detected in Fetal Cord Blood, Placenta, and Meconium" — *Toxics*
+    (MDPI), 2024. <https://www.mdpi.com/2305-6304/12/12/850>
+
+-   **DDT and eggshell thinning, bald eagles and falcons:** Scientific
+    American, 2024.
+    <https://www.scientificamerican.com/article/rachel-carson-silent-spring-1972-ddt-ban-birds-thrive/>
+
+-   **Jevons' Paradox (1865, *The Coal Question*):** "Jevons paradox" —
+    Wikipedia. <https://en.wikipedia.org/wiki/Jevons_paradox>
+
+-   **Lithium-ion battery recycling rates and spent-pack volumes:**
+    "Battery recycling" — Wikipedia (collection-rate estimates), and
+    Nature, *npj Materials Sustainability*, 2025 (volume projections).
+    <https://en.wikipedia.org/wiki/Battery_recycling> ·
+    <https://www.nature.com/articles/s44296-025-00083-7> *(The
+    often-quoted "5%" global figure is contested; rates vary a lot by
+    region and battery type.)*
+
+-   **Solar panels roughly 90% landfilled as of 2023 (US):** Public
+    Citizen, 2025.
+    <https://www.citizen.org/news/solar-panel-waste-how-recycling-can-help-us-meet-2030-sustainability-goals/>
+
+-   **Agbogbloshie e-waste:** Smithsonian Magazine, 2016 (note: much of
+    the waste is locally generated; the "global dumping ground" framing
+    is partly myth).
+    <https://www.smithsonianmag.com/science-nature/burning-truth-behind-e-waste-dump-africa-180957597/>
+
+-   **Cuyahoga River fire (1969) and the Clean Water Act and EPA:**
+    History.com.
+    <https://www.history.com/articles/epa-earth-day-cleveland-cuyahoga-river-fire-clean-water-act>
+
+## Support This Work: Give It a Star
+
+Thank you for reading! If you found this project helpful or interesting,
+please consider starring it on GitHub. Your stars help others discover
+and benefit from this fully open and free repository. Click [here to
+star the
+repository](https://github.com/AarshBatra/biteSizedAQ/stargazers) and
+join the growing community of folks who follow biteSizedAQ.
+
+## Get in touch
+
+Get in touch if you have thoughts on the above or about related AQ
+topics/report any errors. Reach out to me at bitesizedaq\@gmail.com.
+
+## License and Reuse
+
+All content under **biteSizedAQ** is shared under the **Creative Commons
+Attribution 4.0 International (CC BY 4.0) license**. You are welcome to
+use this material in your reports or news stories—just remember to give
+appropriate credit and include a link back to the original work.
+
+Every effort is made to ensure that only original or appropriately
+licensed material is shared. If any copyrighted content has been used
+inadvertently, please note that this is unintentional, and I will
+promptly address it upon notification.
+
+Thank you for respecting these terms!

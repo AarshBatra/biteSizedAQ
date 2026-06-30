@@ -52,6 +52,13 @@ find time. To kick things off, check out the first few projects below!
 
 ------------------------------------------------------------------------
 
+## Project 28: 🎉 biteSizedAQ Turns Two!: Coming Clean About the Planet
+
+*Two years writing about air pollution, and what it taught me about why
+we keep solving ourselves into new problems*
+
+Link to the full blog post: Link
+
 ## Project 27: The Same Number on Your Air Quality App Could Be Four Different Kinds of Bad — Based on Where You Are
 
 - Introduction: Air quality apps give you a number. That number - PM2.5,
@@ -66,7 +73,7 @@ find time. To kick things off, check out the first few projects below!
   entry points into a problem that affects the air most of the world
   breathes.
 
-- Link to full blog post:
+- Link to the full blog post:
   [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/27.same.number.four.diff.kinds.of.bad)
 
 ## Project 26: A Metadata Gap in Global Air Quality Monitoring — and One Paper’s Attempt to Fix It

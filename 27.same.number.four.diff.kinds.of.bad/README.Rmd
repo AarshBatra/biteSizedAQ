@@ -997,7 +997,7 @@ has a mandate but needs standardisation. Surface area and composition
 remain research-grade. For the two most tractable metrics, the
 infrastructure decisions are being made now.
 
-## What Can You Actually Do? 
+## What Can You Actually Do?
 
 ***[Please read the disclaimer at the end for an accurate interpretation
 of this section]:***
