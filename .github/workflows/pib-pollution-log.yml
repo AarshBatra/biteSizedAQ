@@ -1,0 +1,51 @@
+name: pib-pollution-log
+
+on:
+  schedule:
+    # Every 2 hours (UTC). The RSS feed holds only ~20 recent releases, so
+    # frequent runs ensure nothing scrolls off unseen between runs — even on
+    # a high-volume day (budget, summits). Dedup by PRID makes extra runs
+    # free. Public repos have unlimited Actions minutes.
+    - cron: "0 */2 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+
+      # Reads Imports/Suggests from DESCRIPTION. The explicit list is kept
+      # as a belt-and-braces measure so the job still works if DESCRIPTION
+      # changes shape.
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            httr
+            xml2
+            rvest
+            purrr
+            dplyr
+            stringr
+            yaml
+            tibble
+            googlesheets4
+            optparse
+            here
+
+      - name: Write service account key
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+        run: echo "$GCP_SA_KEY" > sa_key.json
+
+      - name: Run daily scraper
+        env:
+          SHEET_ID: ${{ secrets.SHEET_ID }}
+          GCP_SA_KEY_PATH: sa_key.json
+        run: Rscript 29.pib.pol.env.themes.log/run_daily.R
+
+      - name: Clean up credentials
+        if: always()
+        run: rm -f sa_key.json
