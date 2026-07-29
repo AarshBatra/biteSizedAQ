@@ -1,12 +1,28 @@
 Package: biteSizedAQ
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Bite Sized Air Quality Analyses
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R:
+    person("Aarsh", "Batra",
+           email = "yourself@somewhere.net",
+           role = c("aut", "cre"))
+Description: A collection of small, self-contained air quality data
+    projects. Each project lives in its own folder with a README, while
+    shared helper functions for that project live in R/.
 License: CC BY 4.0
 Encoding: UTF-8
-LazyData: true
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Imports:
+    dplyr,
+    googlesheets4,
+    httr,
+    purrr,
+    rvest,
+    stringr,
+    tibble,
+    xml2,
+    yaml
+Suggests:
+    here,
+    optparse

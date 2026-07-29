@@ -1,0 +1,680 @@
+# ============================================================================
+# Keyword list — PIB environment / pollution / climate tracker.
+#
+# Scope: MAXIMUM RECALL. Deliberately over-inclusive across air, water, soil,
+# waste, climate, energy, chemistry, health, institutions, and Indian scheme
+# names. Expect false positives — prune groups by commenting them out
+# (add # at the start of a line) once you see what noise they bring.
+#
+# Matching (all handled in code — nothing to configure here):
+#   * case-insensitive
+#   * WORD-BOUNDED  ("GRAP" won't match "demographic")
+#   * space = space OR hyphen/dash  ("clean air" finds "clean-air")
+#   * automatic plural  ("emission" also matches "emissions") — so list
+#     singulars; add irregular plurals explicitly only if needed
+#   * checked against BOTH title AND body text
+#
+# Groups are for your readability; the code flattens the whole list.
+# ============================================================================
+
+keywords:
+
+  # --- Air quality: core ---------------------------------------------------
+  - air pollution
+  - air quality
+  - air quality index
+  - AQI
+  - ambient air
+  - clean air
+  - foul air
+  - polluted air
+  - National Clean Air Programme
+  - System of Air Quality and Weather Forecasting
+  - SAFAR
+  - air quality monitoring
+  - air quality standard
+  - continuous ambient air quality monitoring
+  - CAAQMS
+  - national ambient air quality standard
+  - NAAQS
+  - air quality early warning
+
+  # --- Particulate matter --------------------------------------------------
+  - particulate matter
+  - particulate
+  - PM2.5
+  - PM10
+  - PM 2.5
+  - PM 10
+  - fine particle
+  - ultrafine particle
+  - coarse particle
+  - respirable dust
+  - suspended particulate matter
+  - black carbon
+  - elemental carbon
+  - soot
+  - road dust
+  - construction dust
+  - fugitive dust
+  - dust pollution
+  - dust suppression
+
+  # --- Gaseous pollutants & chemistry --------------------------------------
+  - sulphur dioxide
+  - sulfur dioxide
+  - SO2
+  - nitrogen oxide
+  - nitrogen dioxide
+  - NO2
+  - NOx
+  - carbon monoxide
+  - ground level ozone
+  - tropospheric ozone
+  - ozone
+  - volatile organic compound
+  - ammonia
+  - benzene
+  - toluene
+  - formaldehyde
+  - hydrogen sulphide
+  - hydrogen sulfide
+  - dioxin
+  - furan
+  - polycyclic aromatic hydrocarbon
+  - heavy metal
+  - lead pollution
+  - arsenic
+  - mercury pollution
+  - cadmium
+  - chromium
+  - toxic gas
+  - toxic fume
+  - noxious gas
+  - air toxics
+
+  # --- Smog, haze, burning -------------------------------------------------
+  - smog
+  - haze
+  - stubble burning
+  - crop residue burning
+  - paddy straw
+  - biomass burning
+  - open burning
+  - waste burning
+  - garbage burning
+  - forest fire
+  - wildfire
+
+  # --- Vehicles, fuels, emissions ------------------------------------------
+  - vehicular pollution
+  - vehicular emission
+  - tailpipe emission
+  - exhaust emission
+  - emission standard
+  - emission norm
+  - emission factor
+  - Bharat Stage
+  - BS-VI
+  - BS6
+  - fuel economy
+  - Corporate Average Fuel Economy
+  - CAFE norm
+  - vehicle scrappage
+  - scrappage policy
+  - end of life vehicle
+  - ethanol blend
+  - ethanol blending
+  - E20
+  - flex fuel
+  - biofuel
+  - bio-diesel
+  - biodiesel
+  - compressed natural gas
+  - CNG
+  - liquefied natural gas
+  - electric mobility
+  - electric vehicle
+  - EV charging
+  - PARIVARTAN
+  - PUC certificate
+  - pollution under control
+
+  # --- Industrial & thermal ------------------------------------------------
+  - industrial pollution
+  - industrial emission
+  - flue gas
+  - flue gas desulphurisation
+  - flue gas desulphurization
+  - FGD
+  - thermal power plant
+  - coal fired
+  - coal based power
+  - fly ash
+  - bottom ash
+  - smokestack
+  - chimney emission
+  - effluent
+  - industrial effluent
+  - effluent treatment plant
+  - hazardous waste
+  - red category industry
+  - common effluent treatment
+
+  # --- Regulators, law, regimes --------------------------------------------
+  - CAQM
+  - Commission for Air Quality Management
+  - CPCB
+  - Central Pollution Control Board
+  - State Pollution Control Board
+  - Pollution Control Board
+  - GRAP
+  - Graded Response Action Plan
+  - National Green Tribunal
+  - NGT
+  - Ministry of Environment
+  - MoEFCC
+  - environmental clearance
+  - environment impact assessment
+  - consent to operate
+  - consent to establish
+  - emission trading scheme
+  - emission trading
+  - polluter pays
+  - Air Act
+  - Environment Protection Act
+  - Water Act
+  - green credit
+  - Green Credit Programme
+  - PAT scheme
+  - perform achieve trade
+  - Bureau of Energy Efficiency
+  - Energy Conservation Act
+
+  # --- Climate change ------------------------------------------------------
+  - climate change
+  - global warming
+  - greenhouse gas
+  - GHG
+  - carbon emission
+  - carbon dioxide
+  - CO2
+  - methane
+  - nitrous oxide
+  - hydrofluorocarbon
+  - carbon neutral
+  - net zero
+  - net-zero
+  - decarbonisation
+  - decarbonization
+  - carbon market
+  - carbon credit
+  - carbon capture
+  - carbon sequestration
+  - carbon sink
+  - carbon footprint
+  - carbon intensity
+  - climate finance
+  - climate resilience
+  - climate adaptation
+  - climate mitigation
+  - nationally determined contribution
+  - COP29
+  - COP30
+  - UNFCCC
+  - Paris Agreement
+  - Kyoto Protocol
+  - Montreal Protocol
+  - ozone depletion
+  - LiFE mission
+  - Mission LiFE
+  - Panchamrit
+  - State Action Plan on Climate Change
+  - heatwave
+  - extreme weather
+
+  # --- Water --------------------------------------------------------------
+  - water pollution
+  - water quality
+  - river pollution
+  - river cleaning
+  - sewage
+  - sewage treatment
+  - Namami Gange
+  - Ganga rejuvenation
+  - Ganga cleaning
+  - clean river
+  - groundwater contamination
+  - groundwater depletion
+  - marine pollution
+  - ocean pollution
+  - oil spill
+  - eutrophication
+  - nitrate
+  - phosphate
+  - wastewater
+  - water treatment
+
+  # --- Soil, land, waste ---------------------------------------------------
+  - soil pollution
+  - soil contamination
+  - soil health
+  - land degradation
+  - desertification
+  - solid waste
+  - municipal solid waste
+  - plastic waste
+  - plastic pollution
+  - single use plastic
+  - single-use plastic
+  - microplastic
+  - e-waste
+  - electronic waste
+  - bio-medical waste
+  - biomedical waste
+  - construction and demolition waste
+  - landfill
+  - dumpsite
+  - waste management
+  - waste segregation
+  - waste to energy
+  - circular economy
+  - extended producer responsibility
+  - Swachh Bharat
+
+  # --- Energy transition / renewables --------------------------------------
+  - renewable energy
+  - solar energy
+  - solar power
+  - rooftop solar
+  - wind energy
+  - wind power
+  - offshore wind
+  - green hydrogen
+  - energy transition
+  - energy efficiency
+  - National Green Hydrogen Mission
+  - FAME scheme
+  - FAME-II
+  - FAME II
+  - PM Surya Ghar
+  - PM-KUSUM
+  - biogas
+  - compressed biogas
+
+  # --- Forestry & ecology --------------------------------------------------
+  - afforestation
+  - reforestation
+  - deforestation
+  - compensatory afforestation
+  - CAMPA
+  - wetland
+  - mangrove
+  - eco-sensitive
+  - Green India Mission
+
+  # --- Health & framing ----------------------------------------------------
+  - respiratory illness
+  - respiratory disease
+  - disease burden
+  - WHO air quality
+
+  # --- Generic catch-alls (noisy — prune first if over-matching) -----------
+  - pollution
+  - pollutant
+  - contamination
+  - contaminant
+  - emission
+
+# ============================================================================
+# CONTEXTUAL keywords: vague words that fire ONLY when an anchor word appears
+# within ~6 words. This rescues their recall ("water pollution", "green
+# hydrogen") without the noise they cause alone ("water taxi", "green channel").
+# Edit freely — same matching rules apply.
+# ============================================================================
+contextual_keywords:
+  - water
+  - forest
+  - green
+  - clean
+  - carbon
+  - conservation
+  - wildlife
+  - biodiversity
+  - sustainability
+  - toxic
+  - waste
+  - energy
+  - fuel
+  - vehicle
+  - dust
+  - fire
+  - gas
+
+# An anchor is what a contextual word must be NEAR to count. Keep these tight
+# and unambiguously environmental.
+anchors:
+  - pollution
+  - polluted
+  - pollutant
+  - quality
+  - contamination
+  - contaminated
+  - emission
+  - emissions
+  - toxic
+  - hazardous
+  - climate
+  - carbon
+  - greenhouse
+  - environment
+  - environmental
+  - clean
+  - renewable
+  - conservation
+  - degradation
+  - treatment
+  - waste
+  - effluent
+  - sewage
+  - AQI
+  - smog
+  - particulate
+
+
+# ============================================================================
+# CONTEXTUAL PAIRS: term groups that only count when near their OWN anchors.
+# Generalises the contextual_keywords/anchors idea to multiple named sets.
+#
+# The health pair below catches environmental-health releases: a health
+# word matches ONLY when a pollution/air word is nearby. So "childhood
+# asthma linked to vehicular emissions" matches, but "new asthma drug
+# approved" does not. Refine the `terms` and `anchors` lists freely.
+# ============================================================================
+contextual_pairs:
+  - name: "health-and-pollution"
+    terms:
+      # respiratory
+      - asthma
+      - respiratory
+      - lung
+      - pulmonary
+      - bronchitis
+      - COPD
+      - wheezing
+      # cardiovascular / systemic
+      - cardiovascular
+      - heart disease
+      - stroke
+      - hypertension
+      # cancers & birth outcomes
+      - cancer
+      - carcinogenic
+      - low birth weight
+      - preterm birth
+      - stillbirth
+      # burden / outcome framing
+      - disease burden
+      - premature death
+      - premature mortality
+      - morbidity
+      - mortality
+      - hospitalisation
+      - hospitalization
+      - health impact
+      - health effect
+      - health risk
+      - health hazard
+      - years of life lost
+      - DALY
+      # vulnerable-group framing common in pollution studies
+      - children's health
+      - neurological
+      - cognitive
+    anchors:
+      # pollution / air-quality anchors
+      - air pollution
+      - air quality
+      - AQI
+      - PM2.5
+      - PM10
+      - particulate
+      - pollutant
+      - pollution
+      - polluted
+      - emission
+      - emissions
+      - smog
+      - ozone
+      - nitrogen dioxide
+      - sulphur dioxide
+      - benzene
+      - toxic fume
+      - contaminated
+      - contamination
+      # broader climate anchors — so climate-health releases (e.g.
+      # heatwave mortality) also qualify, not only pollution-health ones
+      - climate change
+      - global warming
+      - heatwave
+      - extreme heat
+      - extreme weather
+
+  - name: "water-schemes-and-pollution"
+    # Water-supply / harvesting scheme names are NOT pollution by
+    # themselves — they're name-dropped in unrelated rural/welfare
+    # releases (e.g. "Jal Jeevan tap connections in a village"). Require a
+    # pollution/quality anchor so only water-QUALITY releases match.
+    terms:
+      - jal jeevan
+      - jal shakti
+      - catch the rain
+      - amrit sarovar
+      - har ghar jal
+    anchors:
+      - pollution
+      - polluted
+      - contamination
+      - contaminated
+      - quality
+      - effluent
+      - sewage
+      - untreated
+      - discharge
+      - arsenic
+      - fluoride
+      - nitrate
+      - toxic
+      - sewage treatment
+      - wastewater
+
+  - name: "pollution-phenomena"
+    # Vivid problem-words that describe a pollution event without using a
+    # textbook keyword. High-signal near a water/air/land anchor, and
+    # almost never false-positive (froth + river = pollution). Catches
+    # place/incident releases with vague titles.
+    terms:
+      - froth
+      - toxic foam
+      - fish kill
+      - dead fish
+      - algal bloom
+      - algae bloom
+      - stench
+      - foul smell
+      - oil slick
+      - discoloured water
+      - discolored water
+      - unfit for consumption
+      - unfit for bathing
+      - illegal dumping
+      - waste dumping
+    anchors:
+      - river
+      - lake
+      - pond
+      - water body
+      - water bodies
+      - drain
+      - canal
+      - beach
+      - coast
+      - groundwater
+      - effluent
+      - sewage
+      - yamuna
+      - ganga
+
+  - name: "enforcement-and-source"
+    # Regulatory-action language. Alone it's noise (fines/closures happen
+    # everywhere); near an industry/pollution source it reliably signals
+    # an environmental enforcement release.
+    terms:
+      - closure notice
+      - show cause
+      - show-cause
+      - penalty imposed
+      - directed to shut
+      - directed to close
+      - ordered closure
+      - environmental compensation
+      - inspection drive
+      - violation notice
+      - premises sealed
+      - unit sealed
+      - factory sealed
+    anchors:
+      - industry
+      - industrial
+      - factory
+      - plant
+      - effluent
+      - emission
+      - emissions
+      - pollution
+      - polluting
+      - polluted
+      - hazardous
+      - waste
+      - discharge
+      - CPCB
+      - NGT
+      - CAQM
+      - pollution control board
+
+  - name: "exceedance-and-pollution"
+    # Measurement / limit language. Vague alone; near a pollution anchor
+    # it signals a monitoring or violation report.
+    terms:
+      - exceeds permissible
+      - exceeded permissible
+      - above permissible
+      - permissible limit
+      - breach of standard
+      - above safe
+      - beyond safe
+      - non-compliant
+      - exceedance
+      - crossed the limit
+      - above the standard
+      - severe category
+      - very poor category
+    anchors:
+      - air quality
+      - AQI
+      - PM2.5
+      - PM10
+      - particulate
+      - pollution
+      - pollutant
+      - emission
+      - emissions
+      - effluent
+      - contamination
+      - contaminant
+      - water quality
+      - noise
+
+# ============================================================================
+# EXCLUDE: releases whose TITLE matches any of these regexes are never
+# logged, even if their body mentions keywords. These are omnibus /
+# administrative items (PM speeches, ministerial reshuffles) that graze
+# many topics but are never *about* the environment. Regexes,
+# case-insensitive.
+# ============================================================================
+# CATEGORIES (loose auto-labels for the "potential category" sheet column).
+# For each logged release, the FIRST category below whose `match` words
+# appear (in title or body) wins — so order = priority. A release that
+# passes the filter but hits no category gets "Other env/pollution".
+#
+# These are intentionally SHORT signal lists, separate from the main filter
+# keywords above: `keywords` decides WHETHER to log, `categories` only
+# decides HOW to loosely label what's already logged. Same matching rules
+# (case-insensitive, word-bounded, hyphen-tolerant, auto-plural).
+#
+# The label is a rough guide, not a hard classification — hence the column
+# name "potential category".
+# ============================================================================
+categories:
+  - name: "Air pollution"
+    match: [air pollution, air quality, AQI, PM2.5, PM10, particulate, smog, haze,
+            stubble burning, crop residue, ozone, nitrogen dioxide, sulphur dioxide,
+            CAQM, GRAP, National Clean Air Programme, ambient air]
+
+  - name: "Vehicles & fuels"
+    match: [vehicular, emission norm, emission standard, Bharat Stage, BS-VI,
+            electric vehicle, electric mobility, EV charging, ethanol blend, E20,
+            biofuel, CNG, fuel economy, CAFE, scrappage, PARIVARTAN]
+
+  - name: "Industry"
+    match: [industrial emission, industrial pollution, thermal power, coal fired,
+            flue gas, fly ash, effluent, hazardous waste, red category,
+            smokestack, chimney]
+
+  - name: "Waste & plastic"
+    match: [plastic waste, single use plastic, single-use plastic, microplastic,
+            e-waste, electronic waste, solid waste, municipal solid waste,
+            landfill, biomedical waste, waste management, circular economy,
+            extended producer responsibility, Swachh Bharat]
+
+  - name: "Water"
+    match: [water pollution, water quality, river pollution, sewage, effluent treatment,
+            Namami Gange, Ganga, groundwater, marine pollution, oil spill,
+            wastewater]
+
+  - name: "Climate"
+    match: [climate change, global warming, greenhouse gas, GHG, carbon dioxide,
+            methane, net zero, net-zero, decarbonisation, carbon market, carbon credit,
+            carbon capture, climate finance, climate resilience, adaptation,
+            nationally determined contribution, NDC, UNFCCC, Paris Agreement,
+            COP29, COP30, Mission LiFE, ozone depletion, Montreal Protocol]
+
+  - name: "Energy transition"
+    match: [renewable energy, solar energy, solar power, rooftop solar, wind energy,
+            wind power, offshore wind, green hydrogen, energy transition,
+            energy efficiency, biogas, PM Surya Ghar, PM-KUSUM, FAME scheme]
+
+  - name: "Forest & ecology"
+    match: [afforestation, reforestation, deforestation, forest cover, tree cover,
+            compensatory afforestation, CAMPA, biodiversity, wetland, mangrove,
+            wildlife, conservation, eco-sensitive, Green India Mission, carbon sink]
+
+  # Fallback — used automatically when nothing above matches. The `match`
+  # list is ignored for this one; it exists so you can rename the label.
+  - name: "Other env/pollution"
+    match: []
+
+# ============================================================================
+exclude_title_patterns:
+  - "mann ki baat"
+  - "rendering of.*address"
+  - "takes charge"
+  - "assumes charge"
+  - "sworn in"
+  - "council of ministers"
+
+# --- Optional ministry restriction ------------------------------------------
+# Leave empty to search ALL ministries (recommended).
+ministries: []
+
+sheet_tab: "Log"

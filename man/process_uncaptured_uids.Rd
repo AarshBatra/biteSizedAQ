@@ -14,28 +14,28 @@ process_uncaptured_uids(
 )
 }
 \arguments{
-\item{uids_not_captured}{A numeric vector of `uid_for_rasterization` values corresponding to
+\item{uids_not_captured}{A numeric vector of \code{uid_for_rasterization} values corresponding to
 regions that were not included in the initial processing.}
 
-\item{unit_pol_raster}{A `RasterLayer` containing unit-level PM2.5 (or other pollutant) values.}
+\item{unit_pol_raster}{A \code{RasterLayer} containing unit-level PM2.5 (or other pollutant) values.}
 
-\item{unit_pop_raster}{A `RasterLayer` with unit-level population values at a coarser resolution.}
+\item{unit_pop_raster}{A \code{RasterLayer} with unit-level population values at a coarser resolution.}
 
-\item{ref_shp_file_to_be_rasterized}{A `sf` object representing the reference shapefile with a
-column named `uid_for_rasterization` used for filtering and rasterization.}
+\item{ref_shp_file_to_be_rasterized}{A \code{sf} object representing the reference shapefile with a
+column named \code{uid_for_rasterization} used for filtering and rasterization.}
 
 \item{resample_to_res}{A numeric value specifying the target resolution (in degrees) to which
-rasters are resampled. Defaults to `0.001`.}
+rasters are resampled. Defaults to \code{0.001}.}
 
 \item{res_resample_from}{A numeric value indicating the original resolution (in degrees) of the
-population raster. Defaults to `0.00833333` (approx. 1km).}
+population raster. Defaults to \code{0.00833333} (approx. 1km).}
 }
 \value{
 A data frame summarizing the population-weighted pollution for each UID, with the following columns:
 \describe{
-  \item{sh_rast}{UID of the processed shapefile region.}
-  \item{total_population}{Total resampled population in the region.}
-  \item{avg_pm2.5_pollution}{Population-weighted average PM2.5 value.}
+\item{sh_rast}{UID of the processed shapefile region.}
+\item{total_population}{Total resampled population in the region.}
+\item{avg_pm2.5_pollution}{Population-weighted average PM2.5 value.}
 }
 }
 \description{
@@ -47,13 +47,13 @@ population-weighted average PM2.5 values.
 \details{
 For each UID, the function performs:
 \itemize{
-  \item Filtering the shapefile to the UID.
-  \item Rasterizing the filtered polygon.
-  \item Cropping, resampling, and masking the pollution and population rasters to match the polygon.
-  \item Adjusting population raster values to represent densities before resampling.
-  \item Creating a raster stack and converting to a data frame.
-  \item Computing population weights and weighted pollution.
-  \item Aggregating to produce population-weighted pollution summaries.
+\item Filtering the shapefile to the UID.
+\item Rasterizing the filtered polygon.
+\item Cropping, resampling, and masking the pollution and population rasters to match the polygon.
+\item Adjusting population raster values to represent densities before resampling.
+\item Creating a raster stack and converting to a data frame.
+\item Computing population weights and weighted pollution.
+\item Aggregating to produce population-weighted pollution summaries.
 }
 
 This is useful for recovering and summarizing air quality data for regions initially excluded

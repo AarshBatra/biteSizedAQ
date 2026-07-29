@@ -2,8 +2,11 @@
 .Rhistory
 .RData
 .Ruserdata
+.Renviron
 
 # renv
 renv/library/
 renv/staging/
 renv/local/
+*.json
+sa_key.json

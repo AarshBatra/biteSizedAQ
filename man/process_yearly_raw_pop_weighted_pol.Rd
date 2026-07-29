@@ -15,16 +15,16 @@ process_yearly_raw_pop_weighted_pol(
 \arguments{
 \item{pol_raster_path}{File path to the NetCDF (.nc) raster containing PM2.5 pollution data for a specific year.}
 
-\item{ref_admin_level_shp_file}{A spatial object (e.g., `sf` or `sp`) representing the reference administrative boundaries for cropping and masking.}
+\item{ref_admin_level_shp_file}{A spatial object (e.g., \code{sf} or \code{sp}) representing the reference administrative boundaries for cropping and masking.}
 
-\item{ref_shp_file_to_be_rasterized}{A spatial object with a column named `uid_for_rasterization` to be rasterized and used for aggregation.}
+\item{ref_shp_file_to_be_rasterized}{A spatial object with a column named \code{uid_for_rasterization} to be rasterized and used for aggregation.}
 
 \item{unit_pop_raster}{A raster object representing the population data (e.g., at 1 km resolution).}
 
 \item{unit_pop_raster_crp_msk}{A cropped and masked version of the population raster aligned with the reference shapefile.}
 }
 \value{
-A data frame with administrative region identifiers (`sh_rast`), total population, and average population-weighted PM2.5 pollution
+A data frame with administrative region identifiers (\code{sh_rast}), total population, and average population-weighted PM2.5 pollution
 for the year extracted from the filename.
 }
 \description{
@@ -34,14 +34,14 @@ using yearly pollution and population rasters, and a shapefile to rasterize for 
 \details{
 The function performs the following steps:
 \enumerate{
-  \item Loads and preprocesses the pollution raster from NetCDF.
-  \item Crops and masks the pollution raster to the reference shapefile.
-  \item Resamples the pollution raster to match the resolution of the population raster.
-  \item Rasterizes the reference shapefile using `uid_for_rasterization`.
-  \item Combines pollution, population, and region rasters into a brick, converts to a data frame, and calculates population weights.
-  \item Computes population-weighted pollution averages by region.
-  \item Identifies and attempts to reprocess regions with missing or zero data.
-  \item Returns a final data frame with cleaned and complete population-weighted pollution estimates.
+\item Loads and preprocesses the pollution raster from NetCDF.
+\item Crops and masks the pollution raster to the reference shapefile.
+\item Resamples the pollution raster to match the resolution of the population raster.
+\item Rasterizes the reference shapefile using \code{uid_for_rasterization}.
+\item Combines pollution, population, and region rasters into a brick, converts to a data frame, and calculates population weights.
+\item Computes population-weighted pollution averages by region.
+\item Identifies and attempts to reprocess regions with missing or zero data.
+\item Returns a final data frame with cleaned and complete population-weighted pollution estimates.
 }
 }
 \seealso{

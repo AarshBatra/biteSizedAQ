@@ -14,15 +14,15 @@ process_uncaptured_uids_v2(
 )
 }
 \arguments{
-\item{uids_not_captured}{A vector of unique identifiers (`uid_for_rasterization`) corresponding to regions
+\item{uids_not_captured}{A vector of unique identifiers (\code{uid_for_rasterization}) corresponding to regions
 that were not captured in the initial processing.}
 
-\item{unit_pol_raster}{A `RasterLayer` of unit-level PM2.5 pollution values.}
+\item{unit_pol_raster}{A \code{RasterLayer} of unit-level PM2.5 pollution values.}
 
-\item{unit_pop_raster}{A `RasterLayer` of unit-level population values, typically at coarser resolution.}
+\item{unit_pop_raster}{A \code{RasterLayer} of unit-level population values, typically at coarser resolution.}
 
-\item{ref_shp_file_to_be_rasterized}{A `sf` object containing the shapefile with administrative boundaries
-and a column `uid_for_rasterization` used for rasterization.}
+\item{ref_shp_file_to_be_rasterized}{A \code{sf} object containing the shapefile with administrative boundaries
+and a column \code{uid_for_rasterization} used for rasterization.}
 
 \item{resample_to_res}{A numeric value indicating the target resolution (in degrees) to which both the
 pollution and population rasters will be resampled. Defaults to 0.0005.}
@@ -33,9 +33,9 @@ population raster. Defaults to 0.00833333 (approximately 1km).}
 \value{
 A data frame with one row per successfully processed UID, containing:
 \describe{
-  \item{sh_rast}{The UID of the processed region.}
-  \item{total_population}{Total population within the region after resampling.}
-  \item{avg_pm2.5_pollution}{Population-weighted average PM2.5 value for the region.}
+\item{sh_rast}{The UID of the processed region.}
+\item{total_population}{Total population within the region after resampling.}
+\item{avg_pm2.5_pollution}{Population-weighted average PM2.5 value for the region.}
 }
 }
 \description{
@@ -46,12 +46,12 @@ rasterizes the corresponding shapefile regions, and computes the population-weig
 \details{
 The function performs the following for each UID:
 \itemize{
-  \item Filters the shapefile to the current UID.
-  \item Rasterizes the shapefile region at the specified finer resolution.
-  \item Resamples the pollution and population rasters to match this new resolution.
-  \item Converts the raster data to a data frame.
-  \item Calculates population weights and weighted pollution.
-  \item Aggregates to obtain population-weighted PM2.5 values.
+\item Filters the shapefile to the current UID.
+\item Rasterizes the shapefile region at the specified finer resolution.
+\item Resamples the pollution and population rasters to match this new resolution.
+\item Converts the raster data to a data frame.
+\item Calculates population weights and weighted pollution.
+\item Aggregates to obtain population-weighted PM2.5 values.
 }
 This is useful for recovering data for small or sparsely populated regions that were dropped due to
 mismatches or resolution limitations in the initial processing.

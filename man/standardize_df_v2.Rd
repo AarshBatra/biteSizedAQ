@@ -11,7 +11,7 @@ standardize_df_v2(df, matches_regex)
 }
 \value{
 returns a standardized dataframe. Please inspect once to make sure you get what is expected
-        and continue further standardization, if needed.
+and continue further standardization, if needed.
 }
 \description{
 Automatically coerces columns to right types, makes sure that all missing values in

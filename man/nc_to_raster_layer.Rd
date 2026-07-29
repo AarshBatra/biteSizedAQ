@@ -16,22 +16,22 @@ nc_to_raster_layer(nc_file_path, pm2.5_var_name, lat_var_name, long_var_name)
 \item{long_var_name}{A character string specifying the name of the longitude variable in the NetCDF file.}
 }
 \value{
-A `RasterLayer` object representing the PM2.5 data, georeferenced using the latitude
+A \code{RasterLayer} object representing the PM2.5 data, georeferenced using the latitude
 and longitude values from the NetCDF file.
 }
 \description{
-This function reads PM2.5 data from a NetCDF file and converts it into a `RasterLayer` object
+This function reads PM2.5 data from a NetCDF file and converts it into a \code{RasterLayer} object
 with a geographic coordinate reference system.
 }
 \details{
 The function performs the following steps:
 \itemize{
-  \item Opens the NetCDF file using `ncdf4::nc_open`.
-  \item Extracts the PM2.5, latitude, and longitude variables.
-  \item Reverses the latitude axis to match the raster orientation.
-  \item Creates a raster using the longitude and latitude bounds.
-  \item Fills the raster with the PM2.5 values.
-  \item Assigns a WGS84 geographic coordinate reference system.
+\item Opens the NetCDF file using \code{ncdf4::nc_open}.
+\item Extracts the PM2.5, latitude, and longitude variables.
+\item Reverses the latitude axis to match the raster orientation.
+\item Creates a raster using the longitude and latitude bounds.
+\item Fills the raster with the PM2.5 values.
+\item Assigns a WGS84 geographic coordinate reference system.
 }
 
 This function is useful for converting gridded air quality data from NetCDF format to raster
