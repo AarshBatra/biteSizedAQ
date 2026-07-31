@@ -54,10 +54,10 @@ find time. To kick things off, check out the first few projects below!
 
 ## Project 29: PIB India Environmental Press Releases Log - Tracker
 
-- Link to Blog: Link
+- Full blog post:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/29.pib.pol.env.themes.log)
 
-- Link to PIB India Environmental Press Releases Log Tracker Google
-  Sheet:
+- PIB India Environmental Press Releases Log Tracker Google Sheet:
   [Link](https://docs.google.com/spreadsheets/d/17l3TV2HKd0WfQz5OvB-bbIqGohB4Cs3LulZtjMYD3tU/edit?gid=1737040458#gid=1737040458)
 
 - ***Summary:*** An automated, public tracker that logs India’s

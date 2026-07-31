@@ -203,9 +203,18 @@ free to write to me at bitesizedaq\@gmail.com.
 
 ## License and Reuse
 
-Shared under the Creative Commons Attribution 4.0 International (CC BY
-4.0) license, consistent with the rest of biteSizedAQ.
+All content under **biteSizedAQ** is shared under the **Creative Commons
+Attribution 4.0 International (CC BY 4.0) license**. You are welcome to
+use this material in your reports or news stories—just remember to give
+appropriate credit and include a link back to the original work.
+
+Every effort is made to ensure that only original or appropriately
+licensed material is shared. If any copyrighted content has been used
+inadvertently, please note that this is unintentional, and I will
+promptly address it upon notification.
 
 PIB press release content itself remains subject to the Government of
 India's own copyright/usage terms; this project only indexes titles and
 links.
+
+Thank you for respecting these terms!
