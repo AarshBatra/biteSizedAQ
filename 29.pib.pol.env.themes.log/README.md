@@ -1,4 +1,4 @@
-PIB India Pollution Press Release Log
+PIB India Environmental Press Releases Log - Tracker
 ================
 
 ## What this is
@@ -8,15 +8,47 @@ pollution / environment / climate) issued by the Press Information
 Bureau (PIB), written to a public Google Sheet by a scheduled GitHub
 Actions job.
 
-**Copy this project and edit `config/keywords.yml` to track a different
-topic** — the helper script (`R/pib_pollution_log.R` at the repo root)
-doesn’t need to change.
+Here is the link to the Google Sheet ([PIB India Environmental Press
+Releases Log -
+Tracker](https://docs.google.com/spreadsheets/d/17l3TV2HKd0WfQz5OvB-bbIqGohB4Cs3LulZtjMYD3tU/edit?gid=1737040458#gid=1737040458))
+where you’ll find the PIB log (English ones only for now) with the
+following information:
+
+- **Date:** Date of Release
+
+- **Potential Category:** Potential category (note this is just for
+  quick reference, actual post may cover items beyond the category
+  label).
+
+- **Ministry:** Ministry that issued the PIB
+
+- **Title:** Title of the Press Release
+
+- **Link:** Link to the Press Release
+
+- **PR ID:** Press Release unique ID
+
+**There are 2 ways to make use of this repo:**
+
+- Simply refer the [PIB India Environmental Press Releases Log Tracker
+  Google
+  Sheet](https://docs.google.com/spreadsheets/d/17l3TV2HKd0WfQz5OvB-bbIqGohB4Cs3LulZtjMYD3tU/edit?gid=1737040458#gid=1737040458).
+  It’s fully and forever free and open access.
+
+  - To understand how this works, read details below on the specifics of
+    the pipeline that helps fill in the Google Sheet.
+
+- **Copy this project and edit `config/keywords.yml` to track a
+  different topic** of your own choosing and make your own Google Sheet
+  tracker for it — the helper script (`R/pib_pollution_log.R` at the
+  repo root) doesn’t need to change. Instructions are pasted below for
+  those interested.
 
 ## How it works
 
 1.  A GitHub Actions workflow
     (`.github/workflows/pib-pollution-log.yml`) runs `run_daily.R` every
-    4 hours
+    2 hours
 2.  It pulls PIB’s “latest releases” RSS feed (English) — the ~20 most
     recent releases
 3.  For each, it fetches the release’s own page to get date, ministry,
@@ -27,31 +59,44 @@ doesn’t need to change.
 6.  If a day has no matches, one `"No PIB"` placeholder row is written
     for that day (once, not once per run) so the log has no silent gaps
 
-The log accumulates history from whenever it starts running; there is no
-automated backfill (see below).
+The log started accumulating history from **29th July 2026**; there is
+no automated backfill for now (see below). The sheet updates every 2
+hours by design but GH actions timer is not always exact so practically
+speaking it updates every 2 to 4 hours.
+
+It will continue to do this forever until stopped. The idea is to review
+it every few weeks \> catch bugs if any \> see if keyword bank needs
+updating \> update if needed and let it run.
 
 ## Keyword matching (three tiers)
 
-Configured entirely in `config/keywords.yml`:
+Configured entirely in `config/keywords.yml` and ***focuses on catching
+broad environmental topics*** and then assigning them a potential
+category.
 
 - **`keywords`** — strong terms, matched standalone. Case-insensitive,
-  word-bounded (so `GRAP` never matches `demographic`), hyphen-tolerant
-  (`clean air` finds `clean-air`), and auto-plural (`emission` also
-  matches `emissions`).
+  word-bounded (so `GRAP` never matches `demo'grap'hic`),
+  hyphen-tolerant (`clean air` finds `clean-air`), and auto-plural
+  (`emission` also matches `emissions`).
 - **`contextual_keywords`** — vague words like `water`, `green`,
   `carbon` that fire ONLY when an `anchor` word appears within ~6 words.
   This catches `water pollution` and `green hydrogen` without the false
   positives those words cause alone (`water taxi`, `green channel`).
 - **`anchors`** — the environmental words a contextual term must be
   near.
+- Ignores omnibus /administrative items (PM speeches, ministerial
+  reshuffles) that graze many topics but are never about the
+  environment. See keywords.yml file for more details.
 
 Matching runs against both the title and the body text, so releases with
-uninformative headlines are still caught.
+uninformative headlines are still caught. Of course, given the wide net
+it casts - you can expect some false positives. Those can be reported
+via opening an issue and can be resolved in a later keyword bank update.
 
-## PIB site quirks (learned the hard way — don’t undo these)
+## PIB site quirks (learned the hard way — recommend to keep this in mind, if you plan to adapt this repo to your own setting)
 
-PIB India has no public API, so this reads its RSS feed. Non-obvious
-behaviours found by testing the live site:
+PIB India has no public API (as of July 31, 2026), so this reads its RSS
+feed. Non-obvious behaviours found by testing the live site:
 
 - **Language is set by lowercase `lang=1&reg=3`.** The capitalised
   `Lang`/`Regid` parameters PIB’s own RSS page advertises are ignored
@@ -68,22 +113,25 @@ behaviours found by testing the live site:
   byline varies: `17 JUL 2026 10:22PM by PIB Delhi` or `Posted On:` then
   the date.
 - **The feed holds only ~20 items** (a hard server cap — a `count`
-  parameter has no effect) spanning roughly a day. Running every 4 hours
+  parameter has no effect) spanning roughly a day. Running every 2 hours
   ensures nothing scrolls off unseen between runs.
 
-## No automated backfill
+## No automated backfill (for now)
 
-The feed can’t reach the past, and PIB’s month-by-month listing page
-(`allRel.aspx`) sits behind Akamai bot protection: query parameters and
-form POSTs are ignored, and headless browsers are blocked with “Access
-Denied”. A normal browser is not blocked.
+In its current state, the feed can’t reach the past, and PIB’s
+month-by-month listing page (`allRel.aspx`) sits behind Akamai bot
+protection: query parameters and form POSTs are ignored, and headless
+browsers are blocked with “Access Denied”. A normal browser is not
+blocked.
 
 To seed history manually: open the listing page in a browser (English,
 National, all ministries), pick a month, save the page (Ctrl+S →
 “Webpage, HTML Only”), and parse the saved HTML locally. For most
-purposes the daily log is enough on its own.
+purposes the daily log might be enough on its own.
 
-## Setup
+In future, I might find ways to automate backfill.
+
+## Automation Setup
 
 ### 1. Create the Google Sheet
 
@@ -112,9 +160,10 @@ Push, then trigger it manually once from the Actions tab
 
 Edit `config/keywords.yml`. Move a word between `keywords` (standalone)
 and `contextual_keywords` (needs an anchor) depending on how noisy it
-is. Nothing in the R code changes.
+is. Nothing in the R code changes (unless you want to make specific
+changes that cater to your needs).
 
-## Local development
+## How Local development looked in my case
 
 ``` r
 devtools::load_all()
@@ -129,16 +178,24 @@ releases$title[hit]                               # what would be logged
 ```
 
 Zero matches on a given run is normal — the feed is small and many days
-have no environmental releases.
+have no environmental releases. Depending on what your topic is, this
+might differ.
 
 ## Support This Work: Give It a Star
 
 If you found this project helpful, consider starring
 [biteSizedAQ](https://github.com/AarshBatra/biteSizedAQ).
 
+## Issues
+
+If you find any issues or would like to suggest any improvements, feel
+free to write to me at bitesizedaq@gmail.com.
+
 ## License and Reuse
 
 Shared under the Creative Commons Attribution 4.0 International (CC BY
-4.0) license, consistent with the rest of biteSizedAQ. PIB press release
-content itself remains subject to the Government of India’s own
-copyright/usage terms; this project only indexes titles and links.
+4.0) license, consistent with the rest of biteSizedAQ.
+
+PIB press release content itself remains subject to the Government of
+India’s own copyright/usage terms; this project only indexes titles and
+links.

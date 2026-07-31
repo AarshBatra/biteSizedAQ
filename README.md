@@ -52,6 +52,27 @@ find time. To kick things off, check out the first few projects below!
 
 ------------------------------------------------------------------------
 
+## Project 29: PIB India Environmental Press Releases Log - Tracker
+
+- Link to Blog: Link
+
+- Link to PIB India Environmental Press Releases Log Tracker Google
+  Sheet:
+  [Link](https://docs.google.com/spreadsheets/d/17l3TV2HKd0WfQz5OvB-bbIqGohB4Cs3LulZtjMYD3tU/edit?gid=1737040458#gid=1737040458)
+
+- ***Summary:*** An automated, public tracker that logs India’s
+  pollution-, environment-, and climate-related press releases from the
+  Press Information Bureau (PIB) to a live Google Sheet. Built in R and
+  running on a GitHub Actions schedule, it reads PIB’s RSS feed every
+  couple of hours, scans each release’s full text against a
+  configurable, multi-layered keyword filter (with contextual and
+  co-occurrence rules to catch genuine environmental content while
+  screening out incidental mentions), tags each match with a rough topic
+  category, and appends it to the sheet — deduplicated, so the log grows
+  cleanly into a searchable, linkable archive. The entire scope is
+  driven by a single keyword config file, so anyone can fork the project
+  and repoint it at a different topic without touching the code.
+
 ## Project 28: 🎉 biteSizedAQ Turns Two!: Coming Clean About the Planet
 
 *Two years writing about air pollution, and what it taught me about why
