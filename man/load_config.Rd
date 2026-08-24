@@ -17,6 +17,6 @@ Load keyword config
 }
 \examples{
 \dontrun{
-cfg <- load_config(here::here("N.pib.pollution.log", "config", "keywords.yml"))
+cfg <- load_config(here::here("29.pib.pol.env.themes.log", "config", "keywords.yml"))
 }
 }

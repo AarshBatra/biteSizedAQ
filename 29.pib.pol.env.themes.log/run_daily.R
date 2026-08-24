@@ -40,19 +40,33 @@ sheets_auth()
 
 releases <- fetch_latest_releases()
 
+# Graceful whole-feed exit: fetch_latest_releases() returns an empty tibble
+# (rather than erroring) when the RSS feed is unreachable after retries, or
+# genuinely empty. Either way, exit cleanly — a green run that logs nothing —
+# and let the next scheduled run try again. We do NOT write a "No PIB"
+# placeholder here, because an unreachable feed is not evidence that the day
+# had no releases.
 if (nrow(releases) == 0) {
-  message("RSS feed returned no items — PIB may be down or the endpoint changed.")
-  log_results(sheet_id, cfg$sheet_tab, Sys.Date(), releases[0, ])
+  message("No releases fetched (feed empty or unreachable) — exiting cleanly.")
   quit(save = "no")
 }
 
-# Fetch every release's detail page once: gives date, ministry, and body
-# text. ~20 requests per run.
+# Fetch each release's detail page. fetch_release_detail() retries internally
+# and, if it still fails, returns a marked sentinel (ministry = "[fetch
+# failed]", failed = TRUE) rather than throwing — so one bad page NEVER aborts
+# the run. Multiple failures at different indices are each handled the same
+# way, independently.
 details <- map(releases$prid, fetch_release_detail)
 releases$ministry <- map_chr(details, ~ .x$ministry %||% NA_character_)
 parsed_dates      <- map_chr(details, ~ .x$date %||% NA_character_)
 releases$date     <- ifelse(is.na(parsed_dates), as.character(Sys.Date()), parsed_dates)
 releases$body     <- map_chr(details, ~ .x$body %||% "")
+
+n_failed <- sum(map_lgl(details, ~ isTRUE(.x$failed)))
+if (n_failed > 0) {
+  message(n_failed, " of ", nrow(releases),
+          " detail fetches failed after retries; logged marked '[fetch failed]'.")
+}
 
 # Match keywords against title OR body. Titles are passed for the
 # exclusion layer (omnibus releases are dropped regardless of body).
@@ -69,3 +83,9 @@ if (nrow(matches) > 0) {
 matches$body <- NULL
 
 log_results(sheet_id, cfg$sheet_tab, Sys.Date(), matches)
+
+
+## To run locally for testing, uncomment the below lines
+
+# source(here::here("29.pib.pol.env.themes.log", "run_daily.R"))
+# googlesheets4::read_sheet(Sys.getenv("SHEET_ID"), "Log", col_types = "c")

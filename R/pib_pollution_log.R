@@ -42,6 +42,38 @@ PIB_BASE <- "https://pib.gov.in"
   a
 }
 
+#' GET a URL with timeout and retries
+#'
+#' PIB's server is intermittently slow or briefly unreachable, and the
+#' default ~10s timeout plus no retries means a single hiccup aborts the
+#' whole run. This wraps [httr::GET()] with a per-attempt timeout and a
+#' few retries: it tries up to `attempts` times, waits `pause` seconds
+#' between tries, and gives each attempt `timeout_s` seconds before
+#' treating it as failed. Returns the response on the first success, or
+#' `NULL` if every attempt failed (network error OR HTTP >= 400) — callers
+#' decide what to do with NULL, rather than the error propagating.
+#'
+#' @param url URL to fetch.
+#' @param query Named list of query parameters.
+#' @param attempts Total attempts (1 initial + retries). Default 3.
+#' @param timeout_s Seconds allowed per attempt. Default 20.
+#' @param pause Seconds to wait between attempts. Default 2.
+#' @return An httr response object, or `NULL` if all attempts failed.
+#' @importFrom httr GET timeout http_error
+#' @export
+get_with_retry <- function(url, query = list(), attempts = 3,
+                           timeout_s = 20, pause = 2) {
+  for (i in seq_len(attempts)) {
+    resp <- tryCatch(
+      GET(url = url, query = query, timeout(timeout_s)),
+      error = function(e) NULL
+    )
+    if (!is.null(resp) && !http_error(resp)) return(resp)
+    if (i < attempts) Sys.sleep(pause)
+  }
+  NULL
+}
+
 #' Parse a PIB date string into an ISO date
 #'
 #' PIB renders dates like "17 JUL 2026" (uppercase month abbreviation).
@@ -81,24 +113,28 @@ parse_pib_date <- function(x) {
 #' \dontrun{
 #' releases <- fetch_latest_releases()
 #' }
-#' @importFrom httr GET content stop_for_status
+#' @importFrom httr content
 #' @importFrom xml2 read_xml xml_find_all xml_find_first xml_text
 #' @importFrom tibble tibble
 #' @importFrom dplyr mutate %>%
 #' @importFrom stringr str_extract
 #' @export
 fetch_latest_releases <- function(lang = 1, reg = 3) {
-  resp <- GET(
-    url = paste0(PIB_BASE, "/RssMain.aspx"),
-    query = list(ModId = 6, lang = lang, reg = reg)
-  )
-  stop_for_status(resp)
+  empty <- tibble(title = character(), link = character(), prid = character())
+
+  # Retry the single RSS request; if the feed is unreachable after all
+  # attempts, return an empty tibble (NOT an error) so the caller can exit
+  # the run cleanly and let the next scheduled run try again.
+  resp <- get_with_retry(paste0(PIB_BASE, "/RssMain.aspx"),
+                         query = list(ModId = 6, lang = lang, reg = reg))
+  if (is.null(resp)) {
+    message("fetch_latest_releases(): RSS feed unreachable after retries.")
+    return(empty)
+  }
 
   doc <- read_xml(content(resp, as = "text", encoding = "UTF-8"))
   items <- xml_find_all(doc, ".//item")
-  if (length(items) == 0) {
-    return(tibble(title = character(), link = character(), prid = character()))
-  }
+  if (length(items) == 0) return(empty)
 
   tibble(
     title = xml_text(xml_find_first(items, ".//title")),
@@ -121,26 +157,31 @@ fetch_latest_releases <- function(lang = 1, reg = 3) {
 #' @param prid Press release ID, from [fetch_latest_releases()].
 #' @param lang Language: 1 = English (default).
 #' @param reg Region: 3 = National (default).
-#' @return A list with `date` (ISO string), `ministry`, and `body` (the
-#'   release's full plain text), each possibly NA/empty.
+#' @return A list with `date` (ISO string), `ministry`, `body` (full plain
+#'   text), and `failed` (logical). On a fetch that fails all retries,
+#'   `failed = TRUE` and `ministry = "[fetch failed]"` so the release can
+#'   still be logged, marked, without aborting the run. On success,
+#'   `failed = FALSE`.
 #' @examples
 #' \dontrun{
 #' fetch_release_detail("2286000")
 #' }
-#' @importFrom httr GET content http_error
+#' @importFrom httr content
 #' @importFrom rvest read_html html_text2
 #' @importFrom stringr str_split str_trim str_detect str_c
 #' @importFrom purrr discard
 #' @importFrom dplyr %>%
 #' @export
 fetch_release_detail <- function(prid, lang = 1, reg = 3) {
-  resp <- GET(
-    url = paste0(PIB_BASE, "/PressReleaseIframePage.aspx"),
-    query = list(PRID = prid, lang = lang, reg = reg)
-  )
-  if (http_error(resp)) {
-    return(list(date = NA_character_, ministry = NA_character_, body = ""))
-  }
+  # Sentinel returned when the detail page can't be fetched after retries.
+  # ministry = "[fetch failed]" marks the row; body empty so the release
+  # is still categorised from its title.
+  failed <- list(date = NA_character_, ministry = "[fetch failed]",
+                 body = "", failed = TRUE)
+
+  resp <- get_with_retry(paste0(PIB_BASE, "/PressReleaseIframePage.aspx"),
+                         query = list(PRID = prid, lang = lang, reg = reg))
+  if (is.null(resp)) return(failed)
 
   page <- read_html(content(resp, as = "text", encoding = "UTF-8"))
   lines <- str_split(html_text2(page), "\n")[[1]] %>%
@@ -148,7 +189,8 @@ fetch_release_detail <- function(prid, lang = 1, reg = 3) {
     discard(~ .x == "")
 
   if (length(lines) == 0) {
-    return(list(date = NA_character_, ministry = NA_character_, body = ""))
+    return(list(date = NA_character_, ministry = NA_character_,
+                body = "", failed = FALSE))
   }
 
   # The byline carries the date, but its shape varies between releases:
@@ -171,7 +213,8 @@ fetch_release_detail <- function(prid, lang = 1, reg = 3) {
 
   list(date = date_clean %||% NA_character_,
        ministry = ministry %||% NA_character_,
-       body = str_c(lines, collapse = " "))
+       body = str_c(lines, collapse = " "),
+       failed = FALSE)
 }
 
 #' Load keyword config

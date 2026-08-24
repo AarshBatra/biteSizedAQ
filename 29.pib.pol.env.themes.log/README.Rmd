@@ -141,7 +141,7 @@ purposes the daily log might be enough on its own.
 
 In future, I might find ways to automate backfill.
 
-## Automation Setup 
+## Automation Setup
 
 ### 1. Create the Google Sheet
 

@@ -14,8 +14,11 @@ fetch_release_detail(prid, lang = 1, reg = 3)
 \item{reg}{Region: 3 = National (default).}
 }
 \value{
-A list with \code{date} (ISO string), \code{ministry}, and \code{body} (the
-release's full plain text), each possibly NA/empty.
+A list with \code{date} (ISO string), \code{ministry}, \code{body} (full plain
+text), and \code{failed} (logical). On a fetch that fails all retries,
+\code{failed = TRUE} and \code{ministry = "[fetch failed]"} so the release can
+still be logged, marked, without aborting the run. On success,
+\code{failed = FALSE}.
 }
 \description{
 Hits the lightweight iframe content page for a single PRID. The title is
