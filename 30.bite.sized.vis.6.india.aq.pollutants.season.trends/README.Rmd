@@ -5,7 +5,7 @@ editor_options:
     wrap: 72
 ---
 
-# Which pollutant sets India's air quality index, month by month
+# biteSizedVisual #6: Which pollutant sets India's air quality index, month by month
 
 Discussion of air quality in India usually centers on PM2.5
 concentrations, and for good reason: PM2.5 or fine particulate matter
@@ -214,7 +214,8 @@ stating them here clearly:
 The full pipeline: reading the source CSV, cleaning it, building this
 summary table, and drawing the charts — runs in a single Rmd script, so
 any of these choices can be changed and the results regenerated. Here is
-a link to access that Rmd.
+a [link to access that
+Rmd](https://github.com/AarshBatra/biteSizedAQ/blob/main/30.bite.sized.vis.6.india.aq.pollutants.season.trends.Rmd).
 
 ## Data Credit
 
