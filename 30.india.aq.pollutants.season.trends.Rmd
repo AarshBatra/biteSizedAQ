@@ -1,0 +1,392 @@
+---
+title: "30.india.aq.pollutants.season.trends"
+author: "Aarsh Batra"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Libraries
+
+```{r}
+
+#### libraries
+library(tidyverse)
+library(jsonlite)
+library(here)
+library(sf)
+library(ggplot2)
+library(geojson)
+library(devtools)
+library(geojsonio)
+library(geojsonsf)
+library(roxygen2)
+library(magrittr)
+library(stringr)
+library(data.table)
+library(viridis)
+library(ggthemes)
+library(hrbrthemes)
+library(RColorBrewer)
+library(haven)
+library(janitor)
+library(lwgeom)
+library(rvest)
+library(dplyr)
+library(ggrepel)
+library(ggsflabel)
+library(fuzzyjoin)
+library(tidytext)
+library(tm)
+library(wordcloud2)
+library(recipes)
+library(forcats)
+library(sjlabelled) 
+library(geoarrow) # for exporting shapefiles to a geoparquet format
+library(paletteer)
+library(jpeg)
+library(patchwork)
+library(ggtext)
+library(readxl)
+library(tictoc)
+library(googlesheets4)
+library(reticulate)
+library(raster)
+library(fasterize)
+library(microbenchmark)
+library(future)
+library(raster)
+library(rasterVis)
+library(ncdf4)
+library(lattice)
+# library(foster)
+# library(rgdal)
+library(legendry)
+
+
+#### load and document
+
+devtools::load_all()
+devtools::document()
+
+```
+
+
+## raw data cleaning
+
+```{r}
+# =============================================================================
+# India air quality - clean raw CPCB daily bulletins & plot pollutant seasonality
+# Raw source: UrbanEmissions.info compilation of CPCB National AQI bulletins
+#             (CC BY 4.0). Attribute CPCB + UrbanEmissions.info.
+#
+# Every add-on-package function is called as pkg:: so no library() is needed and
+# masking can't happen. Base R functions are left unprefixed. Required packages
+# (must be INSTALLED): tidyverse, and legendry for the season brackets.
+#   install.packages(c("tidyverse", "legendry"))   # run once if needed
+# legendry needs R >= 4.1 and ggplot2 >= 3.5.2.
+# =============================================================================
+
+# The pipe is an operator and cannot be written pkg::%>% inline, so import it once:
+`%>%` <- magrittr::`%>%`
+
+raw_url <- "https://raw.githubusercontent.com/urbanemissionsinfo/AQI_bulletins/main/data/Processed/AllIndiaBulletinsMaster2025_openrefined.csv"
+
+# ---- 1. Read raw ------------------------------------------------------------
+# Raw columns: date, city, no_stations, aqi_category, aqi, prominent_pollutant
+raw <- readr::read_csv(raw_url, show_col_types = FALSE)
+
+# ---- 2. Helper: normalize a pollutant token --------------------------------
+norm_pollutant <- function(x) {
+  x <- stringr::str_to_upper(stringr::str_trim(x))
+  dplyr::recode(x,
+    "OZONE" = "O3", "O3" = "O3",
+    "PM2.5" = "PM2.5", "PM10" = "PM10",
+    "NO2" = "NO2", "SO2" = "SO2", "CO" = "CO", "NH3" = "NH3",
+    .default = stringr::str_to_title(x)
+  )
+}
+
+# ---- 3. Clean ---------------------------------------------------------------
+clean <- raw %>%
+  dplyr::rename(
+    n_stations    = no_stations,
+    pollutant_raw = prominent_pollutant
+  ) %>%                                              # city, aqi already named
+  dplyr::mutate(
+    date       = lubridate::as_date(date),
+    aqi        = suppressWarnings(as.numeric(aqi)),
+    n_stations = dplyr::na_if(suppressWarnings(as.numeric(n_stations)), 0)  # 0 = not reported
+  ) %>%
+  dplyr::filter(!is.na(date), !is.na(city), !is.na(aqi)) %>%
+  dplyr::mutate(
+    aqi_category = cut(
+      aqi,
+      breaks = c(-Inf, 50, 100, 200, 300, 400, Inf),
+      labels = c("Good", "Satisfactory", "Moderate", "Poor", "Very Poor", "Severe")
+    ),
+    tokens = stringr::str_split(stringr::str_replace_all(pollutant_raw, ";", ","), ","),
+    tokens = purrr::map(tokens, function(t) {
+      t <- norm_pollutant(t)
+      unique(t[t != "" & !is.na(t)])
+    }),
+    pollutant_primary = purrr::map_chr(tokens, function(t) if (length(t)) t[[1]] else NA_character_),
+    pollutant_set     = purrr::map_chr(tokens, function(t) if (length(t)) paste(sort(t), collapse = " + ") else NA_character_),
+    n_prominent       = lengths(tokens),
+    drv_pm25 = purrr::map_int(tokens, function(t) as.integer("PM2.5" %in% t)),
+    drv_pm10 = purrr::map_int(tokens, function(t) as.integer("PM10"  %in% t)),
+    drv_o3   = purrr::map_int(tokens, function(t) as.integer("O3"    %in% t)),
+    drv_no2  = purrr::map_int(tokens, function(t) as.integer("NO2"   %in% t)),
+    drv_so2  = purrr::map_int(tokens, function(t) as.integer("SO2"   %in% t)),
+    drv_co   = purrr::map_int(tokens, function(t) as.integer("CO"    %in% t)),
+    drv_nh3  = purrr::map_int(tokens, function(t) as.integer("NH3"   %in% t)),
+    year        = lubridate::year(date),
+    month       = lubridate::month(date),
+    month_name  = lubridate::month(date, label = TRUE, abbr = TRUE),
+    day_of_week = lubridate::wday(date, label = TRUE, abbr = TRUE),
+    is_weekend  = as.integer(lubridate::wday(date) %in% c(1, 7)),  # 1 = Sun, 7 = Sat
+    season = dplyr::case_when(
+      month %in% c(12, 1, 2) ~ "Winter",
+      month %in% 3:6         ~ "Summer",
+      month %in% 7:9         ~ "Monsoon",
+      TRUE                   ~ "Post-monsoon"
+    )
+  ) %>%
+  dplyr::select(
+    date, city, year, month, month_name, season, day_of_week, is_weekend,
+    aqi, aqi_category, pollutant_primary, pollutant_set, n_prominent,
+    drv_pm25, drv_pm10, drv_o3, drv_no2, drv_so2, drv_co, drv_nh3, n_stations
+  ) %>%
+  dplyr::arrange(city, date)
+
+# readr::write_csv(clean, "india_aqi_daily_2015_2025.csv")
+
+# ---- 4. Aggregate: prominent-pollutant share by month (FRACTIONAL CREDIT) ----
+main_poll <- c("PM2.5", "PM10", "O3", "CO", "NO2", "SO2", "NH3")
+
+monthly_share <- clean %>%
+  dplyr::filter(n_prominent >= 1) %>%
+  dplyr::transmute(
+    month, month_name,
+    PM2.5 = drv_pm25, PM10 = drv_pm10, O3 = drv_o3,
+    CO = drv_co, NO2 = drv_no2, SO2 = drv_so2, NH3 = drv_nh3,
+    w = 1 / n_prominent
+  ) %>%
+  tidyr::pivot_longer(
+    cols = c(PM2.5, PM10, O3, CO, NO2, SO2, NH3),
+    names_to = "pollutant", values_to = "flag"
+  ) %>%
+  dplyr::filter(flag == 1) %>%
+  dplyr::count(month, month_name, pollutant, wt = w, name = "days") %>%
+  dplyr::group_by(month_name) %>%
+  dplyr::mutate(share = 100 * days / sum(days)) %>%
+  dplyr::ungroup() %>%
+  dplyr::mutate(pollutant = factor(pollutant, levels = rev(main_poll)))
+
+# Season grouping. Winter (Dec, Jan, Feb) is only contiguous if the year starts
+# in December, so we relabel the x-axis Dec -> Nov; then all four seasons are
+# adjacent blocks. xpos is the Dec-first position (Dec = 1 ... Nov = 12).
+season_levels <- c("Winter", "Summer", "Monsoon", "Post-monsoon")
+decfirst_lab  <- c("Dec", "Jan", "Feb", "Mar", "Apr", "May",
+                   "Jun", "Jul", "Aug", "Sep", "Oct", "Nov")
+
+add_season <- function(df) {
+  df %>% dplyr::mutate(
+    season = factor(dplyr::case_when(
+      month %in% c(12, 1, 2) ~ "Winter",
+      month %in% 3:6         ~ "Summer",
+      month %in% 7:9         ~ "Monsoon",
+      TRUE                   ~ "Post-monsoon"
+    ), levels = season_levels),
+    xpos = (month %% 12) + 1                       # Dec=1, Jan=2, ..., Nov=12
+  )
+}
+
+monthly_share <- monthly_share %>%
+  add_season() %>%
+  dplyr::mutate(month_name = factor(as.character(month_name), levels = decfirst_lab))
+
+# ---- 4b. EVERY NUMBER QUOTED IN THE BLOG (run this, paste the console output) -
+# Each print below is tagged [B#] with the sentence it backs in the post.
+
+cat("\n[B1] Dataset shape -----------------------------------------------------\n")
+cat("rows (city-days):      ", nrow(clean), "\n")
+cat("distinct cities:       ", dplyr::n_distinct(clean$city), "\n")
+cat("date range:            ", format(min(clean$date)), "to", format(max(clean$date)), "\n")
+cat("AQI value range:       ", min(clean$aqi), "to", max(clean$aqi), "\n")
+
+cat("\n[B2] Share of city-days that list MORE THAN ONE prominent pollutant ------\n")
+multi_pct <- clean %>%
+  dplyr::filter(n_prominent >= 1) %>%
+  dplyr::summarise(multi_pct = round(100 * mean(n_prominent > 1), 1))
+print(multi_pct)
+
+cat("\n[B3] Overall share of city-days each pollutant is PROMINENT --------------\n")
+# Fractional credit split across days that list several. NOT month-wise.
+overall_share <- clean %>%
+  dplyr::filter(n_prominent >= 1) %>%
+  dplyr::transmute(
+    PM2.5 = drv_pm25, PM10 = drv_pm10, O3 = drv_o3,
+    CO = drv_co, NO2 = drv_no2, SO2 = drv_so2, NH3 = drv_nh3,
+    w = 1 / n_prominent
+  ) %>%
+  tidyr::pivot_longer(-w, names_to = "pollutant", values_to = "flag") %>%
+  dplyr::filter(flag == 1) %>%
+  dplyr::count(pollutant, wt = w, name = "credit") %>%
+  dplyr::mutate(share_pct = round(100 * credit / sum(credit), 1)) %>%
+  dplyr::arrange(dplyr::desc(share_pct))
+print(overall_share)
+
+cat("\n[B4] Share by season (top pollutant per season, and O3/CO peaks) ---------\n")
+season_share <- clean %>%
+  dplyr::filter(n_prominent >= 1) %>%
+  add_season() %>%
+  dplyr::transmute(
+    season,
+    PM2.5 = drv_pm25, PM10 = drv_pm10, O3 = drv_o3,
+    CO = drv_co, NO2 = drv_no2, SO2 = drv_so2, NH3 = drv_nh3,
+    w = 1 / n_prominent
+  ) %>%
+  tidyr::pivot_longer(c(-season, -w), names_to = "pollutant", values_to = "flag") %>%
+  dplyr::filter(flag == 1) %>%
+  dplyr::count(season, pollutant, wt = w, name = "credit") %>%
+  dplyr::group_by(season) %>%
+  dplyr::mutate(share_pct = round(100 * credit / sum(credit), 1)) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(season, dplyr::desc(share_pct))
+print(season_share, n = Inf)
+
+cat("\n[B5] Check: each month's shares sum to 100% (plotted summary table) -------\n")
+month_totals <- monthly_share %>%
+  dplyr::group_by(month_name) %>%
+  dplyr::summarise(total_pct = round(sum(share), 1), .groups = "drop")
+print(month_totals, n = Inf)
+
+cat("\n[B6] Coverage grows over time: cities & mean stations reporting per year --\n")
+coverage_by_year <- clean %>%
+  dplyr::group_by(year) %>%
+  dplyr::summarise(
+    cities        = dplyr::n_distinct(city),
+    mean_stations = round(mean(n_stations, na.rm = TRUE), 1),
+    .groups = "drop"
+  )
+print(coverage_by_year, n = Inf)
+
+cat("\n[B7] Month-by-month: peak month for each pollutant (the plotted summary) --\n")
+# For each pollutant, the calendar month where its prominent-share is highest.
+monthly_peaks <- monthly_share %>%
+  dplyr::group_by(pollutant) %>%
+  dplyr::slice_max(share, n = 1, with_ties = FALSE) %>%
+  dplyr::ungroup() %>%
+  dplyr::transmute(pollutant, peak_month = as.character(month_name),
+                   peak_share_pct = round(share, 1)) %>%
+  dplyr::arrange(dplyr::desc(peak_share_pct))
+print(monthly_peaks)
+
+# ---- 5. Shared palette, theme & a per-plot label builder --------------------
+pal <- c(
+  "PM2.5" = "#4e79a7", "PM10" = "#f28e2b", "O3" = "#59a14f",
+  "CO"    = "#edc948", "NO2"  = "#e15759", "SO2" = "#b07aa1",
+  "NH3"   = "#76b7b2"
+)
+
+descriptor <- "Share of city-days by prominent pollutant (fractional credit)  |  297 cities  |  2015-2025"
+
+# labs_for(): same title/descriptor/caption for every plot, but a plot-specific
+# interpretation paragraph wrapped and placed under the subtitle.
+labs_for <- function(interp) {
+  ggplot2::labs(
+    title    = "Which pollutant drives India's air, month by month",
+    subtitle = paste0(descriptor, "\n\n", stringr::str_wrap(interp, width = 96)),
+    x = NULL, y = "Share of city-days",
+    caption  = "Source: CPCB daily AQI bulletins, compiled via UrbanEmissions.info  |  Graphic: github.com/AarshBatra/biteSizedAQ"
+  )
+}
+
+interp_bar <- paste(
+  "Each bar is one calendar month, with all eleven years (2015-2025) pooled together. Its coloured",
+  "slices show how often each pollutant topped the air that month: the taller a slice, the more days",
+  "that pollutant led. Blue (PM2.5) fills the winter bars, orange (PM10 dust) takes over through",
+  "spring and summer, and green (ozone) and yellow (CO) grow in the hot and monsoon months. Every",
+  "bar adds up to 100%."
+)
+
+interp_area <- paste(
+  "Each coloured band shows how often a pollutant topped the air, month by month, with every calendar",
+  "month pooling all eleven years (2015-2025). Follow one band across the year: blue (PM2.5) is widest",
+  "in winter, orange (PM10 dust) runs through spring and summer, and green (ozone) and yellow (CO)",
+  "swell in the hot and monsoon months. Each month adds up to 100%."
+)
+
+shared_theme <- ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(
+    axis.text          = ggplot2::element_text(size = 11),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.minor   = ggplot2::element_blank(),
+    plot.title         = ggplot2::element_text(face = "bold"),
+    # gap between the interpretation paragraph and the legend below it:
+    plot.subtitle      = ggplot2::element_text(lineheight = 1.15,
+                                               margin = ggplot2::margin(b = 16)),
+    legend.position    = "top",
+    legend.justification = "left",
+    # legend in a box:
+    legend.background  = ggplot2::element_rect(colour = "grey70", fill = NA, linewidth = 0.3),
+    legend.margin      = ggplot2::margin(6, 10, 6, 10),
+    legend.box.margin  = ggplot2::margin(t = 2, b = 10),
+    # gap between the plotting area and the caption:
+    plot.caption       = ggplot2::element_text(colour = "grey40",
+                                               margin = ggplot2::margin(t = 18)),
+    plot.margin        = ggplot2::margin(12, 16, 12, 12)
+  )
+
+# Season brackets on a SINGLE continuous axis (no faceting). legendry draws the
+# normal month ticks, then a bracket + season name beneath each month range.
+# start/end are Dec-first positions: Winter 1-3, Summer 4-7, Monsoon 8-10, Post 11-12.
+season_key <- legendry::key_range_manual(
+  start = c(1, 4, 8, 11),
+  end   = c(3, 7, 10, 12),
+  name  = season_levels
+)
+season_guide <- legendry::guide_axis_nested(key = season_key)
+
+# ---- 6. Plot p: 100% stacked BAR --------------------------------------------
+p <- ggplot2::ggplot(monthly_share,
+                     ggplot2::aes(x = xpos, y = share, fill = pollutant)) +
+  ggplot2::geom_col(width = 0.82, colour = "white", linewidth = 0.3) +
+  ggplot2::scale_fill_manual(values = pal, breaks = main_poll, name = NULL) +
+  ggplot2::scale_x_continuous(breaks = 1:12, labels = decfirst_lab,
+                              expand = ggplot2::expansion(add = 0.6),
+                              guide = season_guide) +
+  ggplot2::scale_y_continuous(expand = ggplot2::expansion(0), labels = function(x) paste0(x, "%")) +
+  labs_for(interp_bar) + shared_theme
+
+print(p)
+# ggplot2::ggsave("india_pollutant_by_month_bar.png", p, width = 9, height = 6.2, dpi = 200)
+
+# ---- 7. Plot area_share: 100% stacked AREA ----------------------------------
+# Area needs a value at every month x pollutant cell, so complete the grid with 0s.
+area_df <- monthly_share %>%
+  tidyr::complete(month, pollutant, fill = list(share = 0)) %>%
+  add_season()                                     # recompute season/xpos after complete
+
+area_share <- ggplot2::ggplot(area_df,
+                              ggplot2::aes(x = xpos, y = share, fill = pollutant)) +
+  ggplot2::geom_area(colour = "white", linewidth = 0.3) +
+  ggplot2::scale_fill_manual(values = pal, breaks = main_poll, name = NULL) +
+  ggplot2::scale_x_continuous(breaks = 1:12, labels = decfirst_lab,
+                              expand = ggplot2::expansion(0),
+                              guide = season_guide) +
+  ggplot2::scale_y_continuous(expand = ggplot2::expansion(0), labels = function(x) paste0(x, "%")) +
+  labs_for(interp_area) + shared_theme
+
+print(area_share)
+# ggplot2::ggsave("india_pollutant_by_month_area.png", area_share, width = 9, height = 6.2, dpi = 200)
+```
+
+## test
+```{r}
+
+```
