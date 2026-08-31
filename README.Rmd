@@ -47,9 +47,11 @@ This repository will continue to grow with new projects as and when I find time.
 
 ## Project 30: biteSizedVisual #6: Which pollutant sets India's air quality index, month by month
 
--   Full blog post: Link
+-   Full blog post: [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/30.bite.sized.vis.6.india.aq.pollutants.season.trends)
 
--   ***Summary:*** India's CPCB publishes daily AQI bulletins, which UrbanEmissions.info compiled into a single 2015–2025 table ([Link](https://github.com/urbanemissionsinfo/AQI_bulletins/blob/main/data/Processed/AllIndiaBulletinsMaster2025_openrefined.csv)). Across \~470,000 city-day readings from 297 cities, it tracks each day's "prominent pollutant" — the one that set the AQI — and finds PM10 (coarse dust) leads on about 49% of city-days and PM2.5 on about 32%, shifting by season: PM2.5 in winter, PM10 spring through monsoon, ozone in the pre-monsoon heat, CO in the rains. Throughout, "prominent" means worst against that pollutant's own limit that day — not most abundant or most harmful (PM2.5 stays the bigger health risk). Two season-grouped charts made by biteSizedAQ show the monthly mix and possible explanations behind the patterns.
+-   ***Summary:*** India's CPCB publishes daily AQI bulletins, which UrbanEmissions.info compiled into a single 2015–2025 table ([Link](https://github.com/urbanemissionsinfo/AQI_bulletins/blob/main/data/Processed/AllIndiaBulletinsMaster2025_openrefined.csv)). Across \~470,000 city-day readings from 297 cities, it tracks each day's "prominent pollutant" — the one that set the AQI — and finds that across 11 years from 2015 to 2025, PM10 (coarse dust) leads on about 49% of city-days and PM2.5 on about 32%, shifting by season: PM2.5 in winter, PM10 spring through monsoon, ozone in the pre-monsoon heat, CO in the rains. Throughout, "prominent" means worst against that pollutant's own limit that day — not most abundant or most harmful (PM2.5 stays the bigger health risk).
+
+    Two season-grouped charts made by biteSizedAQ show the monthly mix and possible explanations behind the patterns.
 
 ## *Proj*ect 29: PIB India Environmental Press Releases Log - Tracker
 
