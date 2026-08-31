@@ -12,7 +12,7 @@ Description: A collection of small, self-contained air quality data
 License: CC BY 4.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Imports:
     dplyr,
     googlesheets4,
