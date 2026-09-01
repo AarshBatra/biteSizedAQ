@@ -138,7 +138,7 @@ mostly blue (PM2.5), but slide across to April and it is mostly orange
 (PM10) — the winter-to-summer hand off shows up as the blue block
 shrinking and the orange one growing.
 
-![](images/clipboard-1386703701.png)
+![](images/india_pollutant_by_month_bar.png)
 
 The **stacked area** shows the same shares as bands that flow across the
 year, so you can follow one pollutant’s rise and fall. Trace the blue
@@ -149,7 +149,7 @@ againn. I suppose there are better ways to plot the cyclical nature, but
 you can read it as post Nov in the right, we circle back to Dec in the
 far left.
 
-![](images/clipboard-254627122.png)
+![](images/india_pollutant_by_month_area.png)
 
 ## How the data is transformed
 

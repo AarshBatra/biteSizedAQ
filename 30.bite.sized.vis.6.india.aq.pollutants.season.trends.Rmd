@@ -93,6 +93,7 @@ devtools::document()
 # The pipe is an operator and cannot be written pkg::%>% inline, so import it once:
 `%>%` <- magrittr::`%>%`
 
+## the raw data used from the link below (UrbanEmissions.info) here spans from 2015 to 2025 at the moment when this project was written
 raw_url <- "https://raw.githubusercontent.com/urbanemissionsinfo/AQI_bulletins/main/data/Processed/AllIndiaBulletinsMaster2025_openrefined.csv"
 
 # ---- 1. Read raw ------------------------------------------------------------
@@ -293,7 +294,7 @@ pal <- c(
   "NH3"   = "#76b7b2"
 )
 
-descriptor <- "Share of city-days by prominent pollutant (fractional credit)  |  297 cities  |  2015-2025"
+descriptor <- "Share of city-days by prominent pollutant |  297 cities  |  2015-2025 (pooled)"
 
 # labs_for(): same title/descriptor/caption for every plot, but a plot-specific
 # interpretation paragraph wrapped and placed under the subtitle.
@@ -301,45 +302,48 @@ labs_for <- function(interp) {
   ggplot2::labs(
     title    = "Which pollutant drives India's air, month by month",
     subtitle = paste0(descriptor, "\n\n", stringr::str_wrap(interp, width = 96)),
-    x = NULL, y = "Share of city-days",
-    caption  = "Source: CPCB daily AQI bulletins, compiled via UrbanEmissions.info  |  Graphic: github.com/AarshBatra/biteSizedAQ"
+    x = NULL, y = "Share of city-days (across 15 years)",
+    caption  = "Graphic: github.com/AarshBatra/biteSizedAQ | Data Credit: CPCB daily AQI bulletins, compiled by UrbanEmissions.info"
   )
 }
 
 interp_bar <- paste(
-  "Each bar is one calendar month, with all eleven years (2015-2025) pooled together. Its coloured",
-  "slices show how often each pollutant topped the air that month: the taller a slice, the more days",
-  "that pollutant led. Blue (PM2.5) fills the winter bars, orange (PM10 dust) takes over through",
-  "spring and summer, and green (ozone) and yellow (CO) grow in the hot and monsoon months. Every",
+  "Each bar is one calendar month, with all eleven years (2015-2025) pooled together. Each bar's coloured",
+  "slices show how often (across 15 years) each pollutant topped the air that month: the taller a slice, the more days",
+  "that pollutant led that month. Blue (PM2.5) fills the winter bars - so for more than 50% of January days PM2.5 was the most prominent pollutant, orange (PM10 dust) takes over through",
+  "summer, and green (ozone) and yellow (CO) grow in the summer and monsoon months. Every",
   "bar adds up to 100%."
 )
 
 interp_area <- paste(
   "Each coloured band shows how often a pollutant topped the air, month by month, with every calendar",
   "month pooling all eleven years (2015-2025). Follow one band across the year: blue (PM2.5) is widest",
-  "in winter, orange (PM10 dust) runs through spring and summer, and green (ozone) and yellow (CO)",
-  "swell in the hot and monsoon months. Each month adds up to 100%."
+  "in winter months - so for more than 50% of January days PM2.5 was the most prominent pollutant, orange (PM10 dust) runs through summer months, and green (ozone) and yellow (CO)",
+  "swell in the summer and monsoon months. Each month adds up to 100%."
 )
 
 shared_theme <- ggplot2::theme_minimal(base_size = 12) +
   ggplot2::theme(
-    axis.text          = ggplot2::element_text(size = 11),
+    axis.text.x          = ggplot2::element_text(size = 16, margin = margin(t = 6)),
+     axis.text.y          = ggplot2::element_text(size = 16, margin = margin(r = 6)),
+    axis.title = ggplot2::element_text(size = 17),
     panel.grid.major.x = ggplot2::element_blank(),
     panel.grid.minor   = ggplot2::element_blank(),
-    plot.title         = ggplot2::element_text(face = "bold"),
+    plot.title         = ggplot2::element_text(face = "bold", size = 20),
     # gap between the interpretation paragraph and the legend below it:
     plot.subtitle      = ggplot2::element_text(lineheight = 1.15,
-                                               margin = ggplot2::margin(b = 16)),
+                                               margin = ggplot2::margin(b = 16), size = 18.5),
     legend.position    = "top",
     legend.justification = "left",
     # legend in a box:
     legend.background  = ggplot2::element_rect(colour = "grey70", fill = NA, linewidth = 0.3),
     legend.margin      = ggplot2::margin(6, 10, 6, 10),
     legend.box.margin  = ggplot2::margin(t = 2, b = 10),
+    legend.text = ggplot2::element_text(size = 16),
     # gap between the plotting area and the caption:
     plot.caption       = ggplot2::element_text(colour = "grey40",
-                                               margin = ggplot2::margin(t = 18)),
-    plot.margin        = ggplot2::margin(12, 16, 12, 12)
+                                               margin = ggplot2::margin(t = 18), size = 13),
+    plot.margin        = ggplot2::margin(12, 18, 12, 12)
   )
 
 # Season brackets on a SINGLE continuous axis (no faceting). legendry draws the
@@ -364,7 +368,7 @@ p <- ggplot2::ggplot(monthly_share,
   labs_for(interp_bar) + shared_theme
 
 print(p)
-# ggplot2::ggsave("india_pollutant_by_month_bar.png", p, width = 9, height = 6.2, dpi = 200)
+ggplot2::ggsave("./30.bite.sized.vis.6.india.aq.pollutants.season.trends/images/india_pollutant_by_month_bar.png", p, width = 15.5, height = 12.5, dpi = 520)
 
 # ---- 7. Plot area_share: 100% stacked AREA ----------------------------------
 # Area needs a value at every month x pollutant cell, so complete the grid with 0s.
@@ -377,13 +381,13 @@ area_share <- ggplot2::ggplot(area_df,
   ggplot2::geom_area(colour = "white", linewidth = 0.3) +
   ggplot2::scale_fill_manual(values = pal, breaks = main_poll, name = NULL) +
   ggplot2::scale_x_continuous(breaks = 1:12, labels = decfirst_lab,
-                              expand = ggplot2::expansion(0),
+                              expand = ggplot2::expansion(mult = 0.02),
                               guide = season_guide) +
   ggplot2::scale_y_continuous(expand = ggplot2::expansion(0), labels = function(x) paste0(x, "%")) +
   labs_for(interp_area) + shared_theme
 
 print(area_share)
-# ggplot2::ggsave("india_pollutant_by_month_area.png", area_share, width = 9, height = 6.2, dpi = 200)
+ggplot2::ggsave("./30.bite.sized.vis.6.india.aq.pollutants.season.trends/images/india_pollutant_by_month_area.png", area_share, width = 15.5, height = 12.5, dpi = 520)
 ```
 
 ## test
