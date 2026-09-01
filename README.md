@@ -79,7 +79,7 @@ find time. To kick things off, check out the first few projects below!
 - High Resolution plots from the blog can be [found
   here](https://github.com/AarshBatra/biteSizedAQ/tree/main/30.bite.sized.vis.6.india.aq.pollutants.season.trends/images).
 
-## *Proj*ect 29: PIB India Environmental Press Releases Log - Tracker
+## Project 29: PIB India Environmental Press Releases Log - Tracker
 
 - Full blog post:
   [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/29.pib.pol.env.themes.log)
