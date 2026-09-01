@@ -73,7 +73,11 @@ find time. To kick things off, check out the first few projects below!
   possible explanations behind the patterns. Read the full blog above to
   learn more.
 
-- High Resolution plots from the blog can be found here.
+- Raw data cleaning code can be [found
+  here](https://github.com/AarshBatra/biteSizedAQ/blob/main/30.bite.sized.vis.6.india.aq.pollutants.season.trends.Rmd).
+
+- High Resolution plots from the blog can be [found
+  here](https://github.com/AarshBatra/biteSizedAQ/tree/main/30.bite.sized.vis.6.india.aq.pollutants.season.trends/images).
 
 ## *Proj*ect 29: PIB India Environmental Press Releases Log - Tracker
 
