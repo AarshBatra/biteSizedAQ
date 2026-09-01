@@ -302,16 +302,16 @@ labs_for <- function(interp) {
   ggplot2::labs(
     title    = "Which pollutant drives India's air, month by month",
     subtitle = paste0(descriptor, "\n\n", stringr::str_wrap(interp, width = 96)),
-    x = NULL, y = "Share of city-days (across 15 years)",
+    x = NULL, y = "Share of city-days (across 11 years)",
     caption  = "Graphic: github.com/AarshBatra/biteSizedAQ | Data Credit: CPCB daily AQI bulletins, compiled by UrbanEmissions.info"
   )
 }
 
 interp_bar <- paste(
   "Each bar is one calendar month, with all eleven years (2015-2025) pooled together. Each bar's coloured",
-  "slices show how often (across 15 years) each pollutant topped the air that month: the taller a slice, the more days",
-  "that pollutant led that month. Blue (PM2.5) fills the winter bars - so for more than 50% of January days PM2.5 was the most prominent pollutant, orange (PM10 dust) takes over through",
-  "summer, and green (ozone) and yellow (CO) grow in the summer and monsoon months. Every",
+  "slices show how often (across 11 years) each pollutant topped the air that month: the taller a slice, the more days",
+  "that pollutant led that month. Blue (PM2.5) fills the winter bars - so for more than 50% of January days in these 11 years, PM2.5 was the most prominent pollutant, orange (PM10 dust) takes over through",
+  "summer, and green (ozone) and yellow (CO) grow in the summer and monsoon months. Every month",
   "bar adds up to 100%."
 )
 
@@ -319,7 +319,7 @@ interp_area <- paste(
   "Each coloured band shows how often a pollutant topped the air, month by month, with every calendar",
   "month pooling all eleven years (2015-2025). Follow one band across the year: blue (PM2.5) is widest",
   "in winter months - so for more than 50% of January days PM2.5 was the most prominent pollutant, orange (PM10 dust) runs through summer months, and green (ozone) and yellow (CO)",
-  "swell in the summer and monsoon months. Each month adds up to 100%."
+  "swell in the summer and monsoon months. Each month bar adds up to 100%."
 )
 
 shared_theme <- ggplot2::theme_minimal(base_size = 12) +

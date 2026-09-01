@@ -194,10 +194,13 @@ stating them here clearly:
     calculation. Cities that report more often contribute more to the
     totals.
 
--   **Years are pooled.** The twelve months combine all of 2015–2025
-    into a single average year, so the charts show a typical seasonal
-    pattern rather than a trend; a pollutant's "July" share is its
-    average across eleven Julys.
+-   **Years are pooled.** **Years are pooled.** The twelve months
+    combine all of 2015–2025 into a single average year, so the charts
+    show a typical seasonal pattern rather than a trend. For example,
+    PM10's "July" share is the number of city-days across all eleven
+    Julys (2015–2025) on which PM10 was prominent, divided by the total
+    July city-days over those same eleven years — pooled together, not
+    averaged year by year.
 
 -   **Credit is split evenly on shared days**, as above — no ordering or
     ranking is inferred from multi-pollutant entries.
