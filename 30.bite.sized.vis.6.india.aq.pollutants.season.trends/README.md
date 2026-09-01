@@ -215,8 +215,9 @@ Rmd](https://github.com/AarshBatra/biteSizedAQ/blob/main/30.bite.sized.vis.6.ind
 ## Data Credit
 
 *Data: CPCB daily AQI bulletins, compiled by UrbanEmissions.info (*GNU
-General Public License v3.0*), [Link](#0). See License and Reuse
-section.*
+General Public License v3.0*),
+[Link](https://github.com/urbanemissionsinfo/AQI_bulletins/blob/main/data/Processed/AllIndiaBulletinsMaster2025_openrefined.csv).
+See License and Reuse section.*
 
 ## Support This Work: Give It a Star
 
