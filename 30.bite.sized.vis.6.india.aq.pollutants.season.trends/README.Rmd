@@ -16,6 +16,8 @@ that the daily data records — not how harmful the air is, but which
 pollutant is registered as setting the index each day, and how that
 varies through the year.
 
+![](images/pol.culprits.image.png)
+
 ## The data
 
 The source is the CPCB's daily national AQI bulletin, compiled by
