@@ -1,0 +1,426 @@
+---
+title: "31.ev.report.analysis"
+author: "Aarsh Batra"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## Libraries
+
+```{r}
+
+#### libraries
+library(tidyverse)
+library(jsonlite)
+library(here)
+library(sf)
+library(ggplot2)
+library(geojson)
+library(devtools)
+library(geojsonio)
+library(geojsonsf)
+library(roxygen2)
+library(magrittr)
+library(stringr)
+library(data.table)
+library(viridis)
+library(ggthemes)
+library(hrbrthemes)
+library(RColorBrewer)
+library(haven)
+library(janitor)
+library(lwgeom)
+library(rvest)
+library(dplyr)
+library(ggrepel)
+library(ggsflabel)
+library(fuzzyjoin)
+library(tidytext)
+library(tm)
+library(wordcloud2)
+library(recipes)
+library(forcats)
+library(sjlabelled) 
+library(geoarrow) # for exporting shapefiles to a geoparquet format
+library(paletteer)
+library(jpeg)
+library(patchwork)
+library(ggtext)
+library(readxl)
+library(tictoc)
+library(googlesheets4)
+library(reticulate)
+library(raster)
+library(fasterize)
+library(microbenchmark)
+library(future)
+library(raster)
+library(rasterVis)
+library(ncdf4)
+library(lattice)
+# library(foster)
+# library(rgdal)
+# library(legendry)
+
+
+#### load and document
+
+devtools::load_all()
+devtools::document()
+
+```
+
+## Clean data
+```{r}
+# ============================================================================
+#  biteSizedAQ  |  India Electric Mobility Index (IEMI) 2025
+#  Single-run script: embedded data + several plot options you can toggle.
+#  Source of all numbers: IEMI 2025, Annexure 1 (Tables 4-6, pp.113-119).
+#  Every value below was extracted from the report and cross-verified.
+# ============================================================================
+#
+#  HOW TO USE
+#  1. Just source this file:  source("iemi_bitesizedaq_plots.R")
+#  2. Pick which plots to draw in the CONFIG block below (PLOTS <- ...).
+#  3. Set SAVE_PNG <- TRUE to write PNGs to OUT_DIR, or FALSE to just view.
+#  Plot keys: "dumbbell", "treemap", "scatter", "race", "renewables",
+#             "leaderboard", "themes"
+# ============================================================================
+
+# ----------------------------- CONFIG ---------------------------------------
+PLOTS       <- c("dumbbell", "treemap", "scatter", "race", "renewables",
+                 "leaderboard", "themes")
+SAVE_PNG    <- TRUE
+OUT_DIR     <- "iemi_plots"
+TREEMAP_VAR <- "private"   # area of treemap: "private" | "commercial" | "renewable"
+DUMBBELL_SORT <- "gap"     # order states by: "gap" | "private" | "commercial" | "total"
+TOP_N_RACE  <- 12          # how many states in the ranked "race" plot
+
+# --------------------------- DEPENDENCIES -----------------------------------
+need <- c("ggplot2", "dplyr", "tidyr", "scales", "ggrepel", "treemapify", "tibble", "ggtext")
+inst <- need[!(need %in% rownames(installed.packages()))]
+if (length(inst)) install.packages(inst, repos = "https://cloud.r-project.org")
+suppressPackageStartupMessages({
+  library(ggplot2); library(dplyr); library(tidyr)
+  library(scales);  library(ggrepel); library(treemapify); library(ggtext)
+})
+if (SAVE_PNG && !dir.exists(OUT_DIR)) dir.create(OUT_DIR)
+
+# ------------------------------- DATA ---------------------------------------
+# 36 States/UTs x 16 indicators. Complete columns are used for plotting;
+# ev_startups has 8 genuine "not reported" cells (NA) and is not featured.
+iemi <- readxl::read_xlsx("./31.elec.mob.2025.report.analysis/IEMI_2025_analysis_dataset_raw_data.xlsx")
+
+# short labels for crowded axes / tiles
+short_map <- c("Andaman & Nicobar Islands"="A&N Islands",
+               "Dadra & NH and Daman & Diu"="DNH & DD",
+               "Jammu & Kashmir"="J&K","Arunachal Pradesh"="Arunachal",
+               "Himachal Pradesh"="Himachal","Madhya Pradesh"="Madhya Pradesh")
+iemi <- iemi %>% mutate(short = unname(ifelse(state %in% names(short_map),
+                                              short_map[state], state)))
+
+# --------------------------- biteSizedAQ THEME ------------------------------
+PAL <- list(private="#0F9D8B", commercial="#E8743B", accent="#2C3E50",
+            grid="#E7ECEF", ink="#22303C", muted="#7A8B99")
+theme_bsaq <- function(base = 13) {
+  theme_minimal(base_size = base) +
+    theme(plot.title    = element_text(face="bold", size=base+12, colour=PAL$ink),
+          plot.subtitle = element_text(size=base+3, colour=PAL$muted,
+                                        face = "italic", margin = margin(b = 1, unit = "cm")),
+          plot.caption  = element_text(size=base, colour=PAL$muted, hjust=0, margin = margin(t = 1, unit = "cm")),
+          axis.title.x    = element_text(colour=PAL$muted, size=base + 4, margin = margin(t = 0.5, unit = "cm")),
+          axis.title.y    = element_text(colour=PAL$muted, size=base + 4, margin = margin(r = 0.5, unit = "cm")),
+          axis.text     = element_text(colour=PAL$ink, size = base + 2),
+          panel.grid.minor = element_blank(),
+          panel.grid.major = element_line(colour=PAL$grid, linewidth=.5),
+          legend.position = "top",
+          legend.title = element_text(size = base + 3), 
+          legend.text = element_text(size = base + 2),
+          plot.margin = margin(16,18,12,14), 
+           legend.background = element_rect(
+      colour = "black",
+      fill = "white",
+      linewidth = 0.1
+    ))
+
+}
+CAP <- "Source: India Electric Mobility Index (IEMI) 2025.  |  Graphic: github.com/AarshBatra/biteSizedAQ"
+
+# ------------------------- COMPUTED NUMBERS (console) -----------------------
+cat("\n================  NUMBERS FOR THE BLOG  ================\n")
+lead <- function(col, n=6) iemi %>% arrange(desc(.data[[col]])) %>%
+  transmute(state, val=.data[[col]]) %>% head(n)
+cat("\nPrivate EV % leaders:\n");    print(lead("private"))
+cat("\nCommercial EV % leaders:\n"); print(lead("commercial"))
+cat("\nCharger-to-vehicle leaders:\n"); print(lead("charger_ratio"))
+cat("\nRenewable share % leaders:\n"); print(lead("renewable"))
+cat(sprintf("\nMeans  -> private %.2f%% | commercial %.2f%% | charger %.2f | renewable %.2f%%\n",
+            mean(iemi$private), mean(iemi$commercial),
+            mean(iemi$charger_ratio), mean(iemi$renewable)))
+cat(sprintf("Correlations -> charger~private %.2f | parity~private %.2f | renewable~private %.2f | private~commercial %.2f\n",
+            cor(iemi$charger_ratio, iemi$private),
+            cor(iemi$fuel_parity,  iemi$private),
+            cor(iemi$renewable,    iemi$private),
+            cor(iemi$private,      iemi$commercial)))
+cat("=======================================================\n\n")
+
+# ------------------------------- PLOTS --------------------------------------
+
+# 1) DUMBBELL: the two EV races (private vs commercial share, per state)
+plot_dumbbell <- function(sort_by = DUMBBELL_SORT) {
+  d <- iemi %>% mutate(gap = commercial - private, total = private + commercial)
+  ord <- switch(sort_by,
+                gap        = order(d$gap),
+                private    = order(d$private),
+                commercial = order(d$commercial),
+                total      = order(d$total),
+                order(d$gap))
+  d$short <- factor(d$short, levels = d$short[ord])
+  ggplot(d) +
+    geom_segment(aes(x=private, xend=commercial, y=short, yend=short),
+                 colour=PAL$grid, linewidth=2.2) +
+    geom_point(aes(x=private, y=short, colour="Private"), size=3.4) +
+    geom_point(aes(x=commercial, y=short, colour="Commercial"), size=3.4) +
+    scale_colour_manual(NULL, values=c(Private=PAL$private, Commercial=PAL$commercial)) +
+    scale_x_continuous(labels=label_percent(scale=1), expand=expansion(mult=c(.02,.06))) +
+    labs(title="India runs two different EV races",
+         subtitle="Private vs commercial EV share of new registrations, 2025. Few states lead both.",
+         x="Share of new registrations that are electric", y=NULL, caption=CAP) +
+    theme_bsaq() +
+    theme(  legend.box.spacing = unit(1.5, "cm"), 
+          plot.title = element_text(size = 32),
+          plot.subtitle = element_text(size = 17),
+          plot.caption = element_text(size  = 13),
+          legend.text = element_text(size = 17), 
+          axis.title.x = element_text(size = 19), 
+          axis.text = element_text(size = 17))
+}
+
+
+ggsave("./31.elec.mob.2025.report.analysis/plots/two_ev_races.png", plot_dumbbell(), width = 14, height = 13, units = "in", dpi = 520)
+
+# 2) TREEMAP: square areas = who is ahead on adoption
+plot_treemap <- function(var = TREEMAP_VAR) {
+  vmap <- c(private="Private EV %", commercial="Commercial EV %", renewable="Renewable share %")
+  d <- iemi %>% mutate(area = .data[[var]]) %>% filter(area > 0)
+  ggplot(d, aes(area=area, fill=area, label=paste0(short, "\n", area,
+                ifelse(var=="renewable","%","%")))) +
+    geom_treemap(colour="white", linewidth=2) +
+    geom_treemap_text(colour="white", place="centre", grow=FALSE,
+                      reflow=TRUE, min.size=6.5, fontface="bold") +
+    scale_fill_gradient(low="#7FD1C6", high=PAL$private, guide="none") +
+    labs(title=paste0("Who is ahead: ", vmap[[var]]),
+         subtitle="Tile area is proportional to the value; bigger square = further ahead.",
+         caption=CAP) +
+    theme_bsaq() +
+    theme(axis.text=element_blank(), panel.grid=element_blank(), 
+          legend.box.spacing = unit(1.5, "cm"), 
+                 plot.title = element_text(size = 32),
+          plot.subtitle = element_text(size = 17),
+          plot.caption = element_text(size  = 13),
+          legend.text = element_text(size = 15), 
+          axis.title.x = element_text(size = 19))
+}
+
+ggsave("./31.elec.mob.2025.report.analysis/plots/pr_ev_percent_treemap.png", plot_treemap(), width = 14, height = 13, units = "in", dpi = 520)
+
+# 3) SCATTER: does charging infrastructure track adoption?
+plot_scatter <- function() {
+  ggplot(iemi, aes(charger_ratio, private)) +
+    geom_smooth(method="lm", se=FALSE, colour=PAL$commercial,
+                linewidth=1.2, linetype="dashed") +
+    geom_point(colour=PAL$private, size=3, alpha=.85) +
+    geom_text_repel(aes(label=short), size=4, colour=PAL$ink,
+                    max.overlaps=15, seed=1) +
+    scale_y_continuous(labels=label_percent(scale=1)) +
+    labs(title="More chargers, a bit more adoption",
+         subtitle=sprintf("Charger density vs private EV share (correlation = %.2f). Positive, but far from perfect.",
+                          cor(iemi$charger_ratio, iemi$private)),
+         x="Public chargers per lakh vehicles", y="Private EV share of new registrations",
+         caption=CAP) +
+    theme_bsaq() +
+    theme(
+           legend.box.spacing = unit(1.5, "cm"), 
+                 plot.title = element_text(size = 32),
+          plot.subtitle = element_text(size = 17),
+          plot.caption = element_text(size  = 13), 
+          legend.text = element_text(size = 15), 
+          axis.title.x = element_text(size = 21), 
+          axis.title.y = element_text(size = 21)
+    )
+}
+
+ggsave("./31.elec.mob.2025.report.analysis/plots/publ_ch_pr_ev_cor.png", plot_scatter(), width = 14, height = 13, units = "in", dpi = 520)
+
+# 4) RACE: ranked lollipop of top private-EV states
+plot_race <- function(n = TOP_N_RACE) {
+  d <- iemi %>% arrange(desc(private)) %>% head(n) %>%
+    mutate(short = factor(short, levels = rev(short)))
+  ggplot(d, aes(private, short)) +
+    geom_segment(aes(x=0, xend=private, y=short, yend=short),
+                 colour=PAL$grid, linewidth=1.6) +
+    geom_point(colour=PAL$private, size=5) +
+    geom_text(aes(label=paste0(private,"%")), hjust=-.5, size=3.4, colour=PAL$ink) +
+    scale_x_continuous(labels=label_percent(scale=1),
+                       expand=expansion(mult=c(.01,.12))) +
+    labs(title=paste0("The private-EV leaderboard (top ", n, ")"),
+         subtitle="Share of new private vehicle registrations that were electric, 2025.",
+         x=NULL, y=NULL, caption=CAP) +
+    theme_bsaq() + theme(panel.grid.major.y=element_blank())
+}
+
+# 5) RENEWABLES: context bar for the clean-charging angle
+plot_renewables <- function(n = 120) {
+  d <- iemi %>%
+    arrange(desc(renewable)) %>%
+    head(n) %>%
+    mutate(short = factor(short, levels = rev(short)))
+
+  ggplot(d, aes(renewable, short)) +
+    geom_col(fill = "#477C68", width = .88) +
+#     geom_col(aes(fill = renewable), width = .68) +
+# scale_fill_gradient(
+#   low = "#C3D8CC",
+#   high = "#285943",
+#   guide = "none"
+# ) +
+    geom_text(
+      aes(label = paste0(renewable, "%")),
+      hjust = -.12,
+      size = 5.2,
+      colour = "#303B43"
+    ) +
+    scale_x_continuous(
+      labels = label_percent(scale = 1),
+      expand = expansion(mult = c(.01, .12))
+    ) +
+    labs(
+      title = "Greenest grids for charging",
+      subtitle = "Renewables as a share of the state's installed generation capacity.",
+      y = NULL,
+      x = "Renewables (% of installed genaration capacity)",
+      caption = CAP
+    ) +
+    theme_bsaq() +
+    theme(
+      panel.grid.major.y = element_blank(),
+      legend.text = element_text(size = 17),
+      legend.box.spacing = unit(1.5, "cm"), 
+      axis.title = element_text(size = 22), 
+      axis.text = element_text(size = 16), 
+             plot.title = element_text(size = 32),
+          plot.subtitle = element_text(size = 17),
+          plot.caption = element_text(size  = 13)
+    )
+}
+
+ggsave("./31.elec.mob.2025.report.analysis/plots/plt_renewables.png", plot_renewables(), width = 14, height = 13, units = "in", dpi = 520)
+
+
+# 6) LEADERBOARD: all 36 States/UTs by overall IEMI composite score,
+#    coloured by the report's four performance categories.
+plot_leaderboard <- function() {
+  bands <- c("Top Performer (\u226565)", "Frontrunner (50-64)",
+             "Emerging (35-49)", "Aspirant (<35)")           # high -> low
+  d <- iemi %>%
+    mutate(category = cut(composite_score,
+                          breaks = c(-Inf, 34.5, 49.5, 64.5, Inf),
+                          labels = rev(bands)),               # low -> high for cut()
+           category = factor(category, levels = bands)) %>%
+    arrange(composite_score) %>%
+    mutate(short = factor(short, levels = short))
+  ggplot(d, aes(composite_score, short, fill = category)) +
+    geom_col(width = 1, color = "white") +
+    geom_text(aes(label = composite_score), hjust = -0.35, size = 5, colour = PAL$ink) +
+    scale_fill_manual(NULL, values = setNames(
+      c(PAL$private, "#2F7FB8", "#E8A13B", "#9AA7B1"), bands)) +
+    scale_x_continuous(limits = c(0, 90), expand = expansion(mult = c(.01, .05))) +
+    labs(title = "The overall EV leaderboard",
+         subtitle = "Composite IEMI 2025 score (0-100). Colour = the report's performance category.",
+         x = "IEMI composite score", y = NULL, caption = CAP) +
+    theme_bsaq() +
+    theme(panel.grid.major.y = element_blank(), 
+           plot.title = element_text(size = 32), 
+          legend.text = element_text(size = 17), 
+          plot.subtitle = element_text(size = 17), 
+          legend.box.spacing = unit(1.5, "cm"))
+}
+
+plt_leaderboard <- plot_leaderboard()
+
+ggsave("./31.elec.mob.2025.report.analysis/plots/plt_leaderboard_overall.png", plot_leaderboard(), width = 14, height = 13, units = "in", dpi = 520)
+
+# 7) THEMES: the three theme scores (0-100) for every state, one small panel
+#    per state, ordered best-to-worst overall. Pairs with the leaderboard to
+#    show WHERE each state's overall score comes from.
+plot_themes <- function() {
+  lv <- c("Transport", "Charging", "Innovation")              # plain names (no weights on axis)
+  d <- iemi %>%
+    arrange(rank, desc(composite_score)) %>%
+    mutate(panel = factor(paste0(short, "  (", composite_score, ")"),
+                          levels = paste0(short, "  (", composite_score, ")"))) %>%
+    tidyr::pivot_longer(c(score_transport, score_charging, score_innovation),
+                        names_to = "theme", values_to = "score") %>%
+    mutate(theme = factor(recode(theme,
+             score_transport = "Transport",
+             score_charging  = "Charging",
+             score_innovation= "Innovation"), levels = lv))
+  ggplot(d, aes(score, theme, fill = theme)) +
+    geom_col(width = .72) +
+    geom_text(aes(label = score), hjust = -0.25, size = 4, colour = PAL$ink) +
+    facet_wrap(~ panel, ncol = 6) +
+    # weights live ONLY in the legend labels, not on the panel axes
+    scale_fill_manual(values = c(Transport = "#2E6FA8", Charging = "#4FB3C4",
+                                 Innovation = "#7FB069"),
+                      labels = c("Transport Electrification  (weight 50%)",
+                                 "Charging Infrastructure  (weight 30%)",
+                                 "EV Research & Innovation  (weight 20%)"), name = NULL) +
+    # legend reversed so it reads top-to-bottom like the bars: Innovation, Charging, Transport
+    guides(fill = guide_legend(reverse = TRUE)) +
+    scale_x_continuous(limits = c(0, 112), breaks = c(0, 50, 100)) +
+    labs(title = "Where each state's score comes from",
+         subtitle = paste0(
+           "Each panel is one state; the three bars are its theme scores (0-100), and the number in brackets is its overall score <br>",
+           "The % in the legend is each theme's <b>weight</b> in the index, not a score &mdash;<br> overall = ",
+           "0.2 x <span style='color:#7FB069'><b>EV Research &amp; Innovation</b></span> + ",
+           "0.3 x <span style='color:#4FB3C4'><b>Charging Infrastructure</b></span> + ",
+           "0.5 x <span style='color:#2E6FA8'><b>Transport Electrification</b></span>"),
+         x = "Theme score (0-100)", y = NULL, caption = CAP) +
+    theme_bsaq(base = 13) +
+    theme(legend.position = "top",
+          panel.grid.major.y = element_blank(),
+          axis.text.y  = element_blank(),      # no per-panel theme labels (legend covers it)
+          axis.text.x = element_text(size = 13),
+          axis.title.x = element_text(size = 16),
+          axis.ticks.y = element_blank(),
+          plot.subtitle = ggtext::element_markdown(size = 17, colour = PAL$muted,
+                                       lineheight = 1.3, margin = margin(b = 1, unit = "cm")),
+          strip.text = element_text(face = "bold", size = 14.5, colour = PAL$ink), 
+          legend.box.spacing = unit(1.5, "cm"),
+                 plot.title = element_text(size = 32),
+          plot.caption = element_text(size  = 13),
+          legend.text = element_text(size = 17))
+}
+
+ggsave("./31.elec.mob.2025.report.analysis/plots/theme_wise_leaders.png", plot_themes(), width = 19, height = 13, units = "in", dpi = 520)
+
+# ------------------------------- RUNNER -------------------------------------
+registry <- list(dumbbell=plot_dumbbell, treemap=plot_treemap,
+                 scatter=plot_scatter, race=plot_race, renewables=plot_renewables,
+                 leaderboard=plot_leaderboard, themes=plot_themes)
+sizes <- list(dumbbell=c(9,10), treemap=c(9,6.5), scatter=c(9,7),
+              race=c(8,6), renewables=c(8,6), leaderboard=c(9,10), themes=c(12,11))
+
+for (key in PLOTS) {
+  if (is.null(registry[[key]])) { message("Unknown plot: ", key); next }
+  p <- registry[[key]]()
+  print(p)
+  if (SAVE_PNG) {
+    wh <- sizes[[key]]
+    ggsave(file.path(OUT_DIR, paste0("iemi_", key, ".png")),
+           p, width=wh[1], height=wh[2], dpi=200, bg="white")
+    message("saved: ", file.path(OUT_DIR, paste0("iemi_", key, ".png")))
+  }
+}
+cat("\nDone. Toggle PLOTS / TREEMAP_VAR / DUMBBELL_SORT at the top to explore.\n")
+```
