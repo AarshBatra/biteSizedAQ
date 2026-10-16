@@ -34,15 +34,15 @@ conveniently charge them (the *charging network*), and whether they’re
 cheap enough to buy and run (helped by government *incentives* and by
 electricity being cheaper per kilometre than petrol).
 
-## How the IEMI is built
+## How the IEMI 2025 is built
 
 Much of the EV transition now rests with the states. They layer their
 own purchase incentives, charging rules and road-tax waivers on top of
 central subsidies — so progress varies widely from one state to the
 next. To track that, NITI Aayog and WRI India built the **India Electric
 Mobility Index (IEMI)**, which scores all 36 states and union
-territories. It helps to picture this index as a pyramid with three
-layers:
+territories. In this post, I look at its latest 2025 version. It helps
+to picture this index as a pyramid with three layers:
 
 - **At the base, 16 raw measurements** — the real-world numbers for each
   state, like the share of new cars that are electric, public chargers
