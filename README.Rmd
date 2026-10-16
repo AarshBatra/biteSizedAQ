@@ -47,11 +47,11 @@ This repository will continue to grow with new projects as and when I find time.
 
 ## Project 31: biteSizedVisual #7: Reading Between the Rankings: India's EV Shift, State by State in 6 Plots
 
--   Full blog post: Link
+-   Full blog post: [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/31.bite.sized.vis.7.elec.mob.2025.report.analysis)
 
 -   ***Summary***: India wants 30% of vehicle sales to be electric by 2030, and the report behind this post says much of that transition rests with the states. NITI Aayog and WRI India’s India Electric Mobility Index (IEMI) 2025 scores all 36 states and union territories from 0 to 100 on how far along they are. Delhi comes first with 84 and Dadra & Nagar Haveli and Daman & Diu last with 10. The score combines 16 indicators into three themes: Transport Electrification (weighted 50%), Charging Infrastructure (30%) and EV Research & Innovation (20%). This post starts with those official rankings and theme scores, then looks at the raw numbers behind them: who is actually buying electric, whether more chargers go with more EVs, and how clean the electricity charging them is. The ranking is a good quick reference, and the data underneath tells a richer story. It also covers what the index doesn’t measure, such as battery disposal and recycling, and what has changed in the states since the data was published.
 
--   Raw data cleaning code can be found here.
+-   Raw data cleaning code can be found [here](https://github.com/AarshBatra/biteSizedAQ/blob/main/31.bite.sized.vis.7.elec.mob.2025.report.analysis.Rmd).
 
 -   ***Note:*** Read the License and Reuse section of the post to learn about the underlying raw data and policies regarding its dissemination.
 

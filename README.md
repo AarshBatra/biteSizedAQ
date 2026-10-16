@@ -54,7 +54,8 @@ find time. To kick things off, check out the first few projects below!
 
 ## Project 31: biteSizedVisual \#7: Reading Between the Rankings: India’s EV Shift, State by State in 6 Plots
 
-- Full blog post: Link
+- Full blog post:
+  [Link](https://github.com/AarshBatra/biteSizedAQ/tree/main/31.bite.sized.vis.7.elec.mob.2025.report.analysis)
 
 - ***Summary***: India wants 30% of vehicle sales to be electric by
   2030, and the report behind this post says much of that transition
@@ -72,7 +73,8 @@ find time. To kick things off, check out the first few projects below!
   index doesn’t measure, such as battery disposal and recycling, and
   what has changed in the states since the data was published.
 
-- Raw data cleaning code can be found here.
+- Raw data cleaning code can be found
+  [here](https://github.com/AarshBatra/biteSizedAQ/blob/main/31.bite.sized.vis.7.elec.mob.2025.report.analysis.Rmd).
 
 - ***Note:*** Read the License and Reuse section of the post to learn
   about the underlying raw data and policies regarding its
